@@ -28,7 +28,7 @@ public class ProfesorDAO {
     public Collection<Profesor> seleccionarDatos() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, edad_prof, email_prof FROM profesor;";
 
-        Collection<Profesor> profesores = new ArrayList<Profesor>();
+        Collection<Profesor> profesores = new ArrayList<>();
         try {
             connection = JConnection.getConexion();
             statement = connection.createStatement();

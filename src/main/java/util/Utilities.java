@@ -8,7 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Clase con distintos metodos para gestionar la ventana
+ * Clase con distintos metodos para gestionar la ventana.
+ *
  * @author cesardl
  */
 public class Utilities {
@@ -18,6 +19,7 @@ public class Utilities {
     /**
      * Metodo que devuelve una cadena convertida en String, en caso de
      * encontrarse un error envia un codigo de error.
+     *
      * @param s cadena que se va a convertir a entero
      * @return el valor de la cadena.
      */
@@ -30,24 +32,27 @@ public class Utilities {
     }
 
     /**
-     * Metodo que convierte una cadena en una secuencia de palabras donde
+     * M&eacute;todo que convierte una cadena en una secuencia de palabras donde
      * el primer caracter se encuentra en mayusculas y los siguientes en
      * minusculas, separados cada uno por un espacio.
+     *
      * @param s cadena a transformar
      * @return la cadena arreglada
      */
     public static String stringStandard(String s) {
         java.util.StringTokenizer st = new java.util.StringTokenizer(s, " ");
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (st.hasMoreTokens()) {
-            sb.append(convertirString(st.nextToken()) + " ");
+            sb.append(convertirString(st.nextToken()));
+            sb.append(" ");
         }
         return new String(sb).trim();
     }
 
     /**
-     * Transforma el primer caracter de la cadena en mayuscula y los
-     * siguientes en minusculas
+     * Transforma el primer caracter de la cadena en mayuscula y los siguientes
+     * en minusculas
+     *
      * @param s a convertir
      * @return la cadena convertida
      */
@@ -58,6 +63,7 @@ public class Utilities {
 
     /**
      * Selecciona los elementos ingresados en una casilla de texto
+     *
      * @param jTextField
      */
     public static void marcarTextField(javax.swing.JTextField jTextField) {
@@ -67,6 +73,7 @@ public class Utilities {
 
     /**
      * Muestra una alerta
+     *
      * @param mensaje
      * @param tipoMensaje
      */
@@ -76,7 +83,9 @@ public class Utilities {
     }
 
     /**
-     * Cierra la conexion con la base de datos
+     * Cierra la conexi&oacute;n con la base de datos.
+     *
+     * @param connection
      */
     public static void cerrarConexion(Connection connection) {
         try {
