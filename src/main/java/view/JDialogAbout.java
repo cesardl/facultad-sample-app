@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * JDialogAbout.java
  *
  * Created on 04/04/2010, 05:06:08 PM

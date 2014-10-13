@@ -1,11 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 /**
  * Clase con distintos metodos para gestionar la ventana.
@@ -17,7 +10,7 @@ public class Utilities {
     public static final int ERROR_INT = -999;
 
     /**
-     * Metodo que devuelve una cadena convertida en String, en caso de
+     * M&eacute;todo que devuelve una cadena convertida en String, en caso de
      * encontrarse un error envia un codigo de error.
      *
      * @param s cadena que se va a convertir a entero
@@ -82,16 +75,4 @@ public class Utilities {
                 "Aplicacion con MySQL", tipoMensaje);
     }
 
-    /**
-     * Cierra la conexi&oacute;n con la base de datos.
-     *
-     * @param connection
-     */
-    public static void cerrarConexion(Connection connection) {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            System.err.println("Error al cerrar la conexion");
-        }
-    }
 }

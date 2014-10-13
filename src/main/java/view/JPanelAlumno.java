@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * JPanelAlumno.java
  *
  * Created on 21/03/2010, 10:10:18 PM

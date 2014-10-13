@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * JPanelProfesor.java
  *
  * Created on 21/03/2010, 10:10:27 PM

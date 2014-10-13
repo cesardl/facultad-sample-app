@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import java.io.Serializable;
@@ -13,86 +9,87 @@ import java.io.Serializable;
 public class Alumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private int id_alum;
-    private String cod_alum;
-    private String nom_alum;
-    private int edad_alum;
-    private char sexo_alum;
-    private String direc_alum;
-    private String telef_alum;
-    private int profesor_id_prof;
+    private int id;
+    private String codigo;
+    private String nombre;
+    private int edad;
+    private char sexo;
+    private String direccion;
+    private String telefono;
+    private int profesor;
 
-    public Alumno(int id_alum, String cod_alum, String nom_alum, int edad_alum, char sexo_alum, String direc_alum, String telef_alum) {
-        this.id_alum = id_alum;
-        this.cod_alum = cod_alum;
-        this.nom_alum = nom_alum;
-        this.edad_alum = edad_alum;
-        this.sexo_alum = sexo_alum;
-        this.direc_alum = direc_alum;
-        this.telef_alum = telef_alum;
+    public Alumno(int id, String codigo, String nombre, int edad, char sexo, String direccion, String telefono) {
+        this.id = id;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
-    public String getCod_alum() {
-        return cod_alum;
+    public int getId() {
+        return id;
     }
 
-    public void setCod_alum(String cod_alum) {
-        this.cod_alum = cod_alum;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDirec_alum() {
-        return direc_alum;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setDirec_alum(String direc_alum) {
-        this.direc_alum = direc_alum;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public int getEdad_alum() {
-        return edad_alum;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEdad_alum(int edad_alum) {
-        this.edad_alum = edad_alum;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getId_alum() {
-        return id_alum;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setId_alum(int id_alum) {
-        this.id_alum = id_alum;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public String getNom_alum() {
-        return nom_alum;
+    public char getSexo() {
+        return sexo;
     }
 
-    public void setNom_alum(String nom_alum) {
-        this.nom_alum = nom_alum;
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
     }
 
-    public int getProfesor_id_prof() {
-        return profesor_id_prof;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setProfesor_id_prof(int profesor_id_prof) {
-        this.profesor_id_prof = profesor_id_prof;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public char getSexo_alum() {
-        return sexo_alum;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setSexo_alum(char sexo_alum) {
-        this.sexo_alum = sexo_alum;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getTelef_alum() {
-        return telef_alum;
+    public int getProfesor() {
+        return profesor;
     }
 
-    public void setTelef_alum(String telef_alum) {
-        this.telef_alum = telef_alum;
+    public void setProfesor(int profesor) {
+        this.profesor = profesor;
     }
+
 }

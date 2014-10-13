@@ -87,14 +87,6 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextFieldCodigo" pref="215" max="32767" attributes="0"/>
-                          <EmptySpace min="108" pref="108" max="108" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextFieldNombre" pref="215" max="32767" attributes="0"/>
-                          <EmptySpace min="108" pref="108" max="108" attributes="0"/>
-                      </Group>
                       <Component id="jSpinnerEdad" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="jTextFieldDireccion" alignment="0" pref="323" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -104,6 +96,13 @@
                       </Group>
                       <Component id="jTextFieldTelefono" pref="323" max="32767" attributes="0"/>
                       <Component id="jComboBoxSelectProf" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextFieldCodigo" alignment="0" pref="215" max="32767" attributes="0"/>
+                              <Component id="jTextFieldNombre" alignment="0" pref="215" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="108" pref="108" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

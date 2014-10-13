@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * JDialogAlumno.java
  *
  * Created on 12/07/2009, 05:13:31 PM
