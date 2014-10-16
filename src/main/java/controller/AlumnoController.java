@@ -3,7 +3,6 @@ package controller;
 import beans.Alumno;
 import dao.AlumnoDAO;
 import factory.DAOFactory;
-import db.Database;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
 public class AlumnoController {
 
     public Object[][] dataAlumno() {
-        DAOFactory factory = DAOFactory.getDAOFactory(Database.MYSQL);
+        DAOFactory factory = DAOFactory.getDAOFactory();
         AlumnoDAO dao = factory.getAlumnoDAO();
 
         List<Alumno> alumnos = dao.seleccionarDatos();

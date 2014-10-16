@@ -26,9 +26,9 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
         List<Profesor> profesores = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+        try (Connection connection = DAOFactory.createConnection();
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
                 profesores.add(new Profesor(
@@ -38,9 +38,8 @@ public class ProfesorDAOImpl implements ProfesorDAO {
                         resultSet.getInt(4),
                         resultSet.getString(5)));
             }
-        } catch (ClassNotFoundException | SQLException sqle) {
-            System.err.println("ProfesorDAO: Error al cargar los datos de los profesores");
-            sqle.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("ProfesorDAO: Error al cargar los datos de los profesores", e);
         }
 
         return profesores;
@@ -52,9 +51,9 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
         List<Profesor> profesores = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+        try (Connection connection = DAOFactory.createConnection();
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
                 Profesor p = new Profesor();
@@ -63,9 +62,8 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
                 profesores.add(p);
             }
-        } catch (ClassNotFoundException | SQLException sqle) {
-            System.err.println("ProfesorDAO: Error al cargar los datos de los profesores");
-            sqle.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("ProfesorDAO: Error al cargar los datos de los profesores", e);
         }
 
         return profesores;

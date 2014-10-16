@@ -9,6 +9,6 @@ public enum Database {
 
     MYSQL,
     ORACLE,
-    SYBASE
+    SQLSERVER
 
 }

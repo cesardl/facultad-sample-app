@@ -1,9 +1,10 @@
-package factory;
+package factory.impl;
 
 import dao.AlumnoDAO;
 import dao.ProfesorDAO;
 import dao.impl.AlumnoDAOImpl;
 import dao.impl.ProfesorDAOImpl;
+import factory.DAOFactory;
 
 /**
  *

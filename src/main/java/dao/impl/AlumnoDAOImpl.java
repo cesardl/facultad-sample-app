@@ -22,9 +22,9 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
         List<Alumno> alumnos = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+        try (Connection connection = DAOFactory.createConnection();
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
                 alumnos.add(new Alumno(
@@ -36,9 +36,8 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                         resultSet.getString(6),
                         resultSet.getString(7)));
             }
-        } catch (ClassNotFoundException | SQLException sqle) {
-            System.err.println("AlumnoDAO: Error al cargar los datos de alumnos");
-            sqle.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("AlumnoDAO: Error al cargar los datos de alumnos", e);
         }
 
         return alumnos;

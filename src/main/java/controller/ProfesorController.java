@@ -3,7 +3,6 @@ package controller;
 import beans.Profesor;
 import dao.ProfesorDAO;
 import factory.DAOFactory;
-import db.Database;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
 public class ProfesorController {
 
     public Object[][] dataProfesor() {
-        DAOFactory factory = DAOFactory.getDAOFactory(Database.MYSQL);
+        DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
         List<Profesor> profesores = dao.seleccionarDatos();
@@ -32,7 +31,7 @@ public class ProfesorController {
     }
 
     public String[] nombresProfesor() {
-        DAOFactory factory = DAOFactory.getDAOFactory(Database.MYSQL);
+        DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
         List<Profesor> profesores = dao.seleccionarNombresProfesor();

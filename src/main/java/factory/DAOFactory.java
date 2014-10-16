@@ -1,14 +1,18 @@
 package factory;
 
-import db.Database;
 import dao.AlumnoDAO;
 import dao.ProfesorDAO;
+import db.Database;
+import factory.impl.MysqlDAOFactory;
+import factory.impl.OracleDAOFactory;
+import factory.impl.SqlServersDAOFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -20,6 +24,9 @@ import java.util.Properties;
  */
 public abstract class DAOFactory {
 
+    private static final Logger log = Logger.getLogger(DAOFactory.class);
+
+    private static Database whichFactory;
     private static String driver;
     private static String url;
     private static String user;
@@ -37,37 +44,43 @@ public abstract class DAOFactory {
             Properties prop = new Properties();
             prop.load(is);
 
+            whichFactory = Database.valueOf(prop.getProperty("database.factory"));
             driver = prop.getProperty("database.driver");
             url = prop.getProperty("database.url");
             user = prop.getProperty("database.user");
             passwd = prop.getProperty("database.passwd");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error cargando resources del properties", e);
         }
     }
 
     /**
      *
-     * @param whichFactory
      * @return
      */
-    public static DAOFactory getDAOFactory(
-            Database whichFactory) {
-
+    public static DAOFactory getDAOFactory() {
         switch (whichFactory) {
             case MYSQL:
                 return new MysqlDAOFactory();
 
-//            case ORACLE:
-//                return new OracleDAOFactory();
-//            case SYBASE:
-//                return new SybaseDAOFactory();
+            case ORACLE:
+                return new OracleDAOFactory();
+
+            case SQLSERVER:
+                return new SqlServersDAOFactory();
+
             default:
                 return null;
         }
     }
 
-    // method to create Cloudscape connections
+    /**
+     * Method to create db connections.
+     *
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
         try {
             // Use DRIVER and DBURL to create a connection
