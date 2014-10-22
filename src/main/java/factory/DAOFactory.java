@@ -82,13 +82,9 @@ public abstract class DAOFactory {
      * @throws SQLException
      */
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
-        try {
-            // Use DRIVER and DBURL to create a connection
-            // Recommend connection pool implementation/usage
-            Class.forName(driver);
-            return DriverManager.getConnection(url, user, passwd);
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw ex;
-        }
+        // Use DRIVER and DBURL to create a connection
+        // Recommend connection pool implementation/usage
+        Class.forName(driver);
+        return DriverManager.getConnection(url, user, passwd);
     }
 }

@@ -18,7 +18,8 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
     @Override
     public List<Alumno> seleccionarDatos() {
-        String sql = "SELECT id_alum, cod_alum, nom_alum, edad_alum, sexo_alum, direc_alum, telef_alum FROM alumno;";
+        //TODO Corregir campo nacimiento
+        String sql = "SELECT id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum FROM alumno;";
 
         List<Alumno> alumnos = new ArrayList<>();
 
