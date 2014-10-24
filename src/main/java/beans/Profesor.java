@@ -1,61 +1,24 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author cesardl
  */
-public class Profesor implements Serializable {
+public class Profesor extends Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private int id;
-    private String codigo;
-    private String nombre;
-    private int edad;
     private String email;
 
     public Profesor() {
+        super();
     }
 
-    public Profesor(int id, String codigo, String nombre, int edad, String email) {
-        this.id = id;
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.edad = edad;
+    public Profesor(int id, String codigo, String nombre, Date nacimiento, String email) {
+        super(id, codigo, nombre, nacimiento);
         this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
     }
 
     public String getEmail() {

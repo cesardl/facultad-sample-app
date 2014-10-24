@@ -13,7 +13,7 @@ import controller.AlumnoController;
  */
 public class JPanelAlumno extends javax.swing.JPanel {
 
-    private AlumnoController aluCtrl = new AlumnoController();
+    private final AlumnoController aluCtrl = new AlumnoController();
 
     /** Creates new form JPanelAlumno */
     public JPanelAlumno() {
@@ -41,7 +41,7 @@ public class JPanelAlumno extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false

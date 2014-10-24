@@ -24,7 +24,7 @@ public class AlumnoController {
 
             rowData[i][0] = alumno.getCodigo();
             rowData[i][1] = alumno.getNombre();
-            rowData[i][2] = alumno.getEdad();
+            rowData[i][2] = alumno.getNacimiento();
             rowData[i][3] = alumno.getSexo();
             rowData[i][4] = alumno.getDireccion();
             rowData[i][5] = alumno.getTelefono();

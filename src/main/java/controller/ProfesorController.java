@@ -24,7 +24,7 @@ public class ProfesorController {
 
             rowData[i][0] = profesor.getCodigo();
             rowData[i][1] = profesor.getNombre();
-            rowData[i][2] = profesor.getEdad();
+            rowData[i][2] = profesor.getNacimiento();
             rowData[i][3] = profesor.getEmail();
         }
         return rowData;

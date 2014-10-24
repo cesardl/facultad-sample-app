@@ -22,7 +22,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
      */
     @Override
     public List<Profesor> seleccionarDatos() {
-        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor;";
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
 
         List<Profesor> profesores = new ArrayList<>();
 
@@ -31,12 +31,11 @@ public class ProfesorDAOImpl implements ProfesorDAO {
                 ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                //TODO Corregir campo nacimiento 
                 profesores.add(new Profesor(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getInt(4),
+                        resultSet.getDate(4),
                         resultSet.getString(5)));
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -48,7 +47,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
     @Override
     public List<Profesor> seleccionarNombresProfesor() {
-        String sql = "SELECT id_prof, nom_prof , nacimiento_prof, email_prof FROM profesor;";
+        String sql = "SELECT id_prof, nom_prof FROM profesor";
 
         List<Profesor> profesores = new ArrayList<>();
 
@@ -57,7 +56,6 @@ public class ProfesorDAOImpl implements ProfesorDAO {
                 ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                //TODO Corregir campo nacimiento
                 Profesor p = new Profesor();
                 p.setId(resultSet.getInt(1));
                 p.setNombre(resultSet.getString(2));
