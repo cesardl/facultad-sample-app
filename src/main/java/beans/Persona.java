@@ -16,6 +16,12 @@ public abstract class Persona {
     public Persona() {
     }
 
+    public Persona(String codigo, String nombre, Date nacimiento) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.nacimiento = nacimiento;
+    }
+
     public Persona(int id, String codigo, String nombre, Date nacimiento) {
         this.id = id;
         this.codigo = codigo;

@@ -6,7 +6,7 @@
 package view;
 
 import java.util.Date;
-import util.Utilities;
+import util.Utils;
 
 /**
  *
@@ -39,11 +39,11 @@ public class JDialogProfesor extends javax.swing.JDialog {
         System.out.println(edad);
         
         if (codigo.length() == 0) {
-            Utilities.marcarTextField(jTextFieldCodigo);
+            Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
         if (nombre.length() == 0) {
-            Utilities.marcarTextField(jTextFieldNombre);
+            Utils.marcarTextField(jTextFieldNombre);
             return false;
         }
         if (edad != null) {
@@ -51,7 +51,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
             return false;
         }
         if (direccion.length() == 0) {
-            Utilities.marcarTextField(jTextFieldEmail);
+            Utils.marcarTextField(jTextFieldEmail);
             return false;
         }
         return true;

@@ -10,8 +10,12 @@ import org.apache.log4j.Logger;
  */
 public interface DAO<T> {
 
+    int STATE_ERROR = -1;
+    
     Logger log = Logger.getLogger(DAO.class);
 
-    List<T> seleccionarDatos();
+    List<T> getAll();
 
+    int insert(T entity);
+    
 }

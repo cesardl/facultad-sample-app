@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.ProfesorController;
+import controller.impl.ProfesorController;
 
 /**
  *
@@ -13,7 +13,7 @@ import controller.ProfesorController;
  */
 public class JPanelProfesor extends javax.swing.JPanel {
 
-    private ProfesorController profesorCtrl = new ProfesorController();
+    private final ProfesorController profesorController = new ProfesorController();
 
     /** Creates new form JPanelProfesor */
     public JPanelProfesor() {
@@ -35,7 +35,7 @@ public class JPanelProfesor extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
-            profesorCtrl.dataProfesor(),
+            profesorController.data(),
             new String [] {
                 "Codigo", "Nombre", "Edad", "Email"
             }

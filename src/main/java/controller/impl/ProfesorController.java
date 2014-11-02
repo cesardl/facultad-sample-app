@@ -1,21 +1,25 @@
-package controller;
+package controller.impl;
 
 import beans.Profesor;
+import controller.Controller;
 import dao.ProfesorDAO;
 import factory.DAOFactory;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
-public class ProfesorController {
+public class ProfesorController implements Controller<Profesor> {
 
-    public Object[][] dataProfesor() {
+    @Override
+    public Object[][] data() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
-        List<Profesor> profesores = dao.seleccionarDatos();
+        List<Profesor> profesores = dao.getAll();
 
         Object[][] rowData = new Object[profesores.size()][4];
 
@@ -30,17 +34,18 @@ public class ProfesorController {
         return rowData;
     }
 
-    public String[] nombresProfesor() {
+    public Profesor[] nombresProfesor() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
         List<Profesor> profesores = dao.seleccionarNombresProfesor();
 
-        String[] nomProfes = new String[profesores.size()];
-        for (int i = 0; i < profesores.size(); i++) {
-            Profesor profesor = profesores.get(i);
-            nomProfes[i] = profesor.getNombre();
-        }
-        return nomProfes;
+        return profesores.toArray(new Profesor[profesores.size()]);
     }
+
+    @Override
+    public boolean insert(Profesor entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

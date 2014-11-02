@@ -21,7 +21,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
      * @return
      */
     @Override
-    public List<Profesor> seleccionarDatos() {
+    public List<Profesor> getAll() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
 
         List<Profesor> profesores = new ArrayList<>();
@@ -67,5 +67,10 @@ public class ProfesorDAOImpl implements ProfesorDAO {
         }
 
         return profesores;
+    }
+
+    @Override
+    public int insert(Profesor entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
