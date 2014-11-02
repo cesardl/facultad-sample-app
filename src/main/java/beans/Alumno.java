@@ -1,5 +1,6 @@
 package beans;
 
+import beans.etc.Gender;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,23 +11,23 @@ import java.util.Date;
 public class Alumno extends Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private char sexo;
+    private Gender sexo;
     private String direccion;
     private String telefono;
     private int profesor;
 
-    public Alumno(int id, String codigo, String nombre, Date nacimiento, char sexo, String direccion, String telefono) {
+    public Alumno(int id, String codigo, String nombre, Date nacimiento, Gender sexo, String direccion, String telefono) {
         super(id, codigo, nombre, nacimiento);
         this.sexo = sexo;
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
-    public char getSexo() {
+    public Gender getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(Gender sexo) {
         this.sexo = sexo;
     }
 

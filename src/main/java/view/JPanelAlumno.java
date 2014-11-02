@@ -13,7 +13,7 @@ import controller.AlumnoController;
  */
 public class JPanelAlumno extends javax.swing.JPanel {
 
-    private final AlumnoController aluCtrl = new AlumnoController();
+    private final AlumnoController alumnoController = new AlumnoController();
 
     /** Creates new form JPanelAlumno */
     public JPanelAlumno() {
@@ -31,11 +31,8 @@ public class JPanelAlumno extends javax.swing.JPanel {
 
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            aluCtrl.dataAlumno(),
+        tableModel = new javax.swing.table.DefaultTableModel(
+            alumnoController.dataAlumno(),
             new String [] {
                 "Codigo", "Nombre", "Edad", "Sexo", "Direccion", "Telefono"
             }
@@ -54,7 +51,11 @@ public class JPanelAlumno extends javax.swing.JPanel {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
-        });
+        };
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable.setModel(tableModel);
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane.setViewportView(jTable);
 
@@ -78,5 +79,6 @@ public class JPanelAlumno extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable jTable;
+    private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables
 }

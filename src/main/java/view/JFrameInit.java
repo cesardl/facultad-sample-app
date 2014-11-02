@@ -197,7 +197,9 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSelectAlumnoActionPerformed
 
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
-        new JDialogAlumno(this, true).setVisible(true);
+        JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
+        dialogAlumno.setVisible(true);
+        System.out.println(dialogAlumno.getAlumno().getNacimiento());
     }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
 
     private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed

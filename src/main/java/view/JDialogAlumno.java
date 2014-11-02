@@ -5,6 +5,8 @@
  */
 package view;
 
+import beans.Alumno;
+import beans.etc.Gender;
 import controller.ProfesorController;
 import java.util.Date;
 import util.Utilities;
@@ -16,10 +18,12 @@ import util.Utilities;
 public class JDialogAlumno extends javax.swing.JDialog {
 
     private String codigo, nombre, direccion;
-    private char sexo;
+    private Gender sexo;
     private Date edad;
     private int telefono;
     private final ProfesorController profCtrl = new ProfesorController();
+
+    private Alumno alumno;
 
     /**
      * Creates new form JDialogAlumno.
@@ -36,7 +40,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
         edad = jDateChooserNacimiento.getDate();
-        sexo = jRadioButtonMasculino.isSelected() ? 'M' : 'F';
+        sexo = jRadioButtonMasculino.isSelected() ? Gender.MALE : Gender.FEMALE;
         direccion = jTextFieldDireccion.getText().trim();
         telefono = Utilities.aInteger(jTextFieldTelefono.getText().trim());
 
@@ -48,7 +52,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
             Utilities.marcarTextField(jTextFieldNombre);
             return false;
         }
-        if (edad != null) {
+        if (edad == null) {
             jDateChooserNacimiento.requestFocusInWindow();
             return false;
         }
@@ -61,6 +65,10 @@ public class JDialogAlumno extends javax.swing.JDialog {
             return false;
         }
         return true;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
     }
 
     /**
@@ -238,6 +246,10 @@ public class JDialogAlumno extends javax.swing.JDialog {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
+        if (capturarDatos()) {
+            alumno = new Alumno(WIDTH, codigo, nombre, edad, sexo, direccion, codigo);
+            dispose();
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

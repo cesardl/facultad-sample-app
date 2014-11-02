@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import beans.Alumno;
+import beans.etc.Gender;
 import dao.AlumnoDAO;
 import factory.DAOFactory;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getDate(4),
-                        resultSet.getString(5).charAt(0),
+                        Gender.valueOf(resultSet.getString(5)),
                         resultSet.getString(6),
                         resultSet.getString(7)));
             }
