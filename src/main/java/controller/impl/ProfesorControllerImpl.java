@@ -1,18 +1,18 @@
 package controller.impl;
 
 import beans.Profesor;
-import controller.Controller;
+import controller.ProfesorController;
+import dao.DAO;
 import dao.ProfesorDAO;
 import factory.DAOFactory;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import util.Utils;
 
 /**
  *
  * @author Cesardl
  */
-public class ProfesorController implements Controller<Profesor> {
+public class ProfesorControllerImpl implements ProfesorController {
 
     @Override
     public Object[][] data() {
@@ -28,12 +28,13 @@ public class ProfesorController implements Controller<Profesor> {
 
             rowData[i][0] = profesor.getCodigo();
             rowData[i][1] = profesor.getNombre();
-            rowData[i][2] = profesor.getNacimiento();
+            rowData[i][2] = Utils.formatDate(profesor.getNacimiento());
             rowData[i][3] = profesor.getEmail();
         }
         return rowData;
     }
 
+    @Override
     public Profesor[] nombresProfesor() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
@@ -45,7 +46,18 @@ public class ProfesorController implements Controller<Profesor> {
 
     @Override
     public boolean insert(Profesor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        ProfesorDAO dao = factory.getProfesorDAO();
+
+        int state = dao.insert(entity);
+
+        switch (state) {
+            case DAO.STATE_ERROR:
+                return false;
+
+            default:
+                return true;
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 package controller.impl;
 
 import beans.Alumno;
-import controller.Controller;
+import controller.AlumnoController;
 import dao.AlumnoDAO;
 import dao.DAO;
 import factory.DAOFactory;
@@ -12,7 +12,7 @@ import util.Utils;
  *
  * @author cesardl
  */
-public class AlumnoController implements Controller<Alumno> {
+public class AlumnoControllerImpl implements AlumnoController {
 
     @Override
     public Object[][] data() {

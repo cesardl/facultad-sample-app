@@ -1,5 +1,8 @@
 package view;
 
+import beans.Alumno;
+import beans.Profesor;
+
 /**
  *
  * @author Cesardl
@@ -197,7 +200,11 @@ public class JFrameInit extends javax.swing.JFrame {
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
         JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
         dialogAlumno.setVisible(true);
-        jPanelAlumno.addRow(dialogAlumno.getAlumno());
+
+        Alumno alumno = dialogAlumno.getAlumno();
+        if (alumno != null) {
+            jPanelAlumno.addRow(alumno);
+        }
     }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
 
     private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed
@@ -213,7 +220,13 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSelectProfesorActionPerformed
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
-        new JDialogProfesor(this, true).setVisible(true);
+        JDialogProfesor dialogProfesor = new JDialogProfesor(this, true);
+        dialogProfesor.setVisible(true);
+
+        Profesor profesor = dialogProfesor.getProfesor();
+        if (profesor != null) {
+            jPanelProfesor.addRow(profesor);
+        }
     }//GEN-LAST:event_jMenuItemInsertProfesorActionPerformed
 
     private void jMenuItemUpdateProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateProfesorActionPerformed
@@ -233,7 +246,6 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
-        // TODO add your handling code here:
         new JDialogAbout(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 

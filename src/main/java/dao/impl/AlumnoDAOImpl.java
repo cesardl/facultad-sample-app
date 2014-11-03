@@ -40,7 +40,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                         resultSet.getString(7)));
             }
         } catch (ClassNotFoundException | SQLException e) {
-            log.error("AlumnoDAO: Error al cargar los datos de alumnos", e);
+            log.error("Error al cargar los datos de alumnos", e);
         }
 
         return alumnos;
@@ -65,7 +65,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
             
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
-            log.error("AlumnoDAO: Error al insertar los datos de alumnos", e);
+            log.error("Error al insertar los datos del alumno", e);
             state = STATE_ERROR;
         }
 

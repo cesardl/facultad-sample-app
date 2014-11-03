@@ -6,7 +6,8 @@
 package view;
 
 import beans.Alumno;
-import controller.impl.AlumnoController;
+import controller.AlumnoController;
+import controller.impl.AlumnoControllerImpl;
 import util.Utils;
 
 /**
@@ -15,7 +16,7 @@ import util.Utils;
  */
 public class JPanelAlumno extends javax.swing.JPanel {
 
-    private final AlumnoController alumnoController = new AlumnoController();
+    private final AlumnoController alumnoController = new AlumnoControllerImpl();
 
     /**
      * Creates new form JPanelAlumno
@@ -49,7 +50,7 @@ public class JPanelAlumno extends javax.swing.JPanel {
         tableModel = new javax.swing.table.DefaultTableModel(
             alumnoController.data(),
             new String [] {
-                "Codigo", "Nombre", "Edad", "Sexo", "Direccion", "Telefono"
+                "Codigo", "Nombre", "Edad", "Nacimiento", "Direccion", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
