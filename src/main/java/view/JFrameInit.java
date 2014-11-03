@@ -1,5 +1,8 @@
 package view;
 
+import beans.Alumno;
+import beans.Profesor;
+
 /**
  *
  * @author Cesardl
@@ -24,6 +27,8 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jPanel = new javax.swing.JPanel();
         jTabbedPane = new javax.swing.JTabbedPane();
+        jPanelAlumno = new view.JPanelAlumno();
+        jPanelProfesor = new view.JPanelProfesor();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuAcciones = new javax.swing.JMenu();
         jMenuAlumno = new javax.swing.JMenu();
@@ -46,28 +51,24 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane.add("Alumno", new JPanelAlumno());
-        jTabbedPane.add("Profesor", new JPanelProfesor());
+        jTabbedPane.addTab("Alumno", jPanelAlumno);
+        jTabbedPane.addTab("Profesor", jPanelProfesor);
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
-            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
-            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenuBar.setBackground(new java.awt.Color(255, 255, 255));
@@ -199,7 +200,11 @@ public class JFrameInit extends javax.swing.JFrame {
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
         JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
         dialogAlumno.setVisible(true);
-        System.out.println(dialogAlumno.getAlumno().getNacimiento());
+
+        Alumno alumno = dialogAlumno.getAlumno();
+        if (alumno != null) {
+            jPanelAlumno.addRow(alumno);
+        }
     }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
 
     private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed
@@ -215,7 +220,13 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSelectProfesorActionPerformed
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
-        new JDialogProfesor(this, true).setVisible(true);
+        JDialogProfesor dialogProfesor = new JDialogProfesor(this, true);
+        dialogProfesor.setVisible(true);
+
+        Profesor profesor = dialogProfesor.getProfesor();
+        if (profesor != null) {
+            jPanelProfesor.addRow(profesor);
+        }
     }//GEN-LAST:event_jMenuItemInsertProfesorActionPerformed
 
     private void jMenuItemUpdateProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateProfesorActionPerformed
@@ -235,7 +246,6 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
-        // TODO add your handling code here:
         new JDialogAbout(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
@@ -256,6 +266,8 @@ public class JFrameInit extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemUpdateProfesor;
     private javax.swing.JMenu jMenuProfesor;
     private javax.swing.JPanel jPanel;
+    private view.JPanelAlumno jPanelAlumno;
+    private view.JPanelProfesor jPanelProfesor;
     private javax.swing.JPopupMenu.Separator jSeparator;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables

@@ -6,10 +6,15 @@
 package view;
 
 import beans.Alumno;
+import beans.Profesor;
 import beans.etc.Gender;
+import controller.AlumnoController;
 import controller.ProfesorController;
+import controller.impl.AlumnoControllerImpl;
+import controller.impl.ProfesorControllerImpl;
 import java.util.Date;
-import util.Utilities;
+import org.apache.log4j.Logger;
+import util.Utils;
 
 /**
  *
@@ -17,11 +22,14 @@ import util.Utilities;
  */
 public class JDialogAlumno extends javax.swing.JDialog {
 
+    private static final Logger log = Logger.getLogger(JDialogAlumno.class);
+
     private String codigo, nombre, direccion;
     private Gender sexo;
-    private Date edad;
+    private Date nacimiento;
     private int telefono;
-    private final ProfesorController profCtrl = new ProfesorController();
+    private final AlumnoController alumnoController = new AlumnoControllerImpl();
+    private final ProfesorController profesorController = new ProfesorControllerImpl();
 
     private Alumno alumno;
 
@@ -39,29 +47,29 @@ public class JDialogAlumno extends javax.swing.JDialog {
     private boolean capturarDatos() {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
-        edad = jDateChooserNacimiento.getDate();
+        nacimiento = jDateChooserNacimiento.getDate();
         sexo = jRadioButtonMasculino.isSelected() ? Gender.MALE : Gender.FEMALE;
         direccion = jTextFieldDireccion.getText().trim();
-        telefono = Utilities.aInteger(jTextFieldTelefono.getText().trim());
+        telefono = Utils.aInteger(jTextFieldTelefono.getText().trim());
 
         if (codigo.length() == 0) {
-            Utilities.marcarTextField(jTextFieldCodigo);
+            Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
         if (nombre.length() == 0) {
-            Utilities.marcarTextField(jTextFieldNombre);
+            Utils.marcarTextField(jTextFieldNombre);
             return false;
         }
-        if (edad == null) {
+        if (nacimiento == null) {
             jDateChooserNacimiento.requestFocusInWindow();
             return false;
         }
         if (direccion.length() == 0) {
-            Utilities.marcarTextField(jTextFieldDireccion);
+            Utils.marcarTextField(jTextFieldDireccion);
             return false;
         }
-        if (telefono == -999) {
-            Utilities.marcarTextField(jTextFieldTelefono);
+        if (telefono == Utils.ERROR_INT) {
+            Utils.marcarTextField(jTextFieldTelefono);
             return false;
         }
         return true;
@@ -127,7 +135,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
         buttonGroup.add(jRadioButtonFemenino);
         jRadioButtonFemenino.setText("Femenino");
 
-        jComboBoxSelectProf.setModel(new javax.swing.DefaultComboBoxModel(profCtrl.nombresProfesor()));
+        jComboBoxSelectProf.setModel(new javax.swing.DefaultComboBoxModel(profesorController.nombresProfesor()));
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -245,10 +253,26 @@ public class JDialogAlumno extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        // TODO add your handling code here:
         if (capturarDatos()) {
-            alumno = new Alumno(WIDTH, codigo, nombre, edad, sexo, direccion, codigo);
-            dispose();
+            Profesor p = (Profesor) jComboBoxSelectProf.getSelectedItem();
+            int idProfesor = p.getId();
+
+            alumno = new Alumno();
+            alumno.setCodigo(codigo);
+            alumno.setNombre(nombre);
+            alumno.setNacimiento(nacimiento);
+            alumno.setSexo(sexo);
+            alumno.setDireccion(direccion);
+            alumno.setCodigo(codigo);
+            alumno.setProfesor(idProfesor);
+
+            boolean state = alumnoController.insert(alumno);
+
+            if (state) {
+                dispose();
+            } else {
+                log.warn("No se pudo insertar al alumno.");
+            }
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 

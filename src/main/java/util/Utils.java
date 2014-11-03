@@ -1,11 +1,14 @@
 package util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Clase con distintos metodos para gestionar la ventana.
  *
  * @author cesardl
  */
-public class Utilities {
+public class Utils {
 
     public static final int ERROR_INT = -999;
 
@@ -73,6 +76,16 @@ public class Utilities {
     public static void alert(String mensaje, int tipoMensaje) {
         javax.swing.JOptionPane.showMessageDialog(null, mensaje,
                 "Aplicacion con MySQL", tipoMensaje);
+    }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public static String formatDate(Date date) {
+        SimpleDateFormat dt = new SimpleDateFormat("dd/MMM/y");
+        return dt.format(date);
     }
 
 }

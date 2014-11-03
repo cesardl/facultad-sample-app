@@ -16,6 +16,10 @@ public class Alumno extends Persona implements Serializable {
     private String telefono;
     private int profesor;
 
+    public Alumno() {
+        super();
+    }
+
     public Alumno(int id, String codigo, String nombre, Date nacimiento, Gender sexo, String direccion, String telefono) {
         super(id, codigo, nombre, nacimiento);
         this.sexo = sexo;

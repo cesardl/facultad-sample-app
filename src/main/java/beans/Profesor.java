@@ -29,4 +29,9 @@ public class Profesor extends Persona implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 }

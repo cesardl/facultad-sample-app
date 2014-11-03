@@ -5,8 +5,12 @@
  */
 package view;
 
+import beans.Profesor;
+import controller.ProfesorController;
+import controller.impl.ProfesorControllerImpl;
 import java.util.Date;
-import util.Utilities;
+import org.apache.log4j.Logger;
+import util.Utils;
 
 /**
  *
@@ -14,10 +18,13 @@ import util.Utilities;
  */
 public class JDialogProfesor extends javax.swing.JDialog {
 
-    private String codigo, nombre, direccion;
-    private char sexo;
-    private Date edad;
-    private int telefono;
+    private static final Logger log = Logger.getLogger(JDialogProfesor.class);
+
+    private String codigo, nombre, email;
+    private Date nacimiento;
+    private final ProfesorController profesorController = new ProfesorControllerImpl();
+
+    private Profesor profesor;
 
     /**
      * Creates new form JDialogInsertarAlumno.
@@ -33,28 +40,30 @@ public class JDialogProfesor extends javax.swing.JDialog {
     private boolean capturarDatos() {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
-        edad = jDateChooserNacimiento.getDate();
-        direccion = jTextFieldEmail.getText().trim();
+        nacimiento = jDateChooserNacimiento.getDate();
+        email = jTextFieldEmail.getText().trim();
 
-        System.out.println(edad);
-        
         if (codigo.length() == 0) {
-            Utilities.marcarTextField(jTextFieldCodigo);
+            Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
         if (nombre.length() == 0) {
-            Utilities.marcarTextField(jTextFieldNombre);
+            Utils.marcarTextField(jTextFieldNombre);
             return false;
         }
-        if (edad != null) {
+        if (nacimiento == null) {
             jDateChooserNacimiento.requestFocusInWindow();
             return false;
         }
-        if (direccion.length() == 0) {
-            Utilities.marcarTextField(jTextFieldEmail);
+        if (email.length() == 0) {
+            Utils.marcarTextField(jTextFieldEmail);
             return false;
         }
         return true;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
     }
 
     /**
@@ -181,8 +190,21 @@ public class JDialogProfesor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        // TODO add your handling code here:
-        capturarDatos();
+        if (capturarDatos()) {
+            profesor = new Profesor();
+            profesor.setCodigo(codigo);
+            profesor.setNombre(nombre);
+            profesor.setNacimiento(nacimiento);
+            profesor.setEmail(email);
+
+            boolean state = profesorController.insert(profesor);
+
+            if (state) {
+                dispose();
+            } else {
+                log.warn("No se pudo insertar al profesor.");
+            }
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
