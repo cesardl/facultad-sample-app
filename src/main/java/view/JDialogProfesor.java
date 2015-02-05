@@ -197,7 +197,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
             profesor.setNacimiento(nacimiento);
             profesor.setEmail(email);
 
-            boolean state = profesorController.insert(profesor);
+            boolean state = profesorController.saveOrUpdate(profesor);
 
             if (state) {
                 dispose();

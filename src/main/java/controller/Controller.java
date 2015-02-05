@@ -11,7 +11,9 @@ public interface Controller<T> {
 
     Logger log = Logger.getLogger(Controller.class);
 
-    Object[][] data();
+    Object[][] getAll();
 
-    boolean insert(T entity);
+    T getByCode(String code);
+
+    boolean saveOrUpdate(T entity);
 }

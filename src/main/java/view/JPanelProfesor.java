@@ -46,7 +46,7 @@ public class JPanelProfesor extends javax.swing.JPanel {
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            profesorController.data(),
+            profesorController.getAll(),
             new String [] {
                 "Codigo", "Nombre", "Nacimiento", "Email"
             }

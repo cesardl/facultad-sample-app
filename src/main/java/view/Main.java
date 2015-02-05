@@ -1,5 +1,6 @@
 package view;
 
+import beans.etc.Gender;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;

@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface ProfesorDAO extends DAO<Profesor> {
 
-    List<Profesor> seleccionarNombresProfesor();
+    List<Profesor> selectNames();
 
 }

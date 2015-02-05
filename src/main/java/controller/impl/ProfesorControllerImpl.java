@@ -15,11 +15,11 @@ import util.Utils;
 public class ProfesorControllerImpl implements ProfesorController {
 
     @Override
-    public Object[][] data() {
+    public Object[][] getAll() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
-        List<Profesor> profesores = dao.getAll();
+        List<Profesor> profesores = dao.selectAll();
 
         Object[][] rowData = new Object[profesores.size()][4];
 
@@ -35,17 +35,22 @@ public class ProfesorControllerImpl implements ProfesorController {
     }
 
     @Override
+    public Profesor getByCode(String code) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public Profesor[] nombresProfesor() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
-        List<Profesor> profesores = dao.seleccionarNombresProfesor();
+        List<Profesor> profesores = dao.selectNames();
 
         return profesores.toArray(new Profesor[profesores.size()]);
     }
 
     @Override
-    public boolean insert(Profesor entity) {
+    public boolean saveOrUpdate(Profesor entity) {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 

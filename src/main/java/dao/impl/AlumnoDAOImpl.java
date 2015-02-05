@@ -20,7 +20,7 @@ import java.util.List;
 public class AlumnoDAOImpl implements AlumnoDAO {
 
     @Override
-    public List<Alumno> getAll() {
+    public List<Alumno> selectAll() {
         String sql = "SELECT id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum FROM alumno";
 
         List<Alumno> alumnos = new ArrayList<>();
@@ -47,11 +47,41 @@ public class AlumnoDAOImpl implements AlumnoDAO {
     }
 
     @Override
+    public Alumno selectByCode(String code) {
+        String sql = "SELECT id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum FROM alumno WHERE cod_alum = ?";
+
+        Alumno alumno = null;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, code);
+
+            try (ResultSet resultSet = ps.executeQuery()) {
+                if (resultSet.next()) {
+                    alumno = new Alumno(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getDate(4),
+                            Gender.valueOf(resultSet.getString(5)),
+                            resultSet.getString(6),
+                            resultSet.getString(7));
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al cargar los datos de alumnos", e);
+        }
+
+        return alumno;
+    }
+
+    @Override
     public int insert(Alumno entity) {
         String sql = "INSERT INTO alumno(id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        
+
         int state;
-        
+
         try (Connection connection = DAOFactory.createConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setInt(1, entity.getId());
@@ -62,7 +92,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
             ps.setString(6, entity.getDireccion());
             ps.setString(7, entity.getTelefono());
             ps.setInt(8, entity.getProfesor());
-            
+
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al insertar los datos del alumno", e);
@@ -71,4 +101,10 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
         return state;
     }
+
+    @Override
+    public int update(Alumno entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

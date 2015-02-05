@@ -19,14 +19,6 @@
                 <Property name="text" type="java.lang.String" value="Alumno"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSelectAlumno">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSelectAlumnoActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInsertAlumno">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Insertar"/>
@@ -58,14 +50,6 @@
                 <Property name="text" type="java.lang.String" value="Profesor"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSelectProfesor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSelectProfesorActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInsertProfesor">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Insertar"/>

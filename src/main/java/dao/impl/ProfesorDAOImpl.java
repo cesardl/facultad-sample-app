@@ -25,7 +25,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
      * @return
      */
     @Override
-    public List<Profesor> getAll() {
+    public List<Profesor> selectAll() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
 
         List<Profesor> profesores = new ArrayList<>();
@@ -50,7 +50,12 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public List<Profesor> seleccionarNombresProfesor() {
+    public Profesor selectByCode(String code) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Profesor> selectNames() {
         String sql = "SELECT id_prof, nom_prof FROM profesor";
 
         List<Profesor> profesores = new ArrayList<>();
@@ -75,10 +80,10 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
     @Override
     public int insert(Profesor entity) {
-                String sql = "INSERT INTO profesor(id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?, ?)";
-        
+        String sql = "INSERT INTO profesor(id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?, ?)";
+
         int state;
-        
+
         try (Connection connection = DAOFactory.createConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setInt(1, entity.getId());
@@ -86,7 +91,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
             ps.setString(3, entity.getNombre());
             ps.setDate(4, new Date(entity.getNacimiento().getTime()));
             ps.setString(5, entity.getEmail());
-            
+
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al insertar los datos del profesor", e);
@@ -95,4 +100,10 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
         return state;
     }
+
+    @Override
+    public int update(Profesor entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

@@ -15,11 +15,11 @@ import util.Utils;
 public class AlumnoControllerImpl implements AlumnoController {
 
     @Override
-    public Object[][] data() {
+    public Object[][] getAll() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         AlumnoDAO dao = factory.getAlumnoDAO();
 
-        List<Alumno> alumnos = dao.getAll();
+        List<Alumno> alumnos = dao.selectAll();
 
         Object[][] rowData = new Object[alumnos.size()][6];
 
@@ -38,11 +38,27 @@ public class AlumnoControllerImpl implements AlumnoController {
     }
 
     @Override
-    public boolean insert(Alumno entity) {
+    public Alumno getByCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
         AlumnoDAO dao = factory.getAlumnoDAO();
 
-        int state = dao.insert(entity);
+        Alumno alumno = dao.selectByCode(code);
+
+        return alumno;
+    }
+
+    @Override
+    public boolean saveOrUpdate(Alumno entity) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        AlumnoDAO dao = factory.getAlumnoDAO();
+
+        int state;
+
+        if (entity.getId() == 0) {
+            state = dao.insert(entity);
+        } else {
+            state = dao.update(entity);
+        }
 
         switch (state) {
             case DAO.STATE_ERROR:

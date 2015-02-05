@@ -24,12 +24,12 @@ public class JDialogAlumno extends javax.swing.JDialog {
 
     private static final Logger log = Logger.getLogger(JDialogAlumno.class);
 
-    private String codigo, nombre, direccion;
-    private Gender sexo;
-    private Date nacimiento;
-    private int telefono;
     private final AlumnoController alumnoController = new AlumnoControllerImpl();
     private final ProfesorController profesorController = new ProfesorControllerImpl();
+
+    private String codigo, nombre, direccion, telefono;
+    private Gender sexo;
+    private Date nacimiento;
 
     private Alumno alumno;
 
@@ -50,7 +50,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
         nacimiento = jDateChooserNacimiento.getDate();
         sexo = jRadioButtonMasculino.isSelected() ? Gender.MALE : Gender.FEMALE;
         direccion = jTextFieldDireccion.getText().trim();
-        telefono = Utils.aInteger(jTextFieldTelefono.getText().trim());
+        telefono = jTextFieldTelefono.getText().trim();
 
         if (codigo.length() == 0) {
             Utils.marcarTextField(jTextFieldCodigo);
@@ -68,15 +68,41 @@ public class JDialogAlumno extends javax.swing.JDialog {
             Utils.marcarTextField(jTextFieldDireccion);
             return false;
         }
-        if (telefono == Utils.ERROR_INT) {
+        if (telefono.length() == 0) {
             Utils.marcarTextField(jTextFieldTelefono);
             return false;
         }
         return true;
     }
 
+    private void asignarDatos() {
+        codigo = alumno.getCodigo();
+        nombre = alumno.getNombre();
+        nacimiento = alumno.getNacimiento();
+        sexo = alumno.getSexo();
+        direccion = alumno.getDireccion();
+        telefono = alumno.getTelefono();
+
+        jTextFieldCodigo.setText(codigo);
+        jTextFieldNombre.setText(nombre);
+        jDateChooserNacimiento.setDate(nacimiento);
+        if (sexo.equals(Gender.MALE)) {
+            jRadioButtonMasculino.setSelected(true);
+        } else {
+            jRadioButtonFemenino.setSelected(true);
+        }
+        jTextFieldDireccion.setText(direccion);
+        jTextFieldTelefono.setText(String.valueOf(telefono));
+    }
+
     public Alumno getAlumno() {
         return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+
+        asignarDatos();
     }
 
     /**
@@ -257,7 +283,9 @@ public class JDialogAlumno extends javax.swing.JDialog {
             Profesor p = (Profesor) jComboBoxSelectProf.getSelectedItem();
             int idProfesor = p.getId();
 
-            alumno = new Alumno();
+            if (alumno == null) {
+                alumno = new Alumno();
+            }
             alumno.setCodigo(codigo);
             alumno.setNombre(nombre);
             alumno.setNacimiento(nacimiento);
@@ -266,7 +294,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
             alumno.setCodigo(codigo);
             alumno.setProfesor(idProfesor);
 
-            boolean state = alumnoController.insert(alumno);
+            boolean state = alumnoController.saveOrUpdate(alumno);
 
             if (state) {
                 dispose();

@@ -8,11 +8,17 @@ package view;
 import beans.Alumno;
 import controller.AlumnoController;
 import controller.impl.AlumnoControllerImpl;
+import java.awt.Frame;
+import javax.swing.JTable;
 import util.Utils;
 
 /**
  *
  * @author cesardl
+ *
+ * @see
+ * <a href='http://esus.com/detecting-double-click-row-jtable/'>Detecting a
+ * double-click on a row in a JTable</a>
  */
 public class JPanelAlumno extends javax.swing.JPanel {
 
@@ -25,6 +31,10 @@ public class JPanelAlumno extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     *
+     * @param alumno
+     */
     public void addRow(Alumno alumno) {
         tableModel.addRow(new Object[]{
             alumno.getCodigo(),
@@ -34,6 +44,35 @@ public class JPanelAlumno extends javax.swing.JPanel {
             alumno.getDireccion(),
             alumno.getTelefono()
         });
+    }
+
+    /**
+     *
+     * @param row
+     * @param alumno
+     */
+    public void setRowValues(int row, Alumno alumno) {
+        // TODO
+        System.out.println("update row " + alumno.getId());
+    }
+
+    /**
+     *
+     * @param row
+     * @param code
+     */
+    public void showDialog(int row, String code) {
+        Alumno alumno = alumnoController.getByCode(code);
+
+        JDialogAlumno dialogAlumno = new JDialogAlumno((Frame) getRootPane().getParent(), true);
+        dialogAlumno.setAlumno(alumno);
+        dialogAlumno.setVisible(true);
+
+        alumno = dialogAlumno.getAlumno();
+        //FIXME status of update
+        if (alumno != null) {
+            setRowValues(row, alumno);
+        }
     }
 
     /**
@@ -48,9 +87,9 @@ public class JPanelAlumno extends javax.swing.JPanel {
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            alumnoController.data(),
+            alumnoController.getAll(),
             new String [] {
-                "Codigo", "Nombre", "Edad", "Nacimiento", "Direccion", "Telefono"
+                "Codigo", "Nombre", "Nacimiento", "Sexo", "Direccion", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
@@ -73,6 +112,11 @@ public class JPanelAlumno extends javax.swing.JPanel {
 
         jTable.setModel(tableModel);
         jTable.getTableHeader().setReorderingAllowed(false);
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableMousePressed(evt);
+            }
+        });
         jScrollPane.setViewportView(jTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -92,6 +136,17 @@ public class JPanelAlumno extends javax.swing.JPanel {
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMousePressed
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+            int row = target.getSelectedRow();
+
+            String code = String.valueOf(target.getValueAt(row, 0));
+            showDialog(row, code);
+        }
+    }//GEN-LAST:event_jTableMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable jTable;

@@ -32,12 +32,10 @@ public class JFrameInit extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuAcciones = new javax.swing.JMenu();
         jMenuAlumno = new javax.swing.JMenu();
-        jMenuItemSelectAlumno = new javax.swing.JMenuItem();
         jMenuItemInsertAlumno = new javax.swing.JMenuItem();
         jMenuItemUpdateAlumno = new javax.swing.JMenuItem();
         jMenuItemDeleteAlumno = new javax.swing.JMenuItem();
         jMenuProfesor = new javax.swing.JMenu();
-        jMenuItemSelectProfesor = new javax.swing.JMenuItem();
         jMenuItemInsertProfesor = new javax.swing.JMenuItem();
         jMenuItemUpdateProfesor = new javax.swing.JMenuItem();
         jMenuItemDeleteProfesor = new javax.swing.JMenuItem();
@@ -77,14 +75,6 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jMenuAlumno.setText("Alumno");
 
-        jMenuItemSelectAlumno.setText("Seleccionar");
-        jMenuItemSelectAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSelectAlumnoActionPerformed(evt);
-            }
-        });
-        jMenuAlumno.add(jMenuItemSelectAlumno);
-
         jMenuItemInsertAlumno.setText("Insertar");
         jMenuItemInsertAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,14 +102,6 @@ public class JFrameInit extends javax.swing.JFrame {
         jMenuAcciones.add(jMenuAlumno);
 
         jMenuProfesor.setText("Profesor");
-
-        jMenuItemSelectProfesor.setText("Seleccionar");
-        jMenuItemSelectProfesor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSelectProfesorActionPerformed(evt);
-            }
-        });
-        jMenuProfesor.add(jMenuItemSelectProfesor);
 
         jMenuItemInsertProfesor.setText("Insertar");
         jMenuItemInsertProfesor.addActionListener(new java.awt.event.ActionListener() {
@@ -193,10 +175,6 @@ public class JFrameInit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemSelectAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSelectAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemSelectAlumnoActionPerformed
-
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
         JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
         dialogAlumno.setVisible(true);
@@ -214,10 +192,6 @@ public class JFrameInit extends javax.swing.JFrame {
     private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemDeleteAlumnoActionPerformed
-
-    private void jMenuItemSelectProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSelectProfesorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemSelectProfesorActionPerformed
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
         JDialogProfesor dialogProfesor = new JDialogProfesor(this, true);
@@ -260,8 +234,6 @@ public class JFrameInit extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemInsertAlumno;
     private javax.swing.JMenuItem jMenuItemInsertProfesor;
     private javax.swing.JMenuItem jMenuItemSalir;
-    private javax.swing.JMenuItem jMenuItemSelectAlumno;
-    private javax.swing.JMenuItem jMenuItemSelectProfesor;
     private javax.swing.JMenuItem jMenuItemUpdateAlumno;
     private javax.swing.JMenuItem jMenuItemUpdateProfesor;
     private javax.swing.JMenu jMenuProfesor;
