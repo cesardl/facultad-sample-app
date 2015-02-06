@@ -6,8 +6,11 @@
 package view;
 
 import beans.Profesor;
+import controller.Action;
 import controller.ProfesorController;
 import controller.impl.ProfesorControllerImpl;
+import java.awt.Frame;
+import javax.swing.JTable;
 import util.Utils;
 
 /**
@@ -25,13 +28,54 @@ public class JPanelProfesor extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     *
+     * @return
+     */
+    public JTable getTable() {
+        return table;
+    }
+
     public void addRow(Profesor profesor) {
-        tableModel.addRow(new Object[] {
+        tableModel.addRow(new Object[]{
             profesor.getCodigo(),
             profesor.getNombre(),
             Utils.formatDate(profesor.getNacimiento()),
             profesor.getEmail()
         });
+    }
+
+    /**
+     *
+     * @param row
+     * @param profesor
+     */
+    public void setRowValues(int row, Profesor profesor) {
+        tableModel.setValueAt(profesor.getCodigo(), row, 0);
+        tableModel.setValueAt(profesor.getNombre(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(profesor.getNacimiento()), row, 2);
+        tableModel.setValueAt(profesor.getEmail(), row, 3);
+    }
+
+    /**
+     *
+     * @param parent
+     * @param row
+     * @param code
+     */
+    public void showDialogForUpdate(Frame parent, int row, String code) {
+        Profesor profesor = profesorController.getByCode(code);
+
+        JDialogProfesor dialogProfesor = new JDialogProfesor(parent, true);
+        dialogProfesor.setProfesor(profesor);
+        dialogProfesor.setVisible(true);
+
+        profesor = dialogProfesor.getProfesor();
+
+        Action action = dialogProfesor.getAction();
+        if (action != null && dialogProfesor.getAction().equals(Action.UPDATE)) {
+            setRowValues(row, profesor);
+        }
     }
 
     /**
@@ -44,7 +88,7 @@ public class JPanelProfesor extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             profesorController.getAll(),
             new String [] {
@@ -69,9 +113,9 @@ public class JPanelProfesor extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable.setModel(tableModel);
-        jTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane.setViewportView(jTable);
+        table.setModel(tableModel);
+        table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,7 +136,7 @@ public class JPanelProfesor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTable jTable;
+    private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables
 }

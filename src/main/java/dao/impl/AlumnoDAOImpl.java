@@ -70,7 +70,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
-            log.error("Error al cargar los datos de alumnos", e);
+            log.error("Error al cargar los datos del alumno", e);
         }
 
         return alumno;
@@ -82,7 +82,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
         int state;
         // FIXME Insert del telefono en null
-        System.out.println(entity.getTelefono());
+        log.debug("Telef alum: " + entity.getTelefono());
         try (Connection connection = DAOFactory.createConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setInt(1, entity.getId());

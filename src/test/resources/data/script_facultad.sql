@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-02-06 11:50:36
+Date: 2015-02-06 17:45:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,17 +36,17 @@ CREATE TABLE `alumno` (
 -- ----------------------------
 -- Records of alumno
 -- ----------------------------
-INSERT INTO `alumno` VALUES ('1', '200004', 'Carlos Perez', '1988-01-01', 'MALE', 'Av Javier Prado', '85631456', '1');
+INSERT INTO `alumno` VALUES ('1', '200004', 'Carlos Perez', '1988-01-14', 'MALE', 'Av Javier Prado', '85631456', '1');
 INSERT INTO `alumno` VALUES ('2', '200135', 'Eliana Zapata', '1988-01-01', 'FEMALE', 'Av Mirones', '', '1');
 INSERT INTO `alumno` VALUES ('3', '200147', 'Richard Lozano', '1988-01-01', 'MALE', 'Av Castilla', '96321547', '1');
 INSERT INTO `alumno` VALUES ('4', '200152', 'Lizbeth Mamani', '1988-01-01', 'FEMALE', 'Av Habich', '56849963', '2');
-INSERT INTO `alumno` VALUES ('5', '200159', 'Silvia Peña', '1988-01-01', 'FEMALE', 'Av Leitod', '85412878', '2');
+INSERT INTO `alumno` VALUES ('5', '200159', 'Silvia Peña', '1987-03-10', 'FEMALE', 'Av Leitod', '85412878', '1');
 INSERT INTO `alumno` VALUES ('6', '200170', 'César Díaz', '1988-01-01', 'MALE', 'Av Confraternidad', '25698845', '1');
 INSERT INTO `alumno` VALUES ('7', '200369', 'Alexsandra Herrera', '1988-01-01', 'FEMALE', 'Av Rios', '96321478', '2');
 INSERT INTO `alumno` VALUES ('8', '200456', 'Gustavo Avila', '1988-01-01', 'MALE', 'Av Universitaria', '', '1');
 INSERT INTO `alumno` VALUES ('9', '200584', 'Etmee Zarate', '1988-01-01', 'FEMALE', 'Av Sauces', '12354785', '1');
 INSERT INTO `alumno` VALUES ('10', '200852', 'José Lopez', '1988-01-01', 'MALE', 'Av Aviacion', '', '2');
-INSERT INTO `alumno` VALUES ('11', '200005', 'Máximo Romero', '2015-02-05', 'MALE', 'Av Sucre 2678', '', '1');
+INSERT INTO `alumno` VALUES ('11', '200045', 'Máximo Romero', '1985-02-05', 'MALE', 'Av Sucre 2678', '', '1');
 INSERT INTO `alumno` VALUES ('12', '200006', 'Mario Inga', '1986-06-11', 'MALE', 'Por Wilson', '', '4');
 
 -- ----------------------------
@@ -66,6 +66,6 @@ CREATE TABLE `profesor` (
 -- Records of profesor
 -- ----------------------------
 INSERT INTO `profesor` VALUES ('1', '212399', 'Carlos Melo', '1960-01-01', 'cmelo@univ.edu');
-INSERT INTO `profesor` VALUES ('2', '212588', 'Giovanna Melva', '1960-01-01', 'gmelva@univ.edu');
-INSERT INTO `profesor` VALUES ('3', '212963', 'Francisco Vargas', '1975-02-13', 'fran.vargas@scytl.com');
+INSERT INTO `profesor` VALUES ('2', '212588', 'Giovanna Melva', '1963-06-08', 'gmelva@univ.edu');
+INSERT INTO `profesor` VALUES ('3', '212963', 'Francisco Vargas', '1975-02-13', 'francisco.vargas@scytl.com');
 INSERT INTO `profesor` VALUES ('4', '212696', 'Ernesto Quiñones', '1975-11-18', 'equiñones@eqsoft.com.pe');
