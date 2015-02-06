@@ -59,6 +59,7 @@ public class JFrameInit extends javax.swing.JFrame {
                 tableAlumnoMousePressed(evt);
             }
         });
+
         jTabbedPane.addTab("Profesor", jPanelProfesor);
         JTable tableProfesor = jPanelProfesor.getTable();
         tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +206,6 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            System.out.println(row);
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
@@ -243,7 +243,6 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            System.out.println(row);
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));

@@ -100,7 +100,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
             jRadioButtonFemenino.setSelected(true);
         }
         jTextFieldDireccion.setText(direccion);
-        jTextFieldTelefono.setText(String.valueOf(telefono));
+        jTextFieldTelefono.setText(telefono);
     }
 
     /**

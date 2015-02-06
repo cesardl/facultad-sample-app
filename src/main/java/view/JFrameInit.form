@@ -183,7 +183,7 @@
           <SubComponents>
             <Component class="view.JPanelAlumno" name="jPanelAlumno">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JTable tableAlumno = jPanelAlumno.getTable();&#xa;tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableAlumnoMousePressed(evt);&#xa;            }&#xa;        });"/>
+                <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="JTable tableAlumno = jPanelAlumno.getTable();&#xa;tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableAlumnoMousePressed(evt);&#xa;            }&#xa;        });"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -195,7 +195,7 @@
             </Component>
             <Component class="view.JPanelProfesor" name="jPanelProfesor">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JTable tableProfesor = jPanelProfesor.getTable();&#xa;tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableProfesorMousePressed(evt);&#xa;            }&#xa;        });"/>
+                <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="JTable tableProfesor = jPanelProfesor.getTable();&#xa;tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableProfesorMousePressed(evt);&#xa;            }&#xa;        });"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
