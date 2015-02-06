@@ -81,7 +81,8 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         String sql = "INSERT INTO alumno(id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         int state;
-
+        // FIXME Insert del telefono en null
+        System.out.println(entity.getTelefono());
         try (Connection connection = DAOFactory.createConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setInt(1, entity.getId());
@@ -104,7 +105,28 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
     @Override
     public int update(Alumno entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE alumno SET cod_alum = ?, nom_alum = ?, nacimiento_alum = ?, sexo_alum = ?, direc_alum = ?, telef_alum = ?, profesor_id_prof = ? WHERE id_alum = ?";
+
+        int state;
+        // FIXME Update del profesor
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);) {
+            ps.setString(1, entity.getCodigo());
+            ps.setString(2, entity.getNombre());
+            ps.setDate(3, new Date(entity.getNacimiento().getTime()));
+            ps.setString(4, entity.getSexo().name());
+            ps.setString(5, entity.getDireccion());
+            ps.setString(6, entity.getTelefono());
+            ps.setInt(7, entity.getProfesor());
+            ps.setInt(8, entity.getId());
+
+            state = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al actualizar los datos del alumno", e);
+            state = STATE_ERROR;
+        }
+
+        return state;
     }
 
 }

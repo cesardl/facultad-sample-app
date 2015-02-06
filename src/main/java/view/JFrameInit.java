@@ -2,6 +2,9 @@ package view;
 
 import beans.Alumno;
 import beans.Profesor;
+import java.awt.Frame;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -50,6 +53,12 @@ public class JFrameInit extends javax.swing.JFrame {
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane.addTab("Alumno", jPanelAlumno);
+        JTable tableAlumno = jPanelAlumno.getTable();
+        tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableMousePressed(evt);
+            }
+        });
         jTabbedPane.addTab("Profesor", jPanelProfesor);
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
@@ -186,8 +195,27 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
 
     private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed
-        // TODO add your handling code here:
+        JTable target = jPanelAlumno.getTable();
+        int row = target.getSelectedRow();
+
+        if (row == -1) {
+            System.out.println(row);
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelAlumno.showDialogForUpdate(this, row, code);
+        }
     }//GEN-LAST:event_jMenuItemUpdateAlumnoActionPerformed
+
+    private void tableMousePressed(java.awt.event.MouseEvent evt) {
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+            int row = target.getSelectedRow();
+
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelAlumno.showDialogForUpdate(this, row, code);
+        }
+    }
 
     private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
         // TODO add your handling code here:

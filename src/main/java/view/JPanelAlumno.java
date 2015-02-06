@@ -6,6 +6,7 @@
 package view;
 
 import beans.Alumno;
+import controller.Action;
 import controller.AlumnoController;
 import controller.impl.AlumnoControllerImpl;
 import java.awt.Frame;
@@ -31,6 +32,10 @@ public class JPanelAlumno extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTable getTable() {
+        return table;
+    }
+
     /**
      *
      * @param alumno
@@ -52,25 +57,31 @@ public class JPanelAlumno extends javax.swing.JPanel {
      * @param alumno
      */
     public void setRowValues(int row, Alumno alumno) {
-        // TODO
-        System.out.println("update row " + alumno.getId());
+        tableModel.setValueAt(alumno.getCodigo(), row, 0);
+        tableModel.setValueAt(alumno.getNombre(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(alumno.getNacimiento()), row, 2);
+        tableModel.setValueAt(alumno.getSexo(), row, 3);
+        tableModel.setValueAt(alumno.getDireccion(), row, 4);
+        tableModel.setValueAt(alumno.getTelefono(), row, 5);
     }
 
     /**
      *
+     * @param parent
      * @param row
      * @param code
      */
-    public void showDialog(int row, String code) {
+    public void showDialogForUpdate(Frame parent, int row, String code) {
         Alumno alumno = alumnoController.getByCode(code);
 
-        JDialogAlumno dialogAlumno = new JDialogAlumno((Frame) getRootPane().getParent(), true);
+        JDialogAlumno dialogAlumno = new JDialogAlumno(parent, true);
         dialogAlumno.setAlumno(alumno);
         dialogAlumno.setVisible(true);
 
         alumno = dialogAlumno.getAlumno();
         //FIXME status of update
-        if (alumno != null) {
+        Action action = dialogAlumno.getAction();
+        if (action != null && dialogAlumno.getAction().equals(Action.UPDATE)) {
             setRowValues(row, alumno);
         }
     }
@@ -85,7 +96,7 @@ public class JPanelAlumno extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             alumnoController.getAll(),
             new String [] {
@@ -110,14 +121,9 @@ public class JPanelAlumno extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable.setModel(tableModel);
-        jTable.getTableHeader().setReorderingAllowed(false);
-        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTableMousePressed(evt);
-            }
-        });
-        jScrollPane.setViewportView(jTable);
+        table.setModel(tableModel);
+        table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -137,19 +143,9 @@ public class JPanelAlumno extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMousePressed
-        if (evt.getClickCount() == 2) {
-            JTable target = (JTable) evt.getSource();
-            int row = target.getSelectedRow();
-
-            String code = String.valueOf(target.getValueAt(row, 0));
-            showDialog(row, code);
-        }
-    }//GEN-LAST:event_jTableMousePressed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTable jTable;
+    private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables
 }
