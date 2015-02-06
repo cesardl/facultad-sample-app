@@ -36,7 +36,12 @@ public class ProfesorControllerImpl implements ProfesorController {
 
     @Override
     public Profesor getByCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        ProfesorDAO dao = factory.getProfesorDAO();
+
+        Profesor profesor = dao.selectByCode(code);
+
+        return profesor;
     }
 
     @Override
@@ -54,7 +59,13 @@ public class ProfesorControllerImpl implements ProfesorController {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
-        int state = dao.insert(entity);
+        int state;
+
+        if (entity.getId() == 0) {
+            state = dao.insert(entity);
+        } else {
+            state = dao.update(entity);
+        }
 
         switch (state) {
             case DAO.STATE_ERROR:

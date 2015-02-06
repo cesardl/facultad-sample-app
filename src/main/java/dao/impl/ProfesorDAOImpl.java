@@ -51,7 +51,30 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
     @Override
     public Profesor selectByCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
+
+        Profesor profesor = null;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, code);
+
+            try (ResultSet resultSet = ps.executeQuery()) {
+                if (resultSet.next()) {
+                    profesor = new Profesor(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getDate(4),
+                            resultSet.getString(5));
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al cargar los datos del profesor", e);
+        }
+
+        return profesor;
     }
 
     @Override
@@ -103,7 +126,25 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
     @Override
     public int update(Profesor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE profesor SET cod_prof = ?, nom_prof = ?, nacimiento_prof = ?, email_prof = ? WHERE id_prof = ?";
+
+        int state;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);) {
+            ps.setString(1, entity.getCodigo());
+            ps.setString(2, entity.getNombre());
+            ps.setDate(3, new Date(entity.getNacimiento().getTime()));
+            ps.setString(4, entity.getEmail());
+            ps.setInt(5, entity.getId());
+
+            state = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al actualizar los datos del profesor", e);
+            state = STATE_ERROR;
+        }
+
+        return state;
     }
 
 }

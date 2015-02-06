@@ -32,6 +32,10 @@ public class JPanelAlumno extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return table;
     }
@@ -79,7 +83,7 @@ public class JPanelAlumno extends javax.swing.JPanel {
         dialogAlumno.setVisible(true);
 
         alumno = dialogAlumno.getAlumno();
-        //FIXME status of update
+
         Action action = dialogAlumno.getAction();
         if (action != null && dialogAlumno.getAction().equals(Action.UPDATE)) {
             setRowValues(row, alumno);

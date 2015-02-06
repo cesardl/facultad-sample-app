@@ -56,10 +56,16 @@ public class JFrameInit extends javax.swing.JFrame {
         JTable tableAlumno = jPanelAlumno.getTable();
         tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tableMousePressed(evt);
+                tableAlumnoMousePressed(evt);
             }
         });
         jTabbedPane.addTab("Profesor", jPanelProfesor);
+        JTable tableProfesor = jPanelProfesor.getTable();
+        tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableProfesorMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -207,9 +213,10 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemUpdateAlumnoActionPerformed
 
-    private void tableMousePressed(java.awt.event.MouseEvent evt) {
+    private void tableAlumnoMousePressed(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) {
             JTable target = (JTable) evt.getSource();
+
             int row = target.getSelectedRow();
 
             String code = String.valueOf(target.getValueAt(row, 0));
@@ -218,7 +225,7 @@ public class JFrameInit extends javax.swing.JFrame {
     }
 
     private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: delete alumno
     }//GEN-LAST:event_jMenuItemDeleteAlumnoActionPerformed
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
@@ -232,11 +239,31 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemInsertProfesorActionPerformed
 
     private void jMenuItemUpdateProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateProfesorActionPerformed
-        // TODO add your handling code here:
+        JTable target = jPanelProfesor.getTable();
+        int row = target.getSelectedRow();
+
+        if (row == -1) {
+            System.out.println(row);
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelProfesor.showDialogForUpdate(this, row, code);
+        }
     }//GEN-LAST:event_jMenuItemUpdateProfesorActionPerformed
 
+    private void tableProfesorMousePressed(java.awt.event.MouseEvent evt) {
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+
+            int row = target.getSelectedRow();
+
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelProfesor.showDialogForUpdate(this, row, code);
+        }
+    }
+
     private void jMenuItemDeleteProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteProfesorActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: delete profesor
     }//GEN-LAST:event_jMenuItemDeleteProfesorActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
