@@ -16,4 +16,7 @@ public interface Controller<T> {
     T getByCode(String code);
 
     boolean saveOrUpdate(T entity);
+
+    boolean delete(String code);
+
 }

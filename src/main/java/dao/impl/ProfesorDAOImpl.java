@@ -147,4 +147,23 @@ public class ProfesorDAOImpl implements ProfesorDAO {
         return state;
     }
 
+    @Override
+    public int delete(Profesor entity) {
+        String sql = "DELETE FROM profesor WHERE cod_prof = ?";
+
+        int state;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);) {
+            ps.setString(1, entity.getCodigo());
+
+            state = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al eliminar los datos del profesor", e);
+            state = STATE_ERROR;
+        }
+
+        return state;
+    }
+
 }

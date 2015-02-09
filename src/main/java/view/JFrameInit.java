@@ -226,7 +226,15 @@ public class JFrameInit extends javax.swing.JFrame {
     }
 
     private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
-        // TODO add your handling code here: delete alumno
+        JTable target = jPanelAlumno.getTable();
+        int row = target.getSelectedRow();
+
+        if (row == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelAlumno.deleteRow(row, code);
+        }
     }//GEN-LAST:event_jMenuItemDeleteAlumnoActionPerformed
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
@@ -264,7 +272,15 @@ public class JFrameInit extends javax.swing.JFrame {
     }
 
     private void jMenuItemDeleteProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteProfesorActionPerformed
-        // TODO add your handling code here: delete profesor
+        JTable target = jPanelProfesor.getTable();
+        int row = target.getSelectedRow();
+
+        if (row == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            String code = String.valueOf(target.getValueAt(row, 0));
+            jPanelProfesor.deleteRow(row, code);
+        }
     }//GEN-LAST:event_jMenuItemDeleteProfesorActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed

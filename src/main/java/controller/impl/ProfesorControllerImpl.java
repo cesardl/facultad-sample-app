@@ -45,7 +45,7 @@ public class ProfesorControllerImpl implements ProfesorController {
     }
 
     @Override
-    public Profesor[] nombresProfesor() {
+    public Profesor[] getNames() {
         DAOFactory factory = DAOFactory.getDAOFactory();
         ProfesorDAO dao = factory.getProfesorDAO();
 
@@ -66,6 +66,25 @@ public class ProfesorControllerImpl implements ProfesorController {
         } else {
             state = dao.update(entity);
         }
+
+        switch (state) {
+            case DAO.STATE_ERROR:
+                return false;
+
+            default:
+                return true;
+        }
+    }
+
+    @Override
+    public boolean delete(String code) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        ProfesorDAO dao = factory.getProfesorDAO();
+
+        Profesor entity = new Profesor();
+        entity.setCodigo(code);
+
+        int state = dao.delete(entity);
 
         switch (state) {
             case DAO.STATE_ERROR:

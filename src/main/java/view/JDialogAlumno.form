@@ -223,7 +223,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxSelectProf">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(profesorController.nombresProfesor())" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel(profesorController.getNames())" type="code"/>
             </Property>
           </Properties>
         </Component>

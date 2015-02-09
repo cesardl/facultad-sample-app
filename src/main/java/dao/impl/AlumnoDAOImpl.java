@@ -129,4 +129,23 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         return state;
     }
 
+    @Override
+    public int delete(Alumno entity) {
+        String sql = "DELETE FROM alumno WHERE cod_alum = ?";
+
+        int state;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, entity.getCodigo());
+
+            state = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al eliminar los datos del alumno", e);
+            state = STATE_ERROR;
+        }
+
+        return state;
+    }
+
 }

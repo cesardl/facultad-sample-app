@@ -8,6 +8,6 @@ import beans.Profesor;
  */
 public interface ProfesorController extends Controller<Profesor> {
 
-    public Profesor[] nombresProfesor();
+    public Profesor[] getNames();
 
 }
