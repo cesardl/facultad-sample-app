@@ -6,7 +6,7 @@
 package view;
 
 import beans.Profesor;
-import controller.Action;
+import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.ProfesorControllerImpl;
 import java.util.Date;
@@ -23,7 +23,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
 
     private final ProfesorController profesorController = new ProfesorControllerImpl();
 
-    private Action action;
+    private DialogAction action;
 
     private String codigo, nombre, email;
     private Date nacimiento;
@@ -103,7 +103,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
      *
      * @return
      */
-    public Action getAction() {
+    public DialogAction getAction() {
         return action;
     }
 
@@ -158,14 +158,12 @@ public class JDialogProfesor extends javax.swing.JDialog {
                             .addComponent(jDateChooserNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                            .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                             .addComponent(jLabelCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNombre)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                .addGap(130, 130, 130)))))
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelLayout.setVerticalGroup(
@@ -176,9 +174,9 @@ public class JDialogProfesor extends javax.swing.JDialog {
                     .addComponent(jLabelCodigo)
                     .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombre))
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelEdad)
@@ -240,9 +238,9 @@ public class JDialogProfesor extends javax.swing.JDialog {
             if (profesor == null) {
                 profesor = new Profesor();
 
-                action = Action.INSERT;
+                action = DialogAction.INSERT;
             } else {
-                action = Action.UPDATE;
+                action = DialogAction.UPDATE;
             }
 
             profesor.setCodigo(codigo);

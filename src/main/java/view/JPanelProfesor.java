@@ -6,7 +6,7 @@
 package view;
 
 import beans.Profesor;
-import controller.Action;
+import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.ProfesorControllerImpl;
 import java.awt.Frame;
@@ -67,13 +67,14 @@ public class JPanelProfesor extends javax.swing.JPanel {
         Profesor profesor = profesorController.getByCode(code);
 
         JDialogProfesor dialogProfesor = new JDialogProfesor(parent, true);
+        Utils.installEscapeCloseOperation(dialogProfesor);
         dialogProfesor.setProfesor(profesor);
         dialogProfesor.setVisible(true);
 
         profesor = dialogProfesor.getProfesor();
 
-        Action action = dialogProfesor.getAction();
-        if (action != null && dialogProfesor.getAction().equals(Action.UPDATE)) {
+        DialogAction action = dialogProfesor.getAction();
+        if (action != null && dialogProfesor.getAction().equals(DialogAction.UPDATE)) {
             setRowValues(row, profesor);
         }
     }
