@@ -192,7 +192,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
         buttonGroup.add(jRadioButtonFemenino);
         jRadioButtonFemenino.setText("Femenino");
 
-        jComboBoxSelectProf.setModel(new javax.swing.DefaultComboBoxModel(profesorController.nombresProfesor()));
+        jComboBoxSelectProf.setModel(new javax.swing.DefaultComboBoxModel(profesorController.getNames()));
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);

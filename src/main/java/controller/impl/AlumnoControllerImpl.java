@@ -68,4 +68,24 @@ public class AlumnoControllerImpl implements AlumnoController {
                 return true;
         }
     }
+
+    @Override
+    public boolean delete(String code) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        AlumnoDAO dao = factory.getAlumnoDAO();
+
+        Alumno entity = new Alumno();
+        entity.setCodigo(code);
+
+        int state = dao.delete(entity);
+
+        switch (state) {
+            case DAO.STATE_ERROR:
+                return false;
+
+            default:
+                return true;
+        }
+    }
+
 }

@@ -22,4 +22,6 @@ public interface DAO<T> {
     
     int update(T entity);
 
+    int delete(T entity);
+    
 }
