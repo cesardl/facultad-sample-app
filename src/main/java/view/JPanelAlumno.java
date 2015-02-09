@@ -6,7 +6,7 @@
 package view;
 
 import beans.Alumno;
-import controller.Action;
+import controller.DialogAction;
 import controller.AlumnoController;
 import controller.impl.AlumnoControllerImpl;
 import java.awt.Frame;
@@ -79,13 +79,14 @@ public class JPanelAlumno extends javax.swing.JPanel {
         Alumno alumno = alumnoController.getByCode(code);
 
         JDialogAlumno dialogAlumno = new JDialogAlumno(parent, true);
+        Utils.installEscapeCloseOperation(dialogAlumno);
         dialogAlumno.setAlumno(alumno);
         dialogAlumno.setVisible(true);
 
         alumno = dialogAlumno.getAlumno();
 
-        Action action = dialogAlumno.getAction();
-        if (action != null && dialogAlumno.getAction().equals(Action.UPDATE)) {
+        DialogAction action = dialogAlumno.getAction();
+        if (action != null && dialogAlumno.getAction().equals(DialogAction.UPDATE)) {
             setRowValues(row, alumno);
         }
     }

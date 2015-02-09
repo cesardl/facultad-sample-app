@@ -8,8 +8,8 @@ package view;
 import beans.Alumno;
 import beans.Profesor;
 import beans.etc.Gender;
-import controller.Action;
 import controller.AlumnoController;
+import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.AlumnoControllerImpl;
 import controller.impl.ProfesorControllerImpl;
@@ -28,7 +28,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
     private final AlumnoController alumnoController = new AlumnoControllerImpl();
     private final ProfesorController profesorController = new ProfesorControllerImpl();
 
-    private Action action;
+    private DialogAction action;
 
     private String codigo, nombre, direccion, telefono;
     private Gender sexo;
@@ -89,7 +89,15 @@ public class JDialogAlumno extends javax.swing.JDialog {
         sexo = alumno.getSexo();
         direccion = alumno.getDireccion();
         telefono = alumno.getTelefono();
-        // TODO Seleccion de profesor en el combo
+
+        int MAX_SIZE = jComboBoxSelectProf.getItemCount();
+        for (int i = 0; i < MAX_SIZE; i++) {
+            Profesor p = (Profesor) jComboBoxSelectProf.getItemAt(i);
+            if (p.getId() == alumno.getProfesor()) {
+                jComboBoxSelectProf.setSelectedIndex(i);
+                break;
+            }
+        }
 
         jTextFieldCodigo.setText(codigo);
         jTextFieldNombre.setText(nombre);
@@ -125,7 +133,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
      *
      * @return
      */
-    public Action getAction() {
+    public DialogAction getAction() {
         return action;
     }
 
@@ -309,9 +317,9 @@ public class JDialogAlumno extends javax.swing.JDialog {
             if (alumno == null) {
                 alumno = new Alumno();
 
-                action = Action.INSERT;
+                action = DialogAction.INSERT;
             } else {
-                action = Action.UPDATE;
+                action = DialogAction.UPDATE;
             }
 
             alumno.setCodigo(codigo);

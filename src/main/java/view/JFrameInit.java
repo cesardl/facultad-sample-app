@@ -2,9 +2,9 @@ package view;
 
 import beans.Alumno;
 import beans.Profesor;
-import java.awt.Frame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import util.Utils;
 
 /**
  *
@@ -193,6 +193,7 @@ public class JFrameInit extends javax.swing.JFrame {
 
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
         JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
+        Utils.installEscapeCloseOperation(dialogAlumno);
         dialogAlumno.setVisible(true);
 
         Alumno alumno = dialogAlumno.getAlumno();
@@ -230,6 +231,7 @@ public class JFrameInit extends javax.swing.JFrame {
 
     private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
         JDialogProfesor dialogProfesor = new JDialogProfesor(this, true);
+        Utils.installEscapeCloseOperation(dialogProfesor);
         dialogProfesor.setVisible(true);
 
         Profesor profesor = dialogProfesor.getProfesor();
@@ -274,7 +276,10 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
-        new JDialogAbout(this, true).setVisible(true);
+        JDialogAbout dialog = new JDialogAbout(this, true);
+        Utils.installEscapeCloseOperation(dialog);
+        Utils.installEnterCloseOperation(dialog);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

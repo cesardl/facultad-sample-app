@@ -48,7 +48,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
     @Override
     public Alumno selectByCode(String code) {
-        String sql = "SELECT id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum FROM alumno WHERE cod_alum = ?";
+        String sql = "SELECT id_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof FROM alumno WHERE cod_alum = ?";
 
         Alumno alumno = null;
 
@@ -61,12 +61,13 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                 if (resultSet.next()) {
                     alumno = new Alumno(
                             resultSet.getInt(1),
+                            code,
                             resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getDate(4),
-                            Gender.valueOf(resultSet.getString(5)),
-                            resultSet.getString(6),
-                            resultSet.getString(7));
+                            resultSet.getDate(3),
+                            Gender.valueOf(resultSet.getString(4)),
+                            resultSet.getString(5),
+                            resultSet.getString(6));
+                    alumno.setProfesor(resultSet.getInt(7));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -81,10 +82,9 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         String sql = "INSERT INTO alumno(id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         int state;
-        // FIXME Insert del telefono en null
-        log.debug("Telef alum: " + entity.getTelefono());
+
         try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql);) {
+                PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, entity.getId());
             ps.setString(2, entity.getCodigo());
             ps.setString(3, entity.getNombre());
@@ -108,9 +108,9 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         String sql = "UPDATE alumno SET cod_alum = ?, nom_alum = ?, nacimiento_alum = ?, sexo_alum = ?, direc_alum = ?, telef_alum = ?, profesor_id_prof = ? WHERE id_alum = ?";
 
         int state;
-        // FIXME Update del profesor
+
         try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql);) {
+                PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, entity.getCodigo());
             ps.setString(2, entity.getNombre());
             ps.setDate(3, new Date(entity.getNacimiento().getTime()));
