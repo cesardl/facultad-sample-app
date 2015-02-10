@@ -1,6 +1,5 @@
 package view;
 
-import beans.Alumno;
 import beans.Profesor;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -53,13 +52,6 @@ public class JFrameInit extends javax.swing.JFrame {
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane.addTab("Alumno", jPanelAlumno);
-        JTable tableAlumno = jPanelAlumno.getTable();
-        tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tableAlumnoMousePressed(evt);
-            }
-        });
-
         jTabbedPane.addTab("Profesor", jPanelProfesor);
         JTable tableProfesor = jPanelProfesor.getTable();
         tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,14 +184,7 @@ public class JFrameInit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
-        JDialogAlumno dialogAlumno = new JDialogAlumno(this, true);
-        Utils.installEscapeCloseOperation(dialogAlumno);
-        dialogAlumno.setVisible(true);
-
-        Alumno alumno = dialogAlumno.getAlumno();
-        if (alumno != null) {
-            jPanelAlumno.addRow(alumno);
-        }
+        jPanelAlumno.showDialog();
     }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
 
     private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed
@@ -210,20 +195,9 @@ public class JFrameInit extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
-            jPanelAlumno.showDialogForUpdate(this, row, code);
+            jPanelAlumno.showDialog(row, code);
         }
     }//GEN-LAST:event_jMenuItemUpdateAlumnoActionPerformed
-
-    private void tableAlumnoMousePressed(java.awt.event.MouseEvent evt) {
-        if (evt.getClickCount() == 2) {
-            JTable target = (JTable) evt.getSource();
-
-            int row = target.getSelectedRow();
-
-            String code = String.valueOf(target.getValueAt(row, 0));
-            jPanelAlumno.showDialogForUpdate(this, row, code);
-        }
-    }
 
     private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
         JTable target = jPanelAlumno.getTable();

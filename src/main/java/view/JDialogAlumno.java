@@ -28,8 +28,6 @@ public class JDialogAlumno extends javax.swing.JDialog {
     private final AlumnoController alumnoController = new AlumnoControllerImpl();
     private final ProfesorController profesorController = new ProfesorControllerImpl();
 
-    private DialogAction action;
-
     private String codigo, nombre, direccion, telefono;
     private Gender sexo;
     private Date nacimiento;
@@ -40,10 +38,9 @@ public class JDialogAlumno extends javax.swing.JDialog {
      * Creates new form JDialogAlumno.
      *
      * @param parent
-     * @param modal
      */
-    public JDialogAlumno(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public JDialogAlumno(java.awt.Frame parent) {
+        super(parent, true);
         initComponents();
     }
 
@@ -127,14 +124,6 @@ public class JDialogAlumno extends javax.swing.JDialog {
         this.alumno = alumno;
 
         asignarDatos();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public DialogAction getAction() {
-        return action;
     }
 
     /**
@@ -316,10 +305,6 @@ public class JDialogAlumno extends javax.swing.JDialog {
 
             if (alumno == null) {
                 alumno = new Alumno();
-
-                action = DialogAction.INSERT;
-            } else {
-                action = DialogAction.UPDATE;
             }
 
             alumno.setCodigo(codigo);

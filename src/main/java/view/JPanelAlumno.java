@@ -71,28 +71,6 @@ public class JPanelAlumno extends javax.swing.JPanel {
 
     /**
      *
-     * @param parent
-     * @param row
-     * @param code
-     */
-    public void showDialogForUpdate(Frame parent, int row, String code) {
-        Alumno alumno = alumnoController.getByCode(code);
-
-        JDialogAlumno dialogAlumno = new JDialogAlumno(parent, true);
-        Utils.installEscapeCloseOperation(dialogAlumno);
-        dialogAlumno.setAlumno(alumno);
-        dialogAlumno.setVisible(true);
-
-        alumno = dialogAlumno.getAlumno();
-
-        DialogAction action = dialogAlumno.getAction();
-        if (action != null && dialogAlumno.getAction().equals(DialogAction.UPDATE)) {
-            setRowValues(row, alumno);
-        }
-    }
-
-    /**
-     *
      * @param row
      * @param code
      */
@@ -101,6 +79,63 @@ public class JPanelAlumno extends javax.swing.JPanel {
         if (state) {
             tableModel.removeRow(row);
         }
+    }
+
+    /**
+     *
+     */
+    public void showDialog() {
+        showDialog(DialogAction.INSERT, 0, null);
+    }
+
+    /**
+     *
+     * @param row
+     * @param code
+     */
+    public void showDialog(int row, String code) {
+        showDialog(DialogAction.UPDATE, row, code);
+    }
+
+    /**
+     *
+     * @param dialogAction
+     * @param row
+     * @param code
+     */
+    public void showDialog(DialogAction dialogAction, int row, String code) {
+        if (DialogAction.UPDATE.equals(dialogAction) && (row == 0 || code == null)) {
+            throw new UnsupportedOperationException("No se puede realizar esta acción");
+        }
+
+        JDialogAlumno dialogAlumno = new JDialogAlumno(getParentForDialog());
+        Utils.installEscapeCloseOperation(dialogAlumno);
+
+        Alumno alumno;
+
+        if (DialogAction.UPDATE.equals(dialogAction)) {
+            alumno = alumnoController.getByCode(code);
+
+            dialogAlumno.setAlumno(alumno);
+        }
+
+        dialogAlumno.setVisible(true);
+
+        alumno = dialogAlumno.getAlumno();
+
+        switch (dialogAction) {
+            case INSERT:
+                addRow(alumno);
+                break;
+
+            case UPDATE:
+                setRowValues(row, alumno);
+                break;
+        }
+    }
+
+    private Frame getParentForDialog() {
+        return (Frame) getRootPane().getParent();
     }
 
     /**
@@ -140,6 +175,11 @@ public class JPanelAlumno extends javax.swing.JPanel {
 
         table.setModel(tableModel);
         table.getTableHeader().setReorderingAllowed(false);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -159,6 +199,17 @@ public class JPanelAlumno extends javax.swing.JPanel {
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+
+            int row = target.getSelectedRow();
+
+            String code = String.valueOf(target.getValueAt(row, 0));
+            showDialog(row, code);
+        }
+    }//GEN-LAST:event_tableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;

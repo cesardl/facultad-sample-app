@@ -182,9 +182,6 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
             <Component class="view.JPanelAlumno" name="jPanelAlumno">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="JTable tableAlumno = jPanelAlumno.getTable();&#xa;tableAlumno.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableAlumnoMousePressed(evt);&#xa;            }&#xa;        });"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Alumno">
