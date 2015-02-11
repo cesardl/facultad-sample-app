@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class Alumno extends Persona implements Serializable {
 

@@ -6,7 +6,6 @@
 package view;
 
 import beans.Profesor;
-import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.ProfesorControllerImpl;
 import java.util.Date;
@@ -23,21 +22,18 @@ public class JDialogProfesor extends javax.swing.JDialog {
 
     private final ProfesorController profesorController = new ProfesorControllerImpl();
 
-    private DialogAction action;
-
     private String codigo, nombre, email;
     private Date nacimiento;
 
     private Profesor profesor;
 
     /**
-     * Creates new form JDialogInsertarAlumno.
+     * Creates new form JDialogProfesor.
      *
      * @param parent
-     * @param modal
      */
-    public JDialogProfesor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public JDialogProfesor(java.awt.Frame parent) {
+        super(parent, true);
         initComponents();
     }
 
@@ -47,7 +43,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
         nacimiento = jDateChooserNacimiento.getDate();
         email = jTextFieldEmail.getText().trim();
 
-        if (codigo.length() == 0) {
+        if (codigo.length() == 0 || profesorController.existsCode(codigo)) {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
@@ -66,9 +62,6 @@ public class JDialogProfesor extends javax.swing.JDialog {
         return true;
     }
 
-    /**
-     *
-     */
     private void asignarDatos() {
         codigo = profesor.getCodigo();
         nombre = profesor.getNombre();
@@ -76,6 +69,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
         email = profesor.getEmail();
 
         jTextFieldCodigo.setText(codigo);
+        jTextFieldCodigo.setEnabled(false);
         jTextFieldNombre.setText(nombre);
         jDateChooserNacimiento.setDate(nacimiento);
         jTextFieldEmail.setText(email);
@@ -97,14 +91,6 @@ public class JDialogProfesor extends javax.swing.JDialog {
         this.profesor = profesor;
 
         asignarDatos();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public DialogAction getAction() {
-        return action;
     }
 
     /**
@@ -237,10 +223,6 @@ public class JDialogProfesor extends javax.swing.JDialog {
         if (capturarDatos()) {
             if (profesor == null) {
                 profesor = new Profesor();
-
-                action = DialogAction.INSERT;
-            } else {
-                action = DialogAction.UPDATE;
             }
 
             profesor.setCodigo(codigo);

@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class JDialogAbout extends javax.swing.JDialog {
 

@@ -10,7 +10,7 @@ import util.Utils;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class AlumnoControllerImpl implements AlumnoController {
 
@@ -86,6 +86,16 @@ public class AlumnoControllerImpl implements AlumnoController {
             default:
                 return true;
         }
+    }
+
+    @Override
+    public boolean existsCode(String code) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        AlumnoDAO dao = factory.getAlumnoDAO();
+
+        int id = dao.selectIdByCode(code);
+
+        return id > 0;
     }
 
 }

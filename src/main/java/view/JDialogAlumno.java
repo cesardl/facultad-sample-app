@@ -9,7 +9,6 @@ import beans.Alumno;
 import beans.Profesor;
 import beans.etc.Gender;
 import controller.AlumnoController;
-import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.AlumnoControllerImpl;
 import controller.impl.ProfesorControllerImpl;
@@ -44,10 +43,6 @@ public class JDialogAlumno extends javax.swing.JDialog {
         initComponents();
     }
 
-    /**
-     *
-     * @return
-     */
     private boolean capturarDatos() {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
@@ -57,6 +52,10 @@ public class JDialogAlumno extends javax.swing.JDialog {
         telefono = jTextFieldTelefono.getText().trim();
 
         if (codigo.length() == 0) {
+            Utils.marcarTextField(jTextFieldCodigo);
+            return false;
+        }
+        if (alumnoController.existsCode(codigo) && alumno == null) {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
@@ -76,9 +75,6 @@ public class JDialogAlumno extends javax.swing.JDialog {
         return true;
     }
 
-    /**
-     *
-     */
     private void asignarDatos() {
         codigo = alumno.getCodigo();
         nombre = alumno.getNombre();
@@ -97,9 +93,10 @@ public class JDialogAlumno extends javax.swing.JDialog {
         }
 
         jTextFieldCodigo.setText(codigo);
+        jTextFieldCodigo.setEnabled(false);
         jTextFieldNombre.setText(nombre);
         jDateChooserNacimiento.setDate(nacimiento);
-        if (sexo.equals(Gender.MALE)) {
+        if (Gender.MALE.equals(sexo)) {
             jRadioButtonMasculino.setSelected(true);
         } else {
             jRadioButtonFemenino.setSelected(true);

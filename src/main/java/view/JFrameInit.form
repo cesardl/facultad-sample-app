@@ -9,7 +9,7 @@
         </Property>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenuAcciones">
+        <Menu class="javax.swing.JMenu" name="jMenuActions">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acciones"/>
           </Properties>
@@ -21,7 +21,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInsertAlumno">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Insertar"/>
+                    <Property name="text" type="java.lang.String" value="Nuevo"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemInsertAlumnoActionPerformed"/>
@@ -29,7 +29,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUpdateAlumno">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Actualizar"/>
+                    <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUpdateAlumnoActionPerformed"/>
@@ -37,7 +37,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteAlumno">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                    <Property name="text" type="java.lang.String" value="Borrar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteAlumnoActionPerformed"/>
@@ -52,7 +52,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInsertProfesor">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Insertar"/>
+                    <Property name="text" type="java.lang.String" value="Nuevo"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemInsertProfesorActionPerformed"/>
@@ -60,7 +60,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUpdateProfesor">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Actualizar"/>
+                    <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUpdateProfesorActionPerformed"/>
@@ -68,7 +68,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteProfesor">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                    <Property name="text" type="java.lang.String" value="Borrar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteProfesorActionPerformed"/>
@@ -78,27 +78,27 @@
             </Menu>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSalir">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemExit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSalirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemExitActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuAyuda">
+        <Menu class="javax.swing.JMenu" name="jMenuHelp">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAcercade">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAbout">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Acerca de"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAcercadeActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAboutActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -191,9 +191,6 @@
               </Constraints>
             </Component>
             <Component class="view.JPanelProfesor" name="jPanelProfesor">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="JTable tableProfesor = jPanelProfesor.getTable();&#xa;tableProfesor.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;            public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;                tableProfesorMousePressed(evt);&#xa;            }&#xa;        });"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Profesor">

@@ -9,19 +9,19 @@ import beans.Alumno;
 import controller.DialogAction;
 import controller.AlumnoController;
 import controller.impl.AlumnoControllerImpl;
-import java.awt.Frame;
 import javax.swing.JTable;
 import util.Utils;
+import view.etc.JPanelBase;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  *
  * @see
  * <a href='http://esus.com/detecting-double-click-row-jtable/'>Detecting a
  * double-click on a row in a JTable</a>
  */
-public class JPanelAlumno extends javax.swing.JPanel {
+public class JPanelAlumno extends JPanelBase<Alumno> {
 
     private final AlumnoController alumnoController = new AlumnoControllerImpl();
 
@@ -40,71 +40,39 @@ public class JPanelAlumno extends javax.swing.JPanel {
         return table;
     }
 
-    /**
-     *
-     * @param alumno
-     */
-    public void addRow(Alumno alumno) {
+    @Override
+    protected void addRow(Alumno entity) {
         tableModel.addRow(new Object[]{
-            alumno.getCodigo(),
-            alumno.getNombre(),
-            Utils.formatDate(alumno.getNacimiento()),
-            alumno.getSexo(),
-            alumno.getDireccion(),
-            alumno.getTelefono()
+            entity.getCodigo(),
+            entity.getNombre(),
+            Utils.formatDate(entity.getNacimiento()),
+            entity.getSexo(),
+            entity.getDireccion(),
+            entity.getTelefono()
         });
     }
 
-    /**
-     *
-     * @param row
-     * @param alumno
-     */
-    public void setRowValues(int row, Alumno alumno) {
-        tableModel.setValueAt(alumno.getCodigo(), row, 0);
-        tableModel.setValueAt(alumno.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(alumno.getNacimiento()), row, 2);
-        tableModel.setValueAt(alumno.getSexo(), row, 3);
-        tableModel.setValueAt(alumno.getDireccion(), row, 4);
-        tableModel.setValueAt(alumno.getTelefono(), row, 5);
+    @Override
+    protected void setRowValues(int row, Alumno entity) {
+        tableModel.setValueAt(entity.getCodigo(), row, 0);
+        tableModel.setValueAt(entity.getNombre(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
+        tableModel.setValueAt(entity.getSexo(), row, 3);
+        tableModel.setValueAt(entity.getDireccion(), row, 4);
+        tableModel.setValueAt(entity.getTelefono(), row, 5);
     }
 
-    /**
-     *
-     * @param row
-     * @param code
-     */
-    public void deleteRow(int row, String code) {
+    @Override
+    protected void deleteRow(int row, String code) {
         boolean state = alumnoController.delete(code);
         if (state) {
             tableModel.removeRow(row);
         }
     }
 
-    /**
-     *
-     */
-    public void showDialog() {
-        showDialog(DialogAction.INSERT, 0, null);
-    }
-
-    /**
-     *
-     * @param row
-     * @param code
-     */
-    public void showDialog(int row, String code) {
-        showDialog(DialogAction.UPDATE, row, code);
-    }
-
-    /**
-     *
-     * @param dialogAction
-     * @param row
-     * @param code
-     */
+    @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
-        if (DialogAction.UPDATE.equals(dialogAction) && (row == 0 || code == null)) {
+        if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
             throw new UnsupportedOperationException("No se puede realizar esta acción");
         }
 
@@ -122,6 +90,9 @@ public class JPanelAlumno extends javax.swing.JPanel {
         dialogAlumno.setVisible(true);
 
         alumno = dialogAlumno.getAlumno();
+        if (alumno == null) {
+            return;
+        }
 
         switch (dialogAction) {
             case INSERT:
@@ -132,10 +103,6 @@ public class JPanelAlumno extends javax.swing.JPanel {
                 setRowValues(row, alumno);
                 break;
         }
-    }
-
-    private Frame getParentForDialog() {
-        return (Frame) getRootPane().getParent();
     }
 
     /**
@@ -201,14 +168,7 @@ public class JPanelAlumno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        if (evt.getClickCount() == 2) {
-            JTable target = (JTable) evt.getSource();
-
-            int row = target.getSelectedRow();
-
-            String code = String.valueOf(target.getValueAt(row, 0));
-            showDialog(row, code);
-        }
+        showDialogFromTable(evt);
     }//GEN-LAST:event_tableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

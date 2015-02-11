@@ -15,7 +15,7 @@ import view.JFrameInit;
 /**
  * Clase con distintos metodos para gestionar la ventana.
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class Utils {
 

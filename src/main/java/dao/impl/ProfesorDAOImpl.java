@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class ProfesorDAOImpl implements ProfesorDAO {
 
@@ -44,6 +44,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
+            profesores = null;
         }
 
         return profesores;
@@ -72,6 +73,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos del profesor", e);
+            profesor = null;
         }
 
         return profesor;
@@ -96,6 +98,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
+            profesores = null;
         }
 
         return profesores;
@@ -164,6 +167,30 @@ public class ProfesorDAOImpl implements ProfesorDAO {
         }
 
         return state;
+    }
+
+    @Override
+    public int selectIdByCode(String code) {
+        String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
+
+        int id = 0;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, code);
+
+            try (ResultSet resultSet = ps.executeQuery()) {
+                if (resultSet.next()) {
+                    id = resultSet.getInt(1);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al cargar el id del profesor", e);
+            id = STATE_ERROR;
+        }
+
+        return id;
     }
 
 }

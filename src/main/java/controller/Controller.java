@@ -19,4 +19,6 @@ public interface Controller<T> {
 
     boolean delete(String code);
 
+    boolean existsCode(String code);
+
 }

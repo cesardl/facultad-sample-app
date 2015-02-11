@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
 public class AlumnoDAOImpl implements AlumnoDAO {
 
@@ -41,6 +41,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de alumnos", e);
+            alumnos = null;
         }
 
         return alumnos;
@@ -72,6 +73,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos del alumno", e);
+            alumno = null;
         }
 
         return alumno;
@@ -146,6 +148,30 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         }
 
         return state;
+    }
+
+    @Override
+    public int selectIdByCode(String code) {
+        String sql = "SELECT id_alum FROM alumno WHERE cod_alum = ?";
+
+        int id = 0;
+
+        try (Connection connection = DAOFactory.createConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, code);
+
+            try (ResultSet resultSet = ps.executeQuery()) {
+                if (resultSet.next()) {
+                    id = resultSet.getInt(1);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            log.error("Error al cargar el id del alumno", e);
+            id = STATE_ERROR;
+        }
+
+        return id;
     }
 
 }

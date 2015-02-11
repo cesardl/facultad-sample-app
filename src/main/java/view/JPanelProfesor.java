@@ -9,15 +9,15 @@ import beans.Profesor;
 import controller.DialogAction;
 import controller.ProfesorController;
 import controller.impl.ProfesorControllerImpl;
-import java.awt.Frame;
 import javax.swing.JTable;
 import util.Utils;
+import view.etc.JPanelBase;
 
 /**
  *
- * @author cesardl
+ * @author Cesardl
  */
-public class JPanelProfesor extends javax.swing.JPanel {
+public class JPanelProfesor extends JPanelBase<Profesor> {
 
     private final ProfesorController profesorController = new ProfesorControllerImpl();
 
@@ -36,57 +36,63 @@ public class JPanelProfesor extends javax.swing.JPanel {
         return table;
     }
 
-    public void addRow(Profesor profesor) {
+    @Override
+    protected void addRow(Profesor entity) {
         tableModel.addRow(new Object[]{
-            profesor.getCodigo(),
-            profesor.getNombre(),
-            Utils.formatDate(profesor.getNacimiento()),
-            profesor.getEmail()
+            entity.getCodigo(),
+            entity.getNombre(),
+            Utils.formatDate(entity.getNacimiento()),
+            entity.getEmail()
         });
     }
 
-    /**
-     *
-     * @param row
-     * @param profesor
-     */
-    public void setRowValues(int row, Profesor profesor) {
-        tableModel.setValueAt(profesor.getCodigo(), row, 0);
-        tableModel.setValueAt(profesor.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(profesor.getNacimiento()), row, 2);
-        tableModel.setValueAt(profesor.getEmail(), row, 3);
+    @Override
+    protected void setRowValues(int row, Profesor entity) {
+        tableModel.setValueAt(entity.getCodigo(), row, 0);
+        tableModel.setValueAt(entity.getNombre(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
+        tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 
-    /**
-     *
-     * @param parent
-     * @param row
-     * @param code
-     */
-    public void showDialogForUpdate(Frame parent, int row, String code) {
-        Profesor profesor = profesorController.getByCode(code);
-
-        JDialogProfesor dialogProfesor = new JDialogProfesor(parent, true);
-        Utils.installEscapeCloseOperation(dialogProfesor);
-        dialogProfesor.setProfesor(profesor);
-        dialogProfesor.setVisible(true);
-
-        profesor = dialogProfesor.getProfesor();
-
-        DialogAction action = dialogProfesor.getAction();
-        if (action != null && dialogProfesor.getAction().equals(DialogAction.UPDATE)) {
-            setRowValues(row, profesor);
-        }
-    }
-
-    /**
-     *
-     * @param code
-     */
-    public void deleteRow(int row, String code) {
+    @Override
+    protected void deleteRow(int row, String code) {
         boolean state = profesorController.delete(code);
         if (state) {
             tableModel.removeRow(row);
+        }
+    }
+
+    @Override
+    public void showDialog(DialogAction dialogAction, int row, String code) {
+        if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
+            throw new UnsupportedOperationException("No se puede realizar esta acción");
+        }
+
+        JDialogProfesor dialogProfesor = new JDialogProfesor(getParentForDialog());
+        Utils.installEscapeCloseOperation(dialogProfesor);
+
+        Profesor profesor;
+
+        if (DialogAction.UPDATE.equals(dialogAction)) {
+            profesor = profesorController.getByCode(code);
+            dialogProfesor.setProfesor(profesor);
+        }
+
+        dialogProfesor.setVisible(true);
+
+        profesor = dialogProfesor.getProfesor();
+        if (profesor == null) {
+            return;
+        }
+
+        switch (dialogAction) {
+            case INSERT:
+                addRow(profesor);
+                break;
+
+            case UPDATE:
+                setRowValues(row, profesor);
+                break;
         }
     }
 
@@ -127,6 +133,11 @@ public class JPanelProfesor extends javax.swing.JPanel {
 
         table.setModel(tableModel);
         table.getTableHeader().setReorderingAllowed(false);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableMousePressed(evt);
+            }
+        });
         jScrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -146,6 +157,11 @@ public class JPanelProfesor extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMousePressed
+        showDialogFromTable(evt);
+    }//GEN-LAST:event_tableMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable table;

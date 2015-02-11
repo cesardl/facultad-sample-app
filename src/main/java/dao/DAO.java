@@ -19,9 +19,11 @@ public interface DAO<T> {
     T selectByCode(String code);
 
     int insert(T entity);
-    
+
     int update(T entity);
 
     int delete(T entity);
-    
+
+    int selectIdByCode(String code);
+
 }

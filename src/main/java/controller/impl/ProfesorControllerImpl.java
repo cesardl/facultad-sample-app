@@ -2,6 +2,7 @@ package controller.impl;
 
 import beans.Profesor;
 import controller.ProfesorController;
+import dao.AlumnoDAO;
 import dao.DAO;
 import dao.ProfesorDAO;
 import factory.DAOFactory;
@@ -93,6 +94,16 @@ public class ProfesorControllerImpl implements ProfesorController {
             default:
                 return true;
         }
+    }
+
+    @Override
+    public boolean existsCode(String code) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        AlumnoDAO dao = factory.getAlumnoDAO();
+
+        int id = dao.selectIdByCode(code);
+
+        return id > 0;
     }
 
 }
