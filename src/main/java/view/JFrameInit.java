@@ -45,7 +45,7 @@ public class JFrameInit extends javax.swing.JFrame {
         jMenuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+        bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
 
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -185,7 +185,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -200,10 +200,15 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
-            jPanelAlumno.deleteRow(row, code);
+
+            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
+                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                jPanelAlumno.deleteRow(row, code);
+            }
         }
     }//GEN-LAST:event_jMenuItemDeleteAlumnoActionPerformed
 
@@ -216,12 +221,12 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
-            
+
             jTabbedPane.setSelectedIndex(1);
-            
+
             jPanelProfesor.showDialog(row, code);
         }
     }//GEN-LAST:event_jMenuItemUpdateProfesorActionPerformed
@@ -231,15 +236,20 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
-            jPanelProfesor.deleteRow(row, code);
+
+            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
+                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                jPanelProfesor.deleteRow(row, code);
+            }
         }
     }//GEN-LAST:event_jMenuItemDeleteProfesorActionPerformed
 
     private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
-        int i = javax.swing.JOptionPane.showConfirmDialog(this, "Seguro que desesa salir?",
+        int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
                 this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             System.exit(0);
@@ -272,5 +282,6 @@ public class JFrameInit extends javax.swing.JFrame {
     private view.JPanelProfesor jPanelProfesor;
     private javax.swing.JPopupMenu.Separator jSeparator;
     private javax.swing.JTabbedPane jTabbedPane;
+    private java.util.ResourceBundle bundle;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,34 +1,34 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local server
-Source Server Version : 50051
+Source Server         : Mysql Connection
+Source Server Version : 50541
 Source Host           : localhost:3306
 Source Database       : facultad
 
 Target Server Type    : MYSQL
-Target Server Version : 50051
+Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-02-12 00:56:58
+Date: 2015-02-12 15:52:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `alumno`
+-- Table structure for alumno
 -- ----------------------------
 DROP TABLE IF EXISTS `alumno`;
 CREATE TABLE `alumno` (
-  `id_alum` int(11) NOT NULL auto_increment,
+  `id_alum` int(11) NOT NULL AUTO_INCREMENT,
   `cod_alum` varchar(8) NOT NULL,
   `nom_alum` varchar(255) NOT NULL,
   `nacimiento_alum` date NOT NULL,
   `sexo_alum` varchar(6) NOT NULL,
   `direc_alum` varchar(255) NOT NULL,
-  `telef_alum` varchar(9) default '',
+  `telef_alum` varchar(9) DEFAULT '',
   `profesor_id_prof` int(11) NOT NULL,
-  PRIMARY KEY  (`id_alum`),
+  PRIMARY KEY (`id_alum`),
   KEY `fk_alumno_profesor` (`profesor_id_prof`),
   CONSTRAINT `fk_alumno_profesor` FOREIGN KEY (`profesor_id_prof`) REFERENCES `profesor` (`id_prof`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
@@ -46,7 +46,7 @@ INSERT INTO `alumno` VALUES ('7', '200369', 'Alexsandra Herrera Vasquez', '1988-
 INSERT INTO `alumno` VALUES ('8', '200456', 'Gustavo Avila', '1988-01-01', 'MALE', 'Av Universitaria', '', '1');
 INSERT INTO `alumno` VALUES ('9', '200584', 'Etmee Zarate', '1988-01-01', 'FEMALE', 'Av Sauces', '12354785', '1');
 INSERT INTO `alumno` VALUES ('10', '200852', 'José Lopez', '1988-01-01', 'MALE', 'Av Aviacion', '', '2');
-INSERT INTO `alumno` VALUES ('11', '200045', 'Máximo Romero', '1985-02-05', 'MALE', 'Av Sucre 2678', '', '1');
+INSERT INTO `alumno` VALUES ('11', '200045', 'Máximo Romero', '1985-02-05', 'MALE', 'Av Sucre 2678', '', '5');
 INSERT INTO `alumno` VALUES ('12', '200006', 'Mario Inga', '1986-06-11', 'MALE', 'Por Wilson', '', '4');
 INSERT INTO `alumno` VALUES ('13', '200465', 'Jaime Leandro', '1988-10-07', 'MALE', 'Por la Campiña', '32323412', '5');
 INSERT INTO `alumno` VALUES ('14', '200368', 'Milu Bazán', '1988-11-23', 'FEMALE', 'Por el Callao, la jato de Max', '214544', '4');
@@ -54,16 +54,16 @@ INSERT INTO `alumno` VALUES ('15', '231123', 'Josue Barrios', '1985-07-12', 'MAL
 INSERT INTO `alumno` VALUES ('16', '200005', 'Jorge Veramendi Salazar', '1986-10-03', 'MALE', 'qwfasfasdfs', '', '4');
 
 -- ----------------------------
--- Table structure for `profesor`
+-- Table structure for profesor
 -- ----------------------------
 DROP TABLE IF EXISTS `profesor`;
 CREATE TABLE `profesor` (
-  `id_prof` int(11) NOT NULL auto_increment,
+  `id_prof` int(11) NOT NULL AUTO_INCREMENT,
   `cod_prof` varchar(8) NOT NULL,
   `nom_prof` varchar(255) NOT NULL,
   `nacimiento_prof` date NOT NULL,
   `email_prof` varchar(45) NOT NULL,
-  PRIMARY KEY  (`id_prof`)
+  PRIMARY KEY (`id_prof`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
