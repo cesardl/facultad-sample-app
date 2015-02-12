@@ -114,12 +114,13 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         jScrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             alumnoController.getAll(),
             new String [] {
-                "Codigo", "Nombre", "Nacimiento", "Sexo", "Direccion", "Telefono"
+                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
             }
         ) {
             Class[] types = new Class [] {

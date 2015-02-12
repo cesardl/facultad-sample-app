@@ -105,12 +105,13 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         jScrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             profesorController.getAll(),
             new String [] {
-                "Codigo", "Nombre", "Nacimiento", "Email"
+                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
             }
         ) {
             Class[] types = new Class [] {

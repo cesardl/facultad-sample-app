@@ -41,6 +41,7 @@
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle(&quot;view/Bundle&quot;); // NOI18N"/>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
@@ -62,7 +63,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableMouseClicked"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tableModel = new javax.swing.table.DefaultTableModel(&#xa;    alumnoController.getAll(),&#xa;    new String [] {&#xa;        &quot;Codigo&quot;, &quot;Nombre&quot;, &quot;Nacimiento&quot;, &quot;Sexo&quot;, &quot;Direccion&quot;, &quot;Telefono&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false, false, false&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;};"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tableModel = new javax.swing.table.DefaultTableModel(&#xa;    alumnoController.getAll(),&#xa;    new String [] {&#xa;        bundle.getString(&quot;dictionary.code&quot;), bundle.getString(&quot;dictionary.names&quot;), bundle.getString(&quot;dictionary.birthday&quot;), bundle.getString(&quot;dictionary.sex&quot;), bundle.getString(&quot;dictionary.address&quot;), bundle.getString(&quot;dictionary.phone&quot;)&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false, false, false&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;};"/>
             <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private javax.swing.table.DefaultTableModel tableModel;"/>
           </AuxValues>
         </Component>
