@@ -187,6 +187,9 @@ public class JFrameInit extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de alumnos", this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
+
+            jTabbedPane.setSelectedIndex(0);
+
             jPanelAlumno.showDialog(row, code);
         }
     }//GEN-LAST:event_jMenuItemUpdateAlumnoActionPerformed
@@ -215,6 +218,9 @@ public class JFrameInit extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila de la tabla de profesores", this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
+            
+            jTabbedPane.setSelectedIndex(1);
+            
             jPanelProfesor.showDialog(row, code);
         }
     }//GEN-LAST:event_jMenuItemUpdateProfesorActionPerformed

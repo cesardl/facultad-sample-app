@@ -4,6 +4,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;
 
+// TODO mensajes de error en formularios
+// TODO Internationalizacion (english - spanish)
+// TODO Confirmacion al borrar registro
+
 /**
  *
  * @author Cesardl

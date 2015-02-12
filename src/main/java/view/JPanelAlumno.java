@@ -46,7 +46,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
             entity.getCodigo(),
             entity.getNombre(),
             Utils.formatDate(entity.getNacimiento()),
-            entity.getSexo(),
+            entity.getSexo().getValue(),
             entity.getDireccion(),
             entity.getTelefono()
         });
@@ -57,7 +57,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
         tableModel.setValueAt(entity.getCodigo(), row, 0);
         tableModel.setValueAt(entity.getNombre(), row, 1);
         tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
-        tableModel.setValueAt(entity.getSexo(), row, 3);
+        tableModel.setValueAt(entity.getSexo().getValue(), row, 3);
         tableModel.setValueAt(entity.getDireccion(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);
     }
@@ -123,7 +123,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false

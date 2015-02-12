@@ -29,7 +29,7 @@ public class AlumnoControllerImpl implements AlumnoController {
             rowData[i][0] = alumno.getCodigo();
             rowData[i][1] = alumno.getNombre();
             rowData[i][2] = Utils.formatDate(alumno.getNacimiento());
-            rowData[i][3] = alumno.getSexo();
+            rowData[i][3] = alumno.getSexo().getValue();
             rowData[i][4] = alumno.getDireccion();
             rowData[i][5] = alumno.getTelefono();
         }
