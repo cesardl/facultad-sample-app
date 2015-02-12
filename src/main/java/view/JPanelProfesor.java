@@ -65,7 +65,7 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
         if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
-            throw new UnsupportedOperationException("No se puede realizar esta acción");
+            throw new UnsupportedOperationException("You can not perform this action");
         }
 
         JDialogProfesor dialogProfesor = new JDialogProfesor(getParentForDialog());
