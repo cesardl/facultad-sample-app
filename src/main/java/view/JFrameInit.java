@@ -45,12 +45,13 @@ public class JFrameInit extends javax.swing.JFrame {
         jMenuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Aplicacion con MySQL");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+        setTitle(bundle.getString("app.title")); // NOI18N
 
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane.addTab("Alumno", jPanelAlumno);
-        jTabbedPane.addTab("Profesor", jPanelProfesor);
+        jTabbedPane.addTab(bundle.getString("dictionary.student"), jPanelAlumno); // NOI18N
+        jTabbedPane.addTab(bundle.getString("dictionary.teacher"), jPanelProfesor); // NOI18N
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -71,11 +72,11 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jMenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenuActions.setText("Acciones");
+        jMenuActions.setText(bundle.getString("dictionary.actions")); // NOI18N
 
-        jMenuAlumno.setText("Alumno");
+        jMenuAlumno.setText(bundle.getString("dictionary.student")); // NOI18N
 
-        jMenuItemInsertAlumno.setText("Nuevo");
+        jMenuItemInsertAlumno.setText(bundle.getString("dictionary.new")); // NOI18N
         jMenuItemInsertAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemInsertAlumnoActionPerformed(evt);
@@ -83,7 +84,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         jMenuAlumno.add(jMenuItemInsertAlumno);
 
-        jMenuItemUpdateAlumno.setText("Editar");
+        jMenuItemUpdateAlumno.setText(bundle.getString("dictionary.edit")); // NOI18N
         jMenuItemUpdateAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemUpdateAlumnoActionPerformed(evt);
@@ -91,7 +92,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         jMenuAlumno.add(jMenuItemUpdateAlumno);
 
-        jMenuItemDeleteAlumno.setText("Borrar");
+        jMenuItemDeleteAlumno.setText(bundle.getString("dictionary.delete")); // NOI18N
         jMenuItemDeleteAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemDeleteAlumnoActionPerformed(evt);
@@ -101,9 +102,9 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jMenuActions.add(jMenuAlumno);
 
-        jMenuProfesor.setText("Profesor");
+        jMenuProfesor.setText(bundle.getString("dictionary.teacher")); // NOI18N
 
-        jMenuItemInsertProfesor.setText("Nuevo");
+        jMenuItemInsertProfesor.setText(bundle.getString("dictionary.new")); // NOI18N
         jMenuItemInsertProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemInsertProfesorActionPerformed(evt);
@@ -111,7 +112,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         jMenuProfesor.add(jMenuItemInsertProfesor);
 
-        jMenuItemUpdateProfesor.setText("Editar");
+        jMenuItemUpdateProfesor.setText(bundle.getString("dictionary.edit")); // NOI18N
         jMenuItemUpdateProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemUpdateProfesorActionPerformed(evt);
@@ -119,7 +120,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         jMenuProfesor.add(jMenuItemUpdateProfesor);
 
-        jMenuItemDeleteProfesor.setText("Borrar");
+        jMenuItemDeleteProfesor.setText(bundle.getString("dictionary.delete")); // NOI18N
         jMenuItemDeleteProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemDeleteProfesorActionPerformed(evt);
@@ -130,7 +131,7 @@ public class JFrameInit extends javax.swing.JFrame {
         jMenuActions.add(jMenuProfesor);
         jMenuActions.add(jSeparator);
 
-        jMenuItemExit.setText("Salir");
+        jMenuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
         jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemExitActionPerformed(evt);
@@ -140,9 +141,9 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jMenuBar.add(jMenuActions);
 
-        jMenuHelp.setText("Ayuda");
+        jMenuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
 
-        jMenuItemAbout.setText("Acerca de");
+        jMenuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
         jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemAboutActionPerformed(evt);
