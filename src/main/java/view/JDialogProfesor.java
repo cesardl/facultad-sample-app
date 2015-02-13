@@ -6,26 +6,16 @@
 package view;
 
 import beans.Profesor;
-import controller.ProfesorController;
-import controller.impl.ProfesorControllerImpl;
-import java.util.Date;
-import org.apache.log4j.Logger;
 import util.Utils;
+import view.etc.JDialogBase;
 
 /**
  *
  * @author Cesardl
  */
-public class JDialogProfesor extends javax.swing.JDialog {
+public class JDialogProfesor extends JDialogBase<Profesor> {
 
-    private static final Logger log = Logger.getLogger(JDialogProfesor.class);
-
-    private final ProfesorController profesorController = new ProfesorControllerImpl();
-
-    private String codigo, nombre, email;
-    private Date nacimiento;
-
-    private Profesor profesor;
+    private String email;
 
     /**
      * Creates new form JDialogProfesor.
@@ -33,11 +23,12 @@ public class JDialogProfesor extends javax.swing.JDialog {
      * @param parent
      */
     public JDialogProfesor(java.awt.Frame parent) {
-        super(parent, true);
+        super(parent);
         initComponents();
     }
 
-    private boolean capturarDatos() {
+    @Override
+    public boolean capturarDatos() {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
         nacimiento = jDateChooserNacimiento.getDate();
@@ -47,7 +38,7 @@ public class JDialogProfesor extends javax.swing.JDialog {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
-        if (profesorController.existsCode(codigo) && profesor == null) {
+        if (profesorController.existsCode(codigo) && entity == null) {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
@@ -66,11 +57,12 @@ public class JDialogProfesor extends javax.swing.JDialog {
         return true;
     }
 
-    private void asignarDatos() {
-        codigo = profesor.getCodigo();
-        nombre = profesor.getNombre();
-        nacimiento = profesor.getNacimiento();
-        email = profesor.getEmail();
+    @Override
+    public void asignarDatos() {
+        codigo = entity.getCodigo();
+        nombre = entity.getNombre();
+        nacimiento = entity.getNacimiento();
+        email = entity.getEmail();
 
         jTextFieldCodigo.setText(codigo);
         jTextFieldCodigo.setEnabled(false);
@@ -79,20 +71,14 @@ public class JDialogProfesor extends javax.swing.JDialog {
         jTextFieldEmail.setText(email);
     }
 
-    /**
-     *
-     * @return
-     */
-    public Profesor getProfesor() {
-        return profesor;
+    @Override
+    public Profesor getEntity() {
+        return entity;
     }
 
-    /**
-     *
-     * @param profesor
-     */
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    @Override
+    public void setEntity(Profesor entity) {
+        this.entity = entity;
 
         asignarDatos();
     }
@@ -223,16 +209,16 @@ public class JDialogProfesor extends javax.swing.JDialog {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         if (capturarDatos()) {
-            if (profesor == null) {
-                profesor = new Profesor();
+            if (entity == null) {
+                entity = new Profesor();
             }
 
-            profesor.setCodigo(codigo);
-            profesor.setNombre(nombre);
-            profesor.setNacimiento(nacimiento);
-            profesor.setEmail(email);
+            entity.setCodigo(codigo);
+            entity.setNombre(nombre);
+            entity.setNacimiento(nacimiento);
+            entity.setEmail(email);
 
-            boolean state = profesorController.saveOrUpdate(profesor);
+            boolean state = profesorController.saveOrUpdate(entity);
 
             if (state) {
                 dispose();
@@ -258,4 +244,5 @@ public class JDialogProfesor extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
+
 }

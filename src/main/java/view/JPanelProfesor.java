@@ -75,12 +75,12 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
             profesor = profesorController.getByCode(code);
-            dialogProfesor.setProfesor(profesor);
+            dialogProfesor.setEntity(profesor);
         }
 
         dialogProfesor.setVisible(true);
 
-        profesor = dialogProfesor.getProfesor();
+        profesor = dialogProfesor.getEntity();
         if (profesor == null) {
             return;
         }

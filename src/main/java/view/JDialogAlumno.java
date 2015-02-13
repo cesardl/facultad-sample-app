@@ -9,29 +9,20 @@ import beans.Alumno;
 import beans.Profesor;
 import beans.etc.Gender;
 import controller.AlumnoController;
-import controller.ProfesorController;
 import controller.impl.AlumnoControllerImpl;
-import controller.impl.ProfesorControllerImpl;
-import java.util.Date;
-import org.apache.log4j.Logger;
 import util.Utils;
+import view.etc.JDialogBase;
 
 /**
  *
  * @author Cesardl
  */
-public class JDialogAlumno extends javax.swing.JDialog {
-
-    private static final Logger log = Logger.getLogger(JDialogAlumno.class);
+public class JDialogAlumno extends JDialogBase<Alumno> {
 
     private final AlumnoController alumnoController = new AlumnoControllerImpl();
-    private final ProfesorController profesorController = new ProfesorControllerImpl();
 
-    private String codigo, nombre, direccion, telefono;
+    private String direccion, telefono;
     private Gender sexo;
-    private Date nacimiento;
-
-    private Alumno alumno;
 
     /**
      * Creates new form JDialogAlumno.
@@ -39,11 +30,12 @@ public class JDialogAlumno extends javax.swing.JDialog {
      * @param parent
      */
     public JDialogAlumno(java.awt.Frame parent) {
-        super(parent, true);
+        super(parent);
         initComponents();
     }
 
-    private boolean capturarDatos() {
+    @Override
+    public boolean capturarDatos() {
         codigo = jTextFieldCodigo.getText().trim();
         nombre = jTextFieldNombre.getText().trim();
         nacimiento = jDateChooserNacimiento.getDate();
@@ -55,7 +47,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
-        if (alumnoController.existsCode(codigo) && alumno == null) {
+        if (alumnoController.existsCode(codigo) && entity == null) {
             Utils.marcarTextField(jTextFieldCodigo);
             return false;
         }
@@ -75,18 +67,19 @@ public class JDialogAlumno extends javax.swing.JDialog {
         return true;
     }
 
-    private void asignarDatos() {
-        codigo = alumno.getCodigo();
-        nombre = alumno.getNombre();
-        nacimiento = alumno.getNacimiento();
-        sexo = alumno.getSexo();
-        direccion = alumno.getDireccion();
-        telefono = alumno.getTelefono();
+    @Override
+    public void asignarDatos() {
+        codigo = entity.getCodigo();
+        nombre = entity.getNombre();
+        nacimiento = entity.getNacimiento();
+        sexo = entity.getSexo();
+        direccion = entity.getDireccion();
+        telefono = entity.getTelefono();
 
         final int MAX_SIZE = jComboBoxSelectProf.getItemCount();
         for (int i = 0; i < MAX_SIZE; i++) {
             Profesor p = (Profesor) jComboBoxSelectProf.getItemAt(i);
-            if (p.getId() == alumno.getProfesor()) {
+            if (p.getId() == entity.getProfesor()) {
                 jComboBoxSelectProf.setSelectedIndex(i);
                 break;
             }
@@ -105,20 +98,14 @@ public class JDialogAlumno extends javax.swing.JDialog {
         jTextFieldTelefono.setText(telefono);
     }
 
-    /**
-     *
-     * @return
-     */
-    public Alumno getAlumno() {
-        return alumno;
+    @Override
+    public Alumno getEntity() {
+        return entity;
     }
 
-    /**
-     *
-     * @param alumno
-     */
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    @Override
+    public void setEntity(Alumno entity) {
+        this.entity = entity;
 
         asignarDatos();
     }
@@ -302,19 +289,19 @@ public class JDialogAlumno extends javax.swing.JDialog {
             Profesor p = (Profesor) jComboBoxSelectProf.getSelectedItem();
             int idProfesor = p.getId();
 
-            if (alumno == null) {
-                alumno = new Alumno();
+            if (entity == null) {
+                entity = new Alumno();
             }
 
-            alumno.setCodigo(codigo);
-            alumno.setNombre(nombre);
-            alumno.setNacimiento(nacimiento);
-            alumno.setSexo(sexo);
-            alumno.setDireccion(direccion);
-            alumno.setTelefono(telefono);
-            alumno.setProfesor(idProfesor);
+            entity.setCodigo(codigo);
+            entity.setNombre(nombre);
+            entity.setNacimiento(nacimiento);
+            entity.setSexo(sexo);
+            entity.setDireccion(direccion);
+            entity.setTelefono(telefono);
+            entity.setProfesor(idProfesor);
 
-            boolean state = alumnoController.saveOrUpdate(alumno);
+            boolean state = alumnoController.saveOrUpdate(entity);
 
             if (state) {
                 dispose();

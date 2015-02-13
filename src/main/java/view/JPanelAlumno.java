@@ -84,12 +84,12 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
         if (DialogAction.UPDATE.equals(dialogAction)) {
             alumno = alumnoController.getByCode(code);
 
-            dialogAlumno.setAlumno(alumno);
+            dialogAlumno.setEntity(alumno);
         }
 
         dialogAlumno.setVisible(true);
 
-        alumno = dialogAlumno.getAlumno();
+        alumno = dialogAlumno.getEntity();
         if (alumno == null) {
             return;
         }
