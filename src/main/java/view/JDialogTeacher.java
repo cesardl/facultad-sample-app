@@ -29,29 +29,29 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
 
     @Override
     public boolean capturarDatos() {
-        codigo = jTextFieldCodigo.getText().trim();
-        nombre = jTextFieldNombre.getText().trim();
-        nacimiento = jDateChooserNacimiento.getDate();
-        email = jTextFieldEmail.getText().trim();
+        codigo = textFieldCodigo.getText().trim();
+        nombre = textFieldNombre.getText().trim();
+        nacimiento = dateChooserNacimiento.getDate();
+        email = textFieldEmail.getText().trim();
 
         if (codigo.length() == 0) {
-            Utils.marcarTextField(jTextFieldCodigo);
+            Utils.marcarTextField(textFieldCodigo);
             return false;
         }
         if (profesorController.existsCode(codigo) && entity == null) {
-            Utils.marcarTextField(jTextFieldCodigo);
+            Utils.marcarTextField(textFieldCodigo);
             return false;
         }
         if (nombre.length() == 0) {
-            Utils.marcarTextField(jTextFieldNombre);
+            Utils.marcarTextField(textFieldNombre);
             return false;
         }
         if (nacimiento == null) {
-            jDateChooserNacimiento.requestFocusInWindow();
+            dateChooserNacimiento.requestFocusInWindow();
             return false;
         }
         if (email.length() == 0) {
-            Utils.marcarTextField(jTextFieldEmail);
+            Utils.marcarTextField(textFieldEmail);
             return false;
         }
         return true;
@@ -64,11 +64,11 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         nacimiento = entity.getNacimiento();
         email = entity.getEmail();
 
-        jTextFieldCodigo.setText(codigo);
-        jTextFieldCodigo.setEnabled(false);
-        jTextFieldNombre.setText(nombre);
-        jDateChooserNacimiento.setDate(nacimiento);
-        jTextFieldEmail.setText(email);
+        textFieldCodigo.setText(codigo);
+        textFieldCodigo.setEnabled(false);
+        textFieldNombre.setText(nombre);
+        dateChooserNacimiento.setDate(nacimiento);
+        textFieldEmail.setText(email);
     }
 
     @Override
@@ -92,87 +92,87 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jLabelCodigo = new javax.swing.JLabel();
-        jLabelNombre = new javax.swing.JLabel();
-        jLabelEdad = new javax.swing.JLabel();
-        jLabelEmail = new javax.swing.JLabel();
-        jTextFieldCodigo = new javax.swing.JTextField();
-        jTextFieldNombre = new javax.swing.JTextField();
-        jDateChooserNacimiento = new com.toedter.calendar.JDateChooser();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
+        labelCodigo = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        labelEdad = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
+        textFieldCodigo = new javax.swing.JTextField();
+        textFieldNombre = new javax.swing.JTextField();
+        dateChooserNacimiento = new com.toedter.calendar.JDateChooser();
+        textFieldEmail = new javax.swing.JTextField();
+        buttonAceptar = new javax.swing.JButton();
+        buttonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
 
-        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("app.dialog.border.title"))); // NOI18N
+        panel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("app.dialog.border.title"))); // NOI18N
 
-        jLabelCodigo.setText(bundle.getString("dictionary.code")); // NOI18N
+        labelCodigo.setText(bundle.getString("dictionary.code")); // NOI18N
 
-        jLabelNombre.setText(bundle.getString("dictionary.names")); // NOI18N
+        labelNombre.setText(bundle.getString("dictionary.names")); // NOI18N
 
-        jLabelEdad.setText(bundle.getString("dictionary.birthday")); // NOI18N
+        labelEdad.setText(bundle.getString("dictionary.birthday")); // NOI18N
 
-        jLabelEmail.setText(bundle.getString("dictionary.email")); // NOI18N
+        labelEmail.setText(bundle.getString("dictionary.email")); // NOI18N
 
-        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
-        jPanel.setLayout(jPanelLayout);
-        jPanelLayout.setHorizontalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldEmail)
-                    .addComponent(jDateChooserNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombre)
-                    .addComponent(jTextFieldCodigo))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldEmail)
+                    .addComponent(dateChooserNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(textFieldNombre)
+                    .addComponent(textFieldCodigo))
                 .addContainerGap())
         );
-        jPanelLayout.setVerticalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabelCodigo)
-                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(labelCodigo)
+                    .addComponent(textFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombre))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jDateChooserNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEdad))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(dateChooserNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEdad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEmail))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEmail))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonAceptar.setText(bundle.getString("dictionary.accept")); // NOI18N
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+        buttonAceptar.setText(bundle.getString("dictionary.accept")); // NOI18N
+        buttonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
+                buttonAceptarActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setText(bundle.getString("dictionary.cancel")); // NOI18N
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        buttonCancelar.setText(bundle.getString("dictionary.cancel")); // NOI18N
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                buttonCancelarActionPerformed(evt);
             }
         });
 
@@ -182,24 +182,24 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCancelar)
+                .addComponent(buttonCancelar)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonAceptar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(buttonAceptar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonCancelar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,7 +207,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+    private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         if (capturarDatos()) {
             if (entity == null) {
                 entity = new Teacher();
@@ -226,23 +226,23 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
                 log.warn("No se pudo insertar/actualizar al profesor.");
             }
         }
-    }//GEN-LAST:event_jButtonAceptarActionPerformed
+    }//GEN-LAST:event_buttonAceptarActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_buttonCancelarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private com.toedter.calendar.JDateChooser jDateChooserNacimiento;
-    private javax.swing.JLabel jLabelCodigo;
-    private javax.swing.JLabel jLabelEdad;
-    private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JTextField jTextFieldCodigo;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JButton buttonAceptar;
+    private javax.swing.JButton buttonCancelar;
+    private com.toedter.calendar.JDateChooser dateChooserNacimiento;
+    private javax.swing.JLabel labelCodigo;
+    private javax.swing.JLabel labelEdad;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JPanel panel;
+    private javax.swing.JTextField textFieldCodigo;
+    private javax.swing.JTextField textFieldEmail;
+    private javax.swing.JTextField textFieldNombre;
     // End of variables declaration//GEN-END:variables
 
 }
