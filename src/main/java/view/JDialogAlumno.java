@@ -83,7 +83,7 @@ public class JDialogAlumno extends javax.swing.JDialog {
         direccion = alumno.getDireccion();
         telefono = alumno.getTelefono();
 
-        int MAX_SIZE = jComboBoxSelectProf.getItemCount();
+        final int MAX_SIZE = jComboBoxSelectProf.getItemCount();
         for (int i = 0; i < MAX_SIZE; i++) {
             Profesor p = (Profesor) jComboBoxSelectProf.getItemAt(i);
             if (p.getId() == alumno.getProfesor()) {
@@ -153,30 +153,32 @@ public class JDialogAlumno extends javax.swing.JDialog {
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Aplicacion con MySQL");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+        setTitle(bundle.getString("app.title")); // NOI18N
+        setResizable(false);
 
-        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingreso de datos"));
+        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("app.dialog.border.title"))); // NOI18N
 
-        jLabelCodigo.setText("Codigo");
+        jLabelCodigo.setText(bundle.getString("dictionary.code")); // NOI18N
 
-        jLabelNombre.setText("Nombre");
+        jLabelNombre.setText(bundle.getString("dictionary.names")); // NOI18N
 
-        jLabelEdad.setText("Nacimiento");
+        jLabelEdad.setText(bundle.getString("dictionary.birthday")); // NOI18N
 
-        jLabelSexo.setText("Sexo");
+        jLabelSexo.setText(bundle.getString("dictionary.sex")); // NOI18N
 
-        jLabelDireccion.setText("Direccion");
+        jLabelDireccion.setText(bundle.getString("dictionary.address")); // NOI18N
 
-        jLabelTelefono.setText("Telefono");
+        jLabelTelefono.setText(bundle.getString("dictionary.phone")); // NOI18N
 
-        jLabelSelectProf.setText("<html>\nSelecciona<br>\nel profesor\n</html>");
+        jLabelSelectProf.setText(bundle.getString("app.select.teacher")); // NOI18N
 
         buttonGroup.add(jRadioButtonMasculino);
         jRadioButtonMasculino.setSelected(true);
-        jRadioButtonMasculino.setText("Masculino");
+        jRadioButtonMasculino.setText(bundle.getString("dictionary.male")); // NOI18N
 
         buttonGroup.add(jRadioButtonFemenino);
-        jRadioButtonFemenino.setText("Femenino");
+        jRadioButtonFemenino.setText(bundle.getString("dictionary.female")); // NOI18N
 
         jComboBoxSelectProf.setModel(new javax.swing.DefaultComboBoxModel(profesorController.getNames()));
 
@@ -250,14 +252,14 @@ public class JDialogAlumno extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setText(bundle.getString("dictionary.accept")); // NOI18N
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setText(bundle.getString("dictionary.cancel")); // NOI18N
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -282,13 +284,13 @@ public class JDialogAlumno extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAceptar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

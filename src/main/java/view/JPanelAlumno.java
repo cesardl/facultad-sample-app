@@ -73,7 +73,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
         if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
-            throw new UnsupportedOperationException("No se puede realizar esta acción");
+            throw new UnsupportedOperationException("You can not perform this action");
         }
 
         JDialogAlumno dialogAlumno = new JDialogAlumno(getParentForDialog());
@@ -114,12 +114,13 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         jScrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             alumnoController.getAll(),
             new String [] {
-                "Codigo", "Nombre", "Nacimiento", "Sexo", "Direccion", "Telefono"
+                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
             }
         ) {
             Class[] types = new Class [] {

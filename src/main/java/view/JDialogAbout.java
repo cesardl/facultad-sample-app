@@ -36,7 +36,8 @@ public class JDialogAbout extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Aplicacion con MySQL");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+        setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
@@ -45,7 +46,7 @@ public class JDialogAbout extends javax.swing.JDialog {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_mysql+java.png"))); // NOI18N
 
-        jLabel2.setText("<html>\nEl siguiente es una aplicaci&oacute;n<br>\nen el cual se ve el uso de las distintas query SQL<br>\npara el SGBD MySQL.\n</html>");
+        jLabel2.setText(bundle.getString("app.dialog.about")); // NOI18N
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
