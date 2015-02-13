@@ -7,16 +7,16 @@ import java.util.Date;
  *
  * @author Cesardl
  */
-public class Profesor extends Persona implements Serializable {
+public class Teacher extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String email;
 
-    public Profesor() {
+    public Teacher() {
         super();
     }
 
-    public Profesor(int id, String codigo, String nombre, Date nacimiento, String email) {
+    public Teacher(int id, String codigo, String nombre, Date nacimiento, String email) {
         super(id, codigo, nombre, nacimiento);
         this.email = email;
     }

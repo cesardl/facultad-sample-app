@@ -1,14 +1,14 @@
 /*
- * JPanelAlumno.java
+ * JPanelStudent.java
  *
  * Created on 21/03/2010, 10:10:18 PM
  */
 package view;
 
-import beans.Alumno;
+import beans.Student;
 import controller.DialogAction;
-import controller.AlumnoController;
-import controller.impl.AlumnoControllerImpl;
+import controller.StudentController;
+import controller.impl.StudentControllerImpl;
 import javax.swing.JTable;
 import util.Utils;
 import view.etc.JPanelBase;
@@ -21,14 +21,14 @@ import view.etc.JPanelBase;
  * <a href='http://esus.com/detecting-double-click-row-jtable/'>Detecting a
  * double-click on a row in a JTable</a>
  */
-public class JPanelAlumno extends JPanelBase<Alumno> {
+public class JPanelStudent extends JPanelBase<Student> {
 
-    private final AlumnoController alumnoController = new AlumnoControllerImpl();
+    private final StudentController alumnoController = new StudentControllerImpl();
 
     /**
      * Creates new form JPanelAlumno
      */
-    public JPanelAlumno() {
+    public JPanelStudent() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     }
 
     @Override
-    protected void addRow(Alumno entity) {
+    protected void addRow(Student entity) {
         tableModel.addRow(new Object[]{
             entity.getCodigo(),
             entity.getNombre(),
@@ -53,7 +53,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     }
 
     @Override
-    protected void setRowValues(int row, Alumno entity) {
+    protected void setRowValues(int row, Student entity) {
         tableModel.setValueAt(entity.getCodigo(), row, 0);
         tableModel.setValueAt(entity.getNombre(), row, 1);
         tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
@@ -76,10 +76,10 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogAlumno dialogAlumno = new JDialogAlumno(getParentForDialog());
+        JDialogStudent dialogAlumno = new JDialogStudent(getParentForDialog());
         Utils.installEscapeCloseOperation(dialogAlumno);
 
-        Alumno alumno;
+        Student alumno;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
             alumno = alumnoController.getByCode(code);

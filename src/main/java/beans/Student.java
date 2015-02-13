@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author Cesardl
  */
-public class Alumno extends Persona implements Serializable {
+public class Student extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Gender sexo;
@@ -16,11 +16,11 @@ public class Alumno extends Persona implements Serializable {
     private String telefono;
     private int profesor;
 
-    public Alumno() {
+    public Student() {
         super();
     }
 
-    public Alumno(int id, String codigo, String nombre, Date nacimiento, Gender sexo, String direccion, String telefono) {
+    public Student(int id, String codigo, String nombre, Date nacimiento, Gender sexo, String direccion, String telefono) {
         super(id, codigo, nombre, nacimiento);
         this.sexo = sexo;
         this.direccion = direccion;

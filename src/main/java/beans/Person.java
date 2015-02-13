@@ -6,17 +6,17 @@ import java.util.Date;
  *
  * @author Cesardl
  */
-public abstract class Persona {
+public abstract class Person {
 
     protected int id;
     protected String codigo;
     protected String nombre;
     protected Date nacimiento;
 
-    public Persona() {
+    public Person() {
     }
 
-    public Persona(int id, String codigo, String nombre, Date nacimiento) {
+    public Person(int id, String codigo, String nombre, Date nacimiento) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;

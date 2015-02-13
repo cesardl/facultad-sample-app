@@ -1,11 +1,11 @@
 /*
- * JDialogProfesor.java
+ * JDialogTeacher.java
  *
  * Created on 12/07/2009, 05:13:31 PM
  */
 package view;
 
-import beans.Profesor;
+import beans.Teacher;
 import util.Utils;
 import view.etc.JDialogBase;
 
@@ -13,7 +13,7 @@ import view.etc.JDialogBase;
  *
  * @author Cesardl
  */
-public class JDialogProfesor extends JDialogBase<Profesor> {
+public class JDialogTeacher extends JDialogBase<Teacher> {
 
     private String email;
 
@@ -22,7 +22,7 @@ public class JDialogProfesor extends JDialogBase<Profesor> {
      *
      * @param parent
      */
-    public JDialogProfesor(java.awt.Frame parent) {
+    public JDialogTeacher(java.awt.Frame parent) {
         super(parent);
         initComponents();
     }
@@ -72,12 +72,12 @@ public class JDialogProfesor extends JDialogBase<Profesor> {
     }
 
     @Override
-    public Profesor getEntity() {
+    public Teacher getEntity() {
         return entity;
     }
 
     @Override
-    public void setEntity(Profesor entity) {
+    public void setEntity(Teacher entity) {
         this.entity = entity;
 
         asignarDatos();
@@ -210,7 +210,7 @@ public class JDialogProfesor extends JDialogBase<Profesor> {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         if (capturarDatos()) {
             if (entity == null) {
-                entity = new Profesor();
+                entity = new Teacher();
             }
 
             entity.setCodigo(codigo);

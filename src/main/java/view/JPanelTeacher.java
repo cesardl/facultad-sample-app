@@ -1,14 +1,14 @@
 /*
- * JPanelProfesor.java
+ * JPanelTeacher.java
  *
  * Created on 21/03/2010, 10:10:27 PM
  */
 package view;
 
-import beans.Profesor;
+import beans.Teacher;
 import controller.DialogAction;
-import controller.ProfesorController;
-import controller.impl.ProfesorControllerImpl;
+import controller.TeacherController;
+import controller.impl.TeacherControllerImpl;
 import javax.swing.JTable;
 import util.Utils;
 import view.etc.JPanelBase;
@@ -17,14 +17,14 @@ import view.etc.JPanelBase;
  *
  * @author Cesardl
  */
-public class JPanelProfesor extends JPanelBase<Profesor> {
+public class JPanelTeacher extends JPanelBase<Teacher> {
 
-    private final ProfesorController profesorController = new ProfesorControllerImpl();
+    private final TeacherController profesorController = new TeacherControllerImpl();
 
     /**
      * Creates new form JPanelProfesor
      */
-    public JPanelProfesor() {
+    public JPanelTeacher() {
         initComponents();
     }
 
@@ -37,7 +37,7 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     }
 
     @Override
-    protected void addRow(Profesor entity) {
+    protected void addRow(Teacher entity) {
         tableModel.addRow(new Object[]{
             entity.getCodigo(),
             entity.getNombre(),
@@ -47,7 +47,7 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     }
 
     @Override
-    protected void setRowValues(int row, Profesor entity) {
+    protected void setRowValues(int row, Teacher entity) {
         tableModel.setValueAt(entity.getCodigo(), row, 0);
         tableModel.setValueAt(entity.getNombre(), row, 1);
         tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
@@ -68,10 +68,10 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogProfesor dialogProfesor = new JDialogProfesor(getParentForDialog());
+        JDialogTeacher dialogProfesor = new JDialogTeacher(getParentForDialog());
         Utils.installEscapeCloseOperation(dialogProfesor);
 
-        Profesor profesor;
+        Teacher profesor;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
             profesor = profesorController.getByCode(code);

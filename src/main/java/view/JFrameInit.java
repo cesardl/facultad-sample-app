@@ -27,8 +27,8 @@ public class JFrameInit extends javax.swing.JFrame {
 
         jPanel = new javax.swing.JPanel();
         jTabbedPane = new javax.swing.JTabbedPane();
-        jPanelAlumno = new view.JPanelAlumno();
-        jPanelProfesor = new view.JPanelProfesor();
+        jPanelAlumno = new view.JPanelStudent();
+        jPanelProfesor = new view.JPanelTeacher();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuActions = new javax.swing.JMenu();
         jMenuAlumno = new javax.swing.JMenu();
@@ -278,8 +278,8 @@ public class JFrameInit extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemUpdateProfesor;
     private javax.swing.JMenu jMenuProfesor;
     private javax.swing.JPanel jPanel;
-    private view.JPanelAlumno jPanelAlumno;
-    private view.JPanelProfesor jPanelProfesor;
+    private view.JPanelStudent jPanelAlumno;
+    private view.JPanelTeacher jPanelProfesor;
     private javax.swing.JPopupMenu.Separator jSeparator;
     private javax.swing.JTabbedPane jTabbedPane;
     private java.util.ResourceBundle bundle;

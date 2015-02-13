@@ -1,9 +1,9 @@
 package factory.impl;
 
-import dao.AlumnoDAO;
-import dao.ProfesorDAO;
-import dao.impl.AlumnoDAOImpl;
-import dao.impl.ProfesorDAOImpl;
+import dao.StudentDAO;
+import dao.TeacherDAO;
+import dao.impl.StudentDAOImpl;
+import dao.impl.TeacherDAOImpl;
 import factory.DAOFactory;
 
 /**
@@ -13,13 +13,13 @@ import factory.DAOFactory;
 public class MysqlDAOFactory extends DAOFactory {
 
     @Override
-    public AlumnoDAO getAlumnoDAO() {
-        return new AlumnoDAOImpl();
+    public StudentDAO getAlumnoDAO() {
+        return new StudentDAOImpl();
     }
 
     @Override
-    public ProfesorDAO getProfesorDAO() {
-        return new ProfesorDAOImpl();
+    public TeacherDAO getProfesorDAO() {
+        return new TeacherDAOImpl();
     }
 
 }

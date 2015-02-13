@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import beans.Profesor;
+import beans.Teacher;
 import static dao.DAO.STATE_ERROR;
 import static dao.DAO.log;
-import dao.ProfesorDAO;
+import dao.TeacherDAO;
 import factory.DAOFactory;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,24 +18,24 @@ import java.util.List;
  *
  * @author Cesardl
  */
-public class ProfesorDAOImpl implements ProfesorDAO {
+public class TeacherDAOImpl implements TeacherDAO {
 
     /**
      *
      * @return
      */
     @Override
-    public List<Profesor> selectAll() {
+    public List<Teacher> selectAll() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
 
-        List<Profesor> profesores = new ArrayList<>();
+        List<Teacher> profesores = new ArrayList<>();
 
         try (Connection connection = DAOFactory.createConnection();
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                profesores.add(new Profesor(
+                profesores.add(new Teacher(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
@@ -51,10 +51,10 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public Profesor selectByCode(String code) {
+    public Teacher selectByCode(String code) {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
 
-        Profesor profesor = null;
+        Teacher profesor = null;
 
         try (Connection connection = DAOFactory.createConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -63,7 +63,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
-                    profesor = new Profesor(
+                    profesor = new Teacher(
                             resultSet.getInt(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
@@ -80,17 +80,17 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public List<Profesor> selectNames() {
+    public List<Teacher> selectNames() {
         String sql = "SELECT id_prof, nom_prof FROM profesor";
 
-        List<Profesor> profesores = new ArrayList<>();
+        List<Teacher> profesores = new ArrayList<>();
 
         try (Connection connection = DAOFactory.createConnection();
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                Profesor p = new Profesor();
+                Teacher p = new Teacher();
                 p.setId(resultSet.getInt(1));
                 p.setNombre(resultSet.getString(2));
 
@@ -105,7 +105,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public int insert(Profesor entity) {
+    public int insert(Teacher entity) {
         String sql = "INSERT INTO profesor(id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?, ?)";
 
         int state;
@@ -128,7 +128,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public int update(Profesor entity) {
+    public int update(Teacher entity) {
         String sql = "UPDATE profesor SET cod_prof = ?, nom_prof = ?, nacimiento_prof = ?, email_prof = ? WHERE id_prof = ?";
 
         int state;
@@ -151,7 +151,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
     }
 
     @Override
-    public int delete(Profesor entity) {
+    public int delete(Teacher entity) {
         String sql = "DELETE FROM profesor WHERE cod_prof = ?";
 
         int state;

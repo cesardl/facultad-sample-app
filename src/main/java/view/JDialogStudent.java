@@ -1,15 +1,15 @@
 /*
- * JDialogAlumno.java
+ * JDialogStudent.java
  *
  * Created on 12/07/2009, 05:13:31 PM
  */
 package view;
 
-import beans.Alumno;
-import beans.Profesor;
+import beans.Student;
+import beans.Teacher;
 import beans.etc.Gender;
-import controller.AlumnoController;
-import controller.impl.AlumnoControllerImpl;
+import controller.StudentController;
+import controller.impl.StudentControllerImpl;
 import util.Utils;
 import view.etc.JDialogBase;
 
@@ -17,9 +17,9 @@ import view.etc.JDialogBase;
  *
  * @author Cesardl
  */
-public class JDialogAlumno extends JDialogBase<Alumno> {
+public class JDialogStudent extends JDialogBase<Student> {
 
-    private final AlumnoController alumnoController = new AlumnoControllerImpl();
+    private final StudentController alumnoController = new StudentControllerImpl();
 
     private String direccion, telefono;
     private Gender sexo;
@@ -29,7 +29,7 @@ public class JDialogAlumno extends JDialogBase<Alumno> {
      *
      * @param parent
      */
-    public JDialogAlumno(java.awt.Frame parent) {
+    public JDialogStudent(java.awt.Frame parent) {
         super(parent);
         initComponents();
     }
@@ -78,7 +78,7 @@ public class JDialogAlumno extends JDialogBase<Alumno> {
 
         final int MAX_SIZE = jComboBoxSelectProf.getItemCount();
         for (int i = 0; i < MAX_SIZE; i++) {
-            Profesor p = (Profesor) jComboBoxSelectProf.getItemAt(i);
+            Teacher p = (Teacher) jComboBoxSelectProf.getItemAt(i);
             if (p.getId() == entity.getProfesor()) {
                 jComboBoxSelectProf.setSelectedIndex(i);
                 break;
@@ -99,12 +99,12 @@ public class JDialogAlumno extends JDialogBase<Alumno> {
     }
 
     @Override
-    public Alumno getEntity() {
+    public Student getEntity() {
         return entity;
     }
 
     @Override
-    public void setEntity(Alumno entity) {
+    public void setEntity(Student entity) {
         this.entity = entity;
 
         asignarDatos();
@@ -286,11 +286,11 @@ public class JDialogAlumno extends JDialogBase<Alumno> {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         if (capturarDatos()) {
-            Profesor p = (Profesor) jComboBoxSelectProf.getSelectedItem();
+            Teacher p = (Teacher) jComboBoxSelectProf.getSelectedItem();
             int idProfesor = p.getId();
 
             if (entity == null) {
-                entity = new Alumno();
+                entity = new Student();
             }
 
             entity.setCodigo(codigo);

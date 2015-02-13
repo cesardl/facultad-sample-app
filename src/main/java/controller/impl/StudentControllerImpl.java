@@ -1,8 +1,8 @@
 package controller.impl;
 
-import beans.Alumno;
-import controller.AlumnoController;
-import dao.AlumnoDAO;
+import beans.Student;
+import controller.StudentController;
+import dao.StudentDAO;
 import dao.DAO;
 import factory.DAOFactory;
 import java.util.List;
@@ -12,19 +12,19 @@ import util.Utils;
  *
  * @author Cesardl
  */
-public class AlumnoControllerImpl implements AlumnoController {
+public class StudentControllerImpl implements StudentController {
 
     @Override
     public Object[][] getAll() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getAlumnoDAO();
 
-        List<Alumno> alumnos = dao.selectAll();
+        List<Student> alumnos = dao.selectAll();
 
         Object[][] rowData = new Object[alumnos.size()][6];
 
         for (int i = 0; i < alumnos.size(); i++) {
-            Alumno alumno = alumnos.get(i);
+            Student alumno = alumnos.get(i);
 
             rowData[i][0] = alumno.getCodigo();
             rowData[i][1] = alumno.getNombre();
@@ -38,19 +38,19 @@ public class AlumnoControllerImpl implements AlumnoController {
     }
 
     @Override
-    public Alumno getByCode(String code) {
+    public Student getByCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getAlumnoDAO();
 
-        Alumno alumno = dao.selectByCode(code);
+        Student alumno = dao.selectByCode(code);
 
         return alumno;
     }
 
     @Override
-    public boolean saveOrUpdate(Alumno entity) {
+    public boolean saveOrUpdate(Student entity) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getAlumnoDAO();
 
         int state;
 
@@ -72,9 +72,9 @@ public class AlumnoControllerImpl implements AlumnoController {
     @Override
     public boolean delete(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getAlumnoDAO();
 
-        Alumno entity = new Alumno();
+        Student entity = new Student();
         entity.setCodigo(code);
 
         int state = dao.delete(entity);
@@ -91,7 +91,7 @@ public class AlumnoControllerImpl implements AlumnoController {
     @Override
     public boolean existsCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getAlumnoDAO();
 
         int id = dao.selectIdByCode(code);
 
