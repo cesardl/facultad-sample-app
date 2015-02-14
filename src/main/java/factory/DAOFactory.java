@@ -35,9 +35,9 @@ public abstract class DAOFactory {
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
     // implement these methods.
-    public abstract StudentDAO getAlumnoDAO();
+    public abstract StudentDAO getStudentDAO();
 
-    public abstract TeacherDAO getProfesorDAO();
+    public abstract TeacherDAO getTeacherDAO();
 
     static {
         try (InputStream is = DAOFactory.class.getResourceAsStream("/db/database.properties")) {
@@ -50,7 +50,7 @@ public abstract class DAOFactory {
             user = prop.getProperty("database.user");
             passwd = prop.getProperty("database.passwd");
         } catch (IOException e) {
-            log.error("Error cargando resources del properties", e);
+            log.error("Error while properties resources were loaded.", e);
         }
     }
 

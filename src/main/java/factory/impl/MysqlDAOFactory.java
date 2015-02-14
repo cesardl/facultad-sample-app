@@ -13,12 +13,12 @@ import factory.DAOFactory;
 public class MysqlDAOFactory extends DAOFactory {
 
     @Override
-    public StudentDAO getAlumnoDAO() {
+    public StudentDAO getStudentDAO() {
         return new StudentDAOImpl();
     }
 
     @Override
-    public TeacherDAO getProfesorDAO() {
+    public TeacherDAO getTeacherDAO() {
         return new TeacherDAOImpl();
     }
 

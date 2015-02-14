@@ -27,18 +27,18 @@ public class JFrameInit extends javax.swing.JFrame {
 
         panel = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
-        panelAlumno = new view.JPanelStudent();
-        panelProfesor = new view.JPanelTeacher();
+        panelStudent = new view.JPanelStudent();
+        panelTeacher = new view.JPanelTeacher();
         menuBar = new javax.swing.JMenuBar();
         menuActions = new javax.swing.JMenu();
-        menuAlumno = new javax.swing.JMenu();
-        menuItemInsertAlumno = new javax.swing.JMenuItem();
-        menuItemUpdateAlumno = new javax.swing.JMenuItem();
-        menuItemDeleteAlumno = new javax.swing.JMenuItem();
-        menuProfesor = new javax.swing.JMenu();
-        menuItemInsertProfesor = new javax.swing.JMenuItem();
-        menuItemUpdateProfesor = new javax.swing.JMenuItem();
-        menuItemDeleteProfesor = new javax.swing.JMenuItem();
+        menuStudent = new javax.swing.JMenu();
+        menuItemInsertStudent = new javax.swing.JMenuItem();
+        menuItemUpdateStudent = new javax.swing.JMenuItem();
+        menuItemDeleteStudent = new javax.swing.JMenuItem();
+        menuTeacher = new javax.swing.JMenu();
+        menuItemInsertTeacher = new javax.swing.JMenuItem();
+        menuItemUpdateTeacher = new javax.swing.JMenuItem();
+        menuItemDeleteTeacher = new javax.swing.JMenuItem();
         separator = new javax.swing.JPopupMenu.Separator();
         menuItemExit = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
@@ -50,8 +50,8 @@ public class JFrameInit extends javax.swing.JFrame {
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        tabbedPane.addTab(bundle.getString("dictionary.student"), panelAlumno); // NOI18N
-        tabbedPane.addTab(bundle.getString("dictionary.teacher"), panelProfesor); // NOI18N
+        tabbedPane.addTab(bundle.getString("dictionary.student"), panelStudent); // NOI18N
+        tabbedPane.addTab(bundle.getString("dictionary.teacher"), panelTeacher); // NOI18N
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -74,61 +74,61 @@ public class JFrameInit extends javax.swing.JFrame {
 
         menuActions.setText(bundle.getString("dictionary.actions")); // NOI18N
 
-        menuAlumno.setText(bundle.getString("dictionary.student")); // NOI18N
+        menuStudent.setText(bundle.getString("dictionary.student")); // NOI18N
 
-        menuItemInsertAlumno.setText(bundle.getString("dictionary.new")); // NOI18N
-        menuItemInsertAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemInsertStudent.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemInsertAlumnoActionPerformed(evt);
+                menuItemInsertStudentActionPerformed(evt);
             }
         });
-        menuAlumno.add(menuItemInsertAlumno);
+        menuStudent.add(menuItemInsertStudent);
 
-        menuItemUpdateAlumno.setText(bundle.getString("dictionary.edit")); // NOI18N
-        menuItemUpdateAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUpdateStudent.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemUpdateAlumnoActionPerformed(evt);
+                menuItemUpdateStudentActionPerformed(evt);
             }
         });
-        menuAlumno.add(menuItemUpdateAlumno);
+        menuStudent.add(menuItemUpdateStudent);
 
-        menuItemDeleteAlumno.setText(bundle.getString("dictionary.delete")); // NOI18N
-        menuItemDeleteAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemDeleteStudent.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDeleteAlumnoActionPerformed(evt);
+                menuItemDeleteStudentActionPerformed(evt);
             }
         });
-        menuAlumno.add(menuItemDeleteAlumno);
+        menuStudent.add(menuItemDeleteStudent);
 
-        menuActions.add(menuAlumno);
+        menuActions.add(menuStudent);
 
-        menuProfesor.setText(bundle.getString("dictionary.teacher")); // NOI18N
+        menuTeacher.setText(bundle.getString("dictionary.teacher")); // NOI18N
 
-        menuItemInsertProfesor.setText(bundle.getString("dictionary.new")); // NOI18N
-        menuItemInsertProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemInsertTeacher.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemInsertProfesorActionPerformed(evt);
+                menuItemInsertTeacherActionPerformed(evt);
             }
         });
-        menuProfesor.add(menuItemInsertProfesor);
+        menuTeacher.add(menuItemInsertTeacher);
 
-        menuItemUpdateProfesor.setText(bundle.getString("dictionary.edit")); // NOI18N
-        menuItemUpdateProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUpdateTeacher.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemUpdateProfesorActionPerformed(evt);
+                menuItemUpdateTeacherActionPerformed(evt);
             }
         });
-        menuProfesor.add(menuItemUpdateProfesor);
+        menuTeacher.add(menuItemUpdateTeacher);
 
-        menuItemDeleteProfesor.setText(bundle.getString("dictionary.delete")); // NOI18N
-        menuItemDeleteProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemDeleteTeacher.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDeleteProfesorActionPerformed(evt);
+                menuItemDeleteTeacherActionPerformed(evt);
             }
         });
-        menuProfesor.add(menuItemDeleteProfesor);
+        menuTeacher.add(menuItemDeleteTeacher);
 
-        menuActions.add(menuProfesor);
+        menuActions.add(menuTeacher);
         menuActions.add(separator);
 
         menuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
@@ -176,82 +176,82 @@ public class JFrameInit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertAlumnoActionPerformed
-        panelAlumno.showDialog();
-    }//GEN-LAST:event_menuItemInsertAlumnoActionPerformed
+    private void menuItemInsertStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertStudentActionPerformed
+        panelStudent.showDialog();
+    }//GEN-LAST:event_menuItemInsertStudentActionPerformed
 
-    private void menuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateAlumnoActionPerformed
-        JTable target = panelAlumno.getTable();
+    private void menuItemUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateStudentActionPerformed
+        JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
             tabbedPane.setSelectedIndex(0);
 
-            panelAlumno.showDialog(row, code);
+            panelStudent.showDialog(row, code);
         }
-    }//GEN-LAST:event_menuItemUpdateAlumnoActionPerformed
+    }//GEN-LAST:event_menuItemUpdateStudentActionPerformed
 
-    private void menuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteAlumnoActionPerformed
-        JTable target = panelAlumno.getTable();
+    private void menuItemDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteStudentActionPerformed
+        JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
-                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-            if (i == 0) {
-                panelAlumno.deleteRow(row, code);
+            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
+                    this.getTitle(), JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                panelStudent.deleteRow(row, code);
             }
         }
-    }//GEN-LAST:event_menuItemDeleteAlumnoActionPerformed
+    }//GEN-LAST:event_menuItemDeleteStudentActionPerformed
 
-    private void menuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertProfesorActionPerformed
-        panelProfesor.showDialog();
-    }//GEN-LAST:event_menuItemInsertProfesorActionPerformed
+    private void menuItemInsertTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertTeacherActionPerformed
+        panelTeacher.showDialog();
+    }//GEN-LAST:event_menuItemInsertTeacherActionPerformed
 
-    private void menuItemUpdateProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateProfesorActionPerformed
-        JTable target = panelProfesor.getTable();
+    private void menuItemUpdateTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateTeacherActionPerformed
+        JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
             tabbedPane.setSelectedIndex(1);
 
-            panelProfesor.showDialog(row, code);
+            panelTeacher.showDialog(row, code);
         }
-    }//GEN-LAST:event_menuItemUpdateProfesorActionPerformed
+    }//GEN-LAST:event_menuItemUpdateTeacherActionPerformed
 
-    private void menuItemDeleteProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteProfesorActionPerformed
-        JTable target = panelProfesor.getTable();
+    private void menuItemDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteTeacherActionPerformed
+        JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
-                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-            if (i == 0) {
-                panelProfesor.deleteRow(row, code);
+            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
+                    this.getTitle(), JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                panelTeacher.deleteRow(row, code);
             }
         }
-    }//GEN-LAST:event_menuItemDeleteProfesorActionPerformed
+    }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 
     private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
-        int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
-                this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
+        int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
+                this.getTitle(), JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_menuItemExitActionPerformed
@@ -265,21 +265,21 @@ public class JFrameInit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu menuActions;
-    private javax.swing.JMenu menuAlumno;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuItemAbout;
-    private javax.swing.JMenuItem menuItemDeleteAlumno;
-    private javax.swing.JMenuItem menuItemDeleteProfesor;
+    private javax.swing.JMenuItem menuItemDeleteStudent;
+    private javax.swing.JMenuItem menuItemDeleteTeacher;
     private javax.swing.JMenuItem menuItemExit;
-    private javax.swing.JMenuItem menuItemInsertAlumno;
-    private javax.swing.JMenuItem menuItemInsertProfesor;
-    private javax.swing.JMenuItem menuItemUpdateAlumno;
-    private javax.swing.JMenuItem menuItemUpdateProfesor;
-    private javax.swing.JMenu menuProfesor;
+    private javax.swing.JMenuItem menuItemInsertStudent;
+    private javax.swing.JMenuItem menuItemInsertTeacher;
+    private javax.swing.JMenuItem menuItemUpdateStudent;
+    private javax.swing.JMenuItem menuItemUpdateTeacher;
+    private javax.swing.JMenu menuStudent;
+    private javax.swing.JMenu menuTeacher;
     private javax.swing.JPanel panel;
-    private view.JPanelStudent panelAlumno;
-    private view.JPanelTeacher panelProfesor;
+    private view.JPanelStudent panelStudent;
+    private view.JPanelTeacher panelTeacher;
     private javax.swing.JPopupMenu.Separator separator;
     private javax.swing.JTabbedPane tabbedPane;
     private java.util.ResourceBundle bundle;

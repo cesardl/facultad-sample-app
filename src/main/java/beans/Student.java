@@ -11,52 +11,52 @@ import java.util.Date;
 public class Student extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Gender sexo;
-    private String direccion;
-    private String telefono;
-    private int profesor;
+    private Gender gender;
+    private String direction;
+    private String phone;
+    private int teacherId;
 
     public Student() {
         super();
     }
 
-    public Student(int id, String codigo, String nombre, Date nacimiento, Gender sexo, String direccion, String telefono) {
-        super(id, codigo, nombre, nacimiento);
-        this.sexo = sexo;
-        this.direccion = direccion;
-        this.telefono = telefono;
+    public Student(int id, String code, String names, Date birthday, Gender sexo, String direccion, String telefono) {
+        super(id, code, names, birthday);
+        this.gender = sexo;
+        this.direction = direccion;
+        this.phone = telefono;
     }
 
-    public Gender getSexo() {
-        return sexo;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setSexo(Gender sexo) {
-        this.sexo = sexo;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDirection() {
+        return direction;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     public String getTelefono() {
-        return telefono;
+        return phone;
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        this.phone = telefono;
     }
 
-    public int getProfesor() {
-        return profesor;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public void setProfesor(int profesor) {
-        this.profesor = profesor;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
 }

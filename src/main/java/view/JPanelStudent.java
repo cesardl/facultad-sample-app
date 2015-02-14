@@ -23,7 +23,7 @@ import view.etc.JPanelBase;
  */
 public class JPanelStudent extends JPanelBase<Student> {
 
-    private final StudentController alumnoController = new StudentControllerImpl();
+    private final StudentController studentController = new StudentControllerImpl();
 
     /**
      * Creates new form JPanelAlumno
@@ -43,28 +43,28 @@ public class JPanelStudent extends JPanelBase<Student> {
     @Override
     protected void addRow(Student entity) {
         tableModel.addRow(new Object[]{
-            entity.getCodigo(),
-            entity.getNombre(),
-            Utils.formatDate(entity.getNacimiento()),
-            entity.getSexo().getValue(),
-            entity.getDireccion(),
+            entity.getCode(),
+            entity.getNames(),
+            Utils.formatDate(entity.getBirthday()),
+            entity.getGender().getValue(),
+            entity.getDirection(),
             entity.getTelefono()
         });
     }
 
     @Override
     protected void setRowValues(int row, Student entity) {
-        tableModel.setValueAt(entity.getCodigo(), row, 0);
-        tableModel.setValueAt(entity.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
-        tableModel.setValueAt(entity.getSexo().getValue(), row, 3);
-        tableModel.setValueAt(entity.getDireccion(), row, 4);
+        tableModel.setValueAt(entity.getCode(), row, 0);
+        tableModel.setValueAt(entity.getNames(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(entity.getGender().getValue(), row, 3);
+        tableModel.setValueAt(entity.getDirection(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
-        boolean state = alumnoController.delete(code);
+        boolean state = studentController.delete(code);
         if (state) {
             tableModel.removeRow(row);
         }
@@ -82,7 +82,7 @@ public class JPanelStudent extends JPanelBase<Student> {
         Student alumno;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            alumno = alumnoController.getByCode(code);
+            alumno = studentController.getByCode(code);
 
             dialogAlumno.setEntity(alumno);
         }
@@ -118,7 +118,7 @@ public class JPanelStudent extends JPanelBase<Student> {
         scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            alumnoController.getAll(),
+            studentController.getAll(),
             new String [] {
                 bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
             }

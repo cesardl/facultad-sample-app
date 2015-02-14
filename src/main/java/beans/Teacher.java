@@ -16,8 +16,8 @@ public class Teacher extends Person implements Serializable {
         super();
     }
 
-    public Teacher(int id, String codigo, String nombre, Date nacimiento, String email) {
-        super(id, codigo, nombre, nacimiento);
+    public Teacher(int id, String code, String names, Date birthday, String email) {
+        super(id, code, names, birthday);
         this.email = email;
     }
 
@@ -31,7 +31,7 @@ public class Teacher extends Person implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return names;
     }
 
 }

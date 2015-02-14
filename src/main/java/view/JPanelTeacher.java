@@ -19,7 +19,7 @@ import view.etc.JPanelBase;
  */
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
-    private final TeacherController profesorController = new TeacherControllerImpl();
+    private final TeacherController teacherController = new TeacherControllerImpl();
 
     /**
      * Creates new form JPanelProfesor
@@ -39,24 +39,24 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     @Override
     protected void addRow(Teacher entity) {
         tableModel.addRow(new Object[]{
-            entity.getCodigo(),
-            entity.getNombre(),
-            Utils.formatDate(entity.getNacimiento()),
+            entity.getCode(),
+            entity.getNames(),
+            Utils.formatDate(entity.getBirthday()),
             entity.getEmail()
         });
     }
 
     @Override
     protected void setRowValues(int row, Teacher entity) {
-        tableModel.setValueAt(entity.getCodigo(), row, 0);
-        tableModel.setValueAt(entity.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
+        tableModel.setValueAt(entity.getCode(), row, 0);
+        tableModel.setValueAt(entity.getNames(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
-        boolean state = profesorController.delete(code);
+        boolean state = teacherController.delete(code);
         if (state) {
             tableModel.removeRow(row);
         }
@@ -74,7 +74,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         Teacher profesor;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            profesor = profesorController.getByCode(code);
+            profesor = teacherController.getByCode(code);
             dialogProfesor.setEntity(profesor);
         }
 
@@ -109,7 +109,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            profesorController.getAll(),
+            teacherController.getAll(),
             new String [] {
                 bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
             }

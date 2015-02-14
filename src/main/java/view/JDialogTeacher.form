@@ -30,9 +30,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="buttonAceptar" min="-2" pref="92" max="-2" attributes="0"/>
+              <Component id="buttonAccept" min="-2" pref="92" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="buttonCancelar" min="-2" max="-2" attributes="0"/>
+              <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
@@ -49,8 +49,8 @@
               <Component id="panel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="buttonAceptar" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonCancelar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAccept" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCancel" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -76,20 +76,20 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelEdad" max="32767" attributes="1"/>
+                          <Component id="labelBirthday" max="32767" attributes="1"/>
                           <Component id="labelEmail" max="32767" attributes="1"/>
                       </Group>
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelNombre" max="32767" attributes="1"/>
-                          <Component id="labelCodigo" max="32767" attributes="1"/>
+                          <Component id="labelNames" max="32767" attributes="1"/>
+                          <Component id="labelCode" max="32767" attributes="1"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="textFieldEmail" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateChooserNacimiento" alignment="0" pref="253" max="32767" attributes="0"/>
-                      <Component id="textFieldNombre" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textFieldCodigo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="dateChooserBirthday" alignment="0" pref="253" max="32767" attributes="0"/>
+                      <Component id="textFieldNames" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textFieldCode" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -100,18 +100,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="labelCodigo" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldCodigo" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelCode" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldCode" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="textFieldNombre" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelNombre" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldNames" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelNames" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="dateChooserNacimiento" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelEdad" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateChooserBirthday" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelBirthday" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
@@ -124,21 +124,21 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelCodigo">
+        <Component class="javax.swing.JLabel" name="labelCode">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.code" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelNombre">
+        <Component class="javax.swing.JLabel" name="labelNames">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.names" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelEdad">
+        <Component class="javax.swing.JLabel" name="labelBirthday">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.birthday" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -152,34 +152,34 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldCodigo">
+        <Component class="javax.swing.JTextField" name="textFieldCode">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldNombre">
+        <Component class="javax.swing.JTextField" name="textFieldNames">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserNacimiento">
+        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserBirthday">
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldEmail">
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonAceptar">
+    <Component class="javax.swing.JButton" name="buttonAccept">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="view/Bundle.properties" key="dictionary.accept" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAceptarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAcceptActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonCancelar">
+    <Component class="javax.swing.JButton" name="buttonCancel">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="view/Bundle.properties" key="dictionary.cancel" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

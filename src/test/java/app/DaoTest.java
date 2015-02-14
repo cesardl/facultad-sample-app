@@ -15,7 +15,7 @@ public class DaoTest {
     @Test
     public void alumnoGetIdByCode() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        StudentDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getStudentDAO();
 
         // No existe este ID en la tabla
         int id = dao.selectIdByCode("20011");
@@ -28,7 +28,7 @@ public class DaoTest {
     @Test
     public void profesorGetIdByCode() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         // No existe este ID en la tabla
         int id = dao.selectIdByCode("00000");

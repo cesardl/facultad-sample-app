@@ -2,7 +2,6 @@ package controller.impl;
 
 import beans.Teacher;
 import controller.TeacherController;
-import dao.StudentDAO;
 import dao.DAO;
 import dao.TeacherDAO;
 import factory.DAOFactory;
@@ -18,19 +17,19 @@ public class TeacherControllerImpl implements TeacherController {
     @Override
     public Object[][] getAll() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        List<Teacher> profesores = dao.selectAll();
+        List<Teacher> teachers = dao.selectAll();
 
-        Object[][] rowData = new Object[profesores.size()][4];
+        Object[][] rowData = new Object[teachers.size()][4];
 
-        for (int i = 0; i < profesores.size(); i++) {
-            Teacher profesor = profesores.get(i);
+        for (int i = 0; i < teachers.size(); i++) {
+            Teacher teacher = teachers.get(i);
 
-            rowData[i][0] = profesor.getCodigo();
-            rowData[i][1] = profesor.getNombre();
-            rowData[i][2] = Utils.formatDate(profesor.getNacimiento());
-            rowData[i][3] = profesor.getEmail();
+            rowData[i][0] = teacher.getCode();
+            rowData[i][1] = teacher.getNames();
+            rowData[i][2] = Utils.formatDate(teacher.getBirthday());
+            rowData[i][3] = teacher.getEmail();
         }
         return rowData;
     }
@@ -38,27 +37,27 @@ public class TeacherControllerImpl implements TeacherController {
     @Override
     public Teacher getByCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        Teacher profesor = dao.selectByCode(code);
+        Teacher teacher = dao.selectByCode(code);
 
-        return profesor;
+        return teacher;
     }
 
     @Override
     public Teacher[] getNames() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        List<Teacher> profesores = dao.selectNames();
+        List<Teacher> teachers = dao.selectNames();
 
-        return profesores.toArray(new Teacher[profesores.size()]);
+        return teachers.toArray(new Teacher[teachers.size()]);
     }
 
     @Override
     public boolean saveOrUpdate(Teacher entity) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         int state;
 
@@ -80,10 +79,10 @@ public class TeacherControllerImpl implements TeacherController {
     @Override
     public boolean delete(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         Teacher entity = new Teacher();
-        entity.setCodigo(code);
+        entity.setCode(code);
 
         int state = dao.delete(entity);
 
@@ -99,7 +98,7 @@ public class TeacherControllerImpl implements TeacherController {
     @Override
     public boolean existsCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        StudentDAO dao = factory.getAlumnoDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         int id = dao.selectIdByCode(code);
 

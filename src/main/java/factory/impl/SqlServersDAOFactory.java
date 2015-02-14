@@ -11,12 +11,12 @@ import factory.DAOFactory;
 public class SqlServersDAOFactory extends DAOFactory {
 
     @Override
-    public StudentDAO getAlumnoDAO() {
+    public StudentDAO getStudentDAO() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public TeacherDAO getProfesorDAO() {
+    public TeacherDAO getTeacherDAO() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

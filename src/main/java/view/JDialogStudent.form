@@ -38,9 +38,9 @@
                   <Component id="panel" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="buttonAceptar" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="buttonAccept" min="-2" pref="92" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonCancelar" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -54,8 +54,8 @@
               <Component id="panel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAccept" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -80,36 +80,36 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="labelSelectProf" alignment="0" max="32767" attributes="1"/>
+                      <Component id="labelSelectTeacher" alignment="0" max="32767" attributes="1"/>
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelCodigo" alignment="0" max="32767" attributes="1"/>
-                          <Component id="labelEdad" alignment="0" max="32767" attributes="1"/>
-                          <Component id="labelSexo" alignment="0" max="32767" attributes="1"/>
-                          <Component id="labelDireccion" alignment="0" max="32767" attributes="1"/>
-                          <Component id="labelTelefono" alignment="0" max="32767" attributes="1"/>
+                          <Component id="labelCode" alignment="0" max="32767" attributes="1"/>
+                          <Component id="labelBirthday" alignment="0" max="32767" attributes="1"/>
+                          <Component id="labelGender" alignment="0" max="32767" attributes="1"/>
+                          <Component id="labelDirection" alignment="0" max="32767" attributes="1"/>
+                          <Component id="labelPhone" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <Component id="labelNombre" alignment="0" max="32767" attributes="1"/>
+                      <Component id="labelNames" alignment="0" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="textFieldDireccion" alignment="0" pref="323" max="32767" attributes="0"/>
+                      <Component id="textFieldDirection" alignment="0" pref="323" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="dateChooserNacimiento" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textFieldCodigo" alignment="0" pref="215" max="32767" attributes="0"/>
-                              <Component id="textFieldNombre" alignment="0" pref="215" max="32767" attributes="0"/>
+                              <Component id="dateChooserBirthday" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldCode" alignment="0" pref="215" max="32767" attributes="0"/>
+                              <Component id="textFieldNames" alignment="0" pref="215" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="108" pref="108" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="comboBoxSelectProf" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboBoxSelectTeacher" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="radioButtonMasculino" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioButtonMale" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="radioButtonFemenino" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioButtonFemale" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="textFieldTelefono" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
+                              <Component id="textFieldPhone" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -123,39 +123,39 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="labelCodigo" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldCodigo" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelCode" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldCode" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="textFieldNombre" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelNombre" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldNames" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelNames" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="dateChooserNacimiento" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelEdad" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateChooserBirthday" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelBirthday" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="radioButtonFemenino" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioButtonMasculino" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelSexo" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonFemale" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonMale" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelGender" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="labelDireccion" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldDireccion" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDirection" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldDirection" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="textFieldTelefono" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelTelefono" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldPhone" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelPhone" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="comboBoxSelectProf" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelSelectProf" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxSelectTeacher" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelSelectTeacher" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -163,62 +163,62 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelCodigo">
+        <Component class="javax.swing.JLabel" name="labelCode">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.code" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelNombre">
+        <Component class="javax.swing.JLabel" name="labelNames">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.names" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelEdad">
+        <Component class="javax.swing.JLabel" name="labelBirthday">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.birthday" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelSexo">
+        <Component class="javax.swing.JLabel" name="labelGender">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.sex" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelDireccion">
+        <Component class="javax.swing.JLabel" name="labelDirection">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.address" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelTelefono">
+        <Component class="javax.swing.JLabel" name="labelPhone">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="dictionary.phone" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelSelectProf">
+        <Component class="javax.swing.JLabel" name="labelSelectTeacher">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="view/Bundle.properties" key="app.select.teacher" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldCodigo">
+        <Component class="javax.swing.JTextField" name="textFieldCode">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldNombre">
+        <Component class="javax.swing.JTextField" name="textFieldNames">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserNacimiento">
+        <Component class="com.toedter.calendar.JDateChooser" name="dateChooserBirthday">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonMasculino">
+        <Component class="javax.swing.JRadioButton" name="radioButtonMale">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup"/>
@@ -229,7 +229,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonFemenino">
+        <Component class="javax.swing.JRadioButton" name="radioButtonFemale">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup"/>
@@ -239,37 +239,37 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldDireccion">
+        <Component class="javax.swing.JTextField" name="textFieldDirection">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldTelefono">
+        <Component class="javax.swing.JTextField" name="textFieldPhone">
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxSelectProf">
+        <Component class="javax.swing.JComboBox" name="comboBoxSelectTeacher">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(profesorController.getNames())" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel(teacherController.getNames())" type="code"/>
             </Property>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonAceptar">
+    <Component class="javax.swing.JButton" name="buttonAccept">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="view/Bundle.properties" key="dictionary.accept" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAceptarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAcceptActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonCancelar">
+    <Component class="javax.swing.JButton" name="buttonCancel">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="view/Bundle.properties" key="dictionary.cancel" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

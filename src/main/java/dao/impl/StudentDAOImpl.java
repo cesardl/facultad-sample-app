@@ -23,60 +23,60 @@ public class StudentDAOImpl implements StudentDAO {
     public List<Student> selectAll() {
         String sql = "SELECT id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum FROM alumno";
 
-        List<Student> alumnos = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection();
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                Statement st = c.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
-            while (resultSet.next()) {
-                alumnos.add(new Student(
-                        resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getDate(4),
-                        Gender.valueOf(resultSet.getString(5)),
-                        resultSet.getString(6),
-                        resultSet.getString(7)));
+            while (rs.next()) {
+                students.add(new Student(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4),
+                        Gender.valueOf(rs.getString(5)),
+                        rs.getString(6),
+                        rs.getString(7)));
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de alumnos", e);
-            alumnos = null;
+            students = null;
         }
 
-        return alumnos;
+        return students;
     }
 
     @Override
     public Student selectByCode(String code) {
         String sql = "SELECT id_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof FROM alumno WHERE cod_alum = ?";
 
-        Student alumno = null;
+        Student student = null;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, code);
 
-            try (ResultSet resultSet = ps.executeQuery()) {
-                if (resultSet.next()) {
-                    alumno = new Student(
-                            resultSet.getInt(1),
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    student = new Student(
+                            rs.getInt(1),
                             code,
-                            resultSet.getString(2),
-                            resultSet.getDate(3),
-                            Gender.valueOf(resultSet.getString(4)),
-                            resultSet.getString(5),
-                            resultSet.getString(6));
-                    alumno.setProfesor(resultSet.getInt(7));
+                            rs.getString(2),
+                            rs.getDate(3),
+                            Gender.valueOf(rs.getString(4)),
+                            rs.getString(5),
+                            rs.getString(6));
+                    student.setTeacherId(rs.getInt(7));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos del alumno", e);
-            alumno = null;
+            student = null;
         }
 
-        return alumno;
+        return student;
     }
 
     @Override
@@ -85,16 +85,17 @@ public class StudentDAOImpl implements StudentDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
             ps.setInt(1, entity.getId());
-            ps.setString(2, entity.getCodigo());
-            ps.setString(3, entity.getNombre());
-            ps.setDate(4, new Date(entity.getNacimiento().getTime()));
-            ps.setString(5, entity.getSexo().name());
-            ps.setString(6, entity.getDireccion());
+            ps.setString(2, entity.getCode());
+            ps.setString(3, entity.getNames());
+            ps.setDate(4, new Date(entity.getBirthday().getTime()));
+            ps.setString(5, entity.getGender().name());
+            ps.setString(6, entity.getDirection());
             ps.setString(7, entity.getTelefono());
-            ps.setInt(8, entity.getProfesor());
+            ps.setInt(8, entity.getTeacherId());
 
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
@@ -111,15 +112,16 @@ public class StudentDAOImpl implements StudentDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getCodigo());
-            ps.setString(2, entity.getNombre());
-            ps.setDate(3, new Date(entity.getNacimiento().getTime()));
-            ps.setString(4, entity.getSexo().name());
-            ps.setString(5, entity.getDireccion());
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, entity.getCode());
+            ps.setString(2, entity.getNames());
+            ps.setDate(3, new Date(entity.getBirthday().getTime()));
+            ps.setString(4, entity.getGender().name());
+            ps.setString(5, entity.getDirection());
             ps.setString(6, entity.getTelefono());
-            ps.setInt(7, entity.getProfesor());
+            ps.setInt(7, entity.getTeacherId());
             ps.setInt(8, entity.getId());
 
             state = ps.executeUpdate();
@@ -137,9 +139,10 @@ public class StudentDAOImpl implements StudentDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getCodigo());
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, entity.getCode());
 
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
@@ -156,14 +159,14 @@ public class StudentDAOImpl implements StudentDAO {
 
         int id = 0;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, code);
 
-            try (ResultSet resultSet = ps.executeQuery()) {
-                if (resultSet.next()) {
-                    id = resultSet.getInt(1);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt(1);
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {

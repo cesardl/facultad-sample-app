@@ -28,80 +28,80 @@ public class TeacherDAOImpl implements TeacherDAO {
     public List<Teacher> selectAll() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
 
-        List<Teacher> profesores = new ArrayList<>();
+        List<Teacher> teachers = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection();
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                Statement st = c.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
-            while (resultSet.next()) {
-                profesores.add(new Teacher(
-                        resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getDate(4),
-                        resultSet.getString(5)));
+            while (rs.next()) {
+                teachers.add(new Teacher(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4),
+                        rs.getString(5)));
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
-            profesores = null;
+            teachers = null;
         }
 
-        return profesores;
+        return teachers;
     }
 
     @Override
     public Teacher selectByCode(String code) {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
 
-        Teacher profesor = null;
+        Teacher teacher = null;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, code);
 
-            try (ResultSet resultSet = ps.executeQuery()) {
-                if (resultSet.next()) {
-                    profesor = new Teacher(
-                            resultSet.getInt(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getDate(4),
-                            resultSet.getString(5));
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    teacher = new Teacher(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getDate(4),
+                            rs.getString(5));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos del profesor", e);
-            profesor = null;
+            teacher = null;
         }
 
-        return profesor;
+        return teacher;
     }
 
     @Override
     public List<Teacher> selectNames() {
         String sql = "SELECT id_prof, nom_prof FROM profesor";
 
-        List<Teacher> profesores = new ArrayList<>();
+        List<Teacher> teachers = new ArrayList<>();
 
-        try (Connection connection = DAOFactory.createConnection();
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                Statement st = c.createStatement();
+                ResultSet rs = st.executeQuery(sql)) {
 
-            while (resultSet.next()) {
+            while (rs.next()) {
                 Teacher p = new Teacher();
-                p.setId(resultSet.getInt(1));
-                p.setNombre(resultSet.getString(2));
+                p.setId(rs.getInt(1));
+                p.setNames(rs.getString(2));
 
-                profesores.add(p);
+                teachers.add(p);
             }
         } catch (ClassNotFoundException | SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
-            profesores = null;
+            teachers = null;
         }
 
-        return profesores;
+        return teachers;
     }
 
     @Override
@@ -110,12 +110,13 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql);) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
             ps.setInt(1, entity.getId());
-            ps.setString(2, entity.getCodigo());
-            ps.setString(3, entity.getNombre());
-            ps.setDate(4, new Date(entity.getNacimiento().getTime()));
+            ps.setString(2, entity.getCode());
+            ps.setString(3, entity.getNames());
+            ps.setDate(4, new Date(entity.getBirthday().getTime()));
             ps.setString(5, entity.getEmail());
 
             state = ps.executeUpdate();
@@ -133,11 +134,12 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql);) {
-            ps.setString(1, entity.getCodigo());
-            ps.setString(2, entity.getNombre());
-            ps.setDate(3, new Date(entity.getNacimiento().getTime()));
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, entity.getCode());
+            ps.setString(2, entity.getNames());
+            ps.setDate(3, new Date(entity.getBirthday().getTime()));
             ps.setString(4, entity.getEmail());
             ps.setInt(5, entity.getId());
 
@@ -156,9 +158,10 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int state;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql);) {
-            ps.setString(1, entity.getCodigo());
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, entity.getCode());
 
             state = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
@@ -175,14 +178,14 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int id = 0;
 
-        try (Connection connection = DAOFactory.createConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection c = DAOFactory.createConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, code);
 
-            try (ResultSet resultSet = ps.executeQuery()) {
-                if (resultSet.next()) {
-                    id = resultSet.getInt(1);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt(1);
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {

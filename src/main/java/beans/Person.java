@@ -9,18 +9,18 @@ import java.util.Date;
 public abstract class Person {
 
     protected int id;
-    protected String codigo;
-    protected String nombre;
-    protected Date nacimiento;
+    protected String code;
+    protected String names;
+    protected Date birthday;
 
     public Person() {
     }
 
-    public Person(int id, String codigo, String nombre, Date nacimiento) {
+    public Person(int id, String code, String names, Date birthday) {
         this.id = id;
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.nacimiento = nacimiento;
+        this.code = code;
+        this.names = names;
+        this.birthday = birthday;
     }
 
     public int getId() {
@@ -31,28 +31,28 @@ public abstract class Person {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNames() {
+        return names;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNames(String names) {
+        this.names = names;
     }
 
-    public Date getNacimiento() {
-        return nacimiento;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setNacimiento(Date nacimiento) {
-        this.nacimiento = nacimiento;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
 }
