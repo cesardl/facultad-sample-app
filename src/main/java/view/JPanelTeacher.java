@@ -1,14 +1,14 @@
 /*
- * JPanelProfesor.java
+ * JPanelTeacher.java
  *
  * Created on 21/03/2010, 10:10:27 PM
  */
 package view;
 
-import beans.Profesor;
+import beans.Teacher;
 import controller.DialogAction;
-import controller.ProfesorController;
-import controller.impl.ProfesorControllerImpl;
+import controller.TeacherController;
+import controller.impl.TeacherControllerImpl;
 import javax.swing.JTable;
 import util.Utils;
 import view.etc.JPanelBase;
@@ -17,14 +17,14 @@ import view.etc.JPanelBase;
  *
  * @author Cesardl
  */
-public class JPanelProfesor extends JPanelBase<Profesor> {
+public class JPanelTeacher extends JPanelBase<Teacher> {
 
-    private final ProfesorController profesorController = new ProfesorControllerImpl();
+    private final TeacherController teacherController = new TeacherControllerImpl();
 
     /**
      * Creates new form JPanelProfesor
      */
-    public JPanelProfesor() {
+    public JPanelTeacher() {
         initComponents();
     }
 
@@ -37,26 +37,26 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     }
 
     @Override
-    protected void addRow(Profesor entity) {
+    protected void addRow(Teacher entity) {
         tableModel.addRow(new Object[]{
-            entity.getCodigo(),
-            entity.getNombre(),
-            Utils.formatDate(entity.getNacimiento()),
+            entity.getCode(),
+            entity.getNames(),
+            Utils.formatDate(entity.getBirthday()),
             entity.getEmail()
         });
     }
 
     @Override
-    protected void setRowValues(int row, Profesor entity) {
-        tableModel.setValueAt(entity.getCodigo(), row, 0);
-        tableModel.setValueAt(entity.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
+    protected void setRowValues(int row, Teacher entity) {
+        tableModel.setValueAt(entity.getCode(), row, 0);
+        tableModel.setValueAt(entity.getNames(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
-        boolean state = profesorController.delete(code);
+        boolean state = teacherController.delete(code);
         if (state) {
             tableModel.removeRow(row);
         }
@@ -68,13 +68,13 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogProfesor dialogProfesor = new JDialogProfesor(getParentForDialog());
+        JDialogTeacher dialogProfesor = new JDialogTeacher(getParentForDialog());
         Utils.installEscapeCloseOperation(dialogProfesor);
 
-        Profesor profesor;
+        Teacher profesor;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            profesor = profesorController.getByCode(code);
+            profesor = teacherController.getByCode(code);
             dialogProfesor.setEntity(profesor);
         }
 
@@ -106,10 +106,10 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     private void initComponents() {
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
-        jScrollPane = new javax.swing.JScrollPane();
+        scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            profesorController.getAll(),
+            teacherController.getAll(),
             new String [] {
                 bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
             }
@@ -139,7 +139,7 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
                 tableMousePressed(evt);
             }
         });
-        jScrollPane.setViewportView(table);
+        scrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,14 +147,14 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -164,7 +164,7 @@ public class JPanelProfesor extends JPanelBase<Profesor> {
     }//GEN-LAST:event_tableMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables

@@ -1,7 +1,7 @@
 package view.etc;
 
-import controller.ProfesorController;
-import controller.impl.ProfesorControllerImpl;
+import controller.TeacherController;
+import controller.impl.TeacherControllerImpl;
 import java.awt.Frame;
 import java.util.Date;
 import org.apache.log4j.Logger;
@@ -15,12 +15,12 @@ public abstract class JDialogBase<T> extends javax.swing.JDialog {
 
     protected static final Logger log = Logger.getLogger(JDialogBase.class);
 
-    protected final ProfesorController profesorController = new ProfesorControllerImpl();
+    protected final TeacherController teacherController = new TeacherControllerImpl();
 
     protected T entity;
 
-    protected String codigo, nombre;
-    protected Date nacimiento;
+    protected String code, names;
+    protected Date birthday;
 
     /**
      *
@@ -34,12 +34,12 @@ public abstract class JDialogBase<T> extends javax.swing.JDialog {
      *
      * @return
      */
-    public abstract boolean capturarDatos();
+    public abstract boolean validateData();
 
     /**
      *
      */
-    public abstract void asignarDatos();
+    public abstract void setData();
 
     /**
      *

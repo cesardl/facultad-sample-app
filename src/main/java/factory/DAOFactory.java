@@ -1,7 +1,7 @@
 package factory;
 
-import dao.AlumnoDAO;
-import dao.ProfesorDAO;
+import dao.StudentDAO;
+import dao.TeacherDAO;
 import db.Database;
 import factory.impl.MysqlDAOFactory;
 import factory.impl.OracleDAOFactory;
@@ -35,9 +35,9 @@ public abstract class DAOFactory {
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
     // implement these methods.
-    public abstract AlumnoDAO getAlumnoDAO();
+    public abstract StudentDAO getStudentDAO();
 
-    public abstract ProfesorDAO getProfesorDAO();
+    public abstract TeacherDAO getTeacherDAO();
 
     static {
         try (InputStream is = DAOFactory.class.getResourceAsStream("/db/database.properties")) {
@@ -50,7 +50,7 @@ public abstract class DAOFactory {
             user = prop.getProperty("database.user");
             passwd = prop.getProperty("database.passwd");
         } catch (IOException e) {
-            log.error("Error cargando resources del properties", e);
+            log.error("Error while properties resources were loaded.", e);
         }
     }
 

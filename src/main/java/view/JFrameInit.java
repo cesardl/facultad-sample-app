@@ -25,135 +25,135 @@ public class JFrameInit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jTabbedPane = new javax.swing.JTabbedPane();
-        jPanelAlumno = new view.JPanelAlumno();
-        jPanelProfesor = new view.JPanelProfesor();
-        jMenuBar = new javax.swing.JMenuBar();
-        jMenuActions = new javax.swing.JMenu();
-        jMenuAlumno = new javax.swing.JMenu();
-        jMenuItemInsertAlumno = new javax.swing.JMenuItem();
-        jMenuItemUpdateAlumno = new javax.swing.JMenuItem();
-        jMenuItemDeleteAlumno = new javax.swing.JMenuItem();
-        jMenuProfesor = new javax.swing.JMenu();
-        jMenuItemInsertProfesor = new javax.swing.JMenuItem();
-        jMenuItemUpdateProfesor = new javax.swing.JMenuItem();
-        jMenuItemDeleteProfesor = new javax.swing.JMenuItem();
-        jSeparator = new javax.swing.JPopupMenu.Separator();
-        jMenuItemExit = new javax.swing.JMenuItem();
-        jMenuHelp = new javax.swing.JMenu();
-        jMenuItemAbout = new javax.swing.JMenuItem();
+        panel = new javax.swing.JPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        panelStudent = new view.JPanelStudent();
+        panelTeacher = new view.JPanelTeacher();
+        menuBar = new javax.swing.JMenuBar();
+        menuActions = new javax.swing.JMenu();
+        menuStudent = new javax.swing.JMenu();
+        menuItemInsertStudent = new javax.swing.JMenuItem();
+        menuItemUpdateStudent = new javax.swing.JMenuItem();
+        menuItemDeleteStudent = new javax.swing.JMenuItem();
+        menuTeacher = new javax.swing.JMenu();
+        menuItemInsertTeacher = new javax.swing.JMenuItem();
+        menuItemUpdateTeacher = new javax.swing.JMenuItem();
+        menuItemDeleteTeacher = new javax.swing.JMenuItem();
+        separator = new javax.swing.JPopupMenu.Separator();
+        menuItemExit = new javax.swing.JMenuItem();
+        menuHelp = new javax.swing.JMenu();
+        menuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
 
-        jPanel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane.addTab(bundle.getString("dictionary.student"), jPanelAlumno); // NOI18N
-        jTabbedPane.addTab(bundle.getString("dictionary.teacher"), jPanelProfesor); // NOI18N
+        tabbedPane.addTab(bundle.getString("dictionary.student"), panelStudent); // NOI18N
+        tabbedPane.addTab(bundle.getString("dictionary.teacher"), panelTeacher); // NOI18N
 
-        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
-        jPanel.setLayout(jPanelLayout);
-        jPanelLayout.setHorizontalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanelLayout.setVerticalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jMenuBar.setBackground(new java.awt.Color(255, 255, 255));
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenuActions.setText(bundle.getString("dictionary.actions")); // NOI18N
+        menuActions.setText(bundle.getString("dictionary.actions")); // NOI18N
 
-        jMenuAlumno.setText(bundle.getString("dictionary.student")); // NOI18N
+        menuStudent.setText(bundle.getString("dictionary.student")); // NOI18N
 
-        jMenuItemInsertAlumno.setText(bundle.getString("dictionary.new")); // NOI18N
-        jMenuItemInsertAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemInsertStudent.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInsertAlumnoActionPerformed(evt);
+                menuItemInsertStudentActionPerformed(evt);
             }
         });
-        jMenuAlumno.add(jMenuItemInsertAlumno);
+        menuStudent.add(menuItemInsertStudent);
 
-        jMenuItemUpdateAlumno.setText(bundle.getString("dictionary.edit")); // NOI18N
-        jMenuItemUpdateAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUpdateStudent.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUpdateAlumnoActionPerformed(evt);
+                menuItemUpdateStudentActionPerformed(evt);
             }
         });
-        jMenuAlumno.add(jMenuItemUpdateAlumno);
+        menuStudent.add(menuItemUpdateStudent);
 
-        jMenuItemDeleteAlumno.setText(bundle.getString("dictionary.delete")); // NOI18N
-        jMenuItemDeleteAlumno.addActionListener(new java.awt.event.ActionListener() {
+        menuItemDeleteStudent.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemDeleteAlumnoActionPerformed(evt);
+                menuItemDeleteStudentActionPerformed(evt);
             }
         });
-        jMenuAlumno.add(jMenuItemDeleteAlumno);
+        menuStudent.add(menuItemDeleteStudent);
 
-        jMenuActions.add(jMenuAlumno);
+        menuActions.add(menuStudent);
 
-        jMenuProfesor.setText(bundle.getString("dictionary.teacher")); // NOI18N
+        menuTeacher.setText(bundle.getString("dictionary.teacher")); // NOI18N
 
-        jMenuItemInsertProfesor.setText(bundle.getString("dictionary.new")); // NOI18N
-        jMenuItemInsertProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemInsertTeacher.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInsertProfesorActionPerformed(evt);
+                menuItemInsertTeacherActionPerformed(evt);
             }
         });
-        jMenuProfesor.add(jMenuItemInsertProfesor);
+        menuTeacher.add(menuItemInsertTeacher);
 
-        jMenuItemUpdateProfesor.setText(bundle.getString("dictionary.edit")); // NOI18N
-        jMenuItemUpdateProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUpdateTeacher.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUpdateProfesorActionPerformed(evt);
+                menuItemUpdateTeacherActionPerformed(evt);
             }
         });
-        jMenuProfesor.add(jMenuItemUpdateProfesor);
+        menuTeacher.add(menuItemUpdateTeacher);
 
-        jMenuItemDeleteProfesor.setText(bundle.getString("dictionary.delete")); // NOI18N
-        jMenuItemDeleteProfesor.addActionListener(new java.awt.event.ActionListener() {
+        menuItemDeleteTeacher.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemDeleteProfesorActionPerformed(evt);
+                menuItemDeleteTeacherActionPerformed(evt);
             }
         });
-        jMenuProfesor.add(jMenuItemDeleteProfesor);
+        menuTeacher.add(menuItemDeleteTeacher);
 
-        jMenuActions.add(jMenuProfesor);
-        jMenuActions.add(jSeparator);
+        menuActions.add(menuTeacher);
+        menuActions.add(separator);
 
-        jMenuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
-        jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
+        menuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
+        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemExitActionPerformed(evt);
+                menuItemExitActionPerformed(evt);
             }
         });
-        jMenuActions.add(jMenuItemExit);
+        menuActions.add(menuItemExit);
 
-        jMenuBar.add(jMenuActions);
+        menuBar.add(menuActions);
 
-        jMenuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
+        menuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
 
-        jMenuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
-        jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+        menuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
+        menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAboutActionPerformed(evt);
+                menuItemAboutActionPerformed(evt);
             }
         });
-        jMenuHelp.add(jMenuItemAbout);
+        menuHelp.add(menuItemAbout);
 
-        jMenuBar.add(jMenuHelp);
+        menuBar.add(menuHelp);
 
-        setJMenuBar(jMenuBar);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,14 +161,14 @@ public class JFrameInit extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -176,112 +176,112 @@ public class JFrameInit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemInsertAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertAlumnoActionPerformed
-        jPanelAlumno.showDialog();
-    }//GEN-LAST:event_jMenuItemInsertAlumnoActionPerformed
+    private void menuItemInsertStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertStudentActionPerformed
+        panelStudent.showDialog();
+    }//GEN-LAST:event_menuItemInsertStudentActionPerformed
 
-    private void jMenuItemUpdateAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateAlumnoActionPerformed
-        JTable target = jPanelAlumno.getTable();
+    private void menuItemUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateStudentActionPerformed
+        JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            jTabbedPane.setSelectedIndex(0);
+            tabbedPane.setSelectedIndex(0);
 
-            jPanelAlumno.showDialog(row, code);
+            panelStudent.showDialog(row, code);
         }
-    }//GEN-LAST:event_jMenuItemUpdateAlumnoActionPerformed
+    }//GEN-LAST:event_menuItemUpdateStudentActionPerformed
 
-    private void jMenuItemDeleteAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteAlumnoActionPerformed
-        JTable target = jPanelAlumno.getTable();
+    private void menuItemDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteStudentActionPerformed
+        JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
-                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-            if (i == 0) {
-                jPanelAlumno.deleteRow(row, code);
+            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
+                    this.getTitle(), JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                panelStudent.deleteRow(row, code);
             }
         }
-    }//GEN-LAST:event_jMenuItemDeleteAlumnoActionPerformed
+    }//GEN-LAST:event_menuItemDeleteStudentActionPerformed
 
-    private void jMenuItemInsertProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInsertProfesorActionPerformed
-        jPanelProfesor.showDialog();
-    }//GEN-LAST:event_jMenuItemInsertProfesorActionPerformed
+    private void menuItemInsertTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertTeacherActionPerformed
+        panelTeacher.showDialog();
+    }//GEN-LAST:event_menuItemInsertTeacherActionPerformed
 
-    private void jMenuItemUpdateProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateProfesorActionPerformed
-        JTable target = jPanelProfesor.getTable();
+    private void menuItemUpdateTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateTeacherActionPerformed
+        JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            jTabbedPane.setSelectedIndex(1);
+            tabbedPane.setSelectedIndex(1);
 
-            jPanelProfesor.showDialog(row, code);
+            panelTeacher.showDialog(row, code);
         }
-    }//GEN-LAST:event_jMenuItemUpdateProfesorActionPerformed
+    }//GEN-LAST:event_menuItemUpdateTeacherActionPerformed
 
-    private void jMenuItemDeleteProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteProfesorActionPerformed
-        JTable target = jPanelProfesor.getTable();
+    private void menuItemDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteTeacherActionPerformed
+        JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            javax.swing.JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
-                    this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-            if (i == 0) {
-                jPanelProfesor.deleteRow(row, code);
+            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
+                    this.getTitle(), JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                panelTeacher.deleteRow(row, code);
             }
         }
-    }//GEN-LAST:event_jMenuItemDeleteProfesorActionPerformed
+    }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 
-    private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
-        int i = javax.swing.JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
-                this.getTitle(), javax.swing.JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
+    private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
+                this.getTitle(), JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenuItemExitActionPerformed
+    }//GEN-LAST:event_menuItemExitActionPerformed
 
-    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        JDialogAbout dialog = new JDialogAbout(this, true);
+    private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
+        JDialogAbout dialog = new JDialogAbout(this);
         Utils.installEscapeCloseOperation(dialog);
         Utils.installEnterCloseOperation(dialog);
         dialog.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAboutActionPerformed
+    }//GEN-LAST:event_menuItemAboutActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenuActions;
-    private javax.swing.JMenu jMenuAlumno;
-    private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuHelp;
-    private javax.swing.JMenuItem jMenuItemAbout;
-    private javax.swing.JMenuItem jMenuItemDeleteAlumno;
-    private javax.swing.JMenuItem jMenuItemDeleteProfesor;
-    private javax.swing.JMenuItem jMenuItemExit;
-    private javax.swing.JMenuItem jMenuItemInsertAlumno;
-    private javax.swing.JMenuItem jMenuItemInsertProfesor;
-    private javax.swing.JMenuItem jMenuItemUpdateAlumno;
-    private javax.swing.JMenuItem jMenuItemUpdateProfesor;
-    private javax.swing.JMenu jMenuProfesor;
-    private javax.swing.JPanel jPanel;
-    private view.JPanelAlumno jPanelAlumno;
-    private view.JPanelProfesor jPanelProfesor;
-    private javax.swing.JPopupMenu.Separator jSeparator;
-    private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JMenu menuActions;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuItemAbout;
+    private javax.swing.JMenuItem menuItemDeleteStudent;
+    private javax.swing.JMenuItem menuItemDeleteTeacher;
+    private javax.swing.JMenuItem menuItemExit;
+    private javax.swing.JMenuItem menuItemInsertStudent;
+    private javax.swing.JMenuItem menuItemInsertTeacher;
+    private javax.swing.JMenuItem menuItemUpdateStudent;
+    private javax.swing.JMenuItem menuItemUpdateTeacher;
+    private javax.swing.JMenu menuStudent;
+    private javax.swing.JMenu menuTeacher;
+    private javax.swing.JPanel panel;
+    private view.JPanelStudent panelStudent;
+    private view.JPanelTeacher panelTeacher;
+    private javax.swing.JPopupMenu.Separator separator;
+    private javax.swing.JTabbedPane tabbedPane;
     private java.util.ResourceBundle bundle;
     // End of variables declaration//GEN-END:variables
 }

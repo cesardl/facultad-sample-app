@@ -1,7 +1,7 @@
 package app;
 
-import dao.AlumnoDAO;
-import dao.ProfesorDAO;
+import dao.StudentDAO;
+import dao.TeacherDAO;
 import factory.DAOFactory;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class DaoTest {
     @Test
     public void alumnoGetIdByCode() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        StudentDAO dao = factory.getStudentDAO();
 
         // No existe este ID en la tabla
         int id = dao.selectIdByCode("20011");
@@ -28,7 +28,7 @@ public class DaoTest {
     @Test
     public void profesorGetIdByCode() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         // No existe este ID en la tabla
         int id = dao.selectIdByCode("00000");

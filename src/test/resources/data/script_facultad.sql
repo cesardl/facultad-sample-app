@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-02-12 15:52:36
+Date: 2015-02-13 12:28:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,8 +38,8 @@ CREATE TABLE `alumno` (
 -- ----------------------------
 INSERT INTO `alumno` VALUES ('1', '200004', 'Carlos Perez', '1988-01-14', 'MALE', 'Av Javier Prado', '85631456', '4');
 INSERT INTO `alumno` VALUES ('2', '200135', 'Eliana Zapata', '1988-01-01', 'FEMALE', 'Av Mirones', '', '1');
-INSERT INTO `alumno` VALUES ('3', '200147', 'Richard Lozano', '1988-11-28', 'MALE', 'Av Castilla', '96321547', '1');
-INSERT INTO `alumno` VALUES ('4', '200152', 'Lizbeth Mamani', '1988-01-01', 'FEMALE', 'Av Habich', '56849963', '2');
+INSERT INTO `alumno` VALUES ('3', '200147', 'Richard Lozano Orihuela', '1988-11-28', 'MALE', 'Av Castilla', '96321547', '1');
+INSERT INTO `alumno` VALUES ('4', '200152', 'Lizbeth Mamani', '1988-01-01', 'FEMALE', 'Av Habich. 231', '56849963', '2');
 INSERT INTO `alumno` VALUES ('5', '200159', 'Silvia Peña Guevara', '1987-03-10', 'FEMALE', 'Av Leitod', '85412878', '1');
 INSERT INTO `alumno` VALUES ('6', '200170', 'César Díaz', '1988-01-01', 'MALE', 'Av Confraternidad', '25698845', '3');
 INSERT INTO `alumno` VALUES ('7', '200369', 'Alexsandra Herrera Vasquez', '1988-06-19', 'FEMALE', 'Av Rios', '96321478', '2');
@@ -71,6 +71,6 @@ CREATE TABLE `profesor` (
 -- ----------------------------
 INSERT INTO `profesor` VALUES ('1', '212399', 'Carlos Melo', '1960-01-01', 'cmelo@univ.edu');
 INSERT INTO `profesor` VALUES ('2', '212588', 'Giovanna Melva', '1963-06-08', 'gmelva@univ.edu');
-INSERT INTO `profesor` VALUES ('3', '212963', 'Francisco Vargas', '1975-02-13', 'francisco.vargas@scytl.com');
+INSERT INTO `profesor` VALUES ('3', '212963', 'Francisco Vargas', '1981-02-13', 'francisco.vargas@scytl.com');
 INSERT INTO `profesor` VALUES ('4', '212696', 'Ernesto Quiñones', '1975-11-18', 'equiñones@eqsoft.com.pe');
 INSERT INTO `profesor` VALUES ('5', '212456', 'Paul Vargas', '1985-02-07', 'paul.vargas@scytl.com');

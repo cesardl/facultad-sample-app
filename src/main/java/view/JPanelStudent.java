@@ -1,14 +1,14 @@
 /*
- * JPanelAlumno.java
+ * JPanelStudent.java
  *
  * Created on 21/03/2010, 10:10:18 PM
  */
 package view;
 
-import beans.Alumno;
+import beans.Student;
 import controller.DialogAction;
-import controller.AlumnoController;
-import controller.impl.AlumnoControllerImpl;
+import controller.StudentController;
+import controller.impl.StudentControllerImpl;
 import javax.swing.JTable;
 import util.Utils;
 import view.etc.JPanelBase;
@@ -21,14 +21,14 @@ import view.etc.JPanelBase;
  * <a href='http://esus.com/detecting-double-click-row-jtable/'>Detecting a
  * double-click on a row in a JTable</a>
  */
-public class JPanelAlumno extends JPanelBase<Alumno> {
+public class JPanelStudent extends JPanelBase<Student> {
 
-    private final AlumnoController alumnoController = new AlumnoControllerImpl();
+    private final StudentController studentController = new StudentControllerImpl();
 
     /**
      * Creates new form JPanelAlumno
      */
-    public JPanelAlumno() {
+    public JPanelStudent() {
         initComponents();
     }
 
@@ -41,30 +41,30 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     }
 
     @Override
-    protected void addRow(Alumno entity) {
+    protected void addRow(Student entity) {
         tableModel.addRow(new Object[]{
-            entity.getCodigo(),
-            entity.getNombre(),
-            Utils.formatDate(entity.getNacimiento()),
-            entity.getSexo().getValue(),
-            entity.getDireccion(),
+            entity.getCode(),
+            entity.getNames(),
+            Utils.formatDate(entity.getBirthday()),
+            entity.getGender().getValue(),
+            entity.getDirection(),
             entity.getTelefono()
         });
     }
 
     @Override
-    protected void setRowValues(int row, Alumno entity) {
-        tableModel.setValueAt(entity.getCodigo(), row, 0);
-        tableModel.setValueAt(entity.getNombre(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getNacimiento()), row, 2);
-        tableModel.setValueAt(entity.getSexo().getValue(), row, 3);
-        tableModel.setValueAt(entity.getDireccion(), row, 4);
+    protected void setRowValues(int row, Student entity) {
+        tableModel.setValueAt(entity.getCode(), row, 0);
+        tableModel.setValueAt(entity.getNames(), row, 1);
+        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(entity.getGender().getValue(), row, 3);
+        tableModel.setValueAt(entity.getDirection(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
-        boolean state = alumnoController.delete(code);
+        boolean state = studentController.delete(code);
         if (state) {
             tableModel.removeRow(row);
         }
@@ -76,13 +76,13 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogAlumno dialogAlumno = new JDialogAlumno(getParentForDialog());
+        JDialogStudent dialogAlumno = new JDialogStudent(getParentForDialog());
         Utils.installEscapeCloseOperation(dialogAlumno);
 
-        Alumno alumno;
+        Student alumno;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            alumno = alumnoController.getByCode(code);
+            alumno = studentController.getByCode(code);
 
             dialogAlumno.setEntity(alumno);
         }
@@ -115,10 +115,10 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     private void initComponents() {
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
-        jScrollPane = new javax.swing.JScrollPane();
+        scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            alumnoController.getAll(),
+            studentController.getAll(),
             new String [] {
                 bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
             }
@@ -148,7 +148,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
                 tableMouseClicked(evt);
             }
         });
-        jScrollPane.setViewportView(table);
+        scrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,14 +156,14 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -173,7 +173,7 @@ public class JPanelAlumno extends JPanelBase<Alumno> {
     }//GEN-LAST:event_tableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables

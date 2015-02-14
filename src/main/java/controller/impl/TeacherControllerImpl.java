@@ -1,10 +1,9 @@
 package controller.impl;
 
-import beans.Profesor;
-import controller.ProfesorController;
-import dao.AlumnoDAO;
+import beans.Teacher;
+import controller.TeacherController;
 import dao.DAO;
-import dao.ProfesorDAO;
+import dao.TeacherDAO;
 import factory.DAOFactory;
 import java.util.List;
 import util.Utils;
@@ -13,52 +12,52 @@ import util.Utils;
  *
  * @author Cesardl
  */
-public class ProfesorControllerImpl implements ProfesorController {
+public class TeacherControllerImpl implements TeacherController {
 
     @Override
     public Object[][] getAll() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        List<Profesor> profesores = dao.selectAll();
+        List<Teacher> teachers = dao.selectAll();
 
-        Object[][] rowData = new Object[profesores.size()][4];
+        Object[][] rowData = new Object[teachers.size()][4];
 
-        for (int i = 0; i < profesores.size(); i++) {
-            Profesor profesor = profesores.get(i);
+        for (int i = 0; i < teachers.size(); i++) {
+            Teacher teacher = teachers.get(i);
 
-            rowData[i][0] = profesor.getCodigo();
-            rowData[i][1] = profesor.getNombre();
-            rowData[i][2] = Utils.formatDate(profesor.getNacimiento());
-            rowData[i][3] = profesor.getEmail();
+            rowData[i][0] = teacher.getCode();
+            rowData[i][1] = teacher.getNames();
+            rowData[i][2] = Utils.formatDate(teacher.getBirthday());
+            rowData[i][3] = teacher.getEmail();
         }
         return rowData;
     }
 
     @Override
-    public Profesor getByCode(String code) {
+    public Teacher getByCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        Profesor profesor = dao.selectByCode(code);
+        Teacher teacher = dao.selectByCode(code);
 
-        return profesor;
+        return teacher;
     }
 
     @Override
-    public Profesor[] getNames() {
+    public Teacher[] getNames() {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        List<Profesor> profesores = dao.selectNames();
+        List<Teacher> teachers = dao.selectNames();
 
-        return profesores.toArray(new Profesor[profesores.size()]);
+        return teachers.toArray(new Teacher[teachers.size()]);
     }
 
     @Override
-    public boolean saveOrUpdate(Profesor entity) {
+    public boolean saveOrUpdate(Teacher entity) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         int state;
 
@@ -80,10 +79,10 @@ public class ProfesorControllerImpl implements ProfesorController {
     @Override
     public boolean delete(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        ProfesorDAO dao = factory.getProfesorDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
-        Profesor entity = new Profesor();
-        entity.setCodigo(code);
+        Teacher entity = new Teacher();
+        entity.setCode(code);
 
         int state = dao.delete(entity);
 
@@ -99,7 +98,7 @@ public class ProfesorControllerImpl implements ProfesorController {
     @Override
     public boolean existsCode(String code) {
         DAOFactory factory = DAOFactory.getDAOFactory();
-        AlumnoDAO dao = factory.getAlumnoDAO();
+        TeacherDAO dao = factory.getTeacherDAO();
 
         int id = dao.selectIdByCode(code);
 

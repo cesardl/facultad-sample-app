@@ -78,20 +78,9 @@ public class Utils {
      *
      * @param jTextField
      */
-    public static void marcarTextField(javax.swing.JTextField jTextField) {
+    public static void selectTextField(javax.swing.JTextField jTextField) {
         jTextField.requestFocus();
         jTextField.selectAll();
-    }
-
-    /**
-     * Muestra una alerta
-     *
-     * @param mensaje
-     * @param tipoMensaje
-     */
-    public static void alert(String mensaje, int tipoMensaje) {
-        javax.swing.JOptionPane.showMessageDialog(null, mensaje,
-                "Aplicacion con MySQL", tipoMensaje);
     }
 
     /**
