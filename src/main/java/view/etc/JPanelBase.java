@@ -79,4 +79,19 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
             showDialog(row, code);
         }
     }
+
+    /**
+     *
+     * @param evt
+     */
+    public void deleteFromTable(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DELETE) {
+            JTable target = (JTable) evt.getSource();
+
+            int row = target.getSelectedRow();
+
+            String code = String.valueOf(target.getValueAt(row, 0));
+            deleteRow(row, code);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import util.Utils;
@@ -14,6 +15,10 @@ public class JFrameInit extends javax.swing.JFrame {
      */
     public JFrameInit() {
         initComponents();
+    }
+
+    public ResourceBundle getBundle() {
+        return bundle;
     }
 
     /**
@@ -204,11 +209,7 @@ public class JFrameInit extends javax.swing.JFrame {
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.student.delete"),
-                    this.getTitle(), JOptionPane.YES_NO_OPTION);
-            if (i == JOptionPane.YES_OPTION) {
-                panelStudent.deleteRow(row, code);
-            }
+            panelStudent.deleteRow(row, code);
         }
     }//GEN-LAST:event_menuItemDeleteStudentActionPerformed
 
@@ -240,11 +241,7 @@ public class JFrameInit extends javax.swing.JFrame {
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
-            int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.teacher.delete"),
-                    this.getTitle(), JOptionPane.YES_NO_OPTION);
-            if (i == JOptionPane.YES_OPTION) {
-                panelTeacher.deleteRow(row, code);
-            }
+            panelTeacher.deleteRow(row, code);
         }
     }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 

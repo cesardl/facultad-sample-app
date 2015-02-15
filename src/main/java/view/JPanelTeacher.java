@@ -9,6 +9,7 @@ import beans.Teacher;
 import controller.DialogAction;
 import controller.TeacherController;
 import controller.impl.TeacherControllerImpl;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import util.Utils;
 import view.etc.JPanelBase;
@@ -56,9 +57,17 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     @Override
     protected void deleteRow(int row, String code) {
-        boolean state = teacherController.delete(code);
-        if (state) {
-            tableModel.removeRow(row);
+        JFrameInit parent = (JFrameInit) getParentForDialog();
+
+        int i = JOptionPane.showConfirmDialog(this,
+                parent.getBundle().getString("app.warning.teacher.delete"),
+                parent.getTitle(), JOptionPane.YES_NO_OPTION);
+
+        if (i == JOptionPane.YES_OPTION) {
+            boolean state = teacherController.delete(code);
+            if (state) {
+                tableModel.removeRow(row);
+            }
         }
     }
 
@@ -139,6 +148,11 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
                 tableMousePressed(evt);
             }
         });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tableKeyPressed(evt);
+            }
+        });
         scrollPane.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -162,6 +176,10 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     private void tableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMousePressed
         showDialogFromTable(evt);
     }//GEN-LAST:event_tableMousePressed
+
+    private void tableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyPressed
+        deleteFromTable(evt);
+    }//GEN-LAST:event_tableKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPane;
