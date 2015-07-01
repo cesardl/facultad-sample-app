@@ -1,8 +1,8 @@
 package view;
 
-import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import util.ResourceBundleHelper;
 import util.Utils;
 
 /**
@@ -10,15 +10,13 @@ import util.Utils;
  */
 public class JFrameInit extends javax.swing.JFrame {
 
+    private final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+    
     /**
      * Creates new form Main
      */
     public JFrameInit() {
         initComponents();
-    }
-
-    public ResourceBundle getBundle() {
-        return bundle;
     }
 
     /**
@@ -50,7 +48,6 @@ public class JFrameInit extends javax.swing.JFrame {
         menuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -279,6 +276,5 @@ public class JFrameInit extends javax.swing.JFrame {
     private view.JPanelTeacher panelTeacher;
     private javax.swing.JPopupMenu.Separator separator;
     private javax.swing.JTabbedPane tabbedPane;
-    private java.util.ResourceBundle bundle;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,11 +57,9 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     @Override
     protected void deleteRow(int row, String code) {
-        JFrameInit parent = (JFrameInit) getParentForDialog();
-
         int i = JOptionPane.showConfirmDialog(this,
-                parent.getBundle().getString("app.warning.teacher.delete"),
-                parent.getTitle(), JOptionPane.YES_NO_OPTION);
+                bundle.getString("app.warning.teacher.delete"),
+                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = teacherController.delete(code);

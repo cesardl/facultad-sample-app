@@ -65,11 +65,9 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     @Override
     protected void deleteRow(int row, String code) {
-        JFrameInit parent = (JFrameInit) getParentForDialog();
-
         int i = JOptionPane.showConfirmDialog(this,
-                parent.getBundle().getString("app.warning.student.delete"),
-                parent.getTitle(), JOptionPane.YES_NO_OPTION);
+                bundle.getString("app.warning.student.delete"),
+                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = studentController.delete(code);

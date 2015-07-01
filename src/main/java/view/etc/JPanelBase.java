@@ -3,6 +3,7 @@ package view.etc;
 import controller.DialogAction;
 import java.awt.Frame;
 import javax.swing.JTable;
+import util.ResourceBundleHelper;
 
 /**
  *
@@ -10,6 +11,8 @@ import javax.swing.JTable;
  * @param <T>
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
+
+    protected final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
 
     public static final int BAD_ROW = -1;
 

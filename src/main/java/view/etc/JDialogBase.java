@@ -5,6 +5,7 @@ import controller.impl.TeacherControllerImpl;
 import java.awt.Frame;
 import java.util.Date;
 import org.apache.log4j.Logger;
+import util.ResourceBundleHelper;
 
 /**
  *
@@ -14,6 +15,8 @@ import org.apache.log4j.Logger;
 public abstract class JDialogBase<T> extends javax.swing.JDialog {
 
     protected static final Logger log = Logger.getLogger(JDialogBase.class);
+
+    protected final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
 
     protected final TeacherController teacherController = new TeacherControllerImpl();
 

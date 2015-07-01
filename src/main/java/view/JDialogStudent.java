@@ -21,7 +21,7 @@ public class JDialogStudent extends JDialogBase<Student> {
 
     private final StudentController studentController = new StudentControllerImpl();
 
-    private String direction, phone;
+    private String address, phone;
     private Gender gender;
 
     /**
@@ -40,27 +40,43 @@ public class JDialogStudent extends JDialogBase<Student> {
         names = textFieldNames.getText().trim();
         birthday = dateChooserBirthday.getDate();
         gender = radioButtonMale.isSelected() ? Gender.MALE : Gender.FEMALE;
-        direction = textFieldDirection.getText().trim();
+        address = textFieldAddress.getText().trim();
         phone = textFieldPhone.getText().trim();
 
+        String key;
         if (code.length() == 0) {
+            key = "app.warning.student.code.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
         if (studentController.existsCode(code) && entity == null) {
+            key = "app.warning.student.code.already.exists";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
         if (names.length() == 0) {
+            key = "app.warning.student.name.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
+            key = "app.warning.student.birthday.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
-        if (direction.length() == 0) {
-            Utils.selectTextField(textFieldDirection);
+        if (address.length() == 0) {
+            key = "app.warning.student.address.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+            Utils.selectTextField(textFieldAddress);
             return false;
         }
 
@@ -73,7 +89,7 @@ public class JDialogStudent extends JDialogBase<Student> {
         names = entity.getNames();
         birthday = entity.getBirthday();
         gender = entity.getGender();
-        direction = entity.getDirection();
+        address = entity.getDirection();
         phone = entity.getTelefono();
 
         final int MAX_SIZE = comboBoxSelectTeacher.getItemCount();
@@ -94,7 +110,7 @@ public class JDialogStudent extends JDialogBase<Student> {
         } else {
             radioButtonFemale.setSelected(true);
         }
-        textFieldDirection.setText(direction);
+        textFieldAddress.setText(address);
         textFieldPhone.setText(phone);
     }
 
@@ -125,7 +141,7 @@ public class JDialogStudent extends JDialogBase<Student> {
         labelNames = new javax.swing.JLabel();
         labelBirthday = new javax.swing.JLabel();
         labelGender = new javax.swing.JLabel();
-        labelDirection = new javax.swing.JLabel();
+        labelAddress = new javax.swing.JLabel();
         labelPhone = new javax.swing.JLabel();
         labelSelectTeacher = new javax.swing.JLabel();
         textFieldCode = new javax.swing.JTextField();
@@ -133,7 +149,7 @@ public class JDialogStudent extends JDialogBase<Student> {
         dateChooserBirthday = new com.toedter.calendar.JDateChooser();
         radioButtonMale = new javax.swing.JRadioButton();
         radioButtonFemale = new javax.swing.JRadioButton();
-        textFieldDirection = new javax.swing.JTextField();
+        textFieldAddress = new javax.swing.JTextField();
         textFieldPhone = new javax.swing.JTextField();
         comboBoxSelectTeacher = new javax.swing.JComboBox();
         buttonAccept = new javax.swing.JButton();
@@ -154,7 +170,7 @@ public class JDialogStudent extends JDialogBase<Student> {
 
         labelGender.setText(bundle.getString("dictionary.sex")); // NOI18N
 
-        labelDirection.setText(bundle.getString("dictionary.address")); // NOI18N
+        labelAddress.setText(bundle.getString("dictionary.address")); // NOI18N
 
         labelPhone.setText(bundle.getString("dictionary.phone")); // NOI18N
 
@@ -181,12 +197,12 @@ public class JDialogStudent extends JDialogBase<Student> {
                         .addComponent(labelCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelDirection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(labelNames, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldDirection, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(textFieldAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(dateChooserBirthday, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -226,8 +242,8 @@ public class JDialogStudent extends JDialogBase<Student> {
                     .addComponent(labelGender))
                 .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(labelDirection)
-                    .addComponent(textFieldDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelAddress)
+                    .addComponent(textFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(textFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +313,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             entity.setNames(names);
             entity.setBirthday(birthday);
             entity.setGender(gender);
-            entity.setDirection(direction);
+            entity.setDirection(address);
             entity.setTelefono(phone);
             entity.setTeacherId(teacherId);
 
@@ -321,9 +337,9 @@ public class JDialogStudent extends JDialogBase<Student> {
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JComboBox comboBoxSelectTeacher;
     private com.toedter.calendar.JDateChooser dateChooserBirthday;
+    private javax.swing.JLabel labelAddress;
     private javax.swing.JLabel labelBirthday;
     private javax.swing.JLabel labelCode;
-    private javax.swing.JLabel labelDirection;
     private javax.swing.JLabel labelGender;
     private javax.swing.JLabel labelNames;
     private javax.swing.JLabel labelPhone;
@@ -331,8 +347,8 @@ public class JDialogStudent extends JDialogBase<Student> {
     private javax.swing.JPanel panel;
     private javax.swing.JRadioButton radioButtonFemale;
     private javax.swing.JRadioButton radioButtonMale;
+    private javax.swing.JTextField textFieldAddress;
     private javax.swing.JTextField textFieldCode;
-    private javax.swing.JTextField textFieldDirection;
     private javax.swing.JTextField textFieldNames;
     private javax.swing.JTextField textFieldPhone;
     // End of variables declaration//GEN-END:variables

@@ -95,7 +95,7 @@ public class StudentControllerImpl implements StudentController {
 
         int id = dao.selectIdByCode(code);
 
-        return id > 0;
+        return id != 0;
     }
 
 }
