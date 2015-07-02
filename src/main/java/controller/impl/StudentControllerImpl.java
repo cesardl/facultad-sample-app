@@ -42,9 +42,9 @@ public class StudentControllerImpl implements StudentController {
         DAOFactory factory = DAOFactory.getDAOFactory();
         StudentDAO dao = factory.getStudentDAO();
 
-        Student alumno = dao.selectByCode(code);
+        Student student = dao.selectByCode(code);
 
-        return alumno;
+        return student;
     }
 
     @Override

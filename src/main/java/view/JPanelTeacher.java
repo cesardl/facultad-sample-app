@@ -23,7 +23,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     private final TeacherController teacherController = new TeacherControllerImpl();
 
     /**
-     * Creates new form JPanelProfesor
+     * Creates new form JPanelTeacher.
      */
     public JPanelTeacher() {
         initComponents();
@@ -75,30 +75,30 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogTeacher dialogProfesor = new JDialogTeacher(getParentForDialog());
-        Utils.installEscapeCloseOperation(dialogProfesor);
+        JDialogTeacher dialogTeacher = new JDialogTeacher(getParentForDialog());
+        Utils.installEscapeCloseOperation(dialogTeacher);
 
-        Teacher profesor;
+        Teacher teacher;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            profesor = teacherController.getByCode(code);
-            dialogProfesor.setEntity(profesor);
+            teacher = teacherController.getByCode(code);
+            dialogTeacher.setEntity(teacher);
         }
 
-        dialogProfesor.setVisible(true);
+        dialogTeacher.setVisible(true);
 
-        profesor = dialogProfesor.getEntity();
-        if (profesor == null) {
+        teacher = dialogTeacher.getEntity();
+        if (teacher == null) {
             return;
         }
 
         switch (dialogAction) {
             case INSERT:
-                addRow(profesor);
+                addRow(teacher);
                 break;
 
             case UPDATE:
-                setRowValues(row, profesor);
+                setRowValues(row, teacher);
                 break;
         }
     }

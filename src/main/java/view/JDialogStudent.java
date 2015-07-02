@@ -26,7 +26,7 @@ public class JDialogStudent extends JDialogBase<Student> {
     private Gender gender;
 
     /**
-     * Creates new form JDialogAlumno.
+     * Creates new form JDialogStudent.
      *
      * @param parent the parent of this dialog.
      */
@@ -52,7 +52,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             Utils.selectTextField(textFieldCode);
             return false;
         }
-        if(DialogAction.INSERT.equals(dialogAction)){
+        if (DialogAction.INSERT.equals(dialogAction)) {
             if (studentController.existsCode(code)) {
                 key = "app.warning.student.code.already.exists";
                 log.warn(key);

@@ -27,7 +27,7 @@ public class JPanelStudent extends JPanelBase<Student> {
     private final StudentController studentController = new StudentControllerImpl();
 
     /**
-     * Creates new form JPanelAlumno
+     * Creates new form JPanelStudent.
      */
     public JPanelStudent() {
         initComponents();

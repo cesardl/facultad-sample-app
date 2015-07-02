@@ -6,6 +6,7 @@
 package view;
 
 import beans.Teacher;
+import controller.DialogAction;
 import util.Utils;
 import view.etc.JDialogBase;
 
@@ -18,7 +19,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
     private String email;
 
     /**
-     * Creates new form JDialogProfesor.
+     * Creates new form JDialogTeacher.
      *
      * @param parent the parent of this dialog.
      */
@@ -34,23 +35,41 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         birthday = dateChooserBirthday.getDate();
         email = textFieldEmail.getText().trim();
 
+        String key;
         if (code.length() == 0) {
+            key = "app.warning.teacher.code.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
-        if (teacherController.existsCode(code) && entity == null) {
-            Utils.selectTextField(textFieldCode);
-            return false;
+        if (DialogAction.INSERT.equals(dialogAction)) {
+            if (teacherController.existsCode(code)) {
+                key = "app.warning.teacher.code.already.exists";
+                log.warn(key);
+                Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+                Utils.selectTextField(textFieldCode);
+                return false;
+            }
         }
         if (names.length() == 0) {
+            key = "app.warning.teacher.name.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
+            key = "app.warning.teacher.birthday.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (email.length() == 0) {
+            key = "app.warning.teacher.email.empty";
+            log.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldEmail);
             return false;
         }
