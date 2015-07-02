@@ -13,7 +13,7 @@ import util.ResourceBundleHelper;
  */
 public class JDialogAbout extends javax.swing.JDialog {
 
-    private final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+    private final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
 
     /**
      * Creates new form JDialogAbout.
@@ -39,7 +39,7 @@ public class JDialogAbout extends javax.swing.JDialog {
         javax.swing.JLabel labelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle(bundle.getString("app.title")); // NOI18N
+        setTitle(resourceBundleHelper.getString("app.title")); // NOI18N
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
@@ -48,7 +48,7 @@ public class JDialogAbout extends javax.swing.JDialog {
 
         labelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_mysql+java.png"))); // NOI18N
 
-        labelText.setText(bundle.getString("app.dialog.about")); // NOI18N
+        labelText.setText(resourceBundleHelper.getString("app.dialog.about")); // NOI18N
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);

@@ -10,7 +10,7 @@ import util.Utils;
  */
 public class JFrameInit extends javax.swing.JFrame {
 
-    private final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+    private final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
     
     /**
      * Creates new form Main
@@ -48,12 +48,12 @@ public class JFrameInit extends javax.swing.JFrame {
         javax.swing.JMenuItem menuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(bundle.getString("app.title")); // NOI18N
+        setTitle(resourceBundleHelper.getString("app.title")); // NOI18N
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        tabbedPane.addTab(bundle.getString("dictionary.student"), panelStudent); // NOI18N
-        tabbedPane.addTab(bundle.getString("dictionary.teacher"), panelTeacher); // NOI18N
+        tabbedPane.addTab(resourceBundleHelper.getString("dictionary.student"), panelStudent); // NOI18N
+        tabbedPane.addTab(resourceBundleHelper.getString("dictionary.teacher"), panelTeacher); // NOI18N
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -74,11 +74,11 @@ public class JFrameInit extends javax.swing.JFrame {
 
         menuBar.setBackground(new java.awt.Color(255, 255, 255));
 
-        menuActions.setText(bundle.getString("dictionary.actions")); // NOI18N
+        menuActions.setText(resourceBundleHelper.getString("dictionary.actions")); // NOI18N
 
-        menuStudent.setText(bundle.getString("dictionary.student")); // NOI18N
+        menuStudent.setText(resourceBundleHelper.getString("dictionary.student")); // NOI18N
 
-        menuItemInsertStudent.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertStudent.setText(resourceBundleHelper.getString("dictionary.new")); // NOI18N
         menuItemInsertStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInsertStudentActionPerformed(evt);
@@ -86,7 +86,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         menuStudent.add(menuItemInsertStudent);
 
-        menuItemUpdateStudent.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateStudent.setText(resourceBundleHelper.getString("dictionary.edit")); // NOI18N
         menuItemUpdateStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemUpdateStudentActionPerformed(evt);
@@ -94,7 +94,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         menuStudent.add(menuItemUpdateStudent);
 
-        menuItemDeleteStudent.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteStudent.setText(resourceBundleHelper.getString("dictionary.delete")); // NOI18N
         menuItemDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemDeleteStudentActionPerformed(evt);
@@ -104,9 +104,9 @@ public class JFrameInit extends javax.swing.JFrame {
 
         menuActions.add(menuStudent);
 
-        menuTeacher.setText(bundle.getString("dictionary.teacher")); // NOI18N
+        menuTeacher.setText(resourceBundleHelper.getString("dictionary.teacher")); // NOI18N
 
-        menuItemInsertTeacher.setText(bundle.getString("dictionary.new")); // NOI18N
+        menuItemInsertTeacher.setText(resourceBundleHelper.getString("dictionary.new")); // NOI18N
         menuItemInsertTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInsertTeacherActionPerformed(evt);
@@ -114,7 +114,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         menuTeacher.add(menuItemInsertTeacher);
 
-        menuItemUpdateTeacher.setText(bundle.getString("dictionary.edit")); // NOI18N
+        menuItemUpdateTeacher.setText(resourceBundleHelper.getString("dictionary.edit")); // NOI18N
         menuItemUpdateTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemUpdateTeacherActionPerformed(evt);
@@ -122,7 +122,7 @@ public class JFrameInit extends javax.swing.JFrame {
         });
         menuTeacher.add(menuItemUpdateTeacher);
 
-        menuItemDeleteTeacher.setText(bundle.getString("dictionary.delete")); // NOI18N
+        menuItemDeleteTeacher.setText(resourceBundleHelper.getString("dictionary.delete")); // NOI18N
         menuItemDeleteTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemDeleteTeacherActionPerformed(evt);
@@ -133,7 +133,7 @@ public class JFrameInit extends javax.swing.JFrame {
         menuActions.add(menuTeacher);
         menuActions.add(separator);
 
-        menuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
+        menuItemExit.setText(resourceBundleHelper.getString("dictionary.exit")); // NOI18N
         menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemExitActionPerformed(evt);
@@ -143,9 +143,9 @@ public class JFrameInit extends javax.swing.JFrame {
 
         menuBar.add(menuActions);
 
-        menuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
+        menuHelp.setText(resourceBundleHelper.getString("dictionary.help")); // NOI18N
 
-        menuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
+        menuItemAbout.setText(resourceBundleHelper.getString("dictionary.about")); // NOI18N
         menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAboutActionPerformed(evt);
@@ -187,7 +187,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -202,7 +202,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -219,7 +219,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -234,7 +234,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -243,7 +243,7 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 
     private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
-        int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
+        int i = JOptionPane.showConfirmDialog(this, resourceBundleHelper.getString("app.warning.exit"),
                 this.getTitle(), JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
             System.exit(0);

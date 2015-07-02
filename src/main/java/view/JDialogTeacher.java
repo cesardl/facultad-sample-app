@@ -39,7 +39,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         if (code.length() == 0) {
             key = "app.warning.teacher.code.empty";
             log.warn(key);
-            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
@@ -47,7 +47,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             if (teacherController.existsCode(code)) {
                 key = "app.warning.teacher.code.already.exists";
                 log.warn(key);
-                Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
                 Utils.selectTextField(textFieldCode);
                 return false;
             }
@@ -55,21 +55,21 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         if (names.length() == 0) {
             key = "app.warning.teacher.name.empty";
             log.warn(key);
-            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
             key = "app.warning.teacher.birthday.empty";
             log.warn(key);
-            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (email.length() == 0) {
             key = "app.warning.teacher.email.empty";
             log.warn(key);
-            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             Utils.selectTextField(textFieldEmail);
             return false;
         }
@@ -125,18 +125,18 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         javax.swing.JButton buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle(bundle.getString("app.title")); // NOI18N
+        setTitle(resourceBundleHelper.getString("app.title")); // NOI18N
         setResizable(false);
 
-        panel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("app.dialog.border.title"))); // NOI18N
+        panel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceBundleHelper.getString("app.dialog.border.title"))); // NOI18N
 
-        labelCode.setText(bundle.getString("dictionary.code")); // NOI18N
+        labelCode.setText(resourceBundleHelper.getString("dictionary.code")); // NOI18N
 
-        labelNames.setText(bundle.getString("dictionary.names")); // NOI18N
+        labelNames.setText(resourceBundleHelper.getString("dictionary.names")); // NOI18N
 
-        labelBirthday.setText(bundle.getString("dictionary.birthday")); // NOI18N
+        labelBirthday.setText(resourceBundleHelper.getString("dictionary.birthday")); // NOI18N
 
-        labelEmail.setText(bundle.getString("dictionary.email")); // NOI18N
+        labelEmail.setText(resourceBundleHelper.getString("dictionary.email")); // NOI18N
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -181,14 +181,14 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        buttonAccept.setText(bundle.getString("dictionary.accept")); // NOI18N
+        buttonAccept.setText(resourceBundleHelper.getString("dictionary.accept")); // NOI18N
         buttonAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAcceptActionPerformed(evt);
             }
         });
 
-        buttonCancel.setText(bundle.getString("dictionary.cancel")); // NOI18N
+        buttonCancel.setText(resourceBundleHelper.getString("dictionary.cancel")); // NOI18N
         buttonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelActionPerformed(evt);

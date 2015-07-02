@@ -17,7 +17,7 @@ public abstract class JDialogBase<T> extends javax.swing.JDialog {
 
     protected static final Logger log = Logger.getLogger(JDialogBase.class);
 
-    protected final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+    protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
 
     protected final TeacherController teacherController = new TeacherControllerImpl();
 

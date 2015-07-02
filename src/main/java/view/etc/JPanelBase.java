@@ -3,6 +3,7 @@ package view.etc;
 import controller.DialogAction;
 import java.awt.Frame;
 import javax.swing.JTable;
+import util.DateFormatHelper;
 import util.ResourceBundleHelper;
 
 /**
@@ -12,7 +13,9 @@ import util.ResourceBundleHelper;
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
-    protected final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+    protected final DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
+
+    protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
 
     public static final int BAD_ROW = -1;
 

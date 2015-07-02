@@ -6,7 +6,6 @@ import dao.StudentDAO;
 import dao.DAO;
 import factory.DAOFactory;
 import java.util.List;
-import util.Utils;
 
 /**
  *
@@ -28,7 +27,7 @@ public class StudentControllerImpl implements StudentController {
 
             rowData[i][0] = student.getCode();
             rowData[i][1] = student.getNames();
-            rowData[i][2] = Utils.formatDate(student.getBirthday());
+            rowData[i][2] = dateFormatHelper.formatDate(student.getBirthday());
             rowData[i][3] = student.getGender().getValue();
             rowData[i][4] = student.getDirection();
             rowData[i][5] = student.getTelefono();

@@ -21,12 +21,9 @@ public class Utils {
 
     public static final int ERROR_INT = -999;
 
-    private static final KeyStroke ESCAPE_STROKE
-            = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
-    private static final KeyStroke ENTER_STROKE
-            = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
-    public static final String DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY
-            = JFrameInit.class.getCanonicalName() + ":WINDOW_CLOSING";
+    private static final KeyStroke ESCAPE_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+    private static final KeyStroke ENTER_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+    public static final String DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY = JFrameInit.class.getCanonicalName() + ":WINDOW_CLOSING";
 
     /**
      * Devuelve una cadena convertida en String, en caso de encontrarse un error
@@ -81,16 +78,6 @@ public class Utils {
     public static void selectTextField(javax.swing.JTextField jTextField) {
         jTextField.requestFocus();
         jTextField.selectAll();
-    }
-
-    /**
-     *
-     * @param date
-     * @return
-     */
-    public static String formatDate(Date date) {
-        SimpleDateFormat dt = new SimpleDateFormat("dd/MMM/y");
-        return dt.format(date);
     }
 
     /**

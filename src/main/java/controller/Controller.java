@@ -1,6 +1,7 @@
 package controller;
 
 import org.apache.log4j.Logger;
+import util.DateFormatHelper;
 
 /**
  *
@@ -8,6 +9,8 @@ import org.apache.log4j.Logger;
  * @param <T>
  */
 public interface Controller<T> {
+
+    DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
 
     Logger log = Logger.getLogger(Controller.class);
 

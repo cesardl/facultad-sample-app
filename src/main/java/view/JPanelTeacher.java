@@ -42,7 +42,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            Utils.formatDate(entity.getBirthday()),
+            dateFormatHelper.formatDate(entity.getBirthday()),
             entity.getEmail()
         });
     }
@@ -51,15 +51,15 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     protected void setRowValues(int row, Teacher entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.formatDate(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
         int i = JOptionPane.showConfirmDialog(this,
-                bundle.getString("app.warning.teacher.delete"),
-                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
+                resourceBundleHelper.getString("app.warning.teacher.delete"),
+                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = teacherController.delete(code);
@@ -117,7 +117,8 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         tableModel = new javax.swing.table.DefaultTableModel(
             teacherController.getAll(),
             new String [] {
-                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
+                resourceBundleHelper.getString("dictionary.code"), resourceBundleHelper.getString("dictionary.names"), resourceBundleHelper.getString("dictionary.birthday"), resourceBundleHelper
+                    .getString("dictionary.email")
             }
         ) {
             Class[] types = new Class [] {

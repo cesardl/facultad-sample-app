@@ -46,7 +46,7 @@ public class JPanelStudent extends JPanelBase<Student> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            Utils.formatDate(entity.getBirthday()),
+            dateFormatHelper.formatDate(entity.getBirthday()),
             entity.getGender().getValue(),
             entity.getDirection(),
             entity.getTelefono()
@@ -57,7 +57,7 @@ public class JPanelStudent extends JPanelBase<Student> {
     protected void setRowValues(int row, Student entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.formatDate(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getGender().getValue(), row, 3);
         tableModel.setValueAt(entity.getDirection(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);
@@ -66,8 +66,8 @@ public class JPanelStudent extends JPanelBase<Student> {
     @Override
     protected void deleteRow(int row, String code) {
         int i = JOptionPane.showConfirmDialog(this,
-                bundle.getString("app.warning.student.delete"),
-                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
+                resourceBundleHelper.getString("app.warning.student.delete"),
+                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = studentController.delete(code);
@@ -127,7 +127,8 @@ public class JPanelStudent extends JPanelBase<Student> {
         tableModel = new javax.swing.table.DefaultTableModel(
             studentController.getAll(),
             new String [] {
-                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
+                resourceBundleHelper.getString("dictionary.code"), resourceBundleHelper.getString("dictionary.names"), resourceBundleHelper.getString("dictionary.birthday"), resourceBundleHelper
+                    .getString("dictionary.sex"), resourceBundleHelper.getString("dictionary.address"), resourceBundleHelper.getString("dictionary.phone")
             }
         ) {
             Class[] types = new Class [] {
