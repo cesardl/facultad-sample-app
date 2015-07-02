@@ -1,8 +1,9 @@
-package view;
+package init;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;
+import view.JFrameInit;
 
 // TODO mensajes de error en formularios
 // TODO Generate distribution zip

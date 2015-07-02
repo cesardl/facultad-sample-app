@@ -1,5 +1,6 @@
 package view.etc;
 
+import controller.DialogAction;
 import controller.TeacherController;
 import controller.impl.TeacherControllerImpl;
 import java.awt.Frame;
@@ -24,6 +25,8 @@ public abstract class JDialogBase<T> extends javax.swing.JDialog {
 
     protected String code, names;
     protected Date birthday;
+
+    protected DialogAction dialogAction;
 
     /**
      *
@@ -55,5 +58,9 @@ public abstract class JDialogBase<T> extends javax.swing.JDialog {
      * @param entity
      */
     public abstract void setEntity(T entity);
+
+    public void setAction(DialogAction dialogAction) {
+        this.dialogAction = dialogAction;
+    }
 
 }

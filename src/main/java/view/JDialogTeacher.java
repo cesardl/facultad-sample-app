@@ -106,7 +106,6 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
 

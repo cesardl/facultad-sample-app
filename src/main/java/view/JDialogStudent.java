@@ -8,6 +8,7 @@ package view;
 import beans.Student;
 import beans.Teacher;
 import beans.etc.Gender;
+import controller.DialogAction;
 import controller.StudentController;
 import controller.impl.StudentControllerImpl;
 import util.Utils;
@@ -51,12 +52,14 @@ public class JDialogStudent extends JDialogBase<Student> {
             Utils.selectTextField(textFieldCode);
             return false;
         }
-        if (studentController.existsCode(code) && entity == null) {
-            key = "app.warning.student.code.already.exists";
-            log.warn(key);
-            Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
-            Utils.selectTextField(textFieldCode);
-            return false;
+        if(DialogAction.INSERT.equals(dialogAction)){
+            if (studentController.existsCode(code)) {
+                key = "app.warning.student.code.already.exists";
+                log.warn(key);
+                Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
+                Utils.selectTextField(textFieldCode);
+                return false;
+            }
         }
         if (names.length() == 0) {
             key = "app.warning.student.name.empty";
@@ -92,8 +95,8 @@ public class JDialogStudent extends JDialogBase<Student> {
         address = entity.getDirection();
         phone = entity.getTelefono();
 
-        final int MAX_SIZE = comboBoxSelectTeacher.getItemCount();
-        for (int i = 0; i < MAX_SIZE; i++) {
+        int size = comboBoxSelectTeacher.getItemCount();
+        for (int i = 0; i < size; i++) {
             Teacher p = (Teacher) comboBoxSelectTeacher.getItemAt(i);
             if (p.getId() == entity.getTeacherId()) {
                 comboBoxSelectTeacher.setSelectedIndex(i);
@@ -135,15 +138,15 @@ public class JDialogStudent extends JDialogBase<Student> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup = new javax.swing.ButtonGroup();
-        panel = new javax.swing.JPanel();
-        labelCode = new javax.swing.JLabel();
-        labelNames = new javax.swing.JLabel();
-        labelBirthday = new javax.swing.JLabel();
-        labelGender = new javax.swing.JLabel();
-        labelAddress = new javax.swing.JLabel();
-        labelPhone = new javax.swing.JLabel();
-        labelSelectTeacher = new javax.swing.JLabel();
+        javax.swing.ButtonGroup buttonGroup = new javax.swing.ButtonGroup();
+        javax.swing.JPanel panel = new javax.swing.JPanel();
+        javax.swing.JLabel labelCode = new javax.swing.JLabel();
+        javax.swing.JLabel labelNames = new javax.swing.JLabel();
+        javax.swing.JLabel labelBirthday = new javax.swing.JLabel();
+        javax.swing.JLabel labelGender = new javax.swing.JLabel();
+        javax.swing.JLabel labelAddress = new javax.swing.JLabel();
+        javax.swing.JLabel labelPhone = new javax.swing.JLabel();
+        javax.swing.JLabel labelSelectTeacher = new javax.swing.JLabel();
         textFieldCode = new javax.swing.JTextField();
         textFieldNames = new javax.swing.JTextField();
         dateChooserBirthday = new com.toedter.calendar.JDateChooser();
@@ -152,8 +155,8 @@ public class JDialogStudent extends JDialogBase<Student> {
         textFieldAddress = new javax.swing.JTextField();
         textFieldPhone = new javax.swing.JTextField();
         comboBoxSelectTeacher = new javax.swing.JComboBox();
-        buttonAccept = new javax.swing.JButton();
-        buttonCancel = new javax.swing.JButton();
+        javax.swing.JButton buttonAccept = new javax.swing.JButton();
+        javax.swing.JButton buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
@@ -332,19 +335,8 @@ public class JDialogStudent extends JDialogBase<Student> {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAccept;
-    private javax.swing.JButton buttonCancel;
-    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JComboBox comboBoxSelectTeacher;
     private com.toedter.calendar.JDateChooser dateChooserBirthday;
-    private javax.swing.JLabel labelAddress;
-    private javax.swing.JLabel labelBirthday;
-    private javax.swing.JLabel labelCode;
-    private javax.swing.JLabel labelGender;
-    private javax.swing.JLabel labelNames;
-    private javax.swing.JLabel labelPhone;
-    private javax.swing.JLabel labelSelectTeacher;
-    private javax.swing.JPanel panel;
     private javax.swing.JRadioButton radioButtonFemale;
     private javax.swing.JRadioButton radioButtonMale;
     private javax.swing.JTextField textFieldAddress;

@@ -13,6 +13,8 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+
+import init.Main;
 import org.apache.log4j.Logger;
 
 /**

@@ -83,31 +83,32 @@ public class JPanelStudent extends JPanelBase<Student> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogStudent dialogAlumno = new JDialogStudent(getParentForDialog());
-        Utils.installEscapeCloseOperation(dialogAlumno);
+        JDialogStudent dialogStudent = new JDialogStudent(getParentForDialog());
+        dialogStudent.setAction(dialogAction);
+        Utils.installEscapeCloseOperation(dialogStudent);
 
-        Student alumno;
+        Student student;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            alumno = studentController.getByCode(code);
+            student = studentController.getByCode(code);
 
-            dialogAlumno.setEntity(alumno);
+            dialogStudent.setEntity(student);
         }
 
-        dialogAlumno.setVisible(true);
+        dialogStudent.setVisible(true);
 
-        alumno = dialogAlumno.getEntity();
-        if (alumno == null) {
+        student = dialogStudent.getEntity();
+        if (student == null) {
             return;
         }
 
         switch (dialogAction) {
             case INSERT:
-                addRow(alumno);
+                addRow(student);
                 break;
 
             case UPDATE:
-                setRowValues(row, alumno);
+                setRowValues(row, student);
                 break;
         }
     }
