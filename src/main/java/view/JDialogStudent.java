@@ -329,7 +329,7 @@ public class JDialogStudent extends JDialogFormBase<Student> {
                 dispose();
             } else {
                 key = "app.error.student.save";
-                log.warn(key);
+                log.error(key);
                 Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }

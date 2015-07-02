@@ -11,6 +11,7 @@ import controller.TeacherController;
 import controller.impl.TeacherControllerImpl;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import org.apache.log4j.Logger;
 import view.etc.JPanelBase;
 
 /**
@@ -20,6 +21,8 @@ import view.etc.JPanelBase;
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
     private static final long serialVersionUID = -2833586888123947842L;
+
+    private static final Logger log = Logger.getLogger(JPanelTeacher.class);
 
     private final TeacherController teacherController = new TeacherControllerImpl();
 
@@ -64,8 +67,17 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = teacherController.delete(code);
+
+            String key;
             if (state) {
+                key = "app.success.teacher.delete";
+                log.info(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
                 tableModel.removeRow(row);
+            } else {
+                key = "app.error.teacher.delete";
+                log.error(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
     }

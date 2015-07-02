@@ -7,6 +7,8 @@ package view;
 
 import beans.Teacher;
 import controller.DialogAction;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import view.etc.JDialogFormBase;
 
 /**
@@ -74,8 +76,26 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
             selectTextField(textFieldEmail);
             return false;
         }
+        if(!isCorrectEmailFormat(email)) {
+            key = "app.warning.teacher.email.wrong.format";
+            log.warn(key);
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            selectTextField(textFieldEmail);
+            return false;
+        }
 
         return true;
+    }
+
+    private boolean isCorrectEmailFormat(String email) {
+        //Set the email pattern string
+        Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
+
+        //Match the given string with the pattern
+        Matcher m = p.matcher(email);
+
+        //Check whether match is found
+        return m.matches();
     }
 
     @Override
@@ -247,7 +267,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
                 dispose();
             } else {
                 key = "app.error.teacher.save";
-                log.warn(key);
+                log.error(key);
                 Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
