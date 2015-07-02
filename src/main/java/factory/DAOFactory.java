@@ -27,7 +27,7 @@ public abstract class DAOFactory {
     private static final Logger log = Logger.getLogger(DAOFactory.class);
 
     private static Database whichFactory;
-    private static String driver;
+//    private static String driver;
     private static String url;
     private static String user;
     private static String passwd;
@@ -40,12 +40,13 @@ public abstract class DAOFactory {
     public abstract TeacherDAO getTeacherDAO();
 
     static {
+        System.out.println("LOAD RESOURCES");
         try (InputStream is = DAOFactory.class.getResourceAsStream("/db/database.properties")) {
             Properties prop = new Properties();
             prop.load(is);
 
             whichFactory = Database.valueOf(prop.getProperty("database.factory"));
-            driver = prop.getProperty("database.driver");
+//            driver = prop.getProperty("database.driver");
             url = prop.getProperty("database.url");
             user = prop.getProperty("database.user");
             passwd = prop.getProperty("database.passwd");
@@ -78,13 +79,10 @@ public abstract class DAOFactory {
      * Method to create db connections.
      *
      * @return
-     * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public static Connection createConnection() throws ClassNotFoundException, SQLException {
-        // Use DRIVER and DBURL to create a connection
+    public static Connection createConnection() throws SQLException {
         // Recommend connection pool implementation/usage
-        Class.forName(driver);
         return DriverManager.getConnection(url, user, passwd);
     }
 }

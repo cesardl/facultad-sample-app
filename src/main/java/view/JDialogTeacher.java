@@ -41,7 +41,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         if (code.length() == 0) {
             key = "app.warning.teacher.code.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
@@ -49,7 +49,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             if (teacherController.existsCode(code)) {
                 key = "app.warning.teacher.code.already.exists";
                 log.warn(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
                 Utils.selectTextField(textFieldCode);
                 return false;
             }
@@ -57,21 +57,21 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
         if (names.length() == 0) {
             key = "app.warning.teacher.name.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
             key = "app.warning.teacher.birthday.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (email.length() == 0) {
             key = "app.warning.teacher.email.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldEmail);
             return false;
         }
@@ -240,10 +240,16 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
 
             boolean state = teacherController.saveOrUpdate(entity);
 
+            String key;
             if (state) {
+                key = "app.success.teacher.save";
+                log.info(key);
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
                 dispose();
             } else {
-                log.warn("Could not insert/update a teacher.");
+                key = "app.error.teacher.save";
+                log.warn(key);
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
     }//GEN-LAST:event_buttonAcceptActionPerformed

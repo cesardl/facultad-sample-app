@@ -31,13 +31,14 @@ public class Toast extends JDialog {
 
     public enum Style {
 
-        NORMAL, SUCCESS, ERROR
+        NORMAL, SUCCESS, WARNING, ERROR
 
     }
 
     public static final int LENGTH_SHORT = 3000;
     public static final int LENGTH_LONG = 6000;
     public static final Color ERROR_RED = new Color(121, 0, 0);
+    public static final Color WARNING_YELLOW = new Color(245, 161, 4);
     public static final Color SUCCESS_GREEN = new Color(22, 127, 57);
     public static final Color NORMAL_BLACK = new Color(0, 0, 0);
 
@@ -167,14 +168,22 @@ public class Toast extends JDialog {
         toast.mText = text;
         toast.mDuration = duration;
 
-        if (style == Style.SUCCESS) {
-            toast.mBackgroundColor = SUCCESS_GREEN;
-        }
-        if (style == Style.ERROR) {
-            toast.mBackgroundColor = ERROR_RED;
-        }
-        if (style == Style.NORMAL) {
-            toast.mBackgroundColor = NORMAL_BLACK;
+        switch (style) {
+            case SUCCESS:
+                toast.mBackgroundColor = SUCCESS_GREEN;
+                break;
+                
+            case WARNING:
+                toast.mBackgroundColor = WARNING_YELLOW;
+                break;
+                
+            case ERROR:
+                toast.mBackgroundColor = ERROR_RED;
+                break;
+                
+            case NORMAL:
+                toast.mBackgroundColor = NORMAL_BLACK;
+                break;
         }
 
         return toast;

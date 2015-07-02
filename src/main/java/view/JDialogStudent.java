@@ -50,7 +50,7 @@ public class JDialogStudent extends JDialogBase<Student> {
         if (code.length() == 0) {
             key = "app.warning.student.code.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldCode);
             return false;
         }
@@ -58,7 +58,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             if (studentController.existsCode(code)) {
                 key = "app.warning.student.code.already.exists";
                 log.warn(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
                 Utils.selectTextField(textFieldCode);
                 return false;
             }
@@ -66,21 +66,21 @@ public class JDialogStudent extends JDialogBase<Student> {
         if (names.length() == 0) {
             key = "app.warning.student.name.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
             key = "app.warning.student.birthday.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (address.length() == 0) {
             key = "app.warning.student.address.empty";
             log.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
             Utils.selectTextField(textFieldAddress);
             return false;
         }
@@ -322,10 +322,16 @@ public class JDialogStudent extends JDialogBase<Student> {
 
             boolean state = studentController.saveOrUpdate(entity);
 
+            String key;
             if (state) {
+                key = "app.success.student.save";
+                log.info(key);
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
                 dispose();
             } else {
-                log.warn("Could not insert/update a student.");
+                key = "app.error.student.save";
+                log.warn(key);
+                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
     }//GEN-LAST:event_buttonAcceptActionPerformed
