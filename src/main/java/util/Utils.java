@@ -3,8 +3,6 @@ package util;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -89,6 +87,9 @@ public class Utils {
         root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ESCAPE_STROKE, DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY);
 
         root.getActionMap().put(DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY, new AbstractAction() {
+
+            private static final long serialVersionUID = 4428246088355681817L;
+
             @Override
             public void actionPerformed(ActionEvent event) {
                 dialog.dispatchEvent(new WindowEvent(
@@ -107,6 +108,9 @@ public class Utils {
         root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ENTER_STROKE, DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY);
 
         root.getActionMap().put(DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY, new AbstractAction() {
+
+            private static final long serialVersionUID = -253299336339560997L;
+
             @Override
             public void actionPerformed(ActionEvent event) {
                 dialog.dispatchEvent(new WindowEvent(

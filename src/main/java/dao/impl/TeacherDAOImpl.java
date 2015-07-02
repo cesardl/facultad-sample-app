@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import beans.Teacher;
-import static dao.DAO.STATE_ERROR;
-import static dao.DAO.log;
 import dao.TeacherDAO;
 import factory.DAOFactory;
 import java.sql.Date;

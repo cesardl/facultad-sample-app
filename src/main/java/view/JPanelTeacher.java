@@ -20,6 +20,8 @@ import view.etc.JPanelBase;
  */
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
+    private static final long serialVersionUID = -2833586888123947842L;
+
     private final TeacherController teacherController = new TeacherControllerImpl();
 
     /**
@@ -31,7 +33,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     /**
      *
-     * @return
+     * @return the table.
      */
     public JTable getTable() {
         return table;
@@ -121,6 +123,8 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
                     .getString("dictionary.email")
             }
         ) {
+            private static final long serialVersionUID = -6723620777953415621L;
+
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };

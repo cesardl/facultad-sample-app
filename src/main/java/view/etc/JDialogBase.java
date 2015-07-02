@@ -15,6 +15,8 @@ import util.ResourceBundleHelper;
  */
 public abstract class JDialogBase<T> extends javax.swing.JDialog {
 
+    private static final long serialVersionUID = -2649937183651508059L;
+
     protected static final Logger log = Logger.getLogger(JDialogBase.class);
 
     protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();

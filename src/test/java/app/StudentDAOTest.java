@@ -1,7 +1,6 @@
 package app;
 
 import dao.StudentDAO;
-import dao.TeacherDAO;
 import factory.DAOFactory;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

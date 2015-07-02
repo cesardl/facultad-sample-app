@@ -13,6 +13,8 @@ import util.ResourceBundleHelper;
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
+    private static final long serialVersionUID = -8446015582022117195L;
+
     protected final DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
 
     protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();

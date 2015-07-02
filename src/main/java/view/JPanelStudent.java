@@ -24,6 +24,8 @@ import view.etc.JPanelBase;
  */
 public class JPanelStudent extends JPanelBase<Student> {
 
+    private static final long serialVersionUID = -3407749931422832063L;
+
     private final StudentController studentController = new StudentControllerImpl();
 
     /**
@@ -35,7 +37,7 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     /**
      *
-     * @return
+     * @return the table.
      */
     public JTable getTable() {
         return table;
@@ -131,6 +133,8 @@ public class JPanelStudent extends JPanelBase<Student> {
                     .getString("dictionary.sex"), resourceBundleHelper.getString("dictionary.address"), resourceBundleHelper.getString("dictionary.phone")
             }
         ) {
+            private static final long serialVersionUID = 9104477490865060505L;
+
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class
             };

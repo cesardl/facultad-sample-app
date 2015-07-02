@@ -1,6 +1,5 @@
 package app;
 
-import dao.StudentDAO;
 import dao.TeacherDAO;
 import factory.DAOFactory;
 import org.junit.Test;
