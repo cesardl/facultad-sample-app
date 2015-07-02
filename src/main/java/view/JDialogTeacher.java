@@ -20,7 +20,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
     /**
      * Creates new form JDialogProfesor.
      *
-     * @param parent
+     * @param parent the parent of this dialog.
      */
     public JDialogTeacher(java.awt.Frame parent) {
         super(parent);
@@ -93,17 +93,17 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
-        labelCode = new javax.swing.JLabel();
-        labelNames = new javax.swing.JLabel();
-        labelBirthday = new javax.swing.JLabel();
-        labelEmail = new javax.swing.JLabel();
+        javax.swing.JPanel panel = new javax.swing.JPanel();
+        javax.swing.JLabel labelCode = new javax.swing.JLabel();
+        javax.swing.JLabel labelNames = new javax.swing.JLabel();
+        javax.swing.JLabel labelBirthday = new javax.swing.JLabel();
+        javax.swing.JLabel labelEmail = new javax.swing.JLabel();
         textFieldCode = new javax.swing.JTextField();
         textFieldNames = new javax.swing.JTextField();
         dateChooserBirthday = new com.toedter.calendar.JDateChooser();
         textFieldEmail = new javax.swing.JTextField();
-        buttonAccept = new javax.swing.JButton();
-        buttonCancel = new javax.swing.JButton();
+        javax.swing.JButton buttonAccept = new javax.swing.JButton();
+        javax.swing.JButton buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(bundle.getString("app.title")); // NOI18N
@@ -233,14 +233,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAccept;
-    private javax.swing.JButton buttonCancel;
     private com.toedter.calendar.JDateChooser dateChooserBirthday;
-    private javax.swing.JLabel labelBirthday;
-    private javax.swing.JLabel labelCode;
-    private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelNames;
-    private javax.swing.JPanel panel;
     private javax.swing.JTextField textFieldCode;
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldNames;

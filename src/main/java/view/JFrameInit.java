@@ -28,24 +28,24 @@ public class JFrameInit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        javax.swing.JPanel panel = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
         panelStudent = new view.JPanelStudent();
         panelTeacher = new view.JPanelTeacher();
-        menuBar = new javax.swing.JMenuBar();
-        menuActions = new javax.swing.JMenu();
-        menuStudent = new javax.swing.JMenu();
-        menuItemInsertStudent = new javax.swing.JMenuItem();
-        menuItemUpdateStudent = new javax.swing.JMenuItem();
-        menuItemDeleteStudent = new javax.swing.JMenuItem();
-        menuTeacher = new javax.swing.JMenu();
-        menuItemInsertTeacher = new javax.swing.JMenuItem();
-        menuItemUpdateTeacher = new javax.swing.JMenuItem();
-        menuItemDeleteTeacher = new javax.swing.JMenuItem();
-        separator = new javax.swing.JPopupMenu.Separator();
-        menuItemExit = new javax.swing.JMenuItem();
-        menuHelp = new javax.swing.JMenu();
-        menuItemAbout = new javax.swing.JMenuItem();
+        javax.swing.JMenuBar menuBar = new javax.swing.JMenuBar();
+        javax.swing.JMenu menuActions = new javax.swing.JMenu();
+        javax.swing.JMenu menuStudent = new javax.swing.JMenu();
+        javax.swing.JMenuItem menuItemInsertStudent = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem menuItemUpdateStudent = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem menuItemDeleteStudent = new javax.swing.JMenuItem();
+        javax.swing.JMenu menuTeacher = new javax.swing.JMenu();
+        javax.swing.JMenuItem menuItemInsertTeacher = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem menuItemUpdateTeacher = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem menuItemDeleteTeacher = new javax.swing.JMenuItem();
+        javax.swing.JPopupMenu.Separator separator = new javax.swing.JPopupMenu.Separator();
+        javax.swing.JMenuItem menuItemExit = new javax.swing.JMenuItem();
+        javax.swing.JMenu menuHelp = new javax.swing.JMenu();
+        javax.swing.JMenuItem menuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(bundle.getString("app.title")); // NOI18N
@@ -258,23 +258,8 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemAboutActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu menuActions;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuHelp;
-    private javax.swing.JMenuItem menuItemAbout;
-    private javax.swing.JMenuItem menuItemDeleteStudent;
-    private javax.swing.JMenuItem menuItemDeleteTeacher;
-    private javax.swing.JMenuItem menuItemExit;
-    private javax.swing.JMenuItem menuItemInsertStudent;
-    private javax.swing.JMenuItem menuItemInsertTeacher;
-    private javax.swing.JMenuItem menuItemUpdateStudent;
-    private javax.swing.JMenuItem menuItemUpdateTeacher;
-    private javax.swing.JMenu menuStudent;
-    private javax.swing.JMenu menuTeacher;
-    private javax.swing.JPanel panel;
     private view.JPanelStudent panelStudent;
     private view.JPanelTeacher panelTeacher;
-    private javax.swing.JPopupMenu.Separator separator;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

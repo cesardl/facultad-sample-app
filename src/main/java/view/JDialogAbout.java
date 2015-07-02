@@ -5,16 +5,20 @@
  */
 package view;
 
+import util.ResourceBundleHelper;
+
 /**
  *
  * @author Cesardl
  */
 public class JDialogAbout extends javax.swing.JDialog {
 
+    private final ResourceBundleHelper bundle = ResourceBundleHelper.getInstance();
+
     /**
      * Creates new form JDialogAbout.
      *
-     * @param parent
+     * @param parent the parent of this dialog.
      */
     public JDialogAbout(java.awt.Frame parent) {
         super(parent, true);
@@ -30,12 +34,11 @@ public class JDialogAbout extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
-        labelImage = new javax.swing.JLabel();
-        labelText = new javax.swing.JLabel();
+        javax.swing.JPanel panel = new javax.swing.JPanel();
+        javax.swing.JLabel labelImage = new javax.swing.JLabel();
+        javax.swing.JLabel labelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
@@ -84,8 +87,5 @@ public class JDialogAbout extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelImage;
-    private javax.swing.JLabel labelText;
-    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

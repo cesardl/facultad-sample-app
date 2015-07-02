@@ -33,7 +33,7 @@ public class Toast extends JDialog {
 
         NORMAL, SUCCESS, ERROR
 
-    };
+    }
 
     public static final int LENGTH_SHORT = 3000;
     public static final int LENGTH_LONG = 6000;

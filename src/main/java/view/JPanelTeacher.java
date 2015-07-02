@@ -112,8 +112,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
-        scrollPane = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             teacherController.getAll(),
@@ -180,7 +179,6 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     }//GEN-LAST:event_tableKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables
