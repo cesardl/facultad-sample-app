@@ -40,7 +40,6 @@ public abstract class DAOFactory {
     public abstract TeacherDAO getTeacherDAO();
 
     static {
-        System.out.println("LOAD RESOURCES");
         try (InputStream is = DAOFactory.class.getResourceAsStream("/db/database.properties")) {
             Properties prop = new Properties();
             prop.load(is);

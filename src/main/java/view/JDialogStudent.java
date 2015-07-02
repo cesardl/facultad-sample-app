@@ -11,14 +11,13 @@ import beans.etc.Gender;
 import controller.DialogAction;
 import controller.StudentController;
 import controller.impl.StudentControllerImpl;
-import util.Utils;
-import view.etc.JDialogBase;
+import view.etc.JDialogFormBase;
 
 /**
  *
  * @author Cesardl
  */
-public class JDialogStudent extends JDialogBase<Student> {
+public class JDialogStudent extends JDialogFormBase<Student> {
 
     private static final long serialVersionUID = -4130243854869964348L;
 
@@ -51,7 +50,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             key = "app.warning.student.code.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldCode);
+            selectTextField(textFieldCode);
             return false;
         }
         if (DialogAction.INSERT.equals(dialogAction)) {
@@ -59,7 +58,7 @@ public class JDialogStudent extends JDialogBase<Student> {
                 key = "app.warning.student.code.already.exists";
                 log.warn(key);
                 Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-                Utils.selectTextField(textFieldCode);
+                selectTextField(textFieldCode);
                 return false;
             }
         }
@@ -67,7 +66,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             key = "app.warning.student.name.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldNames);
+            selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
@@ -81,7 +80,7 @@ public class JDialogStudent extends JDialogBase<Student> {
             key = "app.warning.student.address.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldAddress);
+            selectTextField(textFieldAddress);
             return false;
         }
 

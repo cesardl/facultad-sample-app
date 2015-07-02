@@ -11,7 +11,6 @@ import controller.StudentController;
 import controller.impl.StudentControllerImpl;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import util.Utils;
 import view.etc.JPanelBase;
 
 /**
@@ -87,7 +86,7 @@ public class JPanelStudent extends JPanelBase<Student> {
 
         JDialogStudent dialogStudent = new JDialogStudent(getParentForDialog());
         dialogStudent.setAction(dialogAction);
-        Utils.installEscapeCloseOperation(dialogStudent);
+        dialogStudent.installEscapeCloseOperation();
 
         Student student;
 

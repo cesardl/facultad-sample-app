@@ -11,7 +11,6 @@ import controller.TeacherController;
 import controller.impl.TeacherControllerImpl;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import util.Utils;
 import view.etc.JPanelBase;
 
 /**
@@ -78,7 +77,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         }
 
         JDialogTeacher dialogTeacher = new JDialogTeacher(getParentForDialog());
-        Utils.installEscapeCloseOperation(dialogTeacher);
+        dialogTeacher.installEscapeCloseOperation();
 
         Teacher teacher;
 

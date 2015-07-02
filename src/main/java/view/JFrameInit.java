@@ -3,7 +3,6 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import util.ResourceBundleHelper;
-import util.Utils;
 
 /**
  * @author Cesardl
@@ -254,8 +253,8 @@ public class JFrameInit extends javax.swing.JFrame {
 
     private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
         JDialogAbout dialog = new JDialogAbout(this);
-        Utils.installEscapeCloseOperation(dialog);
-        Utils.installEnterCloseOperation(dialog);
+        dialog.installEscapeCloseOperation();
+        dialog.installEnterCloseOperation();
         dialog.setVisible(true);
     }//GEN-LAST:event_menuItemAboutActionPerformed
 

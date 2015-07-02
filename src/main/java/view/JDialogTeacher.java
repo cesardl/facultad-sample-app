@@ -7,14 +7,13 @@ package view;
 
 import beans.Teacher;
 import controller.DialogAction;
-import util.Utils;
-import view.etc.JDialogBase;
+import view.etc.JDialogFormBase;
 
 /**
  *
  * @author Cesardl
  */
-public class JDialogTeacher extends JDialogBase<Teacher> {
+public class JDialogTeacher extends JDialogFormBase<Teacher> {
 
     private static final long serialVersionUID = -1517048285611582607L;
 
@@ -42,7 +41,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             key = "app.warning.teacher.code.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldCode);
+            selectTextField(textFieldCode);
             return false;
         }
         if (DialogAction.INSERT.equals(dialogAction)) {
@@ -50,7 +49,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
                 key = "app.warning.teacher.code.already.exists";
                 log.warn(key);
                 Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-                Utils.selectTextField(textFieldCode);
+                selectTextField(textFieldCode);
                 return false;
             }
         }
@@ -58,7 +57,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             key = "app.warning.teacher.name.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldNames);
+            selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
@@ -72,7 +71,7 @@ public class JDialogTeacher extends JDialogBase<Teacher> {
             key = "app.warning.teacher.email.empty";
             log.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-            Utils.selectTextField(textFieldEmail);
+            selectTextField(textFieldEmail);
             return false;
         }
 

@@ -6,12 +6,13 @@
 package view;
 
 import util.ResourceBundleHelper;
+import view.etc.JDialogBase;
 
 /**
  *
  * @author Cesardl
  */
-public class JDialogAbout extends javax.swing.JDialog {
+public class JDialogAbout extends JDialogBase {
 
     private static final long serialVersionUID = -2611843216961667112L;
 
@@ -23,7 +24,7 @@ public class JDialogAbout extends javax.swing.JDialog {
      * @param parent the parent of this dialog.
      */
     public JDialogAbout(java.awt.Frame parent) {
-        super(parent, true);
+        super(parent);
         initComponents();
     }
 
