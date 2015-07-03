@@ -32,7 +32,7 @@ public class DateFormatHelper {
      * @param date
      * @return
      */
-    public String formatDate(Date date) {
+    public String format(Date date) {
         return simpleDateFormat.format(date);
     }
     

@@ -50,7 +50,7 @@ public class JPanelStudent extends JPanelBase<Student> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            dateFormatHelper.formatDate(entity.getBirthday()),
+            dateFormatHelper.format(entity.getBirthday()),
             entity.getGender().getValue(),
             entity.getDirection(),
             entity.getTelefono()
@@ -61,7 +61,7 @@ public class JPanelStudent extends JPanelBase<Student> {
     protected void setRowValues(int row, Student entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(dateFormatHelper.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.format(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getGender().getValue(), row, 3);
         tableModel.setValueAt(entity.getDirection(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);

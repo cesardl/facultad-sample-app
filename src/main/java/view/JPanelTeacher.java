@@ -46,7 +46,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            dateFormatHelper.formatDate(entity.getBirthday()),
+            dateFormatHelper.format(entity.getBirthday()),
             entity.getEmail()
         });
     }
@@ -55,7 +55,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     protected void setRowValues(int row, Teacher entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(dateFormatHelper.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.format(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 

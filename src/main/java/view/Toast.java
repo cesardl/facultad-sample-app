@@ -14,7 +14,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import init.Main;
 import org.apache.log4j.Logger;
 
 /**
@@ -25,7 +24,7 @@ import org.apache.log4j.Logger;
  */
 public class Toast extends JDialog {
 
-    private static final Logger log = Logger.getLogger(Main.class);
+    private static final Logger log = Logger.getLogger(Toast.class);
 
     private static final long serialVersionUID = -1602907470843951525L;
 
@@ -172,15 +171,15 @@ public class Toast extends JDialog {
             case SUCCESS:
                 toast.mBackgroundColor = SUCCESS_GREEN;
                 break;
-                
+
             case WARNING:
                 toast.mBackgroundColor = WARNING_YELLOW;
                 break;
-                
+
             case ERROR:
                 toast.mBackgroundColor = ERROR_RED;
                 break;
-                
+
             case NORMAL:
                 toast.mBackgroundColor = NORMAL_BLACK;
                 break;
@@ -205,20 +204,4 @@ public class Toast extends JDialog {
         }).start();
     }
 
-//    public static void main(String... args) {
-//        final JFrame frame = new JFrame();
-//        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        frame.setSize(new Dimension(500, 300));
-//        JButton b = new JButton("Toast!");
-//
-//        b.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                Toast.makeText(frame, "Annotations were successfully saved.", Style.SUCCESS).display();
-//            }
-//        });
-//
-//        frame.add(b);
-//        frame.setVisible(true);
-//    }
 }
