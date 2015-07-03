@@ -9,7 +9,7 @@ public enum Database {
 
     MYSQL,
     ORACLE,
-    SQLSERVER,
+    SQL_SERVER,
     POSTGRESQL
 
 }

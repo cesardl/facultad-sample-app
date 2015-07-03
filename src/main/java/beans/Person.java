@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author Cesardl
  */
-public abstract class Person {
+public class Person {
 
     protected int id;
     protected String code;

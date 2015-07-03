@@ -93,8 +93,8 @@ public class JDialogStudent extends JDialogFormBase<Student> {
         names = entity.getNames();
         birthday = entity.getBirthday();
         gender = entity.getGender();
-        address = entity.getDirection();
-        phone = entity.getTelefono();
+        address = entity.getAddress();
+        phone = entity.getPhone();
 
         int size = comboBoxSelectTeacher.getItemCount();
         for (int i = 0; i < size; i++) {
@@ -315,8 +315,8 @@ public class JDialogStudent extends JDialogFormBase<Student> {
             entity.setNames(names);
             entity.setBirthday(birthday);
             entity.setGender(gender);
-            entity.setDirection(address);
-            entity.setTelefono(phone);
+            entity.setAddress(address);
+            entity.setPhone(phone);
             entity.setTeacherId(teacherId);
 
             boolean state = studentController.saveOrUpdate(entity);

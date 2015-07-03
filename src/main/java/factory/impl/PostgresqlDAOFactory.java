@@ -8,7 +8,7 @@ import factory.DAOFactory;
  *
  * @author Cesardl
  */
-public class SqlServersDAOFactory extends DAOFactory {
+public class PostgresqlDAOFactory extends DAOFactory {
 
     @Override
     public StudentDAO getStudentDAO() {

@@ -18,10 +18,6 @@ import java.util.List;
  */
 public class TeacherDAOImpl implements TeacherDAO {
 
-    /**
-     *
-     * @return
-     */
     @Override
     public List<Teacher> selectAll() {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";

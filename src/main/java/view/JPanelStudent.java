@@ -52,8 +52,8 @@ public class JPanelStudent extends JPanelBase<Student> {
             entity.getNames(),
             dateFormatHelper.format(entity.getBirthday()),
             entity.getGender().getValue(),
-            entity.getDirection(),
-            entity.getTelefono()
+            entity.getAddress(),
+            entity.getPhone()
         });
     }
 
@@ -63,8 +63,8 @@ public class JPanelStudent extends JPanelBase<Student> {
         tableModel.setValueAt(entity.getNames(), row, 1);
         tableModel.setValueAt(dateFormatHelper.format(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getGender().getValue(), row, 3);
-        tableModel.setValueAt(entity.getDirection(), row, 4);
-        tableModel.setValueAt(entity.getTelefono(), row, 5);
+        tableModel.setValueAt(entity.getAddress(), row, 4);
+        tableModel.setValueAt(entity.getPhone(), row, 5);
     }
 
     @Override

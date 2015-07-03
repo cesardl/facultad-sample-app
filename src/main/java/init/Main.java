@@ -3,7 +3,6 @@ package init;
 import javax.swing.UIManager;
 import org.apache.log4j.Logger;
 
-// TODO Generate distribution zip
 /**
  *
  * @author Cesardl

@@ -23,27 +23,27 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     /**
      *
-     * @param entity
+     * @param entity the entity to be added.
      */
     protected abstract void addRow(T entity);
 
     /**
      *
-     * @param row
-     * @param entity
+     * @param row the row position.
+     * @param entity the entity to be assigned.
      */
     protected abstract void setRowValues(int row, T entity);
 
     /**
      *
-     * @param row
-     * @param code
+     * @param row the row position.
+     * @param code the entity code.
      */
     protected abstract void deleteRow(int row, String code);
 
     /**
      *
-     * @return
+     * @return the dialog's parent.
      */
     public Frame getParentForDialog() {
         return (Frame) getRootPane().getParent();
@@ -58,8 +58,8 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     /**
      *
-     * @param row
-     * @param code
+     * @param row the row position.
+     * @param code the entity code.
      */
     public void showDialog(int row, String code) {
         showDialog(DialogAction.UPDATE, row, code);
@@ -67,15 +67,15 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     /**
      *
-     * @param dialogAction
-     * @param row
-     * @param code
+     * @param dialogAction the dialog action.
+     * @param row the row position.
+     * @param code the entity code.
      */
     public abstract void showDialog(DialogAction dialogAction, int row, String code);
 
     /**
      *
-     * @param evt
+     * @param evt the mouse event.
      */
     public void showDialogFromTable(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) {
@@ -90,7 +90,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     /**
      *
-     * @param evt
+     * @param evt the key event.
      */
     public void deleteFromTable(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DELETE) {

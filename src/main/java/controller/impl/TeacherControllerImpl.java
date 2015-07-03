@@ -38,9 +38,7 @@ public class TeacherControllerImpl implements TeacherController {
         DAOFactory factory = DAOFactory.getDAOFactory();
         TeacherDAO dao = factory.getTeacherDAO();
 
-        Teacher teacher = dao.selectByCode(code);
-
-        return teacher;
+        return dao.selectByCode(code);
     }
 
     @Override

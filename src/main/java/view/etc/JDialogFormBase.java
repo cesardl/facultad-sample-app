@@ -40,7 +40,7 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
 
     /**
      *
-     * @return
+     * @return true if the data is correct.
      */
     public abstract boolean validateData();
 
@@ -51,13 +51,13 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
 
     /**
      *
-     * @return
+     * @return the entity.
      */
     public abstract T getEntity();
 
     /**
      *
-     * @param entity
+     * @param entity the entity
      */
     public abstract void setEntity(T entity);
 
@@ -66,7 +66,7 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     }
 
     /**
-     * Selecciona los elementos ingresados en una casilla de texto
+     * Select text of the current text field.
      *
      * @param textField the text field.
      */
