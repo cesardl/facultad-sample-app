@@ -11,7 +11,7 @@ import controller.StudentController;
 import controller.impl.StudentControllerImpl;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import util.Utils;
+import org.apache.log4j.Logger;
 import view.etc.JPanelBase;
 
 /**
@@ -24,10 +24,14 @@ import view.etc.JPanelBase;
  */
 public class JPanelStudent extends JPanelBase<Student> {
 
+    private static final long serialVersionUID = -3407749931422832063L;
+
+    private static final Logger log = Logger.getLogger(JPanelStudent.class);
+
     private final StudentController studentController = new StudentControllerImpl();
 
     /**
-     * Creates new form JPanelAlumno
+     * Creates new form JPanelStudent.
      */
     public JPanelStudent() {
         initComponents();
@@ -35,7 +39,7 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     /**
      *
-     * @return
+     * @return the table.
      */
     public JTable getTable() {
         return table;
@@ -46,7 +50,7 @@ public class JPanelStudent extends JPanelBase<Student> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            Utils.formatDate(entity.getBirthday()),
+            dateFormatHelper.format(entity.getBirthday()),
             entity.getGender().getValue(),
             entity.getDirection(),
             entity.getTelefono()
@@ -57,7 +61,7 @@ public class JPanelStudent extends JPanelBase<Student> {
     protected void setRowValues(int row, Student entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.format(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getGender().getValue(), row, 3);
         tableModel.setValueAt(entity.getDirection(), row, 4);
         tableModel.setValueAt(entity.getTelefono(), row, 5);
@@ -65,16 +69,23 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     @Override
     protected void deleteRow(int row, String code) {
-        JFrameInit parent = (JFrameInit) getParentForDialog();
-
         int i = JOptionPane.showConfirmDialog(this,
-                parent.getBundle().getString("app.warning.student.delete"),
-                parent.getTitle(), JOptionPane.YES_NO_OPTION);
+                resourceBundleHelper.getString("app.warning.student.delete"),
+                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = studentController.delete(code);
+
+            String key;
             if (state) {
+                key = "app.success.student.delete";
+                log.info(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
                 tableModel.removeRow(row);
+            } else {
+                key = "app.error.student.delete";
+                log.error(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
     }
@@ -85,31 +96,32 @@ public class JPanelStudent extends JPanelBase<Student> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogStudent dialogAlumno = new JDialogStudent(getParentForDialog());
-        Utils.installEscapeCloseOperation(dialogAlumno);
+        JDialogStudent dialogStudent = new JDialogStudent(getParentForDialog());
+        dialogStudent.setAction(dialogAction);
+        dialogStudent.installEscapeCloseOperation();
 
-        Student alumno;
+        Student student;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            alumno = studentController.getByCode(code);
+            student = studentController.getByCode(code);
 
-            dialogAlumno.setEntity(alumno);
+            dialogStudent.setEntity(student);
         }
 
-        dialogAlumno.setVisible(true);
+        dialogStudent.setVisible(true);
 
-        alumno = dialogAlumno.getEntity();
-        if (alumno == null) {
+        student = dialogStudent.getEntity();
+        if (student == null) {
             return;
         }
 
         switch (dialogAction) {
             case INSERT:
-                addRow(alumno);
+                addRow(student);
                 break;
 
             case UPDATE:
-                setRowValues(row, alumno);
+                setRowValues(row, student);
                 break;
         }
     }
@@ -123,15 +135,17 @@ public class JPanelStudent extends JPanelBase<Student> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
-        scrollPane = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             studentController.getAll(),
             new String [] {
-                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
+                resourceBundleHelper.getString("dictionary.code"), resourceBundleHelper.getString("dictionary.names"), resourceBundleHelper.getString("dictionary.birthday"), resourceBundleHelper
+                    .getString("dictionary.sex"), resourceBundleHelper.getString("dictionary.address"), resourceBundleHelper.getString("dictionary.phone")
             }
         ) {
+            private static final long serialVersionUID = 9104477490865060505L;
+
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class
             };
@@ -191,7 +205,6 @@ public class JPanelStudent extends JPanelBase<Student> {
     }//GEN-LAST:event_tableKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables

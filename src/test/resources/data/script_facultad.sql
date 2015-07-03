@@ -21,7 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `alumno`;
 CREATE TABLE `alumno` (
   `id_alum` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_alum` varchar(8) NOT NULL,
+  `cod_alum` varchar(8) NOT NULL UNIQUE,
   `nom_alum` varchar(255) NOT NULL,
   `nacimiento_alum` date NOT NULL,
   `sexo_alum` varchar(6) NOT NULL,
@@ -59,7 +59,7 @@ INSERT INTO `alumno` VALUES ('16', '200005', 'Jorge Veramendi Salazar', '1986-10
 DROP TABLE IF EXISTS `profesor`;
 CREATE TABLE `profesor` (
   `id_prof` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_prof` varchar(8) NOT NULL,
+  `cod_prof` varchar(8) NOT NULL UNIQUE,
   `nom_prof` varchar(255) NOT NULL,
   `nacimiento_prof` date NOT NULL,
   `email_prof` varchar(45) NOT NULL,

@@ -3,6 +3,8 @@ package view.etc;
 import controller.DialogAction;
 import java.awt.Frame;
 import javax.swing.JTable;
+import util.DateFormatHelper;
+import util.ResourceBundleHelper;
 
 /**
  *
@@ -10,6 +12,12 @@ import javax.swing.JTable;
  * @param <T>
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
+
+    private static final long serialVersionUID = -8446015582022117195L;
+
+    protected final DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
+
+    protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
 
     public static final int BAD_ROW = -1;
 

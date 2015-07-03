@@ -1,12 +1,9 @@
-package view;
+package init;
 
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;
 
-// TODO mensajes de error en formularios
-// TODO Internationalizacion (english - spanish)
-
+// TODO Generate distribution zip
 /**
  *
  * @author Cesardl
@@ -20,13 +17,15 @@ public class Main {
      */
     public static void main(String args[]) {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName()
+            );
 
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
                 @Override
                 public void run() {
-                    new JFrameInit().setVisible(true);
+                    new view.JFrameInit().setVisible(true);
                 }
             });
         } catch (ClassNotFoundException e) {
@@ -35,7 +34,7 @@ public class Main {
             log.error("Error while instantiation", e);
         } catch (IllegalAccessException e) {
             log.error("Error illegal access", e);
-        } catch (UnsupportedLookAndFeelException e) {
+        } catch (javax.swing.UnsupportedLookAndFeelException e) {
             log.error("Error loading look and feel", e);
         }
     }

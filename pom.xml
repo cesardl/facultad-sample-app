@@ -48,7 +48,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>view.Main</mainClass>
+                            <mainClass>init.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

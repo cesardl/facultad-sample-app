@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import beans.Teacher;
-import static dao.DAO.STATE_ERROR;
-import static dao.DAO.log;
 import dao.TeacherDAO;
 import factory.DAOFactory;
 import java.sql.Date;
@@ -42,7 +40,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                         rs.getDate(4),
                         rs.getString(5)));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
             teachers = null;
         }
@@ -71,7 +69,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                             rs.getString(5));
                 }
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al cargar los datos del profesor", e);
             teacher = null;
         }
@@ -96,7 +94,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
                 teachers.add(p);
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al cargar los datos de los profesores", e);
             teachers = null;
         }
@@ -120,7 +118,7 @@ public class TeacherDAOImpl implements TeacherDAO {
             ps.setString(5, entity.getEmail());
 
             state = ps.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al insertar los datos del profesor", e);
             state = STATE_ERROR;
         }
@@ -144,7 +142,7 @@ public class TeacherDAOImpl implements TeacherDAO {
             ps.setInt(5, entity.getId());
 
             state = ps.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al actualizar los datos del profesor", e);
             state = STATE_ERROR;
         }
@@ -164,7 +162,7 @@ public class TeacherDAOImpl implements TeacherDAO {
             ps.setString(1, entity.getCode());
 
             state = ps.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al eliminar los datos del profesor", e);
             state = STATE_ERROR;
         }
@@ -188,7 +186,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                     id = rs.getInt(1);
                 }
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             log.error("Error al cargar el id del profesor", e);
             id = STATE_ERROR;
         }

@@ -11,7 +11,7 @@ import controller.TeacherController;
 import controller.impl.TeacherControllerImpl;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import util.Utils;
+import org.apache.log4j.Logger;
 import view.etc.JPanelBase;
 
 /**
@@ -20,10 +20,14 @@ import view.etc.JPanelBase;
  */
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
+    private static final long serialVersionUID = -2833586888123947842L;
+
+    private static final Logger log = Logger.getLogger(JPanelTeacher.class);
+
     private final TeacherController teacherController = new TeacherControllerImpl();
 
     /**
-     * Creates new form JPanelProfesor
+     * Creates new form JPanelTeacher.
      */
     public JPanelTeacher() {
         initComponents();
@@ -31,7 +35,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     /**
      *
-     * @return
+     * @return the table.
      */
     public JTable getTable() {
         return table;
@@ -42,7 +46,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         tableModel.addRow(new Object[]{
             entity.getCode(),
             entity.getNames(),
-            Utils.formatDate(entity.getBirthday()),
+            dateFormatHelper.format(entity.getBirthday()),
             entity.getEmail()
         });
     }
@@ -51,22 +55,29 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     protected void setRowValues(int row, Teacher entity) {
         tableModel.setValueAt(entity.getCode(), row, 0);
         tableModel.setValueAt(entity.getNames(), row, 1);
-        tableModel.setValueAt(Utils.formatDate(entity.getBirthday()), row, 2);
+        tableModel.setValueAt(dateFormatHelper.format(entity.getBirthday()), row, 2);
         tableModel.setValueAt(entity.getEmail(), row, 3);
     }
 
     @Override
     protected void deleteRow(int row, String code) {
-        JFrameInit parent = (JFrameInit) getParentForDialog();
-
         int i = JOptionPane.showConfirmDialog(this,
-                parent.getBundle().getString("app.warning.teacher.delete"),
-                parent.getTitle(), JOptionPane.YES_NO_OPTION);
+                resourceBundleHelper.getString("app.warning.teacher.delete"),
+                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = teacherController.delete(code);
+
+            String key;
             if (state) {
+                key = "app.success.teacher.delete";
+                log.info(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
                 tableModel.removeRow(row);
+            } else {
+                key = "app.error.teacher.delete";
+                log.error(key);
+                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
             }
         }
     }
@@ -77,30 +88,30 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        JDialogTeacher dialogProfesor = new JDialogTeacher(getParentForDialog());
-        Utils.installEscapeCloseOperation(dialogProfesor);
+        JDialogTeacher dialogTeacher = new JDialogTeacher(getParentForDialog());
+        dialogTeacher.installEscapeCloseOperation();
 
-        Teacher profesor;
+        Teacher teacher;
 
         if (DialogAction.UPDATE.equals(dialogAction)) {
-            profesor = teacherController.getByCode(code);
-            dialogProfesor.setEntity(profesor);
+            teacher = teacherController.getByCode(code);
+            dialogTeacher.setEntity(teacher);
         }
 
-        dialogProfesor.setVisible(true);
+        dialogTeacher.setVisible(true);
 
-        profesor = dialogProfesor.getEntity();
-        if (profesor == null) {
+        teacher = dialogTeacher.getEntity();
+        if (teacher == null) {
             return;
         }
 
         switch (dialogAction) {
             case INSERT:
-                addRow(profesor);
+                addRow(teacher);
                 break;
 
             case UPDATE:
-                setRowValues(row, profesor);
+                setRowValues(row, teacher);
                 break;
         }
     }
@@ -114,15 +125,17 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
-        scrollPane = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
             teacherController.getAll(),
             new String [] {
-                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
+                resourceBundleHelper.getString("dictionary.code"), resourceBundleHelper.getString("dictionary.names"), resourceBundleHelper.getString("dictionary.birthday"), resourceBundleHelper
+                    .getString("dictionary.email")
             }
         ) {
+            private static final long serialVersionUID = -6723620777953415621L;
+
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
@@ -182,7 +195,6 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     }//GEN-LAST:event_tableKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables

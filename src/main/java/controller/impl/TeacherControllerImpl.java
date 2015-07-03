@@ -6,7 +6,6 @@ import dao.DAO;
 import dao.TeacherDAO;
 import factory.DAOFactory;
 import java.util.List;
-import util.Utils;
 
 /**
  *
@@ -28,7 +27,7 @@ public class TeacherControllerImpl implements TeacherController {
 
             rowData[i][0] = teacher.getCode();
             rowData[i][1] = teacher.getNames();
-            rowData[i][2] = Utils.formatDate(teacher.getBirthday());
+            rowData[i][2] = dateFormatHelper.format(teacher.getBirthday());
             rowData[i][3] = teacher.getEmail();
         }
         return rowData;
