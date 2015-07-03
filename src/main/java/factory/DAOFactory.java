@@ -5,7 +5,8 @@ import dao.TeacherDAO;
 import db.Database;
 import factory.impl.MysqlDAOFactory;
 import factory.impl.OracleDAOFactory;
-import factory.impl.SqlServersDAOFactory;
+import factory.impl.PostgresqlDAOFactory;
+import factory.impl.SqlServerDAOFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -30,7 +31,7 @@ public abstract class DAOFactory {
 //    private static String driver;
     private static String url;
     private static String user;
-    private static String passwd;
+    private static String password;
 
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
@@ -48,7 +49,7 @@ public abstract class DAOFactory {
 //            driver = prop.getProperty("database.driver");
             url = prop.getProperty("database.url");
             user = prop.getProperty("database.user");
-            passwd = prop.getProperty("database.passwd");
+            password = prop.getProperty("database.password");
         } catch (IOException e) {
             log.error("Error while properties resources were loaded.", e);
         }
@@ -56,7 +57,7 @@ public abstract class DAOFactory {
 
     /**
      *
-     * @return
+     * @return the factory for current database.
      */
     public static DAOFactory getDAOFactory() {
         switch (whichFactory) {
@@ -66,8 +67,11 @@ public abstract class DAOFactory {
             case ORACLE:
                 return new OracleDAOFactory();
 
-            case SQLSERVER:
-                return new SqlServersDAOFactory();
+            case SQL_SERVER:
+                return new SqlServerDAOFactory();
+
+            case POSTGRESQL:
+                return new PostgresqlDAOFactory();
 
             default:
                 return null;
@@ -77,11 +81,11 @@ public abstract class DAOFactory {
     /**
      * Method to create db connections.
      *
-     * @return
+     * @return the database connection.
      * @throws SQLException
      */
     public static Connection createConnection() throws SQLException {
         // Recommend connection pool implementation/usage
-        return DriverManager.getConnection(url, user, passwd);
+        return DriverManager.getConnection(url, user, password);
     }
 }

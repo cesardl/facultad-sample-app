@@ -12,7 +12,7 @@ public class Student extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Gender gender;
-    private String direction;
+    private String address;
     private String phone;
     private int teacherId;
 
@@ -20,11 +20,11 @@ public class Student extends Person implements Serializable {
         super();
     }
 
-    public Student(int id, String code, String names, Date birthday, Gender sexo, String direccion, String telefono) {
+    public Student(int id, String code, String names, Date birthday, Gender gender, String address, String phone) {
         super(id, code, names, birthday);
-        this.gender = sexo;
-        this.direction = direccion;
-        this.phone = telefono;
+        this.gender = gender;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Gender getGender() {
@@ -35,20 +35,20 @@ public class Student extends Person implements Serializable {
         this.gender = gender;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getTelefono() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.phone = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getTeacherId() {

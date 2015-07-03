@@ -1,5 +1,5 @@
-facultad-sample-app
-===================
+Facultad Sample Application
+===========================
 
 El siguiente es una aplicacion en el cual se ve el uso de las distintas query SQL para el SGBD MySQL.
 

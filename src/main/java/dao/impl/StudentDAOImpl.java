@@ -93,8 +93,8 @@ public class StudentDAOImpl implements StudentDAO {
             ps.setString(3, entity.getNames());
             ps.setDate(4, new Date(entity.getBirthday().getTime()));
             ps.setString(5, entity.getGender().name());
-            ps.setString(6, entity.getDirection());
-            ps.setString(7, entity.getTelefono());
+            ps.setString(6, entity.getAddress());
+            ps.setString(7, entity.getPhone());
             ps.setInt(8, entity.getTeacherId());
 
             state = ps.executeUpdate();
@@ -119,8 +119,8 @@ public class StudentDAOImpl implements StudentDAO {
             ps.setString(2, entity.getNames());
             ps.setDate(3, new Date(entity.getBirthday().getTime()));
             ps.setString(4, entity.getGender().name());
-            ps.setString(5, entity.getDirection());
-            ps.setString(6, entity.getTelefono());
+            ps.setString(5, entity.getAddress());
+            ps.setString(6, entity.getPhone());
             ps.setInt(7, entity.getTeacherId());
             ps.setInt(8, entity.getId());
 
