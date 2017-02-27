@@ -1,7 +1,7 @@
 package app;
 
-import dao.StudentDAO;
-import factory.DAOFactory;
+import org.sanmarcux.dao.StudentDAO;
+import org.sanmarcux.factory.DAOFactory;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
