@@ -5,15 +5,20 @@ import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.dao.DAO;
 import org.sanmarcux.dao.TeacherDAO;
 import org.sanmarcux.factory.DAOFactory;
-import org.springframework.stereotype.Service;
+import org.sanmarcux.util.DateFormatHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 /**
  * @author Cesardl
  */
-@Service
+@Controller
 public class TeacherControllerImpl implements TeacherController {
+
+    @Autowired
+    private DateFormatHelper dateFormatHelper;
 
     @Override
     public Object[][] getAll() {

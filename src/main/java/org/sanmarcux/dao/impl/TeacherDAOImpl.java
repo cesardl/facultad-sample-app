@@ -1,5 +1,6 @@
 package org.sanmarcux.dao.impl;
 
+import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
 import org.sanmarcux.factory.DAOFactory;
@@ -14,6 +15,8 @@ import java.util.List;
  */
 @Repository
 public class TeacherDAOImpl implements TeacherDAO {
+
+    private static final Logger LOG = Logger.getLogger(TeacherDAOImpl.class);
 
     @Override
     public List<Teacher> selectAll() {
@@ -34,7 +37,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                         rs.getString(5)));
             }
         } catch (SQLException e) {
-            log.error("Error al cargar los datos de los profesores", e);
+            LOG.error("Error al cargar los datos de los profesores", e);
             teachers = null;
         }
 
@@ -63,7 +66,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                 }
             }
         } catch (SQLException e) {
-            log.error("Error al cargar los datos del profesor", e);
+            LOG.error("Error al cargar los datos del profesor", e);
             teacher = null;
         }
 
@@ -88,7 +91,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                 teachers.add(p);
             }
         } catch (SQLException e) {
-            log.error("Error al cargar los datos de los profesores", e);
+            LOG.error("Error al cargar los datos de los profesores", e);
             teachers = null;
         }
 
@@ -112,7 +115,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al insertar los datos del profesor", e);
+            LOG.error("Error al insertar los datos del profesor", e);
             state = STATE_ERROR;
         }
 
@@ -136,7 +139,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al actualizar los datos del profesor", e);
+            LOG.error("Error al actualizar los datos del profesor", e);
             state = STATE_ERROR;
         }
 
@@ -156,7 +159,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al eliminar los datos del profesor", e);
+            LOG.error("Error al eliminar los datos del profesor", e);
             state = STATE_ERROR;
         }
 
@@ -180,7 +183,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                 }
             }
         } catch (SQLException e) {
-            log.error("Error al cargar el id del profesor", e);
+            LOG.error("Error al cargar el id del profesor", e);
             id = STATE_ERROR;
         }
 

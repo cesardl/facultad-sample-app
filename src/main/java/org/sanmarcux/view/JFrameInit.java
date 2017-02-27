@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author Cesardl
@@ -14,7 +13,8 @@ public class JFrameInit extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -1708772121678146407L;
 
-    private final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
+    @Autowired
+    private ResourceBundleHelper resourceBundleHelper;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     @Autowired
     private org.sanmarcux.view.JPanelStudent panelStudent;

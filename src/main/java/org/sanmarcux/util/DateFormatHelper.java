@@ -1,29 +1,24 @@
 package org.sanmarcux.util;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+
 /**
- *
  * @author cesardiaz
  */
+@Component
 public class DateFormatHelper {
 
     private static final String PATTERN = "dd/MMM/y";
-    
-    private static DateFormatHelper instance = null;
 
-    private final java.text.SimpleDateFormat simpleDateFormat;
+    private java.text.SimpleDateFormat simpleDateFormat;
 
-    private DateFormatHelper() {
+    @PostConstruct
+    private void setUp() {
         simpleDateFormat = new java.text.SimpleDateFormat(PATTERN);
     }
 
-    public static synchronized DateFormatHelper getInstance() {
-        if (instance == null) {
-            instance = new DateFormatHelper();
-        }
-
-        return instance;
-    }
-    
     /**
      * Format the date.
      *
@@ -33,5 +28,5 @@ public class DateFormatHelper {
     public String format(java.util.Date date) {
         return simpleDateFormat.format(date);
     }
-    
+
 }

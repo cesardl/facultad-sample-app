@@ -11,7 +11,7 @@ import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -21,7 +21,7 @@ import javax.swing.*;
  * @see <a href='http://esus.com/detecting-double-click-row-jtable/'>Detecting a
  * double-click on a row in a JTable</a>
  */
-@Controller
+@Component
 public class JPanelStudent extends JPanelBase<Student> {
 
     private static final long serialVersionUID = -3407749931422832063L;

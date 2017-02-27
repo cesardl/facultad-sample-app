@@ -1,25 +1,21 @@
 package org.sanmarcux.util;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+
 /**
  *
  * @author cesardiaz
  */
+@Component
 public class ResourceBundleHelper {
 
-    private static ResourceBundleHelper instance = null;
+    private java.util.ResourceBundle bundle;
 
-    private final java.util.ResourceBundle bundle;
-
-    private ResourceBundleHelper() {
+    @PostConstruct
+    private void setUp() {
         bundle = java.util.ResourceBundle.getBundle("view/Bundle");
-    }
-
-    public static synchronized ResourceBundleHelper getInstance() {
-        if (instance == null) {
-            instance = new ResourceBundleHelper();
-        }
-
-        return instance;
     }
 
     public String getString(String key) {

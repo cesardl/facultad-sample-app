@@ -1,48 +1,44 @@
 package org.sanmarcux.view.etc;
 
 import org.sanmarcux.controller.DialogAction;
-import java.awt.Frame;
-import javax.swing.JTable;
 import org.sanmarcux.util.DateFormatHelper;
 import org.sanmarcux.util.ResourceBundleHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
- *
- * @author Cesardl
  * @param <T>
+ * @author Cesardl
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
-    private static final long serialVersionUID = -8446015582022117195L;
-
-    protected final DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
-
-    protected final ResourceBundleHelper resourceBundleHelper = ResourceBundleHelper.getInstance();
-
     public static final int BAD_ROW = -1;
+    private static final long serialVersionUID = -8446015582022117195L;
+    @Autowired
+    protected DateFormatHelper dateFormatHelper;
+    @Autowired
+    protected ResourceBundleHelper resourceBundleHelper;
 
     /**
-     *
      * @param entity the entity to be added.
      */
     protected abstract void addRow(T entity);
 
     /**
-     *
-     * @param row the row position.
+     * @param row    the row position.
      * @param entity the entity to be assigned.
      */
     protected abstract void setRowValues(int row, T entity);
 
     /**
-     *
-     * @param row the row position.
+     * @param row  the row position.
      * @param code the entity code.
      */
     protected abstract void deleteRow(int row, String code);
 
     /**
-     *
      * @return the dialog's parent.
      */
     public Frame getParentForDialog() {
@@ -57,8 +53,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     }
 
     /**
-     *
-     * @param row the row position.
+     * @param row  the row position.
      * @param code the entity code.
      */
     public void showDialog(int row, String code) {
@@ -66,15 +61,13 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     }
 
     /**
-     *
      * @param dialogAction the dialog action.
-     * @param row the row position.
-     * @param code the entity code.
+     * @param row          the row position.
+     * @param code         the entity code.
      */
     public abstract void showDialog(DialogAction dialogAction, int row, String code);
 
     /**
-     *
      * @param evt the mouse event.
      */
     public void showDialogFromTable(java.awt.event.MouseEvent evt) {
@@ -89,7 +82,6 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     }
 
     /**
-     *
      * @param evt the key event.
      */
     public void deleteFromTable(java.awt.event.KeyEvent evt) {

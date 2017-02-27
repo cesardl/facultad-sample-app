@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.dao.StudentDAO;
@@ -21,6 +23,8 @@ import java.util.List;
  */
 @Repository
 public class StudentDAOImpl implements StudentDAO {
+
+    private static final Logger LOG = Logger.getLogger(StudentDAOImpl.class);
 
     @Override
     public List<Student> selectAll() {
@@ -43,7 +47,7 @@ public class StudentDAOImpl implements StudentDAO {
                         rs.getString(7)));
             }
         } catch (SQLException e) {
-            log.error("Error al cargar los datos de alumnos", e);
+            LOG.error("Error al cargar los datos de alumnos", e);
             students = null;
         }
 
@@ -75,7 +79,7 @@ public class StudentDAOImpl implements StudentDAO {
                 }
             }
         } catch (SQLException e) {
-            log.error("Error al cargar los datos del alumno", e);
+            LOG.error("Error al cargar los datos del alumno", e);
             student = null;
         }
 
@@ -102,7 +106,7 @@ public class StudentDAOImpl implements StudentDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al insertar los datos del alumno", e);
+            LOG.error("Error al insertar los datos del alumno", e);
             state = STATE_ERROR;
         }
 
@@ -129,7 +133,7 @@ public class StudentDAOImpl implements StudentDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al actualizar los datos del alumno", e);
+            LOG.error("Error al actualizar los datos del alumno", e);
             state = STATE_ERROR;
         }
 
@@ -149,7 +153,7 @@ public class StudentDAOImpl implements StudentDAO {
 
             state = ps.executeUpdate();
         } catch (SQLException e) {
-            log.error("Error al eliminar los datos del alumno", e);
+            LOG.error("Error al eliminar los datos del alumno", e);
             state = STATE_ERROR;
         }
 
@@ -173,7 +177,7 @@ public class StudentDAOImpl implements StudentDAO {
                 }
             }
         } catch (SQLException e) {
-            log.error("Error al cargar el id del alumno", e);
+            LOG.error("Error al cargar el id del alumno", e);
             id = STATE_ERROR;
         }
 

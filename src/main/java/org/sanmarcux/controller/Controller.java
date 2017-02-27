@@ -1,18 +1,10 @@
 package org.sanmarcux.controller;
 
-import org.apache.log4j.Logger;
-import org.sanmarcux.util.DateFormatHelper;
-
 /**
- *
- * @author Cesardl
  * @param <T>
+ * @author Cesardl
  */
 public interface Controller<T> {
-
-    DateFormatHelper dateFormatHelper = DateFormatHelper.getInstance();
-
-    Logger log = Logger.getLogger(Controller.class);
 
     Object[][] getAll();
 

@@ -5,23 +5,21 @@
  */
 package org.sanmarcux.view;
 
+import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
-
-import javax.annotation.PostConstruct;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import org.apache.log4j.Logger;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.swing.*;
 
 /**
- *
  * @author Cesardl
  */
-@Controller
+@Component
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
     private static final long serialVersionUID = -2833586888123947842L;
@@ -39,9 +37,11 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 //    public JPanelTeacher() {
 //        initComponents();
 //    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable table;
+    private javax.swing.table.DefaultTableModel tableModel;
 
     /**
-     *
      * @return the table.
      */
     public JTable getTable() {
@@ -51,10 +51,10 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     @Override
     protected void addRow(Teacher entity) {
         tableModel.addRow(new Object[]{
-            entity.getCode(),
-            entity.getNames(),
-            dateFormatHelper.format(entity.getBirthday()),
-            entity.getEmail()
+                entity.getCode(),
+                entity.getNames(),
+                dateFormatHelper.format(entity.getBirthday()),
+                entity.getEmail()
         });
     }
 
@@ -137,16 +137,16 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(
-            teacherController.getAll(),
-            new String [] {
-                bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
-            }
+                teacherController.getAll(),
+                new String[]{
+                        bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false
+                    false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -177,18 +177,18 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -199,9 +199,5 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     private void tableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyPressed
         deleteFromTable(evt);
     }//GEN-LAST:event_tableKeyPressed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable table;
-    private javax.swing.table.DefaultTableModel tableModel;
     // End of variables declaration//GEN-END:variables
 }
