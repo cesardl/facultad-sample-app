@@ -25,85 +25,45 @@ public class TeacherDAOImpl implements TeacherDAO {
 
     @Override
     public List<Teacher> selectAll() {
-//        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
-//
-//        List<Teacher> teachers = new ArrayList<>();
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             Statement st = c.createStatement();
-//             ResultSet rs = st.executeQuery(sql)) {
-//
-//            while (rs.next()) {
-//                teachers.add(new Teacher(
-//                        rs.getInt(1),
-//                        rs.getString(2),
-//                        rs.getString(3),
-//                        rs.getDate(4),
-//                        rs.getString(5)));
-//            }
-//        } catch (SQLException e) {
-//            LOG.error("Error al cargar los datos de los profesores", e);
-//            teachers = null;
-//        }
-//
-//        return teachers;
-        throw new UnsupportedOperationException();
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
+
+        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) -> new Teacher(
+                resultSet.getInt(1),
+                resultSet.getString(2),
+                resultSet.getString(3),
+                resultSet.getDate(4),
+                resultSet.getString(5)));
+        LOG.info(String.format("Getting teacher %s", teachers));
+        return teachers;
     }
 
     @Override
     public Teacher selectByCode(String code) {
-//        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
-//
-//        Teacher teacher = null;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setString(1, code);
-//
-//            try (ResultSet rs = ps.executeQuery()) {
-//                if (rs.next()) {
-//                    teacher = new Teacher(
-//                            rs.getInt(1),
-//                            rs.getString(2),
-//                            rs.getString(3),
-//                            rs.getDate(4),
-//                            rs.getString(5));
-//                }
-//            }
-//        } catch (SQLException e) {
-//            LOG.error("Error al cargar los datos del profesor", e);
-//            teacher = null;
-//        }
-//
-//        return teacher;
-        throw new UnsupportedOperationException();
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
+
+        Teacher teacher = jdbcTemplate.queryForObject(sql, new Object[]{code}, (resultSet, rowNum) -> new Teacher(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4),
+                        resultSet.getString(5))
+        );
+        LOG.info(String.format("Getting teacher %s", teacher));
+        return teacher;
     }
 
     @Override
     public List<Teacher> selectNames() {
-//        String sql = "SELECT id_prof, nom_prof FROM profesor";
-//
-//        List<Teacher> teachers = new ArrayList<>();
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             Statement st = c.createStatement();
-//             ResultSet rs = st.executeQuery(sql)) {
-//
-//            while (rs.next()) {
-//                Teacher p = new Teacher();
-//                p.setId(rs.getInt(1));
-//                p.setNames(rs.getString(2));
-//
-//                teachers.add(p);
-//            }
-//        } catch (SQLException e) {
-//            LOG.error("Error al cargar los datos de los profesores", e);
-//            teachers = null;
-//        }
-//
-//        return teachers;
-        throw new UnsupportedOperationException();
+        String sql = "SELECT id_prof, nom_prof FROM profesor";
+
+        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+            Teacher p = new Teacher();
+            p.setId(resultSet.getInt(1));
+            p.setNames(resultSet.getString(2));
+            return p;
+        });
+        LOG.info(String.format("Getting %d teachers", teachers.size()));
+        return teachers;
     }
 
     @Override

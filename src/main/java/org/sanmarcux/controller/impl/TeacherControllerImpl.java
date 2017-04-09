@@ -2,9 +2,12 @@ package org.sanmarcux.controller.impl;
 
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.TeacherController;
+import org.sanmarcux.dao.TeacherDAO;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * @author Cesardl
@@ -15,11 +18,11 @@ public class TeacherControllerImpl implements TeacherController {
     @Autowired
     private DateFormatHelper dateFormatHelper;
 
+    @Autowired
+    private TeacherDAO dao;
+
     @Override
     public Object[][] getAll() {
-/*        DAOFactory factory = DAOFactory.getDAOFactory();
-        TeacherDAO dao = factory.getTeacherDAO();
-
         List<Teacher> teachers = dao.selectAll();
 
         Object[][] rowData = new Object[teachers.size()][4];
@@ -32,28 +35,19 @@ public class TeacherControllerImpl implements TeacherController {
             rowData[i][2] = dateFormatHelper.format(teacher.getBirthday());
             rowData[i][3] = teacher.getEmail();
         }
-        return rowData;*/
-        throw new UnsupportedOperationException();
+        return rowData;
     }
 
     @Override
     public Teacher getByCode(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        TeacherDAO dao = factory.getTeacherDAO();
-//
-//        return dao.selectByCode(code);
-        throw new UnsupportedOperationException();
+        return dao.selectByCode(code);
     }
 
     @Override
     public Teacher[] getNames() {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        TeacherDAO dao = factory.getTeacherDAO();
-//
-//        List<Teacher> teachers = dao.selectNames();
-//
-//        return teachers.toArray(new Teacher[teachers.size()]);
-        throw new UnsupportedOperationException();
+        List<Teacher> teachers = dao.selectNames();
+
+        return teachers.toArray(new Teacher[teachers.size()]);
     }
 
     @Override

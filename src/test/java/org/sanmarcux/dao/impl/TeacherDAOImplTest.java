@@ -1,11 +1,19 @@
 package org.sanmarcux.dao.impl;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class TeacherDAOImplTest {
 
@@ -27,17 +35,22 @@ public class TeacherDAOImplTest {
 
     @Test
     public void testSelectAll() {
-
+        List<Teacher> result = dao.selectAll();
+        assertFalse(result.isEmpty());
+        assertEquals(5, result.size());
     }
 
     @Test
     public void testSelectByCode() {
-
+        Teacher teacher = dao.selectByCode("212399");
+        assertNotNull(teacher);
     }
 
     @Test
     public void testSelectNames() {
-
+        List<Teacher> result = dao.selectNames();
+        assertFalse(result.isEmpty());
+        assertEquals(5, result.size());
     }
 
     @Test
@@ -58,5 +71,10 @@ public class TeacherDAOImplTest {
     @Test
     public void testSelectIdByCode() {
 
+    }
+
+    @After
+    public void tearDown() {
+        db.shutdown();
     }
 }
