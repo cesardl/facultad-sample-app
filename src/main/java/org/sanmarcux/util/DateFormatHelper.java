@@ -15,7 +15,7 @@ public class DateFormatHelper {
     private java.text.SimpleDateFormat simpleDateFormat;
 
     @PostConstruct
-    private void setUp() {
+    private void init() {
         simpleDateFormat = new java.text.SimpleDateFormat(PATTERN);
     }
 

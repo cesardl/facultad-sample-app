@@ -14,7 +14,7 @@ public class ResourceBundleHelper {
     private java.util.ResourceBundle bundle;
 
     @PostConstruct
-    private void setUp() {
+    private void init() {
         bundle = java.util.ResourceBundle.getBundle("view/Bundle");
     }
 

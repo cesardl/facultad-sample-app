@@ -1,11 +1,11 @@
 package org.sanmarcux.beans;
 
 import org.sanmarcux.beans.etc.Gender;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
  * @author Cesardl
  */
 public class Student extends Person implements Serializable {
@@ -59,4 +59,8 @@ public class Student extends Person implements Serializable {
         this.teacherId = teacherId;
     }
 
+    @Override
+    public String toString() {
+        return "[ id: '" + id + "', code: '" + code + "', names: '" + names + "', address: '" + address + "' ]";
+    }
 }

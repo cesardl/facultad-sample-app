@@ -1,16 +1,11 @@
 package org.sanmarcux.view.etc;
 
-import java.awt.Frame;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
-import javax.swing.AbstractAction;
-import javax.swing.JComponent;
-import javax.swing.JRootPane;
-import javax.swing.KeyStroke;
 
 /**
- *
  * @author Cesardl
  */
 public abstract class JDialogBase extends javax.swing.JDialog {
@@ -21,14 +16,6 @@ public abstract class JDialogBase extends javax.swing.JDialog {
 
     private static final KeyStroke ESCAPE_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
     private static final KeyStroke ENTER_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
-
-    /**
-     *
-     * @param parent the parent of this dialog.
-     */
-//    public JDialogBase(Frame parent) {
-//        super(parent, true);
-//    }
 
     /**
      *

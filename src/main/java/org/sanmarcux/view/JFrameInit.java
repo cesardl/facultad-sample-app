@@ -14,7 +14,7 @@ public class JFrameInit extends javax.swing.JFrame {
     private static final long serialVersionUID = -1708772121678146407L;
 
     @Autowired
-    private ResourceBundleHelper resourceBundleHelper;
+    private ResourceBundleHelper bundle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     @Autowired
     private org.sanmarcux.view.JPanelStudent panelStudent;
@@ -50,7 +50,7 @@ public class JFrameInit extends javax.swing.JFrame {
         javax.swing.JMenuItem menuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+
         setTitle(bundle.getString("app.title")); // NOI18N
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,7 +158,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -173,7 +173,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -190,7 +190,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -205,7 +205,7 @@ public class JFrameInit extends javax.swing.JFrame {
         int row = target.getSelectedRow();
 
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, resourceBundleHelper.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
 
@@ -214,7 +214,7 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 
     private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
-        int i = JOptionPane.showConfirmDialog(this, resourceBundleHelper.getString("app.warning.exit"),
+        int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
                 this.getTitle(), JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
             System.exit(0);
@@ -222,8 +222,6 @@ public class JFrameInit extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemExitActionPerformed
 
     private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
-        dialogAbout.installEscapeCloseOperation();
-        dialogAbout.installEnterCloseOperation();
         dialogAbout.setVisible(true);
     }//GEN-LAST:event_menuItemAboutActionPerformed
     // End of variables declaration//GEN-END:variables

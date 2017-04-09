@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
+import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,8 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
 
+    @Autowired
+    private ResourceBundleHelper bundle;
     @Autowired
     private StudentController studentController;
     @Autowired
@@ -101,7 +104,6 @@ public class JPanelStudent extends JPanelBase<Student> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        // = new JDialogStudent(getParentForDialog());
         dialogStudent.setAction(dialogAction);
         dialogStudent.installEscapeCloseOperation();
 
@@ -141,7 +143,6 @@ public class JPanelStudent extends JPanelBase<Student> {
     @PostConstruct
     private void initComponents() {
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(

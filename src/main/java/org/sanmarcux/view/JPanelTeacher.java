@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
+import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,16 +28,12 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     private static final Logger LOG = Logger.getLogger(JPanelTeacher.class);
 
     @Autowired
+    private ResourceBundleHelper bundle;
+    @Autowired
     private TeacherController teacherController;
     @Autowired
     private JDialogTeacher dialogTeacher;
 
-    /**
-     * Creates new form JPanelTeacher.
-     */
-//    public JPanelTeacher() {
-//        initComponents();
-//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
@@ -95,7 +92,6 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
             throw new UnsupportedOperationException("You can not perform this action");
         }
 
-        // TODO = new JDialogTeacher(getParentForDialog());
         dialogTeacher.installEscapeCloseOperation();
 
         Teacher teacher;
@@ -133,7 +129,6 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     @PostConstruct
     private void initComponents() {
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         tableModel = new javax.swing.table.DefaultTableModel(

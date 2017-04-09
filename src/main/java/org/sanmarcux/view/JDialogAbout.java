@@ -5,7 +5,9 @@
  */
 package org.sanmarcux.view;
 
+import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JDialogBase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,6 +19,9 @@ import javax.annotation.PostConstruct;
 public class JDialogAbout extends JDialogBase {
 
     private static final long serialVersionUID = -2611843216961667112L;
+
+    @Autowired
+    private ResourceBundleHelper bundle;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,11 +37,10 @@ public class JDialogAbout extends JDialogBase {
         javax.swing.JLabel labelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
-        setModal(true);
+        setModal(true); // TODO Evaluar comportamiento
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -77,6 +81,8 @@ public class JDialogAbout extends JDialogBase {
                         .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        installEscapeCloseOperation();
+        installEnterCloseOperation();
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
