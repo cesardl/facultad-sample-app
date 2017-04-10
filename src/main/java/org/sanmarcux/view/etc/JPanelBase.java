@@ -14,8 +14,10 @@ import java.awt.*;
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
-    protected static final int BAD_ROW = -1;
-    private static final long serialVersionUID = -8446015582022117195L;
+	private static final long serialVersionUID = 8384336851786056495L;
+
+	protected static final int BAD_ROW = -1;
+
     @Autowired
     protected DateFormatHelper dateFormatHelper;
 

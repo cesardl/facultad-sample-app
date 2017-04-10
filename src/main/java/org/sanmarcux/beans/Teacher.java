@@ -11,10 +11,22 @@ public class Teacher extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     private String email;
 
+    /**
+     * Default constructor
+     */
     public Teacher() {
         super();
     }
 
+    /**
+     * Constructor class with fields.
+     *
+     * @param id       the id
+     * @param code     the code
+     * @param names    the name and last name
+     * @param birthday the birthday date
+     * @param email    the email
+     */
     public Teacher(int id, String code, String names, Date birthday, String email) {
         super(id, code, names, birthday);
         this.email = email;

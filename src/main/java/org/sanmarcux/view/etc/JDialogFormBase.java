@@ -14,8 +14,9 @@ import java.util.Date;
  */
 public abstract class JDialogFormBase<T> extends JDialogBase {
 
-    protected static final Logger LOG = Logger.getLogger(JDialogBase.class);
-    private static final long serialVersionUID = -2649937183651508059L;
+	private static final long serialVersionUID = -5992999043081036468L;
+
+	protected static final Logger LOG = Logger.getLogger(JDialogBase.class);
 
     @Autowired
     protected ResourceBundleHelper resourceBundleHelper;

@@ -10,9 +10,9 @@ import java.awt.event.WindowEvent;
  */
 public abstract class JDialogBase extends javax.swing.JDialog {
 
-    private static final long serialVersionUID = 9011841899294587427L;
+	private static final long serialVersionUID = -8362930735484980393L;
 
-    private static final String DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY = JDialogBase.class.getCanonicalName() + ":WINDOW_CLOSING";
+	private static final String DISPATCH_WINDOW_CLOSING_ACTION_MAP_KEY = JDialogBase.class.getCanonicalName() + ":WINDOW_CLOSING";
 
     private static final KeyStroke ESCAPE_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
     private static final KeyStroke ENTER_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);

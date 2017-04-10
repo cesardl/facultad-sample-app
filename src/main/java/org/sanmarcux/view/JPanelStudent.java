@@ -25,9 +25,9 @@ import javax.swing.*;
 @Component
 public class JPanelStudent extends JPanelBase<Student> {
 
-    private static final long serialVersionUID = -3407749931422832063L;
+	private static final long serialVersionUID = -9152034385377244343L;
 
-    private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
+	private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
 
     @Autowired
     private ResourceBundleHelper bundle;
@@ -38,13 +38,6 @@ public class JPanelStudent extends JPanelBase<Student> {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable table;
     private javax.swing.table.DefaultTableModel tableModel;
-
-    /**
-     * Creates new form JPanelStudent.
-     */
-//    public JPanelStudent() {
-//        initComponents();
-//    }
 
     /**
      * @return the table.
@@ -151,7 +144,8 @@ public class JPanelStudent extends JPanelBase<Student> {
                         bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
                 }
         ) {
-            Class[] types = new Class[]{
+			private static final long serialVersionUID = -7145731512253630297L;
+			Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{

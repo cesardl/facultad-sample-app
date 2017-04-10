@@ -16,10 +16,24 @@ public class Student extends Person implements Serializable {
     private String phone;
     private int teacherId;
 
+    /**
+     * Default constructor
+     */
     public Student() {
         super();
     }
 
+    /**
+     * Constructor class with fields.
+     *
+     * @param id       the id
+     * @param code     the code
+     * @param names    the name and last name
+     * @param birthday the birthday date
+     * @param gender   the gender
+     * @param address  the address
+     * @param phone    the phone number
+     */
     public Student(int id, String code, String names, Date birthday, Gender gender, String address, String phone) {
         super(id, code, names, birthday);
         this.gender = gender;

@@ -18,9 +18,8 @@ import javax.annotation.PostConstruct;
 @Component
 public class JDialogAbout extends JDialogBase {
 
-    private static final long serialVersionUID = -2611843216961667112L;
-
-    @Autowired
+	private static final long serialVersionUID = -1360262441580117848L;
+	@Autowired
     private ResourceBundleHelper bundle;
 
     /**

@@ -22,9 +22,9 @@ import java.util.regex.Pattern;
 @Component
 public class JDialogTeacher extends JDialogFormBase<Teacher> {
 
-    private static final long serialVersionUID = -1517048285611582607L;
+	private static final long serialVersionUID = 4507185410828839727L;
 
-    @Autowired
+	@Autowired
     private ResourceBundleHelper bundle;
 
     private String email;

@@ -23,9 +23,9 @@ import javax.swing.*;
 @Component
 public class JPanelTeacher extends JPanelBase<Teacher> {
 
-    private static final long serialVersionUID = -2833586888123947842L;
+	private static final long serialVersionUID = -7175649245125570810L;
 
-    private static final Logger LOG = Logger.getLogger(JPanelTeacher.class);
+	private static final Logger LOG = Logger.getLogger(JPanelTeacher.class);
 
     @Autowired
     private ResourceBundleHelper bundle;
@@ -137,7 +137,8 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
                         bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.email")
                 }
         ) {
-            Class[] types = new Class[]{
+			private static final long serialVersionUID = 8018108352536896160L;
+			Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{

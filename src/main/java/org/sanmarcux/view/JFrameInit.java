@@ -11,9 +11,8 @@ import javax.swing.*;
  */
 public class JFrameInit extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = -1708772121678146407L;
-
-    @Autowired
+	private static final long serialVersionUID = -8892078424897840083L;
+	@Autowired
     private ResourceBundleHelper bundle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     @Autowired

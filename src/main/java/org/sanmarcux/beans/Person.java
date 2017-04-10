@@ -12,9 +12,21 @@ public class Person {
     protected String names;
     protected Date birthday;
 
+    /**
+     * Default constructor
+     */
     public Person() {
+        id = -1;
     }
 
+    /**
+     * Constructor class with fields.
+     *
+     * @param id the id
+     * @param code the code
+     * @param names the name and last name
+     * @param birthday the birthday date
+     */
     public Person(int id, String code, String names, Date birthday) {
         this.id = id;
         this.code = code;
