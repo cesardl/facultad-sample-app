@@ -70,6 +70,7 @@ public class StudentDAOImplTest {
         assertEquals(1, result);
 
         Student entity = dao.selectByCode(CODE);
+        assertNotNull(entity.getId());
         assertNotNull(entity.getCode());
         assertNotNull(entity.getGender());
         assertNotNull(entity.getBirthday());
@@ -123,5 +124,4 @@ public class StudentDAOImplTest {
     public void tearDown() {
         db.shutdown();
     }
-
 }

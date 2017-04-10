@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class TeacherDAOImpl implements TeacherDAO {
     }
 
     @Override
-    public Teacher selectByCode(String code) {
+    public Teacher selectByCode(final String code) {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
 
         Teacher teacher = jdbcTemplate.queryForObject(sql, new Object[]{code}, (resultSet, rowNum) -> new Teacher(
@@ -68,99 +69,41 @@ public class TeacherDAOImpl implements TeacherDAO {
     }
 
     @Override
-    public int insert(Teacher entity) {
-//        String sql = "INSERT INTO profesor(id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?, ?)";
-//
-//        int state;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setInt(1, entity.getId());
-//            ps.setString(2, entity.getCode());
-//            ps.setString(3, entity.getNames());
-//            ps.setDate(4, new Date(entity.getBirthday().getTime()));
-//            ps.setString(5, entity.getEmail());
-//
-//            state = ps.executeUpdate();
-//        } catch (SQLException e) {
-//            LOG.error("Error al insertar los datos del profesor", e);
-//            state = STATE_ERROR;
-//        }
-//
-//        return state;
-        throw new UnsupportedOperationException();
+    public int insert(final Teacher entity) {
+        String sql = "INSERT INTO profesor(cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?)";
+
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
+                new Date(entity.getBirthday().getTime()), entity.getEmail());
+        LOG.info(String.format("Creating new teacher, operation result: %d", rowsAffected));
+        return rowsAffected;
     }
 
     @Override
-    public int update(Teacher entity) {
-//        String sql = "UPDATE profesor SET cod_prof = ?, nom_prof = ?, nacimiento_prof = ?, email_prof = ? WHERE id_prof = ?";
-//
-//        int state;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setString(1, entity.getCode());
-//            ps.setString(2, entity.getNames());
-//            ps.setDate(3, new Date(entity.getBirthday().getTime()));
-//            ps.setString(4, entity.getEmail());
-//            ps.setInt(5, entity.getId());
-//
-//            state = ps.executeUpdate();
-//        } catch (SQLException e) {
-//            LOG.error("Error al actualizar los datos del profesor", e);
-//            state = STATE_ERROR;
-//        }
-//
-//        return state;
-        throw new UnsupportedOperationException();
+    public int update(final Teacher entity) {
+        String sql = "UPDATE profesor SET cod_prof = ?, nom_prof = ?, nacimiento_prof = ?, email_prof = ? WHERE id_prof = ?";
+
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
+                new Date(entity.getBirthday().getTime()), entity.getEmail(), entity.getId());
+        LOG.info(String.format("Updating teacher, operation result: %d", rowsAffected));
+        return rowsAffected;
     }
 
     @Override
-    public int delete(Teacher entity) {
-//        String sql = "DELETE FROM profesor WHERE cod_prof = ?";
-//
-//        int state;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setString(1, entity.getCode());
-//
-//            state = ps.executeUpdate();
-//        } catch (SQLException e) {
-//            LOG.error("Error al eliminar los datos del profesor", e);
-//            state = STATE_ERROR;
-//        }
-//
-//        return state;
-        throw new UnsupportedOperationException();
+    public int delete(final Teacher entity) {
+        String sql = "DELETE FROM profesor WHERE cod_prof = ?";
+
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode());
+        LOG.info(String.format("Deleting student, operation result: %d", rowsAffected));
+        return rowsAffected;
     }
 
     @Override
-    public int selectIdByCode(String code) {
-//        String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
-//
-//        int id = 0;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setString(1, code);
-//
-//            try (ResultSet rs = ps.executeQuery()) {
-//                if (rs.next()) {
-//                    id = rs.getInt(1);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            LOG.error("Error al cargar el id del profesor", e);
-//            id = STATE_ERROR;
-//        }
-//
-//        return id;
-        throw new UnsupportedOperationException();
+    public int selectIdByCode(final String code) {
+        String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
+
+        Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
+        LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
+        return id;
     }
 
 }

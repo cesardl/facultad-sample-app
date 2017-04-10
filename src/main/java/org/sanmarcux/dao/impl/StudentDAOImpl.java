@@ -42,7 +42,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student selectByCode(String code) {
+    public Student selectByCode(final String code) {
         String sql = "SELECT id_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof FROM alumno WHERE cod_alum = ?";
 
         Student student = jdbcTemplate.queryForObject(sql, new Object[]{code}, (resultSet, rowNum) -> {
@@ -63,17 +63,17 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public int insert(Student entity) {
-        String sql = "INSERT INTO alumno(id_alum, cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public int insert(final Student entity) {
+        String sql = "INSERT INTO alumno(cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        int rowsAffected = jdbcTemplate.update(sql, entity.getId(), entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
                 entity.getGender().name(), entity.getAddress(), entity.getPhone(), entity.getTeacherId());
         LOG.info(String.format("Creating new student, operation result: %d", rowsAffected));
         return rowsAffected;
     }
 
     @Override
-    public int update(Student entity) {
+    public int update(final Student entity) {
         String sql = "UPDATE alumno SET cod_alum = ?, nom_alum = ?, nacimiento_alum = ?, sexo_alum = ?, direc_alum = ?, telef_alum = ?, profesor_id_prof = ? WHERE id_alum = ?";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
@@ -83,7 +83,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public int delete(Student entity) {
+    public int delete(final Student entity) {
         String sql = "DELETE FROM alumno WHERE cod_alum = ?";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode());
@@ -92,27 +92,9 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public int selectIdByCode(String code) {
+    public int selectIdByCode(final String code) {
         String sql = "SELECT id_alum FROM alumno WHERE cod_alum = ?";
 
-//        int id = 0;
-//
-//        try (Connection c = DAOFactory.createConnection();
-//             PreparedStatement ps = c.prepareStatement(sql)) {
-//
-//            ps.setString(1, code);
-//
-//            try (ResultSet rs = ps.executeQuery()) {
-//                if (rs.next()) {
-//                    id = rs.getInt(1);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            LOG.error("Error al cargar el id del alumno", e);
-//            id = STATE_ERROR;
-//        }
-//
-//        return id;
         Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
         LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
         return id;
