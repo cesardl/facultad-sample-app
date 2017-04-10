@@ -31,7 +31,8 @@ public class JDialogStudent extends JDialogFormBase<Student> {
     @Autowired
     private ResourceBundleHelper bundle;
 
-    private String address, phone;
+    private String address;
+    private String phone;
     private Gender gender;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Teacher> comboBoxSelectTeacher;
@@ -60,14 +61,12 @@ public class JDialogStudent extends JDialogFormBase<Student> {
             selectTextField(textFieldCode);
             return false;
         }
-        if (DialogAction.INSERT.equals(dialogAction)) {
-            if (studentController.existsCode(code)) {
-                key = "app.warning.student.code.already.exists";
-                LOG.warn(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
-                selectTextField(textFieldCode);
-                return false;
-            }
+        if (DialogAction.INSERT.equals(dialogAction) && studentController.existsCode(code)) {
+            key = "app.warning.student.code.already.exists";
+            LOG.warn(key);
+            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            selectTextField(textFieldCode);
+            return false;
         }
         if (names.length() == 0) {
             key = "app.warning.student.name.empty";

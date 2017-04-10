@@ -3,7 +3,6 @@ package org.sanmarcux.beans;
 import java.util.Date;
 
 /**
- *
  * @author Cesardl
  */
 public class Person {

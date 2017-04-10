@@ -22,14 +22,15 @@ public class Toast extends JDialog {
     public static final Color WARNING_YELLOW = new Color(245, 161, 4);
     public static final Color SUCCESS_GREEN = new Color(22, 127, 57);
     public static final Color NORMAL_BLACK = new Color(0, 0, 0);
-    private static final Logger log = Logger.getLogger(Toast.class);
+
+    private static final Logger LOG = Logger.getLogger(Toast.class);
     private static final long serialVersionUID = -1602907470843951525L;
-    private final float MAX_OPACITY = 0.8f;
-    private final float OPACITY_INCREMENT = 0.05f;
-    private final int FADE_REFRESH_RATE = 20;
-    private final int WINDOW_RADIUS = 15;
-    private final int CHARACTER_LENGTH_MULTIPLIER = 7;
-    private final int DISTANCE_FROM_PARENT_TOP = 100;
+    private static final float MAX_OPACITY = 0.8f;
+    private static final float OPACITY_INCREMENT = 0.05f;
+    private static final int FADE_REFRESH_RATE = 20;
+    private static final int WINDOW_RADIUS = 15;
+    private static final int CHARACTER_LENGTH_MULTIPLIER = 7;
+    private static final int DISTANCE_FROM_PARENT_TOP = 100;
     private final Window mOwner;
     private String mText;
     private int mDuration;
@@ -72,6 +73,7 @@ public class Toast extends JDialog {
                 break;
 
             case NORMAL:
+            default:
                 toast.mBackgroundColor = NORMAL_BLACK;
                 break;
         }
@@ -178,7 +180,7 @@ public class Toast extends JDialog {
                 Thread.sleep(mDuration);
                 fadeOut();
             } catch (InterruptedException ex) {
-                log.error(ex.getMessage(), ex);
+                LOG.error(ex.getMessage(), ex);
             }
         }).start();
     }

@@ -1,12 +1,10 @@
 package org.sanmarcux.dao;
 
 import java.util.List;
-import org.apache.log4j.Logger;
 
 /**
- *
- * @author Cesardl
  * @param <T>
+ * @author Cesardl
  */
 public interface DAO<T> {
 

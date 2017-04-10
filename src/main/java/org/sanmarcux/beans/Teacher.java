@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
  * @author Cesardl
  */
 public class Teacher extends Person implements Serializable {

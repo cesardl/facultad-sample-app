@@ -25,7 +25,8 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
 
     protected T entity;
 
-    protected String code, names;
+    protected String code;
+    protected String names;
     protected Date birthday;
 
     protected DialogAction dialogAction;

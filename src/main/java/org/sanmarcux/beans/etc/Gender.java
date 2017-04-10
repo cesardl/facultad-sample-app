@@ -1,7 +1,6 @@
 package org.sanmarcux.beans.etc;
 
 /**
- *
  * @author Cesardl
  */
 public enum Gender {

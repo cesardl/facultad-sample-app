@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- *
  * @author cesardiaz
  */
 @Component
@@ -21,5 +20,5 @@ public class ResourceBundleHelper {
     public String getString(String key) {
         return bundle.getString(key);
     }
-    
+
 }
