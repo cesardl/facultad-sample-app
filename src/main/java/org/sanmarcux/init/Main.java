@@ -1,13 +1,13 @@
 package org.sanmarcux.init;
 
-import javax.swing.UIManager;
 import org.apache.log4j.Logger;
 import org.sanmarcux.view.JFrameInit;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.swing.*;
+
 /**
- *
  * @author Cesardl
  */
 public class Main {
@@ -26,15 +26,8 @@ public class Main {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
             javax.swing.SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));
-        } catch (ClassNotFoundException e) {
-            LOG.error("Error with class", e);
-        } catch (InstantiationException e) {
-            LOG.error("Error while instantiation", e);
-        } catch (IllegalAccessException e) {
-            LOG.error("Error illegal access", e);
-        } catch (javax.swing.UnsupportedLookAndFeelException e) {
-            LOG.error("Error loading look and feel", e);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            LOG.error(e.getMessage(), e);
         }
     }
-
 }

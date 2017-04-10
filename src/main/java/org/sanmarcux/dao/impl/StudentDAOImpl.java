@@ -57,7 +57,8 @@ public class StudentDAOImpl implements StudentDAO {
             e.setTeacherId(resultSet.getInt(7));
             return e;
         });
-        LOG.info(String.format("Getting student %s", student));
+        LOG.info(String.format("Getting student [ id: '%s', code: '%s', names: '%s', address: '%s' ]",
+                student.getId(), student.getCode(), student.getNames(), student.getAddress()));
         return student;
     }
 

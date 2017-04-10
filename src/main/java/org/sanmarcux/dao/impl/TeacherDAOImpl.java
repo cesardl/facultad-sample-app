@@ -33,7 +33,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                 resultSet.getString(3),
                 resultSet.getDate(4),
                 resultSet.getString(5)));
-        LOG.info(String.format("Getting teacher %s", teachers));
+        LOG.info(String.format("Getting names from %d teachers", teachers.size()));
         return teachers;
     }
 
@@ -48,7 +48,8 @@ public class TeacherDAOImpl implements TeacherDAO {
                         resultSet.getDate(4),
                         resultSet.getString(5))
         );
-        LOG.info(String.format("Getting teacher %s", teacher));
+        LOG.info(String.format("Getting teacher [ id: '%s', code: '%s', names: '%s', email: '%s' ]",
+                teacher.getId(), teacher.getCode(), teacher.getNames(), teacher.getEmail()));
         return teacher;
     }
 

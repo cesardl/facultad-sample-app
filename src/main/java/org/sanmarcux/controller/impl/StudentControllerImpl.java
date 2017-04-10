@@ -43,11 +43,7 @@ public class StudentControllerImpl implements StudentController {
 
     @Override
     public Student getByCode(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        StudentDAO dao = factory.getStudentDAO();
-//
-//        return dao.selectByCode(code);
-        throw new UnsupportedOperationException();
+        return dao.selectByCode(code);
     }
 
     @Override

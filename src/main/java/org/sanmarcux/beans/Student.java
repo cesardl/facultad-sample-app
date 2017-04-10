@@ -59,8 +59,4 @@ public class Student extends Person implements Serializable {
         this.teacherId = teacherId;
     }
 
-    @Override
-    public String toString() {
-        return "[ id: '" + id + "', code: '" + code + "', names: '" + names + "', address: '" + address + "' ]";
-    }
 }
