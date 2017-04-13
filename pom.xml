@@ -80,18 +80,18 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}-app</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>init.Main</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <finalName>${project.artifactId}</finalName>
+                    <!-- Specifies the configuration file of the assembly
+                        plugin -->
+                    <descriptors>
+                        <descriptor>src/main/assembly/distribution.xml</descriptor>
+                    </descriptors>
                 </configuration>
                 <executions>
                     <execution>
@@ -104,6 +104,35 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- The configuration of maven-jar-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <!-- The configuration of the plugin -->
+                <configuration>
+                    <!-- Configuration of the archiver -->
+                    <excludes>
+                        <exclude>**/config</exclude>
+                        <exclude>**/db</exclude>
+                    </excludes>
+                    <archive>
+                        <!-- Manifest specific configuration -->
+                        <manifest>
+                            <!-- Classpath is added to the manifest of the
+                                created jar file. -->
+                            <addClasspath>true</addClasspath>
+                            <!-- Configures the classpath prefix. This configuration
+                                option is used to specify that all needed libraries are found under lib/
+                                directory. -->
+                            <classpathPrefix>../lib/</classpathPrefix>
+                            <!-- Specifies the main class of the application -->
+                            <mainClass>org.sanmarcux.init.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
 
             <plugin>

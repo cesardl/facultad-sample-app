@@ -3,8 +3,6 @@ package org.sanmarcux.util;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,19 +15,16 @@ import java.util.regex.Pattern;
 @Component
 public class FormSupport {
 
-    private SecureRandom secureRandom;
     private Pattern emailPattern;
 
     @PostConstruct
     private void init() {
-        secureRandom = new SecureRandom();
-
         //Set the email pattern string
         emailPattern = Pattern.compile(".+@.+\\.[a-z]+");
     }
 
     public String generateRandomCode() {
-        return String.valueOf(ThreadLocalRandom.current().nextInt(10000000, 99999999 + 1));
+        return String.valueOf(ThreadLocalRandom.current().nextInt(10000000, 100000000));
     }
 
     public boolean isCorrectEmailFormat(final String email) {

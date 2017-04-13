@@ -59,11 +59,19 @@ public class Person {
     }
 
     public Date getBirthday() {
-        return birthday;
+        if (birthday == null) {
+            return null;
+        } else {
+            return new Date(birthday.getTime());
+        }
     }
 
     public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+        if (birthday == null) {
+            this.birthday = null;
+        } else {
+            this.birthday = new Date(birthday.getTime());
+        }
     }
 
 }

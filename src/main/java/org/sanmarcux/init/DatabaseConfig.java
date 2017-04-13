@@ -15,7 +15,7 @@ import javax.sql.DataSource;
  * @author Cesardl
  */
 @Configuration
-@PropertySource("classpath:db/database.properties")
+@PropertySource("classpath:config/database.properties")
 public class DatabaseConfig {
 
     @Resource
