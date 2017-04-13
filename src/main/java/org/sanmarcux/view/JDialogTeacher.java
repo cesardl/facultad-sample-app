@@ -5,16 +5,18 @@
  */
 package org.sanmarcux.view;
 
+import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JDialogFormBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author Cesardl
@@ -22,10 +24,14 @@ import java.util.regex.Pattern;
 @Component
 public class JDialogTeacher extends JDialogFormBase<Teacher> {
 
-	private static final long serialVersionUID = 4507185410828839727L;
+    private static final long serialVersionUID = 4507185410828839727L;
 
-	@Autowired
+    private static final Logger LOG = Logger.getLogger(JDialogTeacher.class);
+
+    @Autowired
     private ResourceBundleHelper bundle;
+    @Autowired
+    private FormSupport formSupport;
 
     private String email;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -79,7 +85,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
             selectTextField(textFieldEmail);
             return false;
         }
-        if (!isCorrectEmailFormat(email)) {
+        if (!formSupport.isCorrectEmailFormat(email)) {
             key = "app.warning.teacher.email.wrong.format";
             LOG.warn(key);
             Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
@@ -88,17 +94,6 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
         }
 
         return true;
-    }
-
-    private boolean isCorrectEmailFormat(String email) {
-        //Set the email pattern string
-        Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
-
-        //Match the given string with the pattern
-        Matcher m = p.matcher(email);
-
-        //Check whether match is found
-        return m.matches();
     }
 
     @Override
@@ -239,17 +234,21 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                LOG.info("Closing action in teacher form");
+                preparingDialogClose();
+            }
+        });
+
         pack();
-        setModal(true); // TODO Evaluar comportamiento
+        setModal(true);
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcceptActionPerformed
         if (validateData()) {
-            if (entity == null) {
-                entity = new Teacher();
-            }
-
             entity.setCode(code);
             entity.setNames(names);
             entity.setBirthday(birthday);
@@ -272,6 +271,8 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
     }//GEN-LAST:event_buttonAcceptActionPerformed
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        LOG.info("Canceling action in teacher form");
+        preparingDialogClose();
         dispose();
     }//GEN-LAST:event_buttonCancelActionPerformed
     // End of variables declaration//GEN-END:variables

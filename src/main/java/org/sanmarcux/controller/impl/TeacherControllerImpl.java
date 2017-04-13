@@ -5,6 +5,7 @@ import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.dao.TeacherDAO;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -52,56 +53,34 @@ public class TeacherControllerImpl implements TeacherController {
 
     @Override
     public boolean saveOrUpdate(Teacher entity) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        TeacherDAO dao = factory.getTeacherDAO();
-//
-//        int state;
-//
-//        if (entity.getId() == 0) {
-//            state = dao.insert(entity);
-//        } else {
-//            state = dao.update(entity);
-//        }
-//
-//        switch (state) {
-//            case DAO.STATE_ERROR:
-//                return false;
-//
-//            default:
-//                return true;
-//        }
-        throw new UnsupportedOperationException();
+        int state;
+
+        if (entity.getId() == 0) {
+            state = dao.insert(entity);
+        } else {
+            state = dao.update(entity);
+        }
+
+        return state != 0;
     }
 
     @Override
     public boolean delete(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        TeacherDAO dao = factory.getTeacherDAO();
-//
-//        Teacher entity = new Teacher();
-//        entity.setCode(code);
-//
-//        int state = dao.delete(entity);
-//
-//        switch (state) {
-//            case DAO.STATE_ERROR:
-//                return false;
-//
-//            default:
-//                return true;
-//        }
-        throw new UnsupportedOperationException();
+        Teacher entity = new Teacher();
+        entity.setCode(code);
+
+        int state = dao.delete(entity);
+
+        return state != 0;
     }
 
     @Override
     public boolean existsCode(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        TeacherDAO dao = factory.getTeacherDAO();
-//
-//        int id = dao.selectIdByCode(code);
-//
-//        return id > 0;
-        throw new UnsupportedOperationException();
+        try {
+            return dao.selectIdByCode(code) != 0;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
     }
 
 }

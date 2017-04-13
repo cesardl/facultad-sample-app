@@ -5,6 +5,7 @@
  */
 package org.sanmarcux.view;
 
+import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.beans.etc.Gender;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author Cesardl
@@ -24,6 +27,8 @@ import javax.annotation.PostConstruct;
 public class JDialogStudent extends JDialogFormBase<Student> {
 
     private static final long serialVersionUID = -8277040414653880047L;
+
+    private static final Logger LOG = Logger.getLogger(JDialogStudent.class);
 
     @Autowired
     private StudentController studentController;
@@ -298,8 +303,16 @@ public class JDialogStudent extends JDialogFormBase<Student> {
                                 .addContainerGap())
         );
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                LOG.info("Closing action in student form");
+                preparingDialogClose();
+            }
+        });
+
         pack();
-        setModal(true); // TODO Evaluar comportamiento
+        setModal(true);
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -307,10 +320,6 @@ public class JDialogStudent extends JDialogFormBase<Student> {
         if (validateData()) {
             Teacher t = (Teacher) comboBoxSelectTeacher.getSelectedItem();
             int teacherId = t.getId();
-
-            if (entity == null) {
-                entity = new Student();
-            }
 
             entity.setCode(code);
             entity.setNames(names);
@@ -337,6 +346,8 @@ public class JDialogStudent extends JDialogFormBase<Student> {
     }//GEN-LAST:event_buttonAcceptActionPerformed
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        LOG.info("Canceling action in teacher form");
+        preparingDialogClose();
         dispose();
     }//GEN-LAST:event_buttonCancelActionPerformed
     // End of variables declaration//GEN-END:variables

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     @Autowired
     private ResourceBundleHelper bundle;
+    @Autowired
+    private FormSupport formSupport;
     @Autowired
     private StudentController studentController;
     @Autowired
@@ -93,27 +96,25 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
-        LOG.info("Opening dialog for " + dialogAction);
-
-        dialogStudent.setAction(dialogAction);
-        dialogStudent.installEscapeCloseOperation();
+        LOG.info("Opening student dialog for " + dialogAction);
 
         Student student;
-
         if (DialogAction.UPDATE.equals(dialogAction)) {
             student = studentController.getByCode(code);
-
-            dialogStudent.setEntity(student);
         } else {
-            dialogStudent.setEntity(new Student());
+            student = new Student();
+            student.setCode(formSupport.generateRandomCode());
         }
 
+        dialogStudent.setAction(dialogAction);
+        dialogStudent.setEntity(student);
+        dialogStudent.installEscapeCloseOperation();
         dialogStudent.setVisible(true);
 
         student = dialogStudent.getEntity();
-//        if (student == null) {
-//            return;
-//        }
+        if (student == null) {
+            return;
+        }
 
         switch (dialogAction) {
             case INSERT:

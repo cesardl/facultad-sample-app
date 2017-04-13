@@ -21,6 +21,7 @@ public class Student extends Person implements Serializable {
      */
     public Student() {
         super();
+        this.gender = Gender.MALE;
     }
 
     /**

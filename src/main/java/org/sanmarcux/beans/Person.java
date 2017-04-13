@@ -16,15 +16,15 @@ public class Person {
      * Default constructor
      */
     public Person() {
-        id = -1;
+        id = 0;
     }
 
     /**
      * Constructor class with fields.
      *
-     * @param id the id
-     * @param code the code
-     * @param names the name and last name
+     * @param id       the id
+     * @param code     the code
+     * @param names    the name and last name
      * @param birthday the birthday date
      */
     public Person(int id, String code, String names, Date birthday) {

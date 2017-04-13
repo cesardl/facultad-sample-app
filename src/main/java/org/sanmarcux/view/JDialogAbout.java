@@ -18,8 +18,9 @@ import javax.annotation.PostConstruct;
 @Component
 public class JDialogAbout extends JDialogBase {
 
-	private static final long serialVersionUID = -1360262441580117848L;
-	@Autowired
+    private static final long serialVersionUID = -1360262441580117848L;
+
+    @Autowired
     private ResourceBundleHelper bundle;
 
     /**
@@ -39,7 +40,7 @@ public class JDialogAbout extends JDialogBase {
         setTitle(bundle.getString("app.title")); // NOI18N
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
-        setModal(true); // TODO Evaluar comportamiento
+        setModal(true);
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

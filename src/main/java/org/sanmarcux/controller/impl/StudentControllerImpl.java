@@ -5,6 +5,7 @@ import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.dao.StudentDAO;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -48,56 +49,33 @@ public class StudentControllerImpl implements StudentController {
 
     @Override
     public boolean saveOrUpdate(Student entity) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        StudentDAO dao = factory.getStudentDAO();
-//
-//        int state;
-//
-//        if (entity.getId() == 0) {
-//            state = dao.insert(entity);
-//        } else {
-//            state = dao.update(entity);
-//        }
-//
-//        switch (state) {
-//            case DAO.STATE_ERROR:
-//                return false;
-//
-//            default:
-//                return true;
-//        }
-        throw new UnsupportedOperationException();
+        int state;
+
+        if (entity.getId() == 0) {
+            state = dao.insert(entity);
+        } else {
+            state = dao.update(entity);
+        }
+
+        return state != 0;
     }
 
     @Override
     public boolean delete(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        StudentDAO dao = factory.getStudentDAO();
-//
-//        Student entity = new Student();
-//        entity.setCode(code);
-//
-//        int state = dao.delete(entity);
-//
-//        switch (state) {
-//            case DAO.STATE_ERROR:
-//                return false;
-//
-//            default:
-//                return true;
-//        }
-        throw new UnsupportedOperationException();
+        Student entity = new Student();
+        entity.setCode(code);
+
+        int state = dao.delete(entity);
+
+        return state != 0;
     }
 
     @Override
     public boolean existsCode(String code) {
-//        DAOFactory factory = DAOFactory.getDAOFactory();
-//        StudentDAO dao = factory.getStudentDAO();
-//
-//        int id = dao.selectIdByCode(code);
-//
-//        return id != 0;
-        throw new UnsupportedOperationException();
+        try {
+            return dao.selectIdByCode(code) != 0;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
     }
-
 }

@@ -16,14 +16,13 @@ import java.awt.geom.RoundRectangle2D;
  */
 public class Toast extends JDialog {
 
-	private static final long serialVersionUID = -7391072920302591187L;
-	public static final int LENGTH_SHORT = 3000;
+    public static final int LENGTH_SHORT = 3000;
     public static final int LENGTH_LONG = 6000;
     public static final Color ERROR_RED = new Color(121, 0, 0);
     public static final Color WARNING_YELLOW = new Color(245, 161, 4);
     public static final Color SUCCESS_GREEN = new Color(22, 127, 57);
     public static final Color NORMAL_BLACK = new Color(0, 0, 0);
-
+    private static final long serialVersionUID = -7391072920302591187L;
     private static final Logger LOG = Logger.getLogger(Toast.class);
     private static final float MAX_OPACITY = 0.8f;
     private static final float OPACITY_INCREMENT = 0.05f;

@@ -1,6 +1,5 @@
 package org.sanmarcux.view.etc;
 
-import org.apache.log4j.Logger;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.util.ResourceBundleHelper;
@@ -14,9 +13,7 @@ import java.util.Date;
  */
 public abstract class JDialogFormBase<T> extends JDialogBase {
 
-	private static final long serialVersionUID = -5992999043081036468L;
-
-	protected static final Logger LOG = Logger.getLogger(JDialogBase.class);
+    private static final long serialVersionUID = -5992999043081036468L;
 
     @Autowired
     protected ResourceBundleHelper resourceBundleHelper;
@@ -64,6 +61,10 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     public void selectTextField(javax.swing.JTextField textField) {
         textField.requestFocus();
         textField.selectAll();
+    }
+
+    protected void preparingDialogClose() {
+        entity = null;
     }
 
 }

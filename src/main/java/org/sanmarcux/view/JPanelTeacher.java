@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     @Autowired
     private ResourceBundleHelper bundle;
+    @Autowired
+    private FormSupport formSupport;
     @Autowired
     private TeacherController teacherController;
     @Autowired
@@ -88,19 +91,19 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
-        if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
-            throw new UnsupportedOperationException("You can not perform this action");
-        }
-
-        dialogTeacher.installEscapeCloseOperation();
+        LOG.info("Opening teacher dialog for " + dialogAction);
 
         Teacher teacher;
-
         if (DialogAction.UPDATE.equals(dialogAction)) {
             teacher = teacherController.getByCode(code);
-            dialogTeacher.setEntity(teacher);
+        } else {
+            teacher = new Teacher();
+            teacher.setCode(formSupport.generateRandomCode());
         }
 
+        dialogTeacher.setAction(dialogAction);
+        dialogTeacher.setEntity(teacher);
+        dialogTeacher.installEscapeCloseOperation();
         dialogTeacher.setVisible(true);
 
         teacher = dialogTeacher.getEntity();
@@ -159,11 +162,13 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
         table.setModel(tableModel);
         table.getTableHeader().setReorderingAllowed(false);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tableMousePressed(evt);
             }
         });
         table.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tableKeyPressed(evt);
             }

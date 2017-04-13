@@ -21,5 +21,4 @@ public class JFrameInitTest {
     public void testShowMainFrame() {
         assertNotNull(frame);
     }
-
 }
