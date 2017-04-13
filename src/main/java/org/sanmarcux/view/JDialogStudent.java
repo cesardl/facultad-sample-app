@@ -23,9 +23,9 @@ import javax.annotation.PostConstruct;
 @Component
 public class JDialogStudent extends JDialogFormBase<Student> {
 
-	private static final long serialVersionUID = -8277040414653880047L;
+    private static final long serialVersionUID = -8277040414653880047L;
 
-	@Autowired
+    @Autowired
     private StudentController studentController;
 
     @Autowired

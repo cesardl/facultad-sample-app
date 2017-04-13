@@ -25,9 +25,9 @@ import javax.swing.*;
 @Component
 public class JPanelStudent extends JPanelBase<Student> {
 
-	private static final long serialVersionUID = -9152034385377244343L;
+    private static final long serialVersionUID = -9152034385377244343L;
 
-	private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
+    private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
 
     @Autowired
     private ResourceBundleHelper bundle;
@@ -93,9 +93,7 @@ public class JPanelStudent extends JPanelBase<Student> {
 
     @Override
     public void showDialog(DialogAction dialogAction, int row, String code) {
-        if (DialogAction.UPDATE.equals(dialogAction) && (row == BAD_ROW || code == null)) {
-            throw new UnsupportedOperationException("You can not perform this action");
-        }
+        LOG.info("Opening dialog for " + dialogAction);
 
         dialogStudent.setAction(dialogAction);
         dialogStudent.installEscapeCloseOperation();
@@ -106,14 +104,16 @@ public class JPanelStudent extends JPanelBase<Student> {
             student = studentController.getByCode(code);
 
             dialogStudent.setEntity(student);
+        } else {
+            dialogStudent.setEntity(new Student());
         }
 
         dialogStudent.setVisible(true);
 
         student = dialogStudent.getEntity();
-        if (student == null) {
-            return;
-        }
+//        if (student == null) {
+//            return;
+//        }
 
         switch (dialogAction) {
             case INSERT:
@@ -144,8 +144,8 @@ public class JPanelStudent extends JPanelBase<Student> {
                         bundle.getString("dictionary.code"), bundle.getString("dictionary.names"), bundle.getString("dictionary.birthday"), bundle.getString("dictionary.sex"), bundle.getString("dictionary.address"), bundle.getString("dictionary.phone")
                 }
         ) {
-			private static final long serialVersionUID = -7145731512253630297L;
-			Class[] types = new Class[]{
+            private static final long serialVersionUID = -7145731512253630297L;
+            Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, char.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{

@@ -3,7 +3,6 @@ package org.sanmarcux.dao.impl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
 import org.springframework.dao.EmptyResultDataAccessException;
