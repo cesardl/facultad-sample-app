@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Teacher;
-import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;

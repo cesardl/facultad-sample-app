@@ -10,16 +10,12 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.sanmarcux.PojoFake.*;
 
 public class TeacherDAOImplTest {
-
-    private static final String CODE = "000001";
-    private static final String NAME = "Fake name";
-    private static final String EMAIL = "Fake email";
 
     private TeacherDAO dao;
     private EmbeddedDatabase db;
@@ -59,11 +55,7 @@ public class TeacherDAOImplTest {
 
     @Test
     public void testInsert() {
-        Teacher teacher = new Teacher();
-        teacher.setCode(CODE);
-        teacher.setNames(NAME);
-        teacher.setEmail(EMAIL);
-        teacher.setBirthday(new Date());
+        Teacher teacher = fakeTeacher();
 
         int result = dao.insert(teacher);
         assertEquals(1, result);
@@ -82,12 +74,11 @@ public class TeacherDAOImplTest {
 
     @Test
     public void testUpdate() {
-        Teacher teacher = new Teacher();
+        Teacher teacher = fakeTeacher();
         teacher.setId(1);
         teacher.setCode("212399");
         teacher.setNames(NAME);
         teacher.setEmail(EMAIL);
-        teacher.setBirthday(new Date());
 
         int result = dao.update(teacher);
         assertEquals(1, result);

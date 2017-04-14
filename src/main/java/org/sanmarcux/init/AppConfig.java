@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "org.sanmarcux")
 public class AppConfig {
 
+    /**
+     * @return new instance of main frame
+     */
     @Bean
     public JFrameInit createMainFrame() {
         return new JFrameInit();

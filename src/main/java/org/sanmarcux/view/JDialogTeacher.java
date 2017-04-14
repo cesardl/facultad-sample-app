@@ -52,14 +52,12 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
             selectTextField(textFieldCode);
             return false;
         }
-        if (DialogAction.INSERT.equals(dialogAction)) {
-            if (teacherController.existsCode(code)) {
-                key = "app.warning.teacher.code.already.exists";
-                LOG.warn(key);
-                Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
-                selectTextField(textFieldCode);
-                return false;
-            }
+        if (DialogAction.INSERT.equals(dialogAction) && teacherController.existsCode(code)) {
+            key = "app.warning.teacher.code.already.exists";
+            LOG.warn(key);
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
+            selectTextField(textFieldCode);
+            return false;
         }
         if (names.length() == 0) {
             key = "app.warning.teacher.name.empty";

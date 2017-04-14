@@ -1,11 +1,14 @@
 package org.sanmarcux.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author Cesardl
  */
-public class Person {
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     protected int id;
     protected String code;

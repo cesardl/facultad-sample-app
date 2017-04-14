@@ -17,14 +17,15 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     protected static final int BAD_ROW = -1;
     private static final long serialVersionUID = 8384336851786056495L;
+
     @Autowired
     protected DateFormatHelper dateFormatHelper;
 
     @Autowired
-    protected ResourceBundleHelper bundle;
+    protected transient ResourceBundleHelper bundle;
 
     @Autowired
-    protected FormSupport formSupport;
+    protected transient FormSupport formSupport;
 
     /**
      * @param entity the entity to be added.

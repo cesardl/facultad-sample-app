@@ -27,7 +27,7 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     private static final Logger LOG = Logger.getLogger(JPanelTeacher.class);
 
     @Autowired
-    private TeacherController teacherController;
+    private transient TeacherController teacherController;
     @Autowired
     private JDialogTeacher dialogTeacher;
 

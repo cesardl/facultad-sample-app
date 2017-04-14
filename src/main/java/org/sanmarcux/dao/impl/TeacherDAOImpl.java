@@ -20,6 +20,9 @@ public class TeacherDAOImpl implements TeacherDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * @param dataSource database connection
+     */
     public TeacherDAOImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }

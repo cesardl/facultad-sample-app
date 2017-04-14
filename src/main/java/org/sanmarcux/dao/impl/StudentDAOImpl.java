@@ -21,6 +21,9 @@ public class StudentDAOImpl implements StudentDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * @param dataSource database connection
+     */
     public StudentDAOImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }

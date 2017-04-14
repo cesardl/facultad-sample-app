@@ -16,10 +16,10 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     private static final long serialVersionUID = -5992999043081036468L;
 
     @Autowired
-    protected ResourceBundleHelper bundle;
+    protected transient ResourceBundleHelper bundle;
 
     @Autowired
-    protected TeacherController teacherController;
+    protected transient TeacherController teacherController;
 
     protected T entity;
 

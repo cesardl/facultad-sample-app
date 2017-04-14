@@ -9,6 +9,11 @@ import java.util.List;
  */
 public interface TeacherDAO extends DAO<Teacher> {
 
+    /**
+     * Obtain a list of teacher's name
+     *
+     * @return the list
+     */
     List<Teacher> selectNames();
 
 }
