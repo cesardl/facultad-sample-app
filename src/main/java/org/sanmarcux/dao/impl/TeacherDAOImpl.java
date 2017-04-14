@@ -3,6 +3,7 @@ package org.sanmarcux.dao.impl;
 import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -102,11 +103,16 @@ public class TeacherDAOImpl implements TeacherDAO {
 
     @Override
     public int selectIdByCode(final String code) {
-        String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
+        try {
+            String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
 
-        Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
-        LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
-        return id;
+            Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
+            LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
+            return id;
+        } catch (EmptyResultDataAccessException e) {
+            LOG.warn(String.format("No results obtained with code [%s]", code), e);
+            return 0;
+        }
     }
 
 }

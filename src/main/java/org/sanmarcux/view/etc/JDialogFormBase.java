@@ -21,7 +21,7 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     @Autowired
     protected transient TeacherController teacherController;
 
-    protected T entity;
+    protected transient T entity;
 
     protected String code;
     protected String names;

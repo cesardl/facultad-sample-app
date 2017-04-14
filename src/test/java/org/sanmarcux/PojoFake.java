@@ -18,6 +18,7 @@ public class PojoFake {
     public static final String ADDRESS = "Fake address";
     public static final String EMAIL = "fake@email.org";
     public static final Date BIRTHDAY;
+    public static final String PHONE = "982817293";
 
     static {
         Calendar calendar = Calendar.getInstance();
@@ -34,6 +35,7 @@ public class PojoFake {
         student.setNames(NAME);
         student.setBirthday(BIRTHDAY);
         student.setAddress(ADDRESS);
+        student.setPhone(PHONE);
         return student;
     }
 

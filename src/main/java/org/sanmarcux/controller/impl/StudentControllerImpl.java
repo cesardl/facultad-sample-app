@@ -5,7 +5,6 @@ import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.dao.StudentDAO;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -72,10 +71,6 @@ public class StudentControllerImpl implements StudentController {
 
     @Override
     public boolean existsCode(String code) {
-        try {
-            return dao.selectIdByCode(code) != 0;
-        } catch (EmptyResultDataAccessException e) {
-            return false;
-        }
+        return dao.selectIdByCode(code) != 0;
     }
 }

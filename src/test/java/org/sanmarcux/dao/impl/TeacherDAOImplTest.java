@@ -37,12 +37,12 @@ public class TeacherDAOImplTest {
     public void testSelectAll() {
         List<Teacher> result = dao.selectAll();
         assertFalse(result.isEmpty());
-        assertEquals(5, result.size());
+        assertEquals(3, result.size());
     }
 
     @Test
     public void testSelectByCode() {
-        Teacher teacher = dao.selectByCode("212399");
+        Teacher teacher = dao.selectByCode("212696");
         assertNotNull(teacher);
     }
 
@@ -50,7 +50,7 @@ public class TeacherDAOImplTest {
     public void testSelectNames() {
         List<Teacher> result = dao.selectNames();
         assertFalse(result.isEmpty());
-        assertEquals(5, result.size());
+        assertEquals(3, result.size());
     }
 
     @Test
@@ -93,18 +93,18 @@ public class TeacherDAOImplTest {
     @Test(expected = EmptyResultDataAccessException.class)
     public void testDelete() {
         Teacher teacher = new Teacher();
-        teacher.setCode("212399");
+        teacher.setCode("212963");
 
         int result = dao.delete(teacher);
         assertEquals(1, result);
 
-        dao.selectByCode("212399");
+        dao.selectByCode("212963");
     }
 
     @Test
     public void testSelectIdByCode() {
         int result = dao.selectIdByCode("212456");
-        assertEquals(5, result);
+        assertEquals(3, result);
     }
 
     @After

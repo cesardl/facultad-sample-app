@@ -16,8 +16,7 @@ import java.awt.geom.RoundRectangle2D;
  */
 public class Toast extends JDialog {
 
-    public static final int LENGTH_SHORT = 3000;
-    public static final int LENGTH_LONG = 6000;
+    public static final int LENGTH_SHORT = 4000;
     public static final Color ERROR_RED = new Color(121, 0, 0);
     public static final Color WARNING_YELLOW = new Color(245, 161, 4);
     public static final Color SUCCESS_GREEN = new Color(22, 127, 57);
@@ -41,16 +40,8 @@ public class Toast extends JDialog {
         mOwner = owner;
     }
 
-    public static Toast makeText(Window owner, String text) {
-        return makeText(owner, text, LENGTH_SHORT);
-    }
-
     public static Toast makeText(Window owner, String text, Style style) {
         return makeText(owner, text, LENGTH_SHORT, style);
-    }
-
-    public static Toast makeText(Window owner, String text, int duration) {
-        return makeText(owner, text, duration, Style.NORMAL);
     }
 
     public static Toast makeText(Window owner, String text, int duration, Style style) {
@@ -151,14 +142,6 @@ public class Toast extends JDialog {
         int x = (int) (ownerLoc.getX() + ((mOwner.getWidth() - this.getWidth()) / 2));
         int y = (int) (ownerLoc.getY() + DISTANCE_FROM_PARENT_TOP);
         return new Point(x, y);
-    }
-
-    public void setText(String text) {
-        mText = text;
-    }
-
-    public void setDuration(int duration) {
-        mDuration = duration;
     }
 
     @Override

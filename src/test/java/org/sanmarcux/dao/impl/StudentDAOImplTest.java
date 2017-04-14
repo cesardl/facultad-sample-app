@@ -39,7 +39,7 @@ public class StudentDAOImplTest {
         List<Student> result = dao.selectAll();
 
         assertFalse(result.isEmpty());
-        assertEquals(16, result.size());
+        assertEquals(5, result.size());
     }
 
     @Test
@@ -81,6 +81,7 @@ public class StudentDAOImplTest {
         student.setCode("200004");
         student.setNames(NAME);
         student.setAddress(ADDRESS);
+        student.setGender(Gender.FEMALE);
 
         int result = dao.update(student);
         assertEquals(1, result);
@@ -88,8 +89,10 @@ public class StudentDAOImplTest {
         Student entity = dao.selectByCode("200004");
         assertNotNull(entity.getNames());
         assertNotNull(entity.getAddress());
+        assertNotNull(entity.getGender());
         assertEquals(NAME, entity.getNames());
         assertEquals(ADDRESS, entity.getAddress());
+        assertEquals(Gender.FEMALE, entity.getGender());
     }
 
     @Test(expected = EmptyResultDataAccessException.class)
@@ -105,7 +108,7 @@ public class StudentDAOImplTest {
 
     @Test
     public void testSelectIdByCode() {
-        int result = dao.selectIdByCode("200159");
+        int result = dao.selectIdByCode("231123");
         assertEquals(5, result);
     }
 

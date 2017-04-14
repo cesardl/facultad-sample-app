@@ -71,7 +71,7 @@ public class JDialogTeacherTest {
     @Test
     public void testValidateDataExistsCode() {
         Teacher teacher = fakeTeacher();
-        teacher.setCode("212399");
+        teacher.setCode("212963");
         dialog.setEntity(teacher);
 
         assertFalse(dialog.validateData());
