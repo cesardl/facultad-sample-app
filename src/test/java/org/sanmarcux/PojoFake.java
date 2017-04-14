@@ -31,6 +31,7 @@ public class PojoFake {
 
     public static Student fakeStudent() {
         Student student = new Student();
+        student.setId(100);
         student.setCode(CODE);
         student.setNames(NAME);
         student.setBirthday(BIRTHDAY);
@@ -41,6 +42,7 @@ public class PojoFake {
 
     public static Teacher fakeTeacher() {
         Teacher teacher = new Teacher();
+        teacher.setId(100);
         teacher.setCode(CODE);
         teacher.setNames(NAME);
         teacher.setBirthday(BIRTHDAY);

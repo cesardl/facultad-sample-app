@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Teacher;
+import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
@@ -35,6 +36,9 @@ public class JPanelTeacherTest {
 
     @Mock
     private TeacherController teacherController;
+
+    @Mock
+    private JDialogTeacher dialog;
 
     @Mock
     private javax.swing.table.DefaultTableModel tableModel;
@@ -79,7 +83,18 @@ public class JPanelTeacherTest {
     }
 
     @Test
-    public void testShowDialog() {
+    public void testShowDialogForInsert() {
+        doNothing().when(dialog).setVisible(true);
 
+        panel.showDialog(DialogAction.INSERT, 1, null);
+        verify(dialog, times(1)).getEntity();
+    }
+
+    @Test
+    public void testShowDialogForUpdate() {
+        doNothing().when(dialog).setVisible(true);
+
+        panel.showDialog(DialogAction.UPDATE, 1, "200135");
+        verify(dialog, times(1)).getEntity();
     }
 }
