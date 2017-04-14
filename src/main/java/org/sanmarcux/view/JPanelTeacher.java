@@ -9,8 +9,6 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
-import org.sanmarcux.util.FormSupport;
-import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,10 +26,6 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
 
     private static final Logger LOG = Logger.getLogger(JPanelTeacher.class);
 
-    @Autowired
-    private ResourceBundleHelper bundle;
-    @Autowired
-    private FormSupport formSupport;
     @Autowired
     private TeacherController teacherController;
     @Autowired
@@ -69,8 +63,8 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
     @Override
     protected void deleteRow(int row, String code) {
         int i = JOptionPane.showConfirmDialog(this,
-                resourceBundleHelper.getString("app.warning.teacher.delete"),
-                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
+                bundle.getString("app.warning.teacher.delete"),
+                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = teacherController.delete(code);
@@ -79,12 +73,12 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
             if (state) {
                 key = "app.success.teacher.delete";
                 LOG.info(key);
-                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
+                Toast.makeText(getParentForDialog(), bundle.getString(key), Toast.Style.SUCCESS).display();
                 tableModel.removeRow(row);
             } else {
                 key = "app.error.teacher.delete";
                 LOG.error(key);
-                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(getParentForDialog(), bundle.getString(key), Toast.Style.ERROR).display();
             }
         }
     }
@@ -111,14 +105,10 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
             return;
         }
 
-        switch (dialogAction) {
-            case INSERT:
-                addRow(teacher);
-                break;
-
-            case UPDATE:
-                setRowValues(row, teacher);
-                break;
+        if (DialogAction.UPDATE.equals(dialogAction)) {
+            setRowValues(row, teacher);
+        } else {
+            addRow(teacher);
         }
     }
 
@@ -148,10 +138,12 @@ public class JPanelTeacher extends JPanelBase<Teacher> {
                     false, false, false, false
             };
 
+            @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }

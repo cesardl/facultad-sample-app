@@ -21,7 +21,7 @@ public class JDialogAbout extends JDialogBase {
     private static final long serialVersionUID = -1360262441580117848L;
 
     @Autowired
-    private ResourceBundleHelper bundle;
+    private transient ResourceBundleHelper bundle;
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -18,7 +18,7 @@ public abstract class JDialogBase extends javax.swing.JDialog {
     private static final KeyStroke ENTER_STROKE = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
 
     /**
-     *
+     * Install the option for close dialog with ESC key.
      */
     public void installEscapeCloseOperation() {
         JRootPane root = getRootPane();
@@ -38,7 +38,7 @@ public abstract class JDialogBase extends javax.swing.JDialog {
     }
 
     /**
-     *
+     * Install the option for close dialog with ENTER key.
      */
     public void installEnterCloseOperation() {
         JRootPane root = getRootPane();

@@ -13,7 +13,7 @@ public class JFrameInit extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -8892078424897840083L;
     @Autowired
-    private ResourceBundleHelper bundle;
+    private transient ResourceBundleHelper bundle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     @Autowired
     private org.sanmarcux.view.JPanelStudent panelStudent;
@@ -81,15 +81,15 @@ public class JFrameInit extends javax.swing.JFrame {
         menuStudent.setText(bundle.getString("dictionary.student")); // NOI18N
 
         menuItemInsertStudent.setText(bundle.getString("dictionary.new")); // NOI18N
-        menuItemInsertStudent.addActionListener(JFrameInit.this::menuItemInsertStudentActionPerformed);
+        menuItemInsertStudent.addActionListener(e -> menuItemInsertStudentActionPerformed());
         menuStudent.add(menuItemInsertStudent);
 
         menuItemUpdateStudent.setText(bundle.getString("dictionary.edit")); // NOI18N
-        menuItemUpdateStudent.addActionListener(JFrameInit.this::menuItemUpdateStudentActionPerformed);
+        menuItemUpdateStudent.addActionListener(e -> menuItemUpdateStudentActionPerformed());
         menuStudent.add(menuItemUpdateStudent);
 
         menuItemDeleteStudent.setText(bundle.getString("dictionary.delete")); // NOI18N
-        menuItemDeleteStudent.addActionListener(JFrameInit.this::menuItemDeleteStudentActionPerformed);
+        menuItemDeleteStudent.addActionListener(e -> menuItemDeleteStudentActionPerformed());
         menuStudent.add(menuItemDeleteStudent);
 
         menuActions.add(menuStudent);
@@ -97,22 +97,22 @@ public class JFrameInit extends javax.swing.JFrame {
         menuTeacher.setText(bundle.getString("dictionary.teacher")); // NOI18N
 
         menuItemInsertTeacher.setText(bundle.getString("dictionary.new")); // NOI18N
-        menuItemInsertTeacher.addActionListener(JFrameInit.this::menuItemInsertTeacherActionPerformed);
+        menuItemInsertTeacher.addActionListener(e -> menuItemInsertTeacherActionPerformed());
         menuTeacher.add(menuItemInsertTeacher);
 
         menuItemUpdateTeacher.setText(bundle.getString("dictionary.edit")); // NOI18N
-        menuItemUpdateTeacher.addActionListener(JFrameInit.this::menuItemUpdateTeacherActionPerformed);
+        menuItemUpdateTeacher.addActionListener(e -> menuItemUpdateTeacherActionPerformed());
         menuTeacher.add(menuItemUpdateTeacher);
 
         menuItemDeleteTeacher.setText(bundle.getString("dictionary.delete")); // NOI18N
-        menuItemDeleteTeacher.addActionListener(JFrameInit.this::menuItemDeleteTeacherActionPerformed);
+        menuItemDeleteTeacher.addActionListener(e -> menuItemDeleteTeacherActionPerformed());
         menuTeacher.add(menuItemDeleteTeacher);
 
         menuActions.add(menuTeacher);
         menuActions.add(separator);
 
         menuItemExit.setText(bundle.getString("dictionary.exit")); // NOI18N
-        menuItemExit.addActionListener(JFrameInit.this::menuItemExitActionPerformed);
+        menuItemExit.addActionListener(e -> menuItemExitActionPerformed());
         menuActions.add(menuItemExit);
 
         menuBar.add(menuActions);
@@ -120,7 +120,7 @@ public class JFrameInit extends javax.swing.JFrame {
         menuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
 
         menuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
-        menuItemAbout.addActionListener(this::menuItemAboutActionPerformed);
+        menuItemAbout.addActionListener(e -> menuItemAboutActionPerformed());
         menuHelp.add(menuItemAbout);
 
         menuBar.add(menuHelp);
@@ -148,11 +148,11 @@ public class JFrameInit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemInsertStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertStudentActionPerformed
+    private void menuItemInsertStudentActionPerformed() {//GEN-FIRST:event_menuItemInsertStudentActionPerformed
         panelStudent.showDialog();
     }//GEN-LAST:event_menuItemInsertStudentActionPerformed
 
-    private void menuItemUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateStudentActionPerformed
+    private void menuItemUpdateStudentActionPerformed() {//GEN-FIRST:event_menuItemUpdateStudentActionPerformed
         JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
@@ -167,7 +167,7 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemUpdateStudentActionPerformed
 
-    private void menuItemDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteStudentActionPerformed
+    private void menuItemDeleteStudentActionPerformed() {//GEN-FIRST:event_menuItemDeleteStudentActionPerformed
         JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
@@ -180,11 +180,11 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemDeleteStudentActionPerformed
 
-    private void menuItemInsertTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInsertTeacherActionPerformed
+    private void menuItemInsertTeacherActionPerformed() {//GEN-FIRST:event_menuItemInsertTeacherActionPerformed
         panelTeacher.showDialog();
     }//GEN-LAST:event_menuItemInsertTeacherActionPerformed
 
-    private void menuItemUpdateTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateTeacherActionPerformed
+    private void menuItemUpdateTeacherActionPerformed() {//GEN-FIRST:event_menuItemUpdateTeacherActionPerformed
         JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
@@ -199,7 +199,7 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemUpdateTeacherActionPerformed
 
-    private void menuItemDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteTeacherActionPerformed
+    private void menuItemDeleteTeacherActionPerformed() {//GEN-FIRST:event_menuItemDeleteTeacherActionPerformed
         JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
@@ -212,7 +212,7 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemDeleteTeacherActionPerformed
 
-    private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
+    private void menuItemExitActionPerformed() {//GEN-FIRST:event_menuItemExitActionPerformed
         int i = JOptionPane.showConfirmDialog(this, bundle.getString("app.warning.exit"),
                 this.getTitle(), JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
@@ -220,7 +220,7 @@ public class JFrameInit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuItemExitActionPerformed
 
-    private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
+    private void menuItemAboutActionPerformed() {//GEN-FIRST:event_menuItemAboutActionPerformed
         dialogAbout.setVisible(true);
     }//GEN-LAST:event_menuItemAboutActionPerformed
     // End of variables declaration//GEN-END:variables

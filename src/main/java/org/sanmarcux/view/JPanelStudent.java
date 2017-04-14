@@ -9,8 +9,6 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
-import org.sanmarcux.util.FormSupport;
-import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JPanelBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,11 +29,7 @@ public class JPanelStudent extends JPanelBase<Student> {
     private static final Logger LOG = Logger.getLogger(JPanelStudent.class);
 
     @Autowired
-    private ResourceBundleHelper bundle;
-    @Autowired
-    private FormSupport formSupport;
-    @Autowired
-    private StudentController studentController;
+    private transient StudentController studentController;
     @Autowired
     private JDialogStudent dialogStudent;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -74,8 +68,8 @@ public class JPanelStudent extends JPanelBase<Student> {
     @Override
     protected void deleteRow(int row, String code) {
         int i = JOptionPane.showConfirmDialog(this,
-                resourceBundleHelper.getString("app.warning.student.delete"),
-                resourceBundleHelper.getString("app.title"), JOptionPane.YES_NO_OPTION);
+                bundle.getString("app.warning.student.delete"),
+                bundle.getString("app.title"), JOptionPane.YES_NO_OPTION);
 
         if (i == JOptionPane.YES_OPTION) {
             boolean state = studentController.delete(code);
@@ -84,12 +78,12 @@ public class JPanelStudent extends JPanelBase<Student> {
             if (state) {
                 key = "app.success.student.delete";
                 LOG.info(key);
-                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
+                Toast.makeText(getParentForDialog(), bundle.getString(key), Toast.Style.SUCCESS).display();
                 tableModel.removeRow(row);
             } else {
                 key = "app.error.student.delete";
                 LOG.error(key);
-                Toast.makeText(getParentForDialog(), resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(getParentForDialog(), bundle.getString(key), Toast.Style.ERROR).display();
             }
         }
     }
@@ -116,14 +110,10 @@ public class JPanelStudent extends JPanelBase<Student> {
             return;
         }
 
-        switch (dialogAction) {
-            case INSERT:
-                addRow(student);
-                break;
-
-            case UPDATE:
-                setRowValues(row, student);
-                break;
+        if (DialogAction.UPDATE.equals(dialogAction)) {
+            setRowValues(row, student);
+        } else {
+            addRow(student);
         }
     }
 
@@ -153,10 +143,12 @@ public class JPanelStudent extends JPanelBase<Student> {
                     false, false, false, false, false, false
             };
 
+            @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
 
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -167,11 +159,13 @@ public class JPanelStudent extends JPanelBase<Student> {
         table.setModel(tableModel);
         table.getTableHeader().setReorderingAllowed(false);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
             }
         });
         table.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tableKeyPressed(evt);
             }

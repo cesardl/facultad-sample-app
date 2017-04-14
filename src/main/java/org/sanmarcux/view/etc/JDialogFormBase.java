@@ -16,7 +16,7 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     private static final long serialVersionUID = -5992999043081036468L;
 
     @Autowired
-    protected ResourceBundleHelper resourceBundleHelper;
+    protected ResourceBundleHelper bundle;
 
     @Autowired
     protected TeacherController teacherController;
@@ -35,7 +35,7 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     public abstract boolean validateData();
 
     /**
-     *
+     * Update entity's data on view.
      */
     public abstract void setData();
 
@@ -49,6 +49,9 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
      */
     public abstract void setEntity(T entity);
 
+    /**
+     * @param dialogAction an action, UPDATE or INSERT
+     */
     public void setAction(DialogAction dialogAction) {
         this.dialogAction = dialogAction;
     }
@@ -63,8 +66,10 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
         textField.selectAll();
     }
 
+    /**
+     * Make actions before close the dialog.
+     */
     protected void preparingDialogClose() {
         entity = null;
     }
-
 }

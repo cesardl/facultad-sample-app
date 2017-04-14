@@ -11,7 +11,6 @@ import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
-import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JDialogFormBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,10 +30,7 @@ public class JDialogStudent extends JDialogFormBase<Student> {
     private static final Logger LOG = Logger.getLogger(JDialogStudent.class);
 
     @Autowired
-    private StudentController studentController;
-
-    @Autowired
-    private ResourceBundleHelper bundle;
+    private transient StudentController studentController;
 
     private String address;
     private String phone;
@@ -62,35 +58,35 @@ public class JDialogStudent extends JDialogFormBase<Student> {
         if (code.length() == 0) {
             key = "app.warning.student.code.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldCode);
             return false;
         }
         if (DialogAction.INSERT.equals(dialogAction) && studentController.existsCode(code)) {
             key = "app.warning.student.code.already.exists";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldCode);
             return false;
         }
         if (names.length() == 0) {
             key = "app.warning.student.name.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
             key = "app.warning.student.birthday.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (address.length() == 0) {
             key = "app.warning.student.address.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldAddress);
             return false;
         }
@@ -271,10 +267,10 @@ public class JDialogStudent extends JDialogFormBase<Student> {
         );
 
         buttonAccept.setText(bundle.getString("dictionary.accept")); // NOI18N
-        buttonAccept.addActionListener(JDialogStudent.this::buttonAcceptActionPerformed);
+        buttonAccept.addActionListener(e -> buttonAcceptActionPerformed());
 
         buttonCancel.setText(bundle.getString("dictionary.cancel")); // NOI18N
-        buttonCancel.addActionListener(JDialogStudent.this::buttonCancelActionPerformed);
+        buttonCancel.addActionListener(e -> buttonCancelActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -316,7 +312,7 @@ public class JDialogStudent extends JDialogFormBase<Student> {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcceptActionPerformed
+    private void buttonAcceptActionPerformed() {//GEN-FIRST:event_buttonAcceptActionPerformed
         if (validateData()) {
             Teacher t = (Teacher) comboBoxSelectTeacher.getSelectedItem();
             int teacherId = t.getId();
@@ -335,17 +331,17 @@ public class JDialogStudent extends JDialogFormBase<Student> {
             if (state) {
                 key = "app.success.student.save";
                 LOG.info(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
+                Toast.makeText(this, bundle.getString(key), Toast.Style.SUCCESS).display();
                 dispose();
             } else {
                 key = "app.error.student.save";
                 LOG.error(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             }
         }
     }//GEN-LAST:event_buttonAcceptActionPerformed
 
-    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+    private void buttonCancelActionPerformed() {//GEN-FIRST:event_buttonCancelActionPerformed
         LOG.info("Canceling action in teacher form");
         preparingDialogClose();
         dispose();

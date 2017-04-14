@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.util.FormSupport;
-import org.sanmarcux.util.ResourceBundleHelper;
 import org.sanmarcux.view.etc.JDialogFormBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,9 +28,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
     private static final Logger LOG = Logger.getLogger(JDialogTeacher.class);
 
     @Autowired
-    private ResourceBundleHelper bundle;
-    @Autowired
-    private FormSupport formSupport;
+    private transient FormSupport formSupport;
 
     private String email;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -51,7 +48,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
         if (code.length() == 0) {
             key = "app.warning.teacher.code.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldCode);
             return false;
         }
@@ -59,7 +56,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
             if (teacherController.existsCode(code)) {
                 key = "app.warning.teacher.code.already.exists";
                 LOG.warn(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+                Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
                 selectTextField(textFieldCode);
                 return false;
             }
@@ -67,28 +64,28 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
         if (names.length() == 0) {
             key = "app.warning.teacher.name.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldNames);
             return false;
         }
         if (birthday == null) {
             key = "app.warning.teacher.birthday.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             dateChooserBirthday.requestFocusInWindow();
             return false;
         }
         if (email.length() == 0) {
             key = "app.warning.teacher.email.empty";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldEmail);
             return false;
         }
         if (!formSupport.isCorrectEmailFormat(email)) {
             key = "app.warning.teacher.email.wrong.format";
             LOG.warn(key);
-            Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.WARNING).display();
+            Toast.makeText(this, bundle.getString(key), Toast.Style.WARNING).display();
             selectTextField(textFieldEmail);
             return false;
         }
@@ -202,10 +199,10 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
         );
 
         buttonAccept.setText(bundle.getString("dictionary.accept")); // NOI18N
-        buttonAccept.addActionListener(JDialogTeacher.this::buttonAcceptActionPerformed);
+        buttonAccept.addActionListener(e -> buttonAcceptActionPerformed());
 
         buttonCancel.setText(bundle.getString("dictionary.cancel")); // NOI18N
-        buttonCancel.addActionListener(JDialogTeacher.this::buttonCancelActionPerformed);
+        buttonCancel.addActionListener(e -> buttonCancelActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -247,7 +244,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcceptActionPerformed
+    private void buttonAcceptActionPerformed() {//GEN-FIRST:event_buttonAcceptActionPerformed
         if (validateData()) {
             entity.setCode(code);
             entity.setNames(names);
@@ -260,17 +257,17 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
             if (state) {
                 key = "app.success.teacher.save";
                 LOG.info(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.SUCCESS).display();
+                Toast.makeText(this, bundle.getString(key), Toast.Style.SUCCESS).display();
                 dispose();
             } else {
                 key = "app.error.teacher.save";
                 LOG.error(key);
-                Toast.makeText(this, resourceBundleHelper.getString(key), Toast.Style.ERROR).display();
+                Toast.makeText(this, bundle.getString(key), Toast.Style.ERROR).display();
             }
         }
     }//GEN-LAST:event_buttonAcceptActionPerformed
 
-    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+    private void buttonCancelActionPerformed() {//GEN-FIRST:event_buttonCancelActionPerformed
         LOG.info("Canceling action in teacher form");
         preparingDialogClose();
         dispose();

@@ -2,6 +2,7 @@ package org.sanmarcux.view.etc;
 
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.util.DateFormatHelper;
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +21,10 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     protected DateFormatHelper dateFormatHelper;
 
     @Autowired
-    protected ResourceBundleHelper resourceBundleHelper;
+    protected ResourceBundleHelper bundle;
+
+    @Autowired
+    protected FormSupport formSupport;
 
     /**
      * @param entity the entity to be added.
@@ -47,7 +51,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     }
 
     /**
-     *
+     * Display dialog
      */
     public void showDialog() {
         showDialog(DialogAction.INSERT, BAD_ROW, null);

@@ -7,6 +7,9 @@ import org.sanmarcux.beans.Teacher;
  */
 public interface TeacherController extends Controller<Teacher> {
 
+    /**
+     * @return a list of teacher's name
+     */
     Teacher[] getNames();
 
 }
