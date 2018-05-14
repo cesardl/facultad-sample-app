@@ -1,4 +1,4 @@
-# Facultad Sample Application
+# Facultad Sample Application [![Build Status](https://travis-ci.org/cesardl/facultad-sample-app.svg?branch=master)](https://travis-ci.org/cesardl/facultad-sample-app) [![Maintainability](https://api.codeclimate.com/v1/badges/07262732998e04a64027/maintainability)](https://codeclimate.com/github/cesardl/facultad-sample-app/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/07262732998e04a64027/test_coverage)](https://codeclimate.com/github/cesardl/facultad-sample-app/test_coverage)
 
 El siguiente es una aplicacion en el cual se ve el uso de las distintas query SQL para el SGBD MySQL.
 
