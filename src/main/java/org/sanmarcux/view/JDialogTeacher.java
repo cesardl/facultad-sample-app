@@ -27,7 +27,6 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
 
     private static final Logger LOG = Logger.getLogger(JDialogTeacher.class);
 
-    @Autowired
     private transient FormSupport formSupport;
 
     private String email;
@@ -36,6 +35,11 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
     private javax.swing.JTextField textFieldCode;
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldNames;
+
+    @Autowired
+    public JDialogTeacher(FormSupport formSupport) {
+        this.formSupport = formSupport;
+    }
 
     @Override
     public boolean validateData() {

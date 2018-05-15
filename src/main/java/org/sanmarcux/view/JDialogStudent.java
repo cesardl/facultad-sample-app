@@ -29,7 +29,6 @@ public class JDialogStudent extends JDialogFormBase<Student> {
 
     private static final Logger LOG = Logger.getLogger(JDialogStudent.class);
 
-    @Autowired
     private transient StudentController studentController;
 
     private String address;
@@ -44,6 +43,11 @@ public class JDialogStudent extends JDialogFormBase<Student> {
     private javax.swing.JTextField textFieldCode;
     private javax.swing.JTextField textFieldNames;
     private javax.swing.JTextField textFieldPhone;
+
+    @Autowired
+    public JDialogStudent(StudentController studentController) {
+        this.studentController = studentController;
+    }
 
     @Override
     public boolean validateData() {
