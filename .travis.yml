@@ -1,3 +1,6 @@
+env:
+  DISPLAY=:0.0
+
 language: java
 
 jdk:
