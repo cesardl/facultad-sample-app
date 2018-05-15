@@ -11,6 +11,10 @@
     <scm>
         <url>https://github.com/cesardl/facultad-sample-app</url>
     </scm>
+    <ciManagement>
+        <system>Travis-ci</system>
+        <url>https://travis-ci.org/cesardl/facultad-sample-app</url>
+    </ciManagement>
     <issueManagement>
         <system>Github</system>
         <url>https://github.com/cesardl/facultad-sample-app/issues</url>
