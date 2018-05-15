@@ -7,3 +7,13 @@ Ya con el pasar de los años me animé a hacer la actualización a Java 8 y util
 
 ## v 1.0.0
 Esta aplicacion la hice cuando estaba en 3er año en la UNMSM, la estoy actualizando para que tenga funcionalidades de Java 7, otras librerias graficas y la implementacion de algunos patrones de diseño de software.
+
+## Troubleshooting
+
+Al realizar la configuraci&oacute;n en travis tuve un problemilla ya que la clase `javax.swing.JDialog` necesita la variable X11 configurada para poder levantar su dependencia gr&aacute;fica.
+
+Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis.
+
+```
+https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-directly
+```
