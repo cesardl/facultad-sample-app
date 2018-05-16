@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar facultad-app.jar
+java -jar ../lib/facultad-app.jar

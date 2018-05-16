@@ -1,1 +1,3 @@
-java -jar facultad-app.jar
+@echo off
+
+java -jar "%~dp0\..\lib\facultad-app.jar"
