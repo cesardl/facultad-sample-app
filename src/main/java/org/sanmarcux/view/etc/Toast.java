@@ -1,4 +1,4 @@
-package org.sanmarcux.view;
+package org.sanmarcux.view.etc;
 
 import org.apache.log4j.Logger;
 
@@ -16,11 +16,11 @@ import java.awt.geom.RoundRectangle2D;
  */
 public class Toast extends JDialog {
 
-    public static final int LENGTH_SHORT = 4000;
-    public static final Color ERROR_RED = new Color(121, 0, 0);
-    public static final Color WARNING_YELLOW = new Color(245, 161, 4);
-    public static final Color SUCCESS_GREEN = new Color(22, 127, 57);
-    public static final Color NORMAL_BLACK = new Color(0, 0, 0);
+    private static final int LENGTH_SHORT = 4000;
+    private static final Color ERROR_RED = new Color(121, 0, 0);
+    private static final Color WARNING_YELLOW = new Color(245, 161, 4);
+    private static final Color SUCCESS_GREEN = new Color(22, 127, 57);
+    private static final Color NORMAL_BLACK = new Color(0, 0, 0);
     private static final long serialVersionUID = -7391072920302591187L;
     private static final Logger LOG = Logger.getLogger(Toast.class);
     private static final float MAX_OPACITY = 0.8f;
@@ -92,7 +92,7 @@ public class Toast extends JDialog {
         add(label);
     }
 
-    public void fadeIn() {
+    private void fadeIn() {
         final Timer timer = new Timer(FADE_REFRESH_RATE, null);
         timer.setRepeats(true);
         timer.addActionListener(new ActionListener() {
@@ -115,7 +115,7 @@ public class Toast extends JDialog {
         setVisible(true);
     }
 
-    public void fadeOut() {
+    private void fadeOut() {
         final Timer timer = new Timer(FADE_REFRESH_RATE, null);
         timer.setRepeats(true);
         timer.addActionListener(new ActionListener() {
@@ -139,7 +139,7 @@ public class Toast extends JDialog {
 
     private Point getToastLocation() {
         Point ownerLoc = mOwner.getLocation();
-        int x = (int) (ownerLoc.getX() + ((mOwner.getWidth() - this.getWidth()) / 2));
+        int x = (int) (ownerLoc.getX() + ((double) (mOwner.getWidth() - this.getWidth()) / 2));
         int y = (int) (ownerLoc.getY() + DISTANCE_FROM_PARENT_TOP);
         return new Point(x, y);
     }

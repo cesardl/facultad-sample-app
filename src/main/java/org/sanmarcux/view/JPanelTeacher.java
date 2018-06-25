@@ -10,6 +10,7 @@ import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.view.etc.JPanelBase;
+import org.sanmarcux.view.etc.Toast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

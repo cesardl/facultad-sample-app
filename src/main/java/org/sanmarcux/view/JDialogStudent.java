@@ -12,6 +12,7 @@ import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.view.etc.JDialogFormBase;
+import org.sanmarcux.view.etc.Toast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
