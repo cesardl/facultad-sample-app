@@ -20,7 +20,7 @@ import static org.sanmarcux.PojoFake.fakeStudent;
 public class StudentControllerImplTest {
 
     @InjectMocks
-    private StudentController controller = new StudentControllerImpl();
+    private final StudentController controller = new StudentControllerImpl();
 
     @Mock
     private StudentDAO dao;

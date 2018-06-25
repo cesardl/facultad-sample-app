@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Cesardl
  */
-public class PojoFake {
+public final class PojoFake {
 
     public static final String CODE = "000001";
     public static final String NAME = "Fake name";

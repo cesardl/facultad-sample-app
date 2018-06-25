@@ -1,4 +1,5 @@
-# Facultad Sample Application [![Build Status](https://travis-ci.org/cesardl/facultad-sample-app.svg?branch=master)](https://travis-ci.org/cesardl/facultad-sample-app) [![Maintainability](https://api.codeclimate.com/v1/badges/07262732998e04a64027/maintainability)](https://codeclimate.com/github/cesardl/facultad-sample-app/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/07262732998e04a64027/test_coverage)](https://codeclimate.com/github/cesardl/facultad-sample-app/test_coverage)
+# Facultad Sample Application
+[![Build Status](https://travis-ci.org/cesardl/facultad-sample-app.svg?branch=master)](https://travis-ci.org/cesardl/facultad-sample-app) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=org.sanmarcux.samples.mysql.facultad&metric=alert_status)](https://sonarcloud.io/project/issues?id=org.sanmarcux.samples.mysql.facultad&resolved=false) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=org.sanmarcux.samples.mysql.facultad&metric=coverage)](https://sonarcloud.io/component_measures?id=org.sanmarcux.samples.mysql.facultad&metric=coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/07262732998e04a64027/maintainability)](https://codeclimate.com/github/cesardl/facultad-sample-app/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/07262732998e04a64027/test_coverage)](https://codeclimate.com/github/cesardl/facultad-sample-app/test_coverage)
 
 El siguiente es una aplicacion en el cual se ve el uso de las distintas query SQL para el SGBD MySQL.
 
@@ -18,4 +19,18 @@ Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis.
 
 ```
 https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-directly
+```
+
+### For usage
+
+#### Creating schema
+
+```mysql
+CREATE DATABASE IF NOT EXISTS facultad CHARACTER SET utf8 COLLATE utf8_general_ci
+```
+
+#### Schema backup
+
+```bash
+mysqldump -u root -p facultad -r src/main/resources/db/facultad_schema_and_data.sql
 ```

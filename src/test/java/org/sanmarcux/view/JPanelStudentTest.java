@@ -10,7 +10,6 @@ import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
 import org.sanmarcux.util.DateFormatHelper;
@@ -32,9 +31,6 @@ public class JPanelStudentTest {
 
     @Mock
     private DateFormatHelper dateFormatHelper;
-
-    @Mock
-    private StudentController studentController;
 
     @Mock
     private JDialogStudent dialog;

@@ -19,7 +19,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
     private static final Logger LOG = Logger.getLogger(TeacherDAOImpl.class);
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     /**
      * @param dataSource database connection

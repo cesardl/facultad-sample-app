@@ -30,7 +30,7 @@ public class JDialogStudent extends JDialogFormBase<Student> {
 
     private static final Logger LOG = Logger.getLogger(JDialogStudent.class);
 
-    private transient StudentController studentController;
+    private final transient StudentController studentController;
 
     private String address;
     private String phone;

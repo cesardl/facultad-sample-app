@@ -9,7 +9,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
 import org.sanmarcux.util.DateFormatHelper;
@@ -33,9 +32,6 @@ public class JPanelTeacherTest {
 
     @Mock
     private DateFormatHelper dateFormatHelper;
-
-    @Mock
-    private TeacherController teacherController;
 
     @Mock
     private JDialogTeacher dialog;
@@ -94,7 +90,7 @@ public class JPanelTeacherTest {
     public void testShowDialogForUpdate() {
         doNothing().when(dialog).setVisible(true);
 
-        panel.showDialog(DialogAction.UPDATE, 1, "200135");
+        panel.showDialog(DialogAction.UPDATE, 1, "212456");
         verify(dialog, times(1)).getEntity();
     }
 }

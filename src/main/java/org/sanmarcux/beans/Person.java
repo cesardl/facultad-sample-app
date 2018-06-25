@@ -10,7 +10,7 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    protected int id;
+    protected Integer id;
     protected String code;
     protected String names;
     protected Date birthday;
@@ -30,18 +30,18 @@ public class Person implements Serializable {
      * @param names    the name and last name
      * @param birthday the birthday date
      */
-    public Person(int id, String code, String names, Date birthday) {
+    public Person(Integer id, String code, String names, Date birthday) {
         this.id = id;
         this.code = code;
         this.names = names;
         this.birthday = birthday;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

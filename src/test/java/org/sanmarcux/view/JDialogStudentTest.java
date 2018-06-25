@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.init.AppConfig;
@@ -27,9 +27,8 @@ public class JDialogStudentTest {
     @InjectMocks
     @Autowired
     private JDialogStudent dialog;
-
-    @Spy
-    private ResourceBundleHelper bundle = mock(ResourceBundleHelper.class);
+    @Mock
+    private ResourceBundleHelper bundle;
 
     @Before
     public void setup() {
