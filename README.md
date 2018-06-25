@@ -2,6 +2,8 @@
 
 El siguiente es una aplicacion en el cual se ve el uso de las distintas query SQL para el SGBD MySQL.
 
+Para activar el idioma en ingl&eacute;s `-Duser.language=en -Duser.country=US -Duser.variant=US`
+
 ## v 2.0.0
 Ya con el pasar de los años me animé a hacer la actualización a Java 8 y utilizar Spring Framework. Además estoy considerando la creación de test unitarios que en su momento no hice.
 

@@ -5,8 +5,8 @@ package org.sanmarcux.beans.etc;
  */
 public enum Gender {
 
-    MALE('M'),
-    FEMALE('F');
+    MALE('\u2642'),
+    FEMALE('\u2640');
 
     private final char value;
 

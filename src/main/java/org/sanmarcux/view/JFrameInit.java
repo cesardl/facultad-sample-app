@@ -1,5 +1,6 @@
 package org.sanmarcux.view;
 
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -119,6 +120,7 @@ public class JFrameInit extends javax.swing.JFrame {
 
         menuHelp.setText(bundle.getString("dictionary.help")); // NOI18N
 
+        menuItemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         menuItemAbout.setText(bundle.getString("dictionary.about")); // NOI18N
         menuItemAbout.addActionListener(e -> menuItemAboutActionPerformed());
         menuHelp.add(menuItemAbout);
@@ -156,7 +158,7 @@ public class JFrameInit extends javax.swing.JFrame {
         JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
-        if (row == -1) {
+        if (row == FormSupport.BAD_ROW) {
             JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
@@ -171,7 +173,7 @@ public class JFrameInit extends javax.swing.JFrame {
         JTable target = panelStudent.getTable();
         int row = target.getSelectedRow();
 
-        if (row == -1) {
+        if (row == FormSupport.BAD_ROW) {
             JOptionPane.showMessageDialog(this, bundle.getString("app.warning.student.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
@@ -188,7 +190,7 @@ public class JFrameInit extends javax.swing.JFrame {
         JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
-        if (row == -1) {
+        if (row == FormSupport.BAD_ROW) {
             JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));
@@ -203,7 +205,7 @@ public class JFrameInit extends javax.swing.JFrame {
         JTable target = panelTeacher.getTable();
         int row = target.getSelectedRow();
 
-        if (row == -1) {
+        if (row == FormSupport.BAD_ROW) {
             JOptionPane.showMessageDialog(this, bundle.getString("app.warning.teacher.table"), this.getTitle(), JOptionPane.WARNING_MESSAGE);
         } else {
             String code = String.valueOf(target.getValueAt(row, 0));

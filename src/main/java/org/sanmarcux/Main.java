@@ -1,6 +1,8 @@
-package org.sanmarcux.init;
+package org.sanmarcux;
 
 import org.apache.log4j.Logger;
+import org.sanmarcux.init.AppConfig;
+import org.sanmarcux.init.DatabaseConfig;
 import org.sanmarcux.view.JFrameInit;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
