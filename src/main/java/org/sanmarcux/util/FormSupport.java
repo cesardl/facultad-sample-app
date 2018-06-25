@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 @Component
 public class FormSupport {
 
+    public static final int BAD_ROW = -1;
+
     private Pattern emailPattern;
 
     @PostConstruct

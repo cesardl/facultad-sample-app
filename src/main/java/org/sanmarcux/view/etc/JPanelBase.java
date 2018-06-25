@@ -15,7 +15,6 @@ import java.awt.*;
  */
 public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
-    protected static final int BAD_ROW = -1;
     private static final long serialVersionUID = 8384336851786056495L;
 
     @Autowired
@@ -47,7 +46,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     /**
      * @return the dialog's parent.
      */
-    public Frame getParentForDialog() {
+    protected Frame getParentForDialog() {
         return (Frame) getRootPane().getParent();
     }
 
@@ -55,7 +54,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
      * Display dialog
      */
     public void showDialog() {
-        showDialog(DialogAction.INSERT, BAD_ROW, null);
+        showDialog(DialogAction.INSERT, FormSupport.BAD_ROW, null);
     }
 
     /**
@@ -76,7 +75,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     /**
      * @param evt the mouse event.
      */
-    public void showDialogFromTable(java.awt.event.MouseEvent evt) {
+    protected void showDialogFromTable(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) {
             JTable target = (JTable) evt.getSource();
 
@@ -90,7 +89,7 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
     /**
      * @param evt the key event.
      */
-    public void deleteFromTable(java.awt.event.KeyEvent evt) {
+    protected void deleteFromTable(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DELETE) {
             JTable target = (JTable) evt.getSource();
 

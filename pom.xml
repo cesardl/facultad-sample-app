@@ -30,7 +30,7 @@
         <spring.version>4.3.6.RELEASE</spring.version>
 
         <!-- Jacoco version to use -->
-        <jacoco.version>0.7.6.201602180812</jacoco.version>
+        <jacoco.version>0.7.9</jacoco.version>
     </properties>
 
     <dependencies>
@@ -144,7 +144,7 @@
                                  that all needed libraries are found under lib/ directory. -->
                             <classpathPrefix>../lib</classpathPrefix>
                             <!-- Specifies the main class of the application -->
-                            <mainClass>org.sanmarcux.init.Main</mainClass>
+                            <mainClass>org.sanmarcux.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

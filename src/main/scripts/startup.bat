@@ -1,3 +1,5 @@
 @echo off
 
-java -jar "%~dp0\..\lib\facultad-app.jar"
+set "CURRENT_DIR=%~dp0.."
+
+java -jar -Dapp.home=%CURRENT_DIR% "%~dp0\..\lib\facultad-app.jar"
