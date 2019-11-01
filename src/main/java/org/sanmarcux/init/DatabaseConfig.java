@@ -1,5 +1,8 @@
 package org.sanmarcux.init;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
+import org.jasypt.spring4.properties.EncryptablePropertySourcesPlaceholderConfigurer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,7 +46,14 @@ public class DatabaseConfig {
             location = new FileSystemResource(Paths.get(appHome, "config", "database.properties").toFile());
         }
 
-        PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
+        EnvironmentStringPBEConfig environmentVariablesConfiguration = new EnvironmentStringPBEConfig();
+        environmentVariablesConfiguration.setAlgorithm("PBEWithMD5AndDES");
+        environmentVariablesConfiguration.setPasswordEnvName("APP_ENCRYPTION_PASSWORD");
+
+        StandardPBEStringEncryptor configurationEncryptor = new StandardPBEStringEncryptor();
+        configurationEncryptor.setConfig(environmentVariablesConfiguration);
+
+        PropertySourcesPlaceholderConfigurer configurer = new EncryptablePropertySourcesPlaceholderConfigurer(configurationEncryptor);
         configurer.setLocation(location);
         return configurer;
     }

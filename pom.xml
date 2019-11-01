@@ -53,6 +53,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt-spring4</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
@@ -127,7 +133,6 @@
                     <!-- Configuration of the archiver -->
                     <excludes>
                         <exclude>**/config/**</exclude>
-                        <exclude>**/db/**</exclude>
                     </excludes>
                     <archive>
                         <!-- Manifest specific configuration -->

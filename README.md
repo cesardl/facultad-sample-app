@@ -3,8 +3,6 @@
 
 El siguiente es una aplicacion en el cual se ve el uso de las distintas query SQL para el SGBD MySQL.
 
-Para activar el idioma en ingl&eacute;s `-Duser.language=en -Duser.country=US -Duser.variant=US`
-
 ## v 2.0.0
 Ya con el pasar de los años me animé a hacer la actualización a Java 8 y utilizar Spring Framework. Además estoy considerando la creación de test unitarios que en su momento no hice.
 
@@ -13,23 +11,33 @@ Esta aplicacion la hice cuando estaba en 3er año en la UNMSM, la estoy actualiz
 
 ## Troubleshooting
 
-Al realizar la configuraci&oacute;n en travis tuve un problemilla ya que la clase `javax.swing.JDialog` necesita la variable X11 configurada para poder levantar su dependencia gr&aacute;fica.
+Al realizar la configuraci&oacute;n en Travis tuve un problemilla ya que la clase `javax.swing.JDialog` necesita la variable X11 configurada para poder levantar su dependencia gr&aacute;fica.
 
-Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis.
+Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis: 
+
+- [GUI and Headless Browser Testing](https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-directly)
+
+## For usage
+
+### Language activation
 
 ```
-https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-directly
+-Duser.language=en -Duser.country=US -Duser.variant=US
 ```
 
-### For usage
+### Environment variable for password encryption
 
-#### Creating schema
-
-```mysql
-CREATE DATABASE IF NOT EXISTS facultad CHARACTER SET utf8 COLLATE utf8_general_ci
+```
+APP_ENCRYPTION_PASSWORD MyS3cr3t!
 ```
 
-#### Schema backup
+![alt text](docs/run_configuration.png "Example")
+
+### Schema configuration
+
+Use _db_ directory
+
+### Schema backup
 
 ```bash
 mysqldump -u root -p facultad -r src/main/resources/db/facultad_schema_and_data.sql
