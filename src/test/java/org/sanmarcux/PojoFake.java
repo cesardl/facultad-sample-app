@@ -37,6 +37,7 @@ public final class PojoFake {
         student.setBirthday(BIRTHDAY);
         student.setAddress(ADDRESS);
         student.setPhone(PHONE);
+        student.setTeacherId(1);
         return student;
     }
 

@@ -10,12 +10,14 @@ public class Teacher extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String email;
+    private Integer assignedStudents;
 
     /**
      * Default constructor
      */
     public Teacher() {
         super();
+        assignedStudents = 0;
     }
 
     /**
@@ -27,7 +29,7 @@ public class Teacher extends Person implements Serializable {
      * @param birthday the birthday date
      * @param email    the email
      */
-    public Teacher(int id, String code, String names, Date birthday, String email) {
+    public Teacher(Integer id, String code, String names, Date birthday, String email) {
         super(id, code, names, birthday);
         this.email = email;
     }
@@ -38,6 +40,14 @@ public class Teacher extends Person implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getAssignedStudents() {
+        return assignedStudents;
+    }
+
+    public void setAssignedStudents(Integer assignedStudents) {
+        this.assignedStudents = assignedStudents;
     }
 
     @Override

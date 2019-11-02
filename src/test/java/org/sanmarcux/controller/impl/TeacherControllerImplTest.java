@@ -6,8 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.sanmarcux.beans.Teacher;
-import org.sanmarcux.controller.TeacherController;
-import org.sanmarcux.dao.TeacherDAO;
+import org.sanmarcux.dao.impl.TeacherDAOImpl;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -20,10 +19,10 @@ import static org.sanmarcux.PojoFake.fakeTeacher;
 public class TeacherControllerImplTest {
 
     @InjectMocks
-    private final TeacherController controller = new TeacherControllerImpl();
+    private TeacherControllerImpl controller;
 
     @Mock
-    private TeacherDAO dao;
+    private TeacherDAOImpl dao;
 
     @Test
     public void testGetByCode() {
@@ -69,6 +68,14 @@ public class TeacherControllerImplTest {
 
         boolean result = controller.delete(CODE);
         assertTrue(result);
+    }
+
+    @Test
+    public void testDeleteWithAssignedStudents() {
+        when(dao.findAssignedStudents(anyString())).thenReturn(10);
+
+        boolean result = controller.delete(CODE);
+        assertFalse(result);
     }
 
     @Test

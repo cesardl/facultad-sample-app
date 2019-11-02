@@ -28,6 +28,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <spring.version>4.3.6.RELEASE</spring.version>
+        <jasypt.spring4.version>1.9.3</jasypt.spring4.version>
+
+        <log4j.version>1.2.17</log4j.version>
 
         <!-- Jacoco version to use -->
         <jacoco.version>0.7.9</jacoco.version>
@@ -55,7 +58,7 @@
         <dependency>
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt-spring4</artifactId>
-            <version>1.9.3</version>
+            <version>${jasypt.spring4.version}</version>
         </dependency>
 
         <dependency>
@@ -67,7 +70,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
 
         <!-- Testing -->

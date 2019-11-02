@@ -3,6 +3,7 @@ package org.sanmarcux.view;
 import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -10,6 +11,7 @@ import javax.swing.*;
 /**
  * @author Cesardl
  */
+@Component
 public class JFrameInit extends javax.swing.JFrame {
 
     private static final long serialVersionUID = -8892078424897840083L;

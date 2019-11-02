@@ -16,4 +16,5 @@ public interface TeacherDAO extends DAO<Teacher> {
      */
     List<Teacher> selectNames();
 
+    int findAssignedStudents(String code);
 }

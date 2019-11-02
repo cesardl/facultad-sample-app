@@ -42,12 +42,12 @@ public class StudentControllerImpl implements StudentController {
     }
 
     @Override
-    public Student getByCode(String code) {
+    public Student getByCode(final String code) {
         return dao.selectByCode(code);
     }
 
     @Override
-    public boolean saveOrUpdate(Student entity) {
+    public boolean saveOrUpdate(final Student entity) {
         int state;
 
         if (entity.getId() == 0) {
@@ -60,7 +60,7 @@ public class StudentControllerImpl implements StudentController {
     }
 
     @Override
-    public boolean delete(String code) {
+    public boolean delete(final String code) {
         Student entity = new Student();
         entity.setCode(code);
 
@@ -70,7 +70,7 @@ public class StudentControllerImpl implements StudentController {
     }
 
     @Override
-    public boolean existsCode(String code) {
+    public boolean existsCode(final String code) {
         return dao.selectIdByCode(code) != 0;
     }
 }

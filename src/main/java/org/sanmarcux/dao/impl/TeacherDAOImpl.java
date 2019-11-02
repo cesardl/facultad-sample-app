@@ -30,14 +30,19 @@ public class TeacherDAOImpl implements TeacherDAO {
 
     @Override
     public List<Teacher> selectAll() {
-        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor";
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof, COUNT(id_alum) FROM profesor " +
+                "LEFT JOIN alumno ON profesor_id_prof = id_prof GROUP BY id_prof";
 
-        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) -> new Teacher(
-                resultSet.getInt(1),
-                resultSet.getString(2),
-                resultSet.getString(3),
-                resultSet.getDate(4),
-                resultSet.getString(5)));
+        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+            Teacher teacher = new Teacher(
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getDate(4),
+                    resultSet.getString(5));
+            teacher.setAssignedStudents(resultSet.getInt(6));
+            return teacher;
+        });
         LOG.info(String.format("Getting names from %d teachers", teachers.size()));
         return teachers;
     }
@@ -90,6 +95,16 @@ public class TeacherDAOImpl implements TeacherDAO {
                 new Date(entity.getBirthday().getTime()), entity.getEmail(), entity.getId());
         LOG.info(String.format("Updating teacher, operation result: %d", rowsAffected));
         return rowsAffected;
+    }
+
+    @Override
+    public int findAssignedStudents(final String code) {
+        String sql = "SELECT COUNT(1) FROM alumno " +
+                "INNER JOIN profesor ON id_prof = profesor_id_prof WHERE cod_prof = ?";
+
+        int assignedStudents = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
+        LOG.info(String.format("Getting %d assigned students", assignedStudents));
+        return assignedStudents;
     }
 
     @Override

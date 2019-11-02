@@ -10,7 +10,6 @@ import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ import java.util.Date;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class, DatabaseTestConfig.class})
+@ContextConfiguration(classes = DatabaseTestConfig.class)
 public class JPanelStudentTest {
 
     @InjectMocks

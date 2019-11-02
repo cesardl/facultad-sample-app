@@ -5,6 +5,7 @@ import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
 import org.jasypt.spring4.properties.EncryptablePropertySourcesPlaceholderConfigurer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
@@ -16,11 +17,12 @@ import javax.sql.DataSource;
 import java.nio.file.Paths;
 
 /**
- * Created on 13/04/2017.
+ * Created on 26/02/2017.
  *
  * @author Cesardl
  */
 @Configuration
+@ComponentScan(basePackages = "org.sanmarcux")
 public class DatabaseConfig {
 
     @Value("${database.driver}")
