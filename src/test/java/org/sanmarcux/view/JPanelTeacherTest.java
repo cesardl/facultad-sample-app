@@ -9,8 +9,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.controller.TeacherController;
-import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
 import org.sanmarcux.util.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class, DatabaseTestConfig.class})
+@ContextConfiguration(classes = DatabaseTestConfig.class)
 public class JPanelTeacherTest {
 
     @InjectMocks
@@ -33,9 +31,6 @@ public class JPanelTeacherTest {
 
     @Mock
     private DateFormatHelper dateFormatHelper;
-
-    @Mock
-    private TeacherController teacherController;
 
     @Mock
     private JDialogTeacher dialog;
@@ -60,7 +55,7 @@ public class JPanelTeacherTest {
         panel.addRow(entity);
 
         verify(dateFormatHelper, atLeastOnce()).format(birthday);
-        verify(tableModel).addRow(new Object[]{null, null, "2017-abr-14", null});
+        verify(tableModel).addRow(new Object[]{null, null, "2017-abr-14", null, 0});
         verifyNoMoreInteractions(dateFormatHelper);
         verifyNoMoreInteractions(tableModel);
     }
@@ -74,7 +69,7 @@ public class JPanelTeacherTest {
 
         panel.setRowValues(1, entity);
 
-        verify(tableModel, times(4)).setValueAt(anyObject(), anyInt(), anyInt());
+        verify(tableModel, times(5)).setValueAt(anyObject(), anyInt(), anyInt());
     }
 
     @Test
@@ -94,7 +89,7 @@ public class JPanelTeacherTest {
     public void testShowDialogForUpdate() {
         doNothing().when(dialog).setVisible(true);
 
-        panel.showDialog(DialogAction.UPDATE, 1, "200135");
+        panel.showDialog(DialogAction.UPDATE, 1, "212456");
         verify(dialog, times(1)).getEntity();
     }
 }

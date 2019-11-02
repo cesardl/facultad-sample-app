@@ -20,7 +20,7 @@ public class JDialogAbout extends JDialogBase {
 
     private static final long serialVersionUID = -1360262441580117848L;
 
-    private transient ResourceBundleHelper bundle;
+    private final transient ResourceBundleHelper bundle;
 
     @Autowired
     public JDialogAbout(ResourceBundleHelper bundle) {

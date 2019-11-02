@@ -4,11 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseTestConfig;
 import org.sanmarcux.util.ResourceBundleHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,14 @@ import static org.mockito.Mockito.*;
 import static org.sanmarcux.PojoFake.fakeStudent;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class, DatabaseTestConfig.class})
+@ContextConfiguration(classes = DatabaseTestConfig.class)
 public class JDialogStudentTest {
 
     @InjectMocks
     @Autowired
     private JDialogStudent dialog;
-
-    @Spy
-    private ResourceBundleHelper bundle = mock(ResourceBundleHelper.class);
+    @Mock
+    private ResourceBundleHelper bundle;
 
     @Before
     public void setup() {

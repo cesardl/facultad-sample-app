@@ -1,3 +1,4 @@
+dist: trusty
 language: java
 
 jdk:
@@ -13,12 +14,13 @@ addons:
       secure: $SONAR_TOKEN # encrypted value of your token
 
 git:
-  depth: 3
+  depth: false
 
 cache:
   directories:
     - $HOME/.m2
     - $HOME/.sonar/cache
+    - $HOME/.sonarscanner
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

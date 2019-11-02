@@ -1,7 +1,6 @@
 package org.sanmarcux;
 
 import org.apache.log4j.Logger;
-import org.sanmarcux.init.AppConfig;
 import org.sanmarcux.init.DatabaseConfig;
 import org.sanmarcux.view.JFrameInit;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,7 +21,7 @@ public class Main {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class, DatabaseConfig.class)) {
+            try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DatabaseConfig.class)) {
                 JFrameInit mainFrame = context.getBean(JFrameInit.class);
 
                 javax.swing.SwingUtilities.invokeLater(() -> mainFrame.setVisible(true));

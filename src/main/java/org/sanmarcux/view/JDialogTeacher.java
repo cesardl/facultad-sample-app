@@ -28,7 +28,7 @@ public class JDialogTeacher extends JDialogFormBase<Teacher> {
 
     private static final Logger LOG = Logger.getLogger(JDialogTeacher.class);
 
-    private transient FormSupport formSupport;
+    private final transient FormSupport formSupport;
 
     private String email;
     // Variables declaration - do not modify//GEN-BEGIN:variables

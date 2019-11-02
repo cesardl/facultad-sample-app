@@ -27,7 +27,7 @@ public class TeacherDAOImplTest {
         db = new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .generateUniqueName(true)
-                .addScript("data/script_teacher.sql")
+                .addScripts("data/script_student.sql", "data/script_teacher.sql")
                 .build();
 
         dao = new TeacherDAOImpl(db);
@@ -88,6 +88,13 @@ public class TeacherDAOImplTest {
         assertNotNull(entity.getEmail());
         assertEquals(NAME, entity.getNames());
         assertEquals(EMAIL, entity.getEmail());
+    }
+
+    @Test
+    public void testFindAssignedStudents() {
+        int result = dao.findAssignedStudents("212963");
+
+        assertEquals(3, result);
     }
 
     @Test(expected = EmptyResultDataAccessException.class)

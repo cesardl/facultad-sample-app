@@ -6,8 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.sanmarcux.beans.Student;
-import org.sanmarcux.controller.StudentController;
-import org.sanmarcux.dao.StudentDAO;
+import org.sanmarcux.dao.impl.StudentDAOImpl;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -20,10 +19,10 @@ import static org.sanmarcux.PojoFake.fakeStudent;
 public class StudentControllerImplTest {
 
     @InjectMocks
-    private StudentController controller = new StudentControllerImpl();
+    private StudentControllerImpl controller;
 
     @Mock
-    private StudentDAO dao;
+    private StudentDAOImpl dao;
 
     @Test
     public void testGetByCode() {
