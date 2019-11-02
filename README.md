@@ -31,6 +31,12 @@ Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis:
 APP_ENCRYPTION_PASSWORD MyS3cr3t!
 ```
 
+### Generating password
+
+[Jasypt Online Encryption and Decryption(Free)](https://www.devglan.com/online-tools/jasypt-online-encryption-decryption)
+
+### Example on IDE execution
+
 ![alt text](docs/run_configuration.png "Example")
 
 ### Schema configuration

@@ -33,33 +33,35 @@ public class TeacherDAOImpl implements TeacherDAO {
         String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof, COUNT(id_alum) FROM profesor " +
                 "LEFT JOIN alumno ON profesor_id_prof = id_prof GROUP BY id_prof";
 
-        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
-            Teacher teacher = new Teacher(
-                    resultSet.getInt(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getDate(4),
-                    resultSet.getString(5));
-            teacher.setAssignedStudents(resultSet.getInt(6));
-            return teacher;
-        });
+        List<Teacher> teachers = jdbcTemplate.query(sql, (resultSet, rowNum) ->
+                new Teacher(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4),
+                        resultSet.getString(5),
+                        resultSet.getInt(6))
+        );
         LOG.info(String.format("Getting names from %d teachers", teachers.size()));
         return teachers;
     }
 
     @Override
     public Teacher selectByCode(final String code) {
-        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof FROM profesor WHERE cod_prof = ?";
+        String sql = "SELECT id_prof, cod_prof, nom_prof, nacimiento_prof, email_prof, COUNT(id_alum) FROM profesor " +
+                "LEFT JOIN alumno ON profesor_id_prof = id_prof WHERE cod_prof = ? GROUP BY id_prof";
 
-        Teacher teacher = jdbcTemplate.queryForObject(sql, new Object[]{code}, (resultSet, rowNum) -> new Teacher(
-                resultSet.getInt(1),
-                resultSet.getString(2),
-                resultSet.getString(3),
-                resultSet.getDate(4),
-                resultSet.getString(5))
+        Teacher teacher = jdbcTemplate.queryForObject(sql, new Object[]{code}, (resultSet, rowNum) ->
+                new Teacher(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4),
+                        resultSet.getString(5),
+                        resultSet.getInt(6))
         );
-        LOG.info(String.format("Getting teacher [ id: '%s', code: '%s', names: '%s', email: '%s' ]",
-                teacher.getId(), teacher.getCode(), teacher.getNames(), teacher.getEmail()));
+        LOG.info(String.format("Getting teacher [ id: '%d', code: '%s', names: '%s', email: '%s', email: '%d' ]",
+                teacher.getId(), teacher.getCode(), teacher.getNames(), teacher.getEmail(), teacher.getAssignedStudents()));
         return teacher;
     }
 
