@@ -22,6 +22,10 @@ Aqu&iacute; explican como simular un entorno gr&aacute;fico en Travis:
 ### Language activation
 
 ```
+-Duser.language=es -Duser.country=PE -Duser.variant=PE
+```
+
+```
 -Duser.language=en -Duser.country=US -Duser.variant=US
 ```
 

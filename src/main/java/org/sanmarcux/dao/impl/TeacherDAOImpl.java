@@ -1,8 +1,9 @@
 package org.sanmarcux.dao.impl;
 
-import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ import java.util.List;
 @Repository
 public class TeacherDAOImpl implements TeacherDAO {
 
-    private static final Logger LOG = Logger.getLogger(TeacherDAOImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TeacherDAOImpl.class);
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -42,7 +43,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                         resultSet.getString(5),
                         resultSet.getInt(6))
         );
-        LOG.info(String.format("Getting names from %d teachers", teachers.size()));
+        LOG.info("Getting names from {} teachers", teachers.size());
         return teachers;
     }
 
@@ -60,8 +61,8 @@ public class TeacherDAOImpl implements TeacherDAO {
                         resultSet.getString(5),
                         resultSet.getInt(6))
         );
-        LOG.info(String.format("Getting teacher [ id: '%d', code: '%s', names: '%s', email: '%s', email: '%d' ]",
-                teacher.getId(), teacher.getCode(), teacher.getNames(), teacher.getEmail(), teacher.getAssignedStudents()));
+        LOG.info("Getting teacher [ id: '{}', code: '{}', names: '{}', email: '{}', email: '{}' ]",
+                teacher.getId(), teacher.getCode(), teacher.getNames(), teacher.getEmail(), teacher.getAssignedStudents());
         return teacher;
     }
 
@@ -75,7 +76,7 @@ public class TeacherDAOImpl implements TeacherDAO {
             p.setNames(resultSet.getString(2));
             return p;
         });
-        LOG.info(String.format("Getting %d teachers", teachers.size()));
+        LOG.info("Getting {} teachers", teachers.size());
         return teachers;
     }
 
@@ -85,7 +86,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
                 new Date(entity.getBirthday().getTime()), entity.getEmail());
-        LOG.info(String.format("Creating new teacher, operation result: %d", rowsAffected));
+        LOG.info("Creating new teacher, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -95,7 +96,7 @@ public class TeacherDAOImpl implements TeacherDAO {
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
                 new Date(entity.getBirthday().getTime()), entity.getEmail(), entity.getId());
-        LOG.info(String.format("Updating teacher, operation result: %d", rowsAffected));
+        LOG.info("Updating teacher, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -105,7 +106,7 @@ public class TeacherDAOImpl implements TeacherDAO {
                 "INNER JOIN profesor ON id_prof = profesor_id_prof WHERE cod_prof = ?";
 
         int assignedStudents = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
-        LOG.info(String.format("Getting %d assigned students", assignedStudents));
+        LOG.info("Getting {} assigned students", assignedStudents);
         return assignedStudents;
     }
 
@@ -114,7 +115,7 @@ public class TeacherDAOImpl implements TeacherDAO {
         String sql = "DELETE FROM profesor WHERE cod_prof = ?";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode());
-        LOG.info(String.format("Deleting student, operation result: %d", rowsAffected));
+        LOG.info("Deleting student, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -124,10 +125,10 @@ public class TeacherDAOImpl implements TeacherDAO {
             String sql = "SELECT id_prof FROM profesor WHERE cod_prof = ?";
 
             Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
-            LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
+            LOG.info("Getting id [{}] from code [{}]", id, code);
             return id;
         } catch (EmptyResultDataAccessException e) {
-            LOG.warn(String.format("No results obtained with code [%s]", code), e);
+            LOG.warn("No results obtained with code [{}]", code, e);
             return 0;
         }
     }
