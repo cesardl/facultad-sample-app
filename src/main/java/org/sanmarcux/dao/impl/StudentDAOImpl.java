@@ -1,9 +1,10 @@
 package org.sanmarcux.dao.impl;
 
-import org.apache.log4j.Logger;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.dao.StudentDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ import java.util.List;
 @Repository
 public class StudentDAOImpl implements StudentDAO {
 
-    private static final Logger LOG = Logger.getLogger(StudentDAOImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudentDAOImpl.class);
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -41,7 +42,7 @@ public class StudentDAOImpl implements StudentDAO {
                 Gender.valueOf(resultSet.getString(5)),
                 resultSet.getString(6),
                 resultSet.getString(7)));
-        LOG.info(String.format("Getting %d students", students.size()));
+        LOG.info("Getting {} students", students.size());
         return students;
     }
 
@@ -61,8 +62,8 @@ public class StudentDAOImpl implements StudentDAO {
             e.setTeacherId(resultSet.getInt(7));
             return e;
         });
-        LOG.info(String.format("Getting student [ id: '%s', code: '%s', names: '%s', address: '%s' ]",
-                student.getId(), student.getCode(), student.getNames(), student.getAddress()));
+        LOG.info("Getting student [ id: '{}', code: '{}', names: '{}', address: '{}' ]",
+                student.getId(), student.getCode(), student.getNames(), student.getAddress());
         return student;
     }
 
@@ -72,7 +73,7 @@ public class StudentDAOImpl implements StudentDAO {
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
                 entity.getGender().name(), entity.getAddress(), entity.getPhone(), entity.getTeacherId());
-        LOG.info(String.format("Creating new student, operation result: %d", rowsAffected));
+        LOG.info("Creating new student, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -82,7 +83,7 @@ public class StudentDAOImpl implements StudentDAO {
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
                 entity.getGender().name(), entity.getAddress(), entity.getPhone(), entity.getTeacherId(), entity.getId());
-        LOG.info(String.format("Updating student, operation result: %d", rowsAffected));
+        LOG.info("Updating student, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -91,7 +92,7 @@ public class StudentDAOImpl implements StudentDAO {
         String sql = "DELETE FROM alumno WHERE cod_alum = ?";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode());
-        LOG.info(String.format("Deleting student, operation result: %d", rowsAffected));
+        LOG.info("Deleting student, operation result: {}", rowsAffected);
         return rowsAffected;
     }
 
@@ -101,10 +102,10 @@ public class StudentDAOImpl implements StudentDAO {
             String sql = "SELECT id_alum FROM alumno WHERE cod_alum = ?";
 
             Integer id = jdbcTemplate.queryForObject(sql, new Object[]{code}, Integer.class);
-            LOG.info(String.format("Getting id [%d] from code [%s]", id, code));
+            LOG.info("Getting id [{}] from code [{}]", id, code);
             return id;
         } catch (EmptyResultDataAccessException e) {
-            LOG.warn(String.format("No results obtained with code [%s]", code), e);
+            LOG.warn("No results obtained with code [{}]", code, e);
             return 0;
         }
     }
