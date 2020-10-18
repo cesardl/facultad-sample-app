@@ -25,9 +25,6 @@ import java.nio.file.Paths;
 @ComponentScan(basePackages = "org.sanmarcux")
 public class DatabaseConfig {
 
-    @Value("${database.driver}")
-    private String databaseDriver;
-
     @Value("${database.url}")
     private String databaseURL;
 
@@ -63,7 +60,6 @@ public class DatabaseConfig {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(databaseDriver);
         dataSource.setUrl(databaseURL);
         dataSource.setUsername(databaseUser);
         dataSource.setPassword(databasePassword);
