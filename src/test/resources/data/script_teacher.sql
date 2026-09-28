@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS `profesor`;
 CREATE TABLE `profesor`
 (
-    `id_prof`         int(11)      NOT NULL AUTO_INCREMENT,
+    `id_prof`         int          NOT NULL AUTO_INCREMENT,
     `cod_prof`        varchar(8)   NOT NULL UNIQUE,
     `nom_prof`        varchar(255) NOT NULL,
     `nacimiento_prof` date         NOT NULL,
