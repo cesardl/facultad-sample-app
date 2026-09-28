@@ -28,3 +28,6 @@ INSERT INTO `alumno`
 VALUES ('4', '200159', 'Silvia Peña Guevara', '1987-03-10', 'FEMALE', 'Av Leitod', '85412878', '1');
 INSERT INTO `alumno`
 VALUES ('5', '231123', 'Josue Barrios', '1985-07-12', 'MALE', 'En San Borja', '123123', '5');
+
+-- H2 2.x no longer advances AUTO_INCREMENT to track explicit-value inserts above
+ALTER TABLE `alumno` ALTER COLUMN `id_alum` RESTART WITH 6;

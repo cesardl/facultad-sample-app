@@ -68,7 +68,7 @@ public class JPanelStudentTest {
 
         panel.setRowValues(1, entity);
 
-        verify(tableModel, times(6)).setValueAt(anyObject(), anyInt(), anyInt());
+        verify(tableModel, times(6)).setValueAt(any(), anyInt(), anyInt());
     }
 
     @Test

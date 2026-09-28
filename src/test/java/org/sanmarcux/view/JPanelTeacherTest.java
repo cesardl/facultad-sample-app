@@ -17,8 +17,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -69,7 +69,7 @@ public class JPanelTeacherTest {
 
         panel.setRowValues(1, entity);
 
-        verify(tableModel, times(5)).setValueAt(anyObject(), anyInt(), anyInt());
+        verify(tableModel, times(5)).setValueAt(any(), anyInt(), anyInt());
     }
 
     @Test
