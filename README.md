@@ -50,5 +50,5 @@ Use _db_ directory
 ### Schema backup
 
 ```bash
-mysqldump -u root -p facultad -r src/main/resources/db/facultad_schema_and_data.sql
+mysqldump -u root -p facultad -r db/facultad_schema_and_data.sql
 ```
