@@ -24,9 +24,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- release supersedes source/target: validates against the JDK 8 API
-             surface even though the build itself runs on a newer JDK -->
-        <maven.compiler.release>8</maven.compiler.release>
+        <!-- training project targeting JDK 14 deliberately (not just running
+             on it) -->
+        <maven.compiler.release>14</maven.compiler.release>
 
         <!-- 5.3.x is Spring's last Java-8-baseline line, explicitly supported
              through Java 17; jasypt-spring4 only extends stable

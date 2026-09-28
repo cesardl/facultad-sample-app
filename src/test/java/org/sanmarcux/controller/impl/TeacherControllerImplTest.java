@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.impl.TeacherDAOImpl;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -57,6 +58,19 @@ public class TeacherControllerImplTest {
         when(dao.update(any(Teacher.class))).thenReturn(0);
 
         Teacher entity = fakeTeacher();
+
+        boolean result = controller.saveOrUpdate(entity);
+        assertFalse(result);
+    }
+
+    @Test
+    public void testSaveOrUpdateDuplicateCodeReturnsFalse() {
+        // corner case: another insert took the same code between the
+        // dialog's existsCode() check and this saveOrUpdate() call
+        when(dao.insert(any(Teacher.class))).thenThrow(new DataIntegrityViolationException("unique constraint"));
+
+        Teacher entity = fakeTeacher();
+        entity.setId(0);
 
         boolean result = controller.saveOrUpdate(entity);
         assertFalse(result);

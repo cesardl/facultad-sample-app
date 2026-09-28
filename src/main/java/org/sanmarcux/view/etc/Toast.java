@@ -49,24 +49,12 @@ public class Toast extends JDialog {
         toast.mText = text;
         toast.mDuration = duration;
 
-        switch (style) {
-            case SUCCESS:
-                toast.mBackgroundColor = SUCCESS_GREEN;
-                break;
-
-            case WARNING:
-                toast.mBackgroundColor = WARNING_YELLOW;
-                break;
-
-            case ERROR:
-                toast.mBackgroundColor = ERROR_RED;
-                break;
-
-            case NORMAL:
-            default:
-                toast.mBackgroundColor = NORMAL_BLACK;
-                break;
-        }
+        toast.mBackgroundColor = switch (style) {
+            case SUCCESS -> SUCCESS_GREEN;
+            case WARNING -> WARNING_YELLOW;
+            case ERROR -> ERROR_RED;
+            case NORMAL -> NORMAL_BLACK;
+        };
 
         return toast;
     }

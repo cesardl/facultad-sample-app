@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Cesardl
@@ -85,7 +86,7 @@ public class TeacherDAOImpl implements TeacherDAO {
         String sql = "INSERT INTO profesor(cod_prof, nom_prof, nacimiento_prof, email_prof) VALUES (?, ?, ?, ?)";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
-                new Date(entity.getBirthday().getTime()), entity.getEmail());
+                toSqlDate(entity), entity.getEmail());
         LOG.info("Creating new teacher, operation result: {}", rowsAffected);
         return rowsAffected;
     }
@@ -95,7 +96,7 @@ public class TeacherDAOImpl implements TeacherDAO {
         String sql = "UPDATE profesor SET cod_prof = ?, nom_prof = ?, nacimiento_prof = ?, email_prof = ? WHERE id_prof = ?";
 
         int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(),
-                new Date(entity.getBirthday().getTime()), entity.getEmail(), entity.getId());
+                toSqlDate(entity), entity.getEmail(), entity.getId());
         LOG.info("Updating teacher, operation result: {}", rowsAffected);
         return rowsAffected;
     }
@@ -131,6 +132,15 @@ public class TeacherDAOImpl implements TeacherDAO {
             LOG.warn("No results obtained with code [{}]", code, e);
             return 0;
         }
+    }
+
+    /**
+     * The view layer validates birthday is set before submit, but insert/update
+     * are a public DAO contract callable directly (e.g. from tests) - guard here
+     * too, with a clear message instead of a bare NPE on getTime().
+     */
+    private static Date toSqlDate(final Teacher entity) {
+        return new Date(Objects.requireNonNull(entity.getBirthday(), "birthday is required").getTime());
     }
 
 }

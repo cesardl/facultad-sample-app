@@ -4,7 +4,10 @@ import org.sanmarcux.beans.Student;
 import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.dao.StudentDAO;
 import org.sanmarcux.util.DateFormatHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -14,6 +17,8 @@ import java.util.List;
  */
 @Controller
 public class StudentControllerImpl implements StudentController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(StudentControllerImpl.class);
 
     @Autowired
     private DateFormatHelper dateFormatHelper;
@@ -50,10 +55,16 @@ public class StudentControllerImpl implements StudentController {
     public boolean saveOrUpdate(final Student entity) {
         int state;
 
-        if (entity.getId() == 0) {
-            state = dao.insert(entity);
-        } else {
-            state = dao.update(entity);
+        try {
+            if (entity.getId() == 0) {
+                state = dao.insert(entity);
+            } else {
+                state = dao.update(entity);
+            }
+        } catch (DataIntegrityViolationException e) {
+            // e.g. another insert took the same code between existsCode() and here
+            LOG.warn("Save rejected by a database constraint for code [{}]", entity.getCode(), e);
+            return false;
         }
 
         return state != 0;

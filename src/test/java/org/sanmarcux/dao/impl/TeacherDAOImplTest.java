@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.dao.TeacherDAO;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -70,6 +71,32 @@ public class TeacherDAOImplTest {
         assertEquals(CODE, entity.getCode());
         assertEquals(NAME, entity.getNames());
         assertEquals(EMAIL, entity.getEmail());
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    public void testInsertDuplicateCodeViolatesUniqueConstraint() {
+        // corner case: two inserts racing for the same teacher code -
+        // the UNIQUE constraint on cod_prof is the actual defense, not the
+        // existsCode() check the dialog does beforehand
+        Teacher teacher = fakeTeacher();
+        teacher.setCode("212963"); // already used by the seed data
+
+        dao.insert(teacher);
+    }
+
+    @Test
+    public void testInsertNullBirthdayRejected() {
+        // corner case: insert() is a public DAO contract, callable without
+        // going through the dialog's validateData() null-check first
+        Teacher teacher = fakeTeacher();
+        teacher.setBirthday(null);
+
+        try {
+            dao.insert(teacher);
+            fail("expected NullPointerException for missing birthday");
+        } catch (NullPointerException e) {
+            assertEquals("birthday is required", e.getMessage());
+        }
     }
 
     @Test
