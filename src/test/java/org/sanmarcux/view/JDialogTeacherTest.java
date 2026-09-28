@@ -3,38 +3,45 @@ package org.sanmarcux.view;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.sanmarcux.beans.Teacher;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.init.DatabaseTestConfig;
+import org.sanmarcux.controller.TeacherController;
+import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.sanmarcux.PojoFake.fakeTeacher;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DatabaseTestConfig.class)
+// Now that JDialogTeacher takes its dependencies via constructor (see
+// JDialogFormBase), it's constructed directly with mocks - no Spring context
+// or embedded DB needed for a validation-logic unit test. FormSupport is a
+// real instance (not a mock): its regex is exactly what this test exercises
+// for the email-format cases.
+@RunWith(MockitoJUnitRunner.class)
 public class JDialogTeacherTest {
 
-    @InjectMocks
-    @Autowired
-    private JDialogTeacher dialog;
+    @Mock
+    private TeacherController teacherController;
     @Mock
     private ResourceBundleHelper bundle;
 
+    private JDialogTeacher dialog;
+
     @Before
     public void setup() {
-        dialog.setAction(DialogAction.INSERT);
-        MockitoAnnotations.initMocks(this);
-
         when(bundle.getString(anyString())).thenReturn("empty code");
+
+        dialog = new JDialogTeacher(new FormSupport(), bundle, teacherController);
+        dialog.setAction(DialogAction.INSERT);
     }
 
     @Test
@@ -70,6 +77,7 @@ public class JDialogTeacherTest {
     public void testValidateDataExistsCode() {
         Teacher teacher = fakeTeacher();
         teacher.setCode("212963");
+        when(teacherController.existsCode("212963")).thenReturn(true);
         dialog.setEntity(teacher);
 
         assertFalse(dialog.validateData());

@@ -48,15 +48,6 @@
             <version>1.4</version>
         </dependency>
 
-        <!-- javax.annotation.PostConstruct/PreDestroy were removed from the
-             JDK itself in Java 11; without this the app cannot compile past
-             Java 8. -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

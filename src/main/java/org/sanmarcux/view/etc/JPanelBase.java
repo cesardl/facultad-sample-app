@@ -4,7 +4,6 @@ import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.util.DateFormatHelper;
 import org.sanmarcux.util.FormSupport;
 import org.sanmarcux.util.ResourceBundleHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,14 +16,17 @@ public abstract class JPanelBase<T> extends javax.swing.JPanel {
 
     private static final long serialVersionUID = 8384336851786056495L;
 
-    @Autowired
-    protected DateFormatHelper dateFormatHelper;
+    protected final DateFormatHelper dateFormatHelper;
 
-    @Autowired
-    protected transient ResourceBundleHelper bundle;
+    protected final transient ResourceBundleHelper bundle;
 
-    @Autowired
-    protected transient FormSupport formSupport;
+    protected final transient FormSupport formSupport;
+
+    protected JPanelBase(DateFormatHelper dateFormatHelper, ResourceBundleHelper bundle, FormSupport formSupport) {
+        this.dateFormatHelper = dateFormatHelper;
+        this.bundle = bundle;
+        this.formSupport = formSupport;
+    }
 
     /**
      * @param entity the entity to be added.

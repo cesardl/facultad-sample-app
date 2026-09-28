@@ -3,43 +3,57 @@ package org.sanmarcux.view;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.sanmarcux.beans.Student;
 import org.sanmarcux.beans.etc.Gender;
 import org.sanmarcux.controller.DialogAction;
-import org.sanmarcux.init.DatabaseTestConfig;
+import org.sanmarcux.controller.StudentController;
 import org.sanmarcux.util.DateFormatHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.sanmarcux.util.FormSupport;
+import org.sanmarcux.util.ResourceBundleHelper;
 
+import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.sanmarcux.PojoFake.fakeStudent;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DatabaseTestConfig.class)
+// Now that JPanelStudent takes its dependencies via constructor (see
+// JPanelBase), it's constructed directly with mocks - no Spring context or
+// embedded DB needed for a panel-logic unit test.
+@RunWith(MockitoJUnitRunner.class)
 public class JPanelStudentTest {
 
-    @InjectMocks
-    @Autowired
-    private JPanelStudent panel;
-
     @Mock
-    private DateFormatHelper dateFormatHelper;
+    private StudentController studentController;
 
     @Mock
     private JDialogStudent dialog;
 
     @Mock
-    private javax.swing.table.DefaultTableModel tableModel;
+    private DateFormatHelper dateFormatHelper;
+
+    @Mock
+    private ResourceBundleHelper bundle;
+
+    @Mock
+    private FormSupport formSupport;
+
+    private JPanelStudent panel;
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        when(studentController.getAll()).thenReturn(new Object[0][6]);
+        when(bundle.getString(anyString())).thenReturn("");
+
+        panel = new JPanelStudent(studentController, dialog, dateFormatHelper, bundle, formSupport);
     }
 
     @Test
@@ -53,27 +67,40 @@ public class JPanelStudentTest {
 
         panel.addRow(entity);
 
-        verify(dateFormatHelper, atLeastOnce()).format(birthday);
-        verify(tableModel).addRow(new Object[]{null, null, "2017-abr-14", Gender.MALE.getValue(), null, null});
-        verifyNoMoreInteractions(dateFormatHelper);
-        verifyNoMoreInteractions(tableModel);
+        DefaultTableModel tableModel = (DefaultTableModel) panel.getTable().getModel();
+        assertEquals(1, tableModel.getRowCount());
+        assertEquals("2017-abr-14", tableModel.getValueAt(0, 2));
+        assertEquals(Gender.MALE.getValue(), tableModel.getValueAt(0, 3));
     }
 
     @Test
     public void testSetRowValues() {
-        Date birthday = new Date();
+        when(dateFormatHelper.format(Mockito.any(Date.class))).thenReturn("2017-abr-14");
 
-        Student entity = new Student();
-        entity.setBirthday(birthday);
+        panel.addRow(fakeStudent()); // seed row 0
 
-        panel.setRowValues(1, entity);
+        Student updated = fakeStudent();
+        updated.setCode("999999");
+        updated.setNames("Updated Name");
+        updated.setAddress("Updated Address");
+        updated.setPhone("000000000");
+        updated.setGender(Gender.FEMALE);
 
-        verify(tableModel, times(6)).setValueAt(any(), anyInt(), anyInt());
+        panel.setRowValues(0, updated);
+
+        DefaultTableModel tableModel = (DefaultTableModel) panel.getTable().getModel();
+        assertEquals("999999", tableModel.getValueAt(0, 0));
+        assertEquals("Updated Name", tableModel.getValueAt(0, 1));
+        assertEquals("2017-abr-14", tableModel.getValueAt(0, 2));
+        assertEquals(Gender.FEMALE.getValue(), tableModel.getValueAt(0, 3));
+        assertEquals("Updated Address", tableModel.getValueAt(0, 4));
+        assertEquals("000000000", tableModel.getValueAt(0, 5));
     }
 
     @Test
     public void testDeleteRow() {
-
+        // deleteRow() pops a blocking JOptionPane confirm dialog - not
+        // exercised here, same limitation as before this refactor.
     }
 
     @Test
