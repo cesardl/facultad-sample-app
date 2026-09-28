@@ -24,16 +24,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- training project targeting JDK 14 deliberately (not just running
+             on it) -->
+        <maven.compiler.release>14</maven.compiler.release>
 
-        <spring.version>4.3.17.RELEASE</spring.version>
+        <!-- 5.3.x is Spring's last Java-8-baseline line, explicitly supported
+             through Java 17; jasypt-spring4 only extends stable
+             PropertyResourceConfigurer/PropertySourcesPlaceholderConfigurer
+             base classes so it links fine against it (verified). -->
+        <spring.version>5.3.39</spring.version>
         <jasypt.spring4.version>1.9.3</jasypt.spring4.version>
 
         <slf4j.version>1.7.5</slf4j.version>
 
         <!-- Jacoco version to use -->
-        <jacoco.version>0.7.9</jacoco.version>
+        <jacoco.version>0.8.12</jacoco.version>
     </properties>
 
     <dependencies>
@@ -89,13 +94,13 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.182</version>
+            <version>2.2.220</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -103,8 +108,20 @@
     <build>
         <finalName>${project.artifactId}-app</finalName>
         <plugins>
+            <!-- pinned: maven.compiler.release requires 3.6+; the inherited
+                 default (3.1) predates the flag -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+
+            <!-- was unpinned (no <version>), so the resolved version was
+                 whatever Maven's plugin defaults happened to pick -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
                 <configuration>
                     <appendAssemblyId>true</appendAssemblyId>
                     <finalName>${project.artifactId}</finalName>

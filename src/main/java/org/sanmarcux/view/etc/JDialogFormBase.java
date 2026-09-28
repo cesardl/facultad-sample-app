@@ -3,7 +3,6 @@ package org.sanmarcux.view.etc;
 import org.sanmarcux.controller.DialogAction;
 import org.sanmarcux.controller.TeacherController;
 import org.sanmarcux.util.ResourceBundleHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -15,11 +14,9 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
 
     private static final long serialVersionUID = -5992999043081036468L;
 
-    @Autowired
-    protected transient ResourceBundleHelper bundle;
+    protected final transient ResourceBundleHelper bundle;
 
-    @Autowired
-    protected transient TeacherController teacherController;
+    protected final transient TeacherController teacherController;
 
     protected transient T entity;
 
@@ -28,6 +25,11 @@ public abstract class JDialogFormBase<T> extends JDialogBase {
     protected Date birthday;
 
     protected DialogAction dialogAction;
+
+    protected JDialogFormBase(ResourceBundleHelper bundle, TeacherController teacherController) {
+        this.bundle = bundle;
+        this.teacherController = teacherController;
+    }
 
     /**
      * @return true if the data is correct.

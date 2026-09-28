@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Cesardl
@@ -71,7 +72,7 @@ public class StudentDAOImpl implements StudentDAO {
     public int insert(final Student entity) {
         String sql = "INSERT INTO alumno(cod_alum, nom_alum, nacimiento_alum, sexo_alum, direc_alum, telef_alum, profesor_id_prof) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), toSqlDate(entity),
                 entity.getGender().name(), entity.getAddress(), entity.getPhone(), entity.getTeacherId());
         LOG.info("Creating new student, operation result: {}", rowsAffected);
         return rowsAffected;
@@ -81,7 +82,7 @@ public class StudentDAOImpl implements StudentDAO {
     public int update(final Student entity) {
         String sql = "UPDATE alumno SET cod_alum = ?, nom_alum = ?, nacimiento_alum = ?, sexo_alum = ?, direc_alum = ?, telef_alum = ?, profesor_id_prof = ? WHERE id_alum = ?";
 
-        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), new Date(entity.getBirthday().getTime()),
+        int rowsAffected = jdbcTemplate.update(sql, entity.getCode(), entity.getNames(), toSqlDate(entity),
                 entity.getGender().name(), entity.getAddress(), entity.getPhone(), entity.getTeacherId(), entity.getId());
         LOG.info("Updating student, operation result: {}", rowsAffected);
         return rowsAffected;
@@ -108,6 +109,15 @@ public class StudentDAOImpl implements StudentDAO {
             LOG.warn("No results obtained with code [{}]", code, e);
             return 0;
         }
+    }
+
+    /**
+     * The view layer validates birthday is set before submit, but insert/update
+     * are a public DAO contract callable directly (e.g. from tests) - guard here
+     * too, with a clear message instead of a bare NPE on getTime().
+     */
+    private static Date toSqlDate(final Student entity) {
+        return new Date(Objects.requireNonNull(entity.getBirthday(), "birthday is required").getTime());
     }
 
 }

@@ -2,8 +2,6 @@ package org.sanmarcux.util;
 
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 /**
  * @author cesardiaz
  */
@@ -12,10 +10,9 @@ public class DateFormatHelper {
 
     private static final String PATTERN = "dd/MMM/y";
 
-    private java.text.SimpleDateFormat simpleDateFormat;
+    private final java.text.SimpleDateFormat simpleDateFormat;
 
-    @PostConstruct
-    private void init() {
+    public DateFormatHelper() {
         simpleDateFormat = new java.text.SimpleDateFormat(PATTERN);
     }
 

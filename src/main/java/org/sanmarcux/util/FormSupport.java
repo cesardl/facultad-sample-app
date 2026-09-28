@@ -2,7 +2,6 @@ package org.sanmarcux.util;
 
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,10 +16,9 @@ public class FormSupport {
 
     public static final int BAD_ROW = -1;
 
-    private Pattern emailPattern;
+    private final Pattern emailPattern;
 
-    @PostConstruct
-    private void init() {
+    public FormSupport() {
         //Set the email pattern string
         emailPattern = Pattern.compile(".+@.+\\.[a-z]+");
     }
